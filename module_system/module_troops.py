@@ -647,7 +647,7 @@ syrian_swords = [itm_eastern_sword2,itm_eastern_sword3,itm_palmyran_gladius,itm_
 
 roman_tunic = [itm_roman_tunic_1,itm_roman_tunic_2,itm_roman_tunic_3,itm_roman_poor1,itm_roman_poor4,itm_roman_poor5,itm_roman_poor6,itm_roman_poor7,itm_roman_poor2,itm_roman_poor3]
 berber_tunic = [itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_numidian_armor_5]
-garamantian_tunic = [itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_lybian_cloth_1,itm_lybian_cloth_2,itm_lybian_cloth_3,itm_lybian_cloth_4]
+garamantian_tunic = [itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_armor_5,itm_lybian_cloth_1,itm_lybian_cloth_2,itm_lybian_cloth_3,itm_lybian_cloth_4]
 eastern_roman_tunic = [itm_judean_tunic_1,itm_judean_tunic_2,itm_judean_tunic_3,itm_judean_tunic_4,itm_judean_tunic_5,itm_judean_tunic_6]
 germanic_tunic = [itm_germanic_light1,itm_germanic_light2,itm_germanic_light3,itm_germanic_light4,itm_germanic_light5,itm_germanic_light6,
 itm_germanic_light7,itm_germanic_light8,itm_germanic_light9,itm_germanic_light10,itm_germanic_light11]
@@ -655,15 +655,15 @@ dacian_tunic = [itm_dacian_light1,itm_dacian_light2,itm_dacian_light3,itm_dacian
 itm_dacian_light8,itm_dacian_light9,itm_dacian_light10,itm_dacian_light11,itm_dacian_light12]
 
 garamantian_verylight_armour = [
-  itm_garmantian_armor_5,itm_lybian_cloth_1,itm_lybian_cloth_2,itm_lybian_cloth_3,itm_lybian_cloth_4
+  itm_garamantian_armor_5,itm_lybian_cloth_1,itm_lybian_cloth_2,itm_lybian_cloth_3,itm_lybian_cloth_4
 ]
 garamantian_light_armour = [
-  itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_cloak_5
+  itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_cloak_5
 ]
 garamantian_light_armour_noble = [
-  itm_garmantian_armor_1,itm_garmantian_armor_2,
-  itm_garmantian_noble_cloak_1,itm_garmantian_noble_cloak_2,
-  itm_garmantian_noble_cloak_3,itm_garmantian_noble_cloak_4
+  itm_garamantian_armor_1,itm_garamantian_armor_2,
+  itm_garamantian_noble_cloak_1,itm_garamantian_noble_cloak_2,
+  itm_garamantian_noble_cloak_3,itm_garamantian_noble_cloak_4
 ]
 garamantian_shield_round_light = [
   itm_african_round_shield,itm_hide_covered_round_shield,
@@ -728,7 +728,7 @@ bosporan_cives = bosporan_tunic+nomadic_cives
 caucasian_cives = caucasian_tunic
 
 berber_cives = [itm_numidian_armor_5,itm_berber_nobel_tunic_1,itm_berber_nobel_tunic_2,itm_berber_nobel_tunic_3,itm_berber_nobel_tunic_4,itm_berber_nobel_tunic_5,itm_berber_nobel_tunic_6]
-garamantian_cives = [itm_garmantian_armor_2,itm_garmantian_armor_1,itm_garmantian_noble_cloak_1,itm_garmantian_noble_cloak_2,itm_garmantian_noble_cloak_3,itm_garmantian_noble_cloak_4]
+garamantian_cives = [itm_garamantian_armor_2,itm_garamantian_armor_1,itm_garamantian_noble_cloak_1,itm_garamantian_noble_cloak_2,itm_garamantian_noble_cloak_3,itm_garamantian_noble_cloak_4]
 
 syrian_cives = [itm_arab_noble_tunic_1,itm_arab_noble_tunic_2,itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3]
 
@@ -944,7 +944,7 @@ attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_fa
 [itm_sling,itm_sling_rock1]+berber_foot_peasant+berber_tunic+berber_head_peasant+berber_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
-["garamantian_peasant", "Garamans Tribulis", "Garamantes Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garmantian,
+["garamantian_peasant", "Garamans Tribulis", "Garamantes Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garamantian,
 [itm_sling,itm_sling_rock1]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
@@ -1240,12 +1240,12 @@ itm_greek_spear_1,itm_indian_shield_1,itm_indian_shield_2,itm_indian_shield_3,it
 attrib_level_23_warrior, wp(170), knows_level_23_warrior, eastern_man_face_middle_2, eastern_man_face_old_2 ],
 
 ##new african mercenaries	avaible in: p_town_21	p_town_28	p_town_29
-["garamantian_horseman_merc","Amhadi Garamanti", "Imhaditen Garamantin", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garmantian,
-[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2,
+["garamantian_horseman_merc","Amhadi Garamanti", "Imhaditen Garamantin", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garamantian,
+[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2,
 attrib_level_18_warrior, wp_melee(165), knows_level_18_warrior|knows_riding_5, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["garamantian_noble_horseman_merc","Aballun Garamanti", "Iballunen Garamantin",tf_male_north_african|tf_guarantee_boots|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
+["garamantian_noble_horseman_merc","Aballun Garamanti", "Iballunen Garamantin",tf_male_north_african|tf_guarantee_boots|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_horse|tf_mounted, no_scene, reserved, fac_culture_garamantian,
+[itm_centurio_east_graves,itm_caligea,itm_garamantian_armor_1,itm_garamantian_armor_2,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_23_warrior, wp_melee(185), knows_level_23_warrior|knows_riding_7, north_african_man_face_young_1, north_african_man_face_old_2 ],
 
@@ -1589,105 +1589,105 @@ attrib_level_26, wp_melee(150), knows_level_29, scythian_face_11, scythian_face_
 []+horse_steppe_cataphract+sarmatian_ringswords_long+sarmatian_helm_pointed+sarmatian_armor_scale+bosphoran_armor_scale+sarmatian_boots+kontos_long,
 attrib_level_29, wp_melee(170), knows_level_31, scythian_face_11, scythian_face_12 ],
 
-#garmantian troops
-["garamantian_skirmisher","Ameggar", "Imeggaren", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+#garamantian troops
+["garamantian_skirmisher","Ameggar", "Imeggaren", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_18_warrior, wp(150), knows_level_18_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_skirmisher_exp","Ameggar (exp)", "Imeggaren (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_skirmisher_exp","Ameggar (exp)", "Imeggaren (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(170), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_skirmisher_vet","Ameggar (vet)", "Imeggaren (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_skirmisher_vet","Ameggar (vet)", "Imeggaren (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(190), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["garamantian_archer","Bu Tagust", "At Bu Tagust", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_archer","Bu Tagust", "At Bu Tagust", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_18_warrior, wpe(120,150,150,150), knows_archer_basic, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_archer_exp","Bu Tagust (exp)", "At Bu Tagust (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_archer_exp","Bu Tagust (exp)", "At Bu Tagust (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wpe(140,170,170,170), knows_archer_exp, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_archer_vet","Bu Tagust (vet)", "At Bu Tagust (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_archer_vet","Bu Tagust (vet)", "At Bu Tagust (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wpe(160,190,190,190), knows_archer_elit, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["garamantian_noble_spearman","Amallagh Amghar", "Imallaghen Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_spearman","Amallagh Amghar", "Imallaghen Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(160), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_noble_spearman_exp","Amallagh Amghar (exp)", "Imallaghen Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_spearman_exp","Amallagh Amghar (exp)", "Imallaghen Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(175), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_noble_spearman_vet","Amallagh Amghar (vet)", "Imallaghen Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_spearman_vet","Amallagh Amghar (vet)", "Imallaghen Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["garamantian_noble_cav","Amanay Amghar", "Imanayan Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_cav","Amanay Amghar", "Imanayan Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(160), knows_level_23_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_noble_cav_exp","Amanay Amghar (exp)", "Imanayan Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_cav_exp","Amanay Amghar (exp)", "Imanayan Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(175), knows_level_26_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_noble_cav_vet","Amanay Amghar (vet)", "Imanayan Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_noble_cav_vet","Amanay Amghar (vet)", "Imanayan Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_29_warrior, wp(190), knows_level_29_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["garamantian_skirmisher_cav","Amanay Ameggar", "Imanayan Imeggaren", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_skirmisher_cav","Amanay Ameggar", "Imanayan Imeggaren", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_20_warrior, wp(150), knows_level_20_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_skirmisher_cav_exp","Amanay Ameggar (exp)", "Imanayan Imeggaren (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_skirmisher_cav_exp","Amanay Ameggar (exp)", "Imanayan Imeggaren (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(165), knows_level_23_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["garamantian_skirmisher_cav_vet","Amanay Ameggar (vet)", "Imanayan Imeggaren (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["garamantian_skirmisher_cav_vet","Amanay Ameggar (vet)", "Imanayan Imeggaren (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(190), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 #gaetulian troops
-["gaetulian_skirmisher","Awedday", "Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher","Awedday", "Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_18_warrior, wp(150), knows_level_18_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_exp","Awedday (exp)", "Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher_exp","Awedday (exp)", "Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(170), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_vet","Awedday (vet)", "Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher_vet","Awedday (vet)", "Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(190), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_archer","Ameznay", "Imeznayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_archer","Ameznay", "Imeznayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_18_warrior, wpe(120,150,150,150), knows_archer_basic, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_archer_exp","Ameznay (exp)", "Imeznayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_archer_exp","Ameznay (exp)", "Imeznayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wpe(140,170,170,170), knows_archer_exp, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_archer_vet","Ameznay (vet)", "Imeznayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_archer_vet","Ameznay (vet)", "Imeznayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wpe(160,190,190,190), knows_archer_elit, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_noble_spearman","Amenagh Ameqqran", "Imenaghen Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_spearman","Amenagh Ameqqran", "Imenaghen Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(160), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_spearman_exp","Amenagh Ameqqran (exp)", "Imenaghen Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_spearman_exp","Amenagh Ameqqran (exp)", "Imenaghen Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(175), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_spearman_vet","Amenagh Ameqqran (vet)", "Imenaghen Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_spearman_vet","Amenagh Ameqqran (vet)", "Imenaghen Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_noble_cav","Amanay Ameqqran", "Imanayan Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_cav","Amanay Ameqqran", "Imanayan Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(160), knows_level_23_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_cav_exp","Amanay Ameqqran (exp)", "Imanayan Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_cav_exp","Amanay Ameqqran (exp)", "Imanayan Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(175), knows_level_26_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_cav_vet","Amanay Ameqqran (vet)", "Imanayan Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_noble_cav_vet","Amanay Ameqqran (vet)", "Imanayan Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_29_warrior, wp(190), knows_level_29_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_skirmisher_cav","Amanay Awedday", "Imanayan Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher_cav","Amanay Awedday", "Imanayan Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_20_warrior, wp(150), knows_level_20_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_cav_exp","Amanay Awedday (exp)", "Imanayan Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher_cav_exp","Amanay Awedday (exp)", "Imanayan Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_23_warrior, wp(165), knows_level_23_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_cav_vet","Amanay Awedday (vet)", "Imanayan Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garmantian,
+["gaetulian_skirmisher_cav_vet","Amanay Awedday (vet)", "Imanayan Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
 [],
 attrib_level_26_warrior, wp(190), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
@@ -2208,12 +2208,12 @@ itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4,
 ],
 attrib_level_31, wp(180), knows_level_31, saka_face_1, saka_face_2 ],
 
-["garamantian_prison_guard", "Prison Guard", "Prison Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
+["garamantian_prison_guard", "Prison Guard", "Prison Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[itm_centurio_east_graves,itm_caligea,itm_garamantian_armor_1,itm_garamantian_armor_2,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_1, north_african_man_face_old_1 ],
-["garamantian_castle_guard", "Castle Guard", "Castle Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_centurio_east_graves,itm_caligea,itm_garmantian_armor_1,itm_garmantian_armor_2,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
+["garamantian_castle_guard", "Castle Guard", "Castle Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[itm_centurio_east_graves,itm_caligea,itm_garamantian_armor_1,itm_garamantian_armor_2,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
 itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_2, north_african_man_face_old_2 ],
 ##end
@@ -3182,7 +3182,7 @@ attrib_level_6, wp(100), knows_level_6, eastern_man_face_young_1, eastern_man_fa
 [itm_sling,itm_sling_rock1]+berber_foot_peasant+berber_tunic+berber_head_peasant+berber_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
-["garamantian_looter", "Garamans Latro", "Garamantes Latrones",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garmantian,
+["garamantian_looter", "Garamans Latro", "Garamantes Latrones",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garamantian,
 [itm_sling,itm_sling_rock1]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
 attrib_level_6, wp(100), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
@@ -3305,7 +3305,7 @@ attrib_level_12, wp(150), knows_level_12, eastern_man_face_young_1, eastern_man_
 ]+berber_foot_peasant+berber_tunic+berber_head_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths+eastern_shields_wicker_smallround,
 attrib_level_12, wp(150), knows_level_12, north_african_man_face_middle_1, north_african_man_face_older_2 ],
 
-["garamantian_bandit", "Garamans Leistes", "Garamantes Leistai",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garmantian,
+["garamantian_bandit", "Garamans Leistes", "Garamantes Leistai",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_garamantian,
 [
     itm_numidian_spear_1,itm_javelin_berber
 ]+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+eastern_shields_wicker_smallround+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
@@ -3512,7 +3512,7 @@ attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 ["berber_follower_woman", "Berbera Focaria", "Berberae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_berber,
 [itm_arrows, itm_short_bow, itm_spear,itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+berber_foot_peasant+berber_dress_peasant+berber_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
-["garamantian_follower_woman", "Garamantica Focaria", "Garamanticae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_follower_woman", "Garamantica Focaria", "Garamanticae Focariae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 [itm_arrows, itm_short_bow, itm_spear,itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+garamantian_foot_peasant+garamantian_dress_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
@@ -3590,7 +3590,7 @@ attrib_level_12, wp(120), knows_level_12, arab_face_female, arab_face_female2 ],
 ["berber_soldier_wife", "Berbera Coniunx", "Berberae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_berber,
 [itm_arrows, itm_short_bow, itm_spear,itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+berber_foot_peasant+berber_dress_peasant+berber_weapons_peasant,
 attrib_level_12, wp(120), knows_level_12, arab_face_female, arab_face_female2 ],
-["garamantian_soldier_wife", "Garamantica Coniunx", "Garamanticae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_soldier_wife", "Garamantica Coniunx", "Garamanticae Coniuges", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 [itm_arrows, itm_short_bow, itm_spear,itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+garamantian_foot_peasant+garamantian_dress_peasant+garamantian_weapons_peasant,
 attrib_level_12, wp(120), knows_level_12, arab_face_female, arab_face_female2 ],
 
@@ -3768,10 +3768,10 @@ attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_af
 [itm_dagger,itm_numidian_spear_1,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+berber_foot_cives+berber_dress_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["garamantian_town_walker", "Garamanticus Nobilis", "Garamantici Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_town_walker", "Garamanticus Nobilis", "Garamantici Nobiles",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 [itm_dagger,itm_numidian_spear_1]+garamantian_foot_cives+garamantian_cives+garamantian_head_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["garamantian_town_walker_female", "Garamantica Nobilis Mulier", "Garamanticae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_town_walker_female", "Garamantica Nobilis Mulier", "Garamanticae Nobiles Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 [itm_dagger,itm_numidian_spear_1,itm_sarranid_head_cloth,itm_sarranid_head_cloth_b,itm_sarranid_head_cloth_c,itm_sarranid_head_cloth_d]+garamantian_foot_cives+garamantian_dress_cives,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
@@ -3943,10 +3943,10 @@ attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_af
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+berber_foot_peasant+berber_dress_peasant+berber_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
-["garamantian_village_walker", "Garamanticus Tribulis", "Garamantici Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_village_walker", "Garamanticus Tribulis", "Garamantici Tribules",tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 []+garamantian_foot_peasant+garamantian_tunic+garamantian_head_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, north_african_man_face_middle_1, north_african_man_face_older_2 ],
-["garamantian_village_walker_female", "Garamantica Tribulis Mulier", "Garamanticae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garmantian,
+["garamantian_village_walker_female", "Garamantica Tribulis Mulier", "Garamanticae Tribules Mulieres", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_culture_garamantian,
 [itm_head_wrappings,itm_sarranid_felt_head_cloth,itm_sarranid_felt_head_cloth_b]+garamantian_foot_peasant+garamantian_dress_peasant+garamantian_weapons_peasant,
 attrib_level_6, wp(60), knows_level_6, arab_face_female, arab_face_female2 ],
 
@@ -6255,7 +6255,7 @@ arab_face_young, arab_face_old ],
 knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7,
 african_face_younger, african_face_older ],
 
-["slave_garmantian", "Servus Garamanticus", "Servi Garamantici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["slave_garamantian", "Servus Garamanticus", "Servi Garamantici", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_roman_poor1,itm_roman_poor3,itm_roman_poor2,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
 knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8,
 african_face_younger, african_face_older ],
@@ -6390,7 +6390,7 @@ arab_face_female, arab_face_female2 ],
 knows_looting_2|knows_trade_4|knows_engineer_1|knows_power_strike_4|knows_athletics_7|knows_inventory_management_3,
 arab_face_female, arab_face_female2 ],
 
-["slave_female_garmantian", "Serva Garamantica", "Servae Garamanticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
+["slave_female_garamantian", "Serva Garamantica", "Servae Garamanticae", tf_female|tf_guarantee_boots|tf_guarantee_armor, no_scene, reserved, fac_commoners,
 [itm_female_1_barb,itm_female_2_barb,itm_female_3_barb,itm_female_1,itm_female_2,itm_female_3,itm_caligea,itm_knife,itm_butchering_knife], def_attrib|level(16), wp(30), # 2+3+1+2+8 = 16
 knows_looting_2|knows_trade_3|knows_engineer_1|knows_power_strike_2|knows_athletics_8|knows_inventory_management_3,
 arab_face_female, arab_face_female2 ],
@@ -6583,8 +6583,8 @@ itm_leather_covered_round_shield,itm_ad_mixed_round_shields_14,itm_ad_mixed_roun
 [itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3,itm_leather_covered_round_shield,itm_african_round_shield,
 itm_sarranid_cloth_robe_b,itm_ad_mixed_round_shields_07,itm_ad_mixed_round_shields_08,itm_sarranid_felt_hat]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_1, north_african_man_face_middle_1 ],
 
-["garamantian_deserter", "Desertor Garamans", "Desertores Garamantes", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garmantian,
-[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garmantian_armor_3,itm_garmantian_armor_4,itm_garmantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_2, north_african_man_face_middle_2 ],
+["garamantian_deserter", "Desertor Garamans", "Desertores Garamantes", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[itm_caligea,itm_numidian_spear_1,itm_javelin_berber,itm_headcloth,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_armor_5,itm_african_round_shield,itm_african_shield_2,itm_sarranid_felt_hat,itm_african_feather_band,itm_african_feather_band_2]+horse_numidian+desert_turbans_2, attrib_level_23, wp_melee(160), knows_level_23, north_african_man_face_young_2, north_african_man_face_middle_2 ],
 
 ["nubian_deserter", "Desertor Nubianus", "Desertores Nubiani", tf_male_black|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_nubian,
 [itm_nubian_kilt,itm_nubian_tunic,itm_numidian_wig,itm_numidian_helm,itm_kilt_a,itm_kilt_b,itm_kilt_c,itm_kilt_d,
@@ -6738,7 +6738,7 @@ attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000087f08e3154a11
 [itm_camel,itm_centurio_east_graves,itm_sarranid_cavalry_robe,itm_sarranid_cavalry_sword,itm_eastern_helm6,itm_arrows,itm_arabian_bow_2],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, arab_face_young, arab_face_old ],
 ["garamantian_king", "Gadarat", "Gadarat", tf_hero|tf_randomize_face, no_scene, reserved, fac_garamantes,
-[itm_centurio_east_graves,itm_garmantian_armor_1,itm_headcloth,itm_kopis,itm_african_round_shield],
+[itm_centurio_east_graves,itm_garamantian_armor_1,itm_headcloth,itm_kopis,itm_african_round_shield],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, african_face_younger, african_face_older ],
 ["gaetulian_king", "Takfarin", "Takfarin", tf_hero|tf_randomize_face, no_scene, reserved, fac_gaetuli,
 [itm_numidian_horse_2,itm_centurio_east_graves, itm_numidian_armor_4,itm_sarranid_felt_hat,itm_sarranid_mace_1,itm_ad_mixed_round_shields_14],
@@ -6770,7 +6770,7 @@ def_attrib|level(18),wp(60),knows_inventory_management_10,arab_face_young, arab_
 
 
 ["african_richmerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
-[itm_leather_boots,itm_garmantian_armor_1],
+[itm_leather_boots,itm_garamantian_armor_1],
 def_attrib|level(18),wp(60),knows_inventory_management_10,african_face_younger, african_face_older],
 ["african_poormerchant","Merchant","Merchants", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,
 [itm_numidian_armor_2,itm_caligea],
@@ -6860,7 +6860,7 @@ def_attrib|level(18),wp(60),knows_common,arab_face_young, arab_face_old], # Arab
 def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Egyptian Slave Trader
 
 ["slave_trader_nubian","Aithiops Doulemporos","Aithiopes Doulemporoi", tf_male_black|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_caligea,itm_headcloth,itm_garmantian_armor_2], # Consider more Nubian-specific items if available
+  itm_caligea,itm_headcloth,itm_garamantian_armor_2], # Consider more Nubian-specific items if available
 def_attrib|level(18),wp(60),knows_common,nubian_man_face_middle_1, nubian_man_face_old_1], # Nubian/Aethiopian Slave Trader
 
 ["slave_trader_nabatean","Nabataios Doulemporos","Nabataioi Doulemporoi", tf_male_eastern|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
@@ -6868,7 +6868,7 @@ def_attrib|level(18),wp(60),knows_common,nubian_man_face_middle_1, nubian_man_fa
 def_attrib|level(18),wp(60),knows_common,arab_face_young, arab_face_old], # Nabatean Slave Trader
 
 ["slave_trader_garamantian","Garamas Doulemporos","Garamantes Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
-  itm_caligea,itm_garmantian_armor_3],
+  itm_caligea,itm_garamantian_armor_3],
 def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Garamantian Slave Trader
 
 ["slave_trader_gaetulian","Gaitoulos Doulemporos","Gaitouloi Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
@@ -7772,7 +7772,7 @@ itm_eastern_shield_inf_heavy10, itm_parthian_helm_inf_heavy_3, itm_parthian_scal
 ],hero_attrib|level(50), wp(600), knows_hero, 0x0000000e1708c18b371c96152d8e372400000000001e69630000000000000000],
 
 ["african_myth_hero_1", "Amasus", "Amasus", tf_hero, no_scene, reserved, fac_commoners,[
-itm_caligea, itm_garmantian_armor_3, itm_headcloth, itm_african_shield_1,
+itm_caligea, itm_garamantian_armor_3, itm_headcloth, itm_african_shield_1,
 itm_numidian_spear_1, itm_javelin_berber, itm_javelin_berber
 ],hero_attrib|level(50), wp(200), knows_hero, 0x000000001b0da501149b77c69965d69e00000000001e3f330000000000000000],
 
@@ -8023,7 +8023,7 @@ upgrade(troops,"slave_female_caucasian", "armenian_follower_woman")
 upgrade(troops,"slave_female_arabian", "arab_follower_woman")
 upgrade(troops,"slave_female_egyptian", "egyptian_follower_woman")
 upgrade(troops,"slave_female_berber", "berber_follower_woman")
-upgrade(troops,"slave_female_garmantian", "garamantian_follower_woman")
+upgrade(troops,"slave_female_garamantian", "garamantian_follower_woman")
 
 upgrade(troops,"slave","slave_warrior")
 upgrade(troops,"slave_roman","slave_warrior")
@@ -8039,7 +8039,7 @@ upgrade(troops,"slave_judean","slave_warrior")
 upgrade(troops,"slave_bosporan","slave_warrior")
 upgrade(troops,"slave_arabian","slave_warrior")
 upgrade(troops,"slave_berber","slave_warrior")
-upgrade(troops,"slave_garmantian","slave_warrior")
+upgrade(troops,"slave_garamantian","slave_warrior")
 upgrade(troops,"slave_nubian","slave_warrior")
 upgrade(troops,"slave_saka","slave_warrior")
 upgrade(troops,"slave_greek","slave_warrior")

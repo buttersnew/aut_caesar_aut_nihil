@@ -40,7 +40,7 @@ factions = [
   ("culture_bosporan",  "Bosporan", 0, 0.9, [], [], 0x3429AC),
   ("culture_arabian",  "Arabian", 0, 0.9, [], [], 0x8AAC4B),
   ("culture_berber",  "Berber", 0, 0.9, [], [], 0xAC811B),
-  ("culture_garmantian",  "Garamantian", 0, 0.9, [], [], 0xAC7E3E),
+  ("culture_garamantian",  "Garamantian", 0, 0.9, [], [], 0xAC7E3E),
   ("culture_nubian",  "Nubian", 0, 0.9, [], [], 0x8AAC71),
   ("culture_saka",  "Saka", 0, 0.9, [], [], 0xAC7B6A),
   ("culture_syrian",  "Syrian", 0, 0.9, [], [], 0x670B96),

@@ -126,7 +126,7 @@ party_templates = [
 ("village_caucasian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_caucasian_peasant,15,25),]),
 ("village_arabian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_arab_peasant,15,25),]),
 ("village_berber","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_berber_peasant,15,25),]),
-("village_garmantian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_garamantian_peasant,15,25),]),
+("village_garamantian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_garamantian_peasant,15,25),]),
 ("village_syrian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_syrian_peasant,10,15),]),
 ("village_egyptian","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_egyptian_peasant,10,15),]),
 ("village_greek","Villagers",icon_peasant|pf_civilian,0,fac_innocents,merchant_personality,[(trp_greek_peasant,10,15),]),

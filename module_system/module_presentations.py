@@ -23606,7 +23606,7 @@ presentations = presentations_wse2 + [
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
-        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_garmantian"),
+        (call_script, "script_prsnt_upgrade_tree_ready", "fac_culture_garamantian"),
 
         # clear the string globals that we'll use
         (str_clear, s0),
@@ -23717,7 +23717,7 @@ presentations = presentations_wse2 + [
     (ti_on_presentation_event_state_change,
       [
         (store_trigger_param_1, ":object"),
-        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_garmantian"),
+        (call_script, "script_prsnt_upgrade_tree_switch", ":object", "fac_culture_garamantian"),
       ]),
   ]),
 
@@ -36571,7 +36571,7 @@ presentations = presentations_wse2 + [
         #     (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_egyptian"),
         #     (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_nubian"),
         #     (this_or_next|troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_berber"),
-        #     (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_garmantian"),
+        #     (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_garamantian"),
         #     (this_or_next|is_between, ":item", camels_begin, camels_end),
         #     (this_or_next|is_between, ":item", roman_horses_begin, roman_horses_end),
         #     (this_or_next|is_between, ":item", generic_horses_begin, generic_horses_end),

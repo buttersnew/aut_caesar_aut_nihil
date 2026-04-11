@@ -1097,11 +1097,11 @@ scripts_hardcoded = [
     (party_set_slot, "p_village_132", slot_center_culture, "fac_culture_berber"),
     (party_set_slot, "p_village_228", slot_center_culture, "fac_culture_berber"),
 
-    (party_set_slot, "p_village_134", slot_center_culture, "fac_culture_garmantian"),
-    (party_set_slot, "p_village_135", slot_center_culture, "fac_culture_garmantian"),
-    (party_set_slot, "p_village_137", slot_center_culture, "fac_culture_garmantian"),
-    (party_set_slot, "p_village_108", slot_center_culture, "fac_culture_garmantian"),
-    (party_set_slot, "p_village_102", slot_center_culture, "fac_culture_garmantian"),
+    (party_set_slot, "p_village_134", slot_center_culture, "fac_culture_garamantian"),
+    (party_set_slot, "p_village_135", slot_center_culture, "fac_culture_garamantian"),
+    (party_set_slot, "p_village_137", slot_center_culture, "fac_culture_garamantian"),
+    (party_set_slot, "p_village_108", slot_center_culture, "fac_culture_garamantian"),
+    (party_set_slot, "p_village_102", slot_center_culture, "fac_culture_garamantian"),
 
     #arbela, king of Adiabene, arabs as vassals of parthia
     (party_set_slot, "p_castle_30", slot_center_culture, "fac_culture_syrian"),

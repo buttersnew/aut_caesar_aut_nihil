@@ -1563,7 +1563,7 @@ slot_troop_slave_female_judean         = 137
 slot_troop_slave_female_bosporan       = 138
 slot_troop_slave_female_arabian        = 139
 slot_troop_slave_female_berber         = 140
-slot_troop_slave_female_garmantian     = 141
+slot_troop_slave_female_garamantian     = 141
 slot_troop_slave_female_nubian         = 142
 slot_troop_slave_female_saka           = 143
 slot_troop_slave_female_greek          = 144
@@ -2700,9 +2700,9 @@ gloves_end = "itm_aquilifer_legion_squamata_1"
 
 # body armour
 roman_armour_begin = "itm_aquilifer_legion_squamata_1"
-roman_armour_end   = "itm_garmantian_armor_1"
+roman_armour_end   = "itm_garamantian_armor_1"
 
-north_african_armoury_begin = "itm_garmantian_armor_1"
+north_african_armoury_begin = "itm_garamantian_armor_1"
 north_african_armoury_end   = "itm_indian_pants"
 
 indian_armoury_begin = "itm_indian_pants"
