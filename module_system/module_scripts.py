@@ -73015,9 +73015,9 @@ scripts = scripts_hardcoded + [
             (str_store_faction_name, s2, ":lord_faction"),
             (display_log_message, "@{s1} is the new Ruler of {s2}!!!", 0xFFFF2222),
             #TODO: update the game log for this event
-        (else_try),
-            # all of the lords have been eliminated - so eliminate the faction by making their last fief neutral (q.v. trigger: # Check if a faction is defeated every day)
-            (assign, ":fief_faction", "fac_no_faction"),
+        # (else_try),
+        #     # all of the lords have been eliminated - so eliminate the faction by making their last fief neutral (q.v. trigger: # Check if a faction is defeated every day)
+        #     (assign, ":fief_faction", "fac_no_faction"),
         (try_end),
     (try_end),
 
