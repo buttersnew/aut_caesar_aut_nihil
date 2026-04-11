@@ -33340,6 +33340,7 @@ presentations = presentations_wse2 + [
 
             (call_script, "script_add_log_entry", logent_castle_given_to_lord_by_player, "trp_player", "$fief_selected", ":lord", "$g_encountered_party_faction"),
             (str_store_party_name, s1, "$fief_selected"),
+            (str_store_troop_name, s0, ":lord"),
             (display_message, "@{s1} is granted to {s0}.", 0xFF00FF),
 
             #update lists fief & lords, overlays center and label name

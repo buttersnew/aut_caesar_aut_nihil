@@ -49025,11 +49025,16 @@ scripts = scripts_hardcoded + [
 		(try_end),
 
 		(call_script, "script_change_troop_faction", ":troop_no", ":new_faction"),
-		(try_begin), #new-begin
-		  (neq, ":new_faction", "fac_player_supporters_faction"),
+
+		(try_begin), #fix: lord defecting to player's kingdom should request recruitment
+		  (this_or_next|eq, ":new_faction", "fac_player_supporters_faction"),
+		  (eq, ":new_faction", "$players_kingdom"),
+		  (troop_set_slot, ":troop_no", slot_troop_occupation, slto_inactive),
+		(else_try),
 		  (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_inactive),
 		  (troop_set_slot, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
-		(try_end), #new-end
+		(try_end),
+
 		(str_store_faction_name_link, s10, ":new_faction"),
 		(str_store_string, s11, "str_with_the_s10"),
 	(else_try),
