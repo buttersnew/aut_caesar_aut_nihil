@@ -40,7 +40,7 @@ britannic_names = [
 ("britannic_name_39","Correus"),
 ("britannic_name_40","Cottius"),
 ("britannic_name_41","Crixus"),
-("britannic_name_42","Cunobelinus"),
+("britannic_name_42","Cunobleinus"),
 ("britannic_name_43","Diviciacus"),
 ("britannic_name_44","Divico"),
 ("britannic_name_45","Donnus"),

@@ -24178,6 +24178,9 @@ presentations = presentations_wse2 + [
 
     (set_container_overlay, reg43),#start scroll
 
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_garamantian_standard_bearer", 60, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_garamantian_hornman", 210, 510),
+
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_garamantian_skirmisher", 560, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_garamantian_skirmisher_exp", 710, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 3, "trp_garamantian_skirmisher_vet", 860, 510),
@@ -24277,6 +24280,9 @@ presentations = presentations_wse2 + [
     (overlay_set_area_size, reg43, pos1),
 
     (set_container_overlay, reg43),#start scroll
+
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_gaetulian_standard_bearer", 60, 510),
+    (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_gaetulian_hornman", 210, 510),
 
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 1, "trp_gaetulian_skirmisher", 560, 510),
     (call_script, "script_prsnt_upgrade_tree_troop_and_name", 2, "trp_gaetulian_skirmisher_exp", 710, 510),

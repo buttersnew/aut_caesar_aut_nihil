@@ -360,6 +360,8 @@ caucasian_standards = [itm_battle_standard]
 dacian_standards = [itm_battle_standard]
 syrian_standards = [itm_battle_standard]
 egyptian_standards = [itm_battle_standard]
+garamantian_standards = [itm_battle_standard]
+berber_standards = [itm_battle_standard]
 
 bosporan_horns = [itm_horn]
 judean_horns = [itm_trumpet_eastern]
@@ -371,6 +373,8 @@ caucasian_horns = [itm_trumpet_eastern]
 dacian_horns = [itm_horn]
 syrian_horns = [itm_trumpet_eastern]
 egyptian_horns = [itm_trumpet_eastern]
+garamantian_horns = [itm_horn]
+berber_horns = [itm_horn]
 
 jew_shields_simple = [itm_eastern_shield_inf_light5,itm_eastern_shield_inf_light6,itm_eastern_shield_inf_light1,itm_eastern_shield_inf_light2,itm_eastern_shield_inf_light3,itm_eastern_shield_inf_light4]
 jew_shields_large = [itm_judean_shield_large_1,itm_judean_shield_large_2,itm_judean_shield_large_3,itm_judean_shield_large_4]
@@ -550,8 +554,8 @@ sarmatian_armor_mail_2 = [itm_sarmatian_mail_1,itm_sarmatian_mail_2]
 
 sarmatian_helm_pointed = [itm_bosporan_pointed_helm,itm_bosporan_pointed_helm_2,itm_bosporan_pointed_helm_3,itm_bosporan_pointed_helm_4]
 sarmatian_helm_spangen = [itm_bosporan_spangenhelm_1,itm_bosporan_spangenhelm_2,itm_bosporan_spangenhelm_3]
-sarmatian_helm_nobel_1 = [itm_sarmatian_heavy_helm1,itm_sarmatian_heavy_helm2,itm_sarmatian_heavy_helm3,itm_sarmatian_heavy_helm4]
-sarmatian_helm_nobel_2 = [itm_sarmatian_heavy_helm5,itm_sarmatian_heavy_helm6,itm_sarmatian_heavy_helm7,itm_sarmatian_heavy_helm8]
+sarmatian_helm_noble_1 = [itm_sarmatian_heavy_helm1,itm_sarmatian_heavy_helm2,itm_sarmatian_heavy_helm3,itm_sarmatian_heavy_helm4]
+sarmatian_helm_noble_2 = [itm_sarmatian_heavy_helm5,itm_sarmatian_heavy_helm6,itm_sarmatian_heavy_helm7,itm_sarmatian_heavy_helm8]
 
 sarmatian_helm_cap_1 = [itm_sarmatian_cap_1,itm_sarmatian_cap_2]
 sarmatian_helm_cap_2 = [itm_sarmatian_cap_3,itm_sarmatian_cap_4]
@@ -654,11 +658,72 @@ itm_germanic_light7,itm_germanic_light8,itm_germanic_light9,itm_germanic_light10
 dacian_tunic = [itm_dacian_light1,itm_dacian_light2,itm_dacian_light3,itm_dacian_light4,itm_dacian_light5,itm_dacian_light6,itm_dacian_light7,
 itm_dacian_light8,itm_dacian_light9,itm_dacian_light10,itm_dacian_light11,itm_dacian_light12]
 
+berber_light_noble = [
+  itm_berber_noble_tunic_1,itm_berber_noble_tunic_2,itm_berber_noble_tunic_3,itm_berber_noble_tunic_4,itm_berber_noble_tunic_5,itm_berber_noble_tunic_6,
+  itm_numidian_armor_5
+]
+berber_light_armour = [
+  itm_numidian_armor_1,itm_numidian_armor_2,itm_numidian_armor_3
+]
+berber_mail = [
+  itm_berber_mail_1,itm_berber_mail_2,itm_berber_mail_3,itm_numidian_armor_4
+]
+berber_breastplate = [
+  itm_berber_breastplate_1,itm_berber_breastplate_2,itm_berber_breastplate_3,itm_berber_breastplate_4,itm_berber_breastplate_5
+]
+berber_foot_light = [
+  itm_caligea
+]
+berber_foot_noble = [
+  itm_centurio_east_graves,
+  itm_centurio_west_graves
+]
+berber_light_spears = [
+  itm_numidian_spear_1
+]
+berber_spears = [
+  itm_berber_spear_1,itm_numidian_spear_2
+]
+berber_swords = [
+  itm_roman_spatha,itm_roman_spatha_2,itm_roman_spatha_3
+]
+berber_javelins = [
+  itm_javelin_berber,itm_javelin_berber
+]
+berber_helm_light = [
+  itm_lion_head
+]
+berber_helm = [
+  itm_lion_head_helm
+]
+berber_helm_old = [
+  itm_a_old_numidian_helm,
+  itm_a_old_numidian_helm_2
+]
+berber_helm_old_noble = [
+  itm_a_old_numidian_helm_3,
+  itm_a_old_numidian_helm_4
+]
+berber_round_shield_light = [
+  itm_african_round_shield_1,itm_african_round_shield_2,itm_african_round_shield_3,itm_african_round_shield_4
+]
+berber_round_shield = [
+  itm_old_round_shield_1,itm_old_round_shield_2,itm_old_round_shield_3,itm_old_round_shield_4,itm_old_round_shield_5
+]
+berber_shields_inf_light = [
+  itm_african_shield_inf_light1,itm_african_shield_inf_light2,itm_african_shield_inf_light3,itm_african_shield_inf_light4
+]
+berber_shields_inf = [
+  itm_berber_shield_inf_heavy9,itm_berber_shield_inf_heavy10,itm_berber_shield_inf_heavy11,
+  itm_berber_shield_inf_heavy12
+]
+
 garamantian_verylight_armour = [
   itm_garamantian_armor_5,itm_lybian_cloth_1,itm_lybian_cloth_2,itm_lybian_cloth_3,itm_lybian_cloth_4
 ]
 garamantian_light_armour = [
-  itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_cloak_5
+  itm_garamantian_armor_3,itm_garamantian_armor_4,itm_garamantian_cloak_5,
+  itm_garamantian_light_amour_1,itm_garamantian_light_amour_2,itm_garamantian_light_amour_3,itm_garamantian_light_amour_4
 ]
 garamantian_light_armour_noble = [
   itm_garamantian_armor_1,itm_garamantian_armor_2,
@@ -730,7 +795,7 @@ nomadic_cives = [itm_sarmatian_light1,itm_sarmatian_light2,itm_scythian_light4,i
 bosporan_cives = bosporan_tunic+nomadic_cives
 caucasian_cives = caucasian_tunic
 
-berber_cives = [itm_numidian_armor_5,itm_berber_nobel_tunic_1,itm_berber_nobel_tunic_2,itm_berber_nobel_tunic_3,itm_berber_nobel_tunic_4,itm_berber_nobel_tunic_5,itm_berber_nobel_tunic_6]
+berber_cives = [itm_numidian_armor_5,itm_berber_noble_tunic_1,itm_berber_noble_tunic_2,itm_berber_noble_tunic_3,itm_berber_noble_tunic_4,itm_berber_noble_tunic_5,itm_berber_noble_tunic_6]
 garamantian_cives = [itm_garamantian_armor_2,itm_garamantian_armor_1,itm_garamantian_noble_cloak_1,itm_garamantian_noble_cloak_2,itm_garamantian_noble_cloak_3,itm_garamantian_noble_cloak_4]
 
 syrian_cives = [itm_arab_noble_tunic_1,itm_arab_noble_tunic_2,itm_sarranid_cloth_robe_fancy_1,itm_sarranid_cloth_robe_fancy_2,itm_sarranid_cloth_robe_fancy_3]
@@ -1416,6 +1481,13 @@ attrib_level_26, wp_melee(180), knows_level_26, north_african_man_face_middle_2,
 [itm_legio_armored_caligea,itm_roman_gladius,itm_roman_gladius_2,itm_roman_gladius_3,itm_oriental_squamata_1,itm_oriental_squamata_2,itm_oriental_squamata_3,itm_oriental_squamata_4,itm_roman_aux_helm_8]+egyptian_horns,
 attrib_level_26, wp_melee(180), knows_level_26, north_african_man_face_middle_1, north_african_man_face_old_1 ],
 
+["garamantian_standard_bearer", "Amazzal Asennay", "Imazzalen Isennayen", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+garamantian_foot_noble+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_standards,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["garamantian_hornman", "Amazzal Imzad", "Imazzalen Imzad", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+garamantian_foot_noble+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_spears+garamantian_horns,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+
 # ["hornman", "Xenikos Moysikos", "Xenikoi Moysikoi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
 # [itm_leather_boots,itm_one_handed_war_axe_a,itm_bosporan_mail_2,itm_horn],
 # attrib_level_18|level(40), wp_melee(130), knows_level_18, white_face_11, white_face_12],
@@ -1645,54 +1717,61 @@ attrib_level_26_warrior, wp(190), knows_level_26_warrior|knows_riding_10, north_
 
 #gaetulian troops
 ["gaetulian_skirmisher","Awedday", "Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_javelins+berber_helm+berber_round_shield_light+berber_light_spears+berber_light_armour+berber_foot_light,
 attrib_level_18_warrior, wp(150), knows_level_18_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_skirmisher_exp","Awedday (exp)", "Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_javelins+berber_helm+berber_round_shield_light+berber_light_spears+berber_spears+berber_light_armour+berber_foot_light,
 attrib_level_23_warrior, wp(170), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_skirmisher_vet","Awedday (vet)", "Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_javelins+berber_helm+berber_shields_inf_light+berber_spears+berber_light_armour+berber_foot_light,
 attrib_level_26_warrior, wp(190), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_archer","Ameznay", "Imeznayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_archer","Ameznay", "Imeznayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_short_bow,itm_arrows,itm_arrows]+desert_turbans_2+berber_helm_light+berber_round_shield_light+berber_light_spears+berber_light_armour+berber_foot_light,
 attrib_level_18_warrior, wpe(120,150,150,150), knows_archer_basic, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_archer_exp","Ameznay (exp)", "Imeznayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_archer_exp","Ameznay (exp)", "Imeznayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_short_bow,itm_arrows,itm_bodkin_arrows]+desert_turbans_2+berber_helm_light+berber_round_shield_light+berber_light_spears+berber_light_armour+berber_foot_light,
 attrib_level_23_warrior, wpe(140,170,170,170), knows_archer_exp, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_archer_vet","Ameznay (vet)", "Imeznayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_archer_vet","Ameznay (vet)", "Imeznayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_short_bow,itm_bodkin_arrows,itm_bodkin_arrows]+desert_turbans_2+berber_helm_light+berber_round_shield_light+berber_light_spears+berber_light_armour+berber_foot_light,
 attrib_level_26_warrior, wpe(160,190,190,190), knows_archer_elit, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["gaetulian_noble_spearman","Amenagh Ameqqran", "Imenaghen Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_breastplate+berber_mail+berber_foot_light+berber_foot_noble+berber_spears+berber_helm+berber_helm_old_noble+berber_helm_old+berber_shields_inf,
 attrib_level_23_warrior, wp(160), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_noble_spearman_exp","Amenagh Ameqqran (exp)", "Imenaghen Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_breastplate+berber_mail+berber_foot_noble+berber_spears+berber_helm+berber_helm_old_noble+berber_helm_old+berber_shields_inf,
 attrib_level_26_warrior, wp(175), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_noble_spearman_vet","Amenagh Ameqqran (vet)", "Imenaghen Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+[]+berber_breastplate+berber_mail+berber_foot_noble+berber_spears+berber_helm+berber_helm_old_noble+berber_helm_old+berber_shields_inf,
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_noble_cav","Amanay Ameqqran", "Imanayan Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_noble_cav","Amanay Ameqqran", "Imanayan Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_javelin_berber]+berber_light_noble+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light,
 attrib_level_23_warrior, wp(160), knows_level_23_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_cav_exp","Amanay Ameqqran (exp)", "Imanayan Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_noble_cav_exp","Amanay Ameqqran (exp)", "Imanayan Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
 attrib_level_26_warrior, wp(175), knows_level_26_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_noble_cav_vet","Amanay Ameqqran (vet)", "Imanayan Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
+["gaetulian_noble_cav_vet","Amanay Ameqqran (vet)", "Imanayan Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
 attrib_level_29_warrior, wp(190), knows_level_29_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_skirmisher_cav","Amanay Awedday", "Imanayan Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
-attrib_level_20_warrior, wp(150), knows_level_20_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_cav_exp","Amanay Awedday (exp)", "Imanayan Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
-attrib_level_23_warrior, wp(165), knows_level_23_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_skirmisher_cav_vet","Amanay Awedday (vet)", "Imanayan Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[],
-attrib_level_26_warrior, wp(190), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["gaetulian_skirmisher_cav","Amanay Awedday", "Imanayan Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_horse|tf_mounted|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[]+horse_numidian+berber_light_armour+berber_foot_light+berber_round_shield_light+berber_spears+berber_javelins,
+attrib_level_20_warrior, wp(160), knows_level_20_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["gaetulian_skirmisher_cav_exp","Amanay Awedday (exp)", "Imanayan Iweddayen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_horse|tf_mounted|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[]+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield_light+berber_spears+berber_javelins,
+attrib_level_23_warrior, wp(180), knows_level_23_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["gaetulian_skirmisher_cav_vet","Amanay Awedday (vet)", "Imanayan Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_horse|tf_mounted|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
+[]+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield+berber_spears+berber_javelins,
+attrib_level_26_warrior, wp(200), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+
+["gaetulian_standard_bearer", "Awedday Asennay", "Iweddayen Isennayen", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_standards,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["gaetulian_hornman", "Awedday Imzad", "Iweddayen Imzad", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_swords+berber_horns,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 #germanic troops
 ["germanic_light_clubman", "Slagandz", "Slagandiz",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_germanic,
@@ -2257,15 +2336,15 @@ attrib_level_23_warrior, wpe(155,200,200,200), knows_archer_elit_eastern|knows_r
 
 ["sarmatian_heavy_horsearcher", "Sauromates Fat Aexsdzhyn", "Sauromatae Fat Aexsdzhytae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_2+sarmatian_armor_mail_and_scale_1+sarmatian_helm_nobel_1,
+]+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_2+sarmatian_armor_mail_and_scale_1+sarmatian_helm_noble_1,
 attrib_level_23_warrior, wpe(130,150,150,150), knows_archer_basic_eastern|knows_riding_7, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_exp", "Sauromates Fat Aexsdzhyn (exp)", "Sauromatae Fat Aexsdzhytae (exp)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_2,
+]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
 attrib_level_26_warrior, wpe(150,165,165,165), knows_archer_exp_eastern|knows_riding_8, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_vet", "Sauromates Fat Aexsdzhyn (vet)", "Sauromatae Fat Aexsdzhytae (vet)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_2,
+]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
 attrib_level_29_warrior, wpe(170,180,180,180), knows_archer_elit_eastern|knows_riding_9, scythian_face_11, scythian_face_12 ],
 
 ["sarmatian_light_horseman", "Aeldaro Aemhalto", "Aeldary Aemhaltae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_helmet, no_scene, reserved, fac_culture_sarmatian,
@@ -2289,13 +2368,13 @@ attrib_level_26_warrior, wpe(165,170,170,170), knows_level_26_warrior|knows_ridi
 attrib_level_29_warrior, wpe(180,185,185,185), knows_level_29_warrior|knows_riding_10, scythian_face_21, scythian_face_22 ],
 
 ["sarmatian_noble_horseman", "Sahiyo Hadabaro", "Sahiya Hadabara", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_gloves, no_scene, reserved, fac_culture_sarmatian,
-[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_1+sarmatian_helm_nobel_2+sarmatian_helm_pointed+sarmatian_boots,
+[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_1+sarmatian_helm_noble_2+sarmatian_helm_pointed+sarmatian_boots,
 attrib_level_26_warrior, wpe(165,170,170,170), knows_level_26_warrior|knows_riding_8, scythian_face_11, scythian_face_12 ],
 ["sarmatian_noble_horseman_exp", "Sahiyo Hadabaro (exp)", "Sahiya Hadabara (exp)", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_gloves, no_scene, reserved, fac_culture_sarmatian,
-[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_1+sarmatian_helm_nobel_2+sarmatian_helm_pointed+sarmatian_boots,
+[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_1+sarmatian_helm_noble_2+sarmatian_helm_pointed+sarmatian_boots,
 attrib_level_29_warrior, wpe(180,175,175,175), knows_level_29_warrior|knows_riding_9, scythian_face_11, scythian_face_12 ],
 ["sarmatian_noble_horseman_vet", "Sahiyo Hadabaro (vet)", "Sahiya Hadabara (vet)", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_gloves, no_scene, reserved, fac_culture_sarmatian,
-[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_1+sarmatian_helm_nobel_2+sarmatian_helm_pointed+sarmatian_boots,
+[itm_leather_gloves]+horse_steppe_cataphract+kontos_long+sarmatian_ringswords_long+sarmatian_armor_scale+sarmatian_armor_mail_and_scale_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_1+sarmatian_helm_noble_2+sarmatian_helm_pointed+sarmatian_boots,
 attrib_level_31_warrior, wpe(195,180,180,180), knows_level_31_warrior|knows_riding_10, scythian_face_11, scythian_face_12 ],
 
 #Eastern troops
@@ -4444,7 +4523,7 @@ knight_attrib_3,wp(210),knight_skills_1, 0x0000000c150045c6365d8565932a8d6400000
 [itm_celtic_heavy4,itm_celtic_light_noble_2,itm_celtic_boots,itm_celtic_round_shild3,itm_celtic_sword2,itm_britton_helm_noble_crest_2,itm_horse_2],knight_attrib_2,wp(160),knight_skills_2, 0x0000000aff0005ce49918b46a98e176400000000001d95a40000000000000000],
 ["knight_2_3", "Celtic Lord", "Bellicianus", tf_hero, 0, reserved,fac_kingdom_2,
 [itm_celtic_heavy4,itm_celtic_light_noble_3,itm_celtic_boots,itm_celtic_round_shild3,itm_celtic_sword2,itm_britton_helm_noble_2,itm_horse_1], knight_attrib_3,wp(190),knight_skills_3, 0x00000007bf1131c546a388a320b4c86000000000001d48d30000000000000000],
-["knight_2_4", "Celtic Lord", "Cunobelinus", tf_hero, 0, reserved,fac_kingdom_2,
+["knight_2_4", "Celtic Lord", "Cunobleinus", tf_hero, 0, reserved,fac_kingdom_2,
 [itm_celtic_heavy4,itm_celtic_light_noble_4,itm_celtic_boots,itm_celtic_round_shild3,itm_celtic_sword2,itm_britton_helm_noble,itm_horse_2],knight_attrib_4,wp(220),knight_skills_4, 0x000000003f0805c748c272540d8ab65900000000001d34e60000000000000000],
 ["knight_2_5", "Celtic Lord", "Venutius", tf_hero, 0, reserved,fac_kingdom_2,
 [itm_celtic_heavy4,itm_celtic_light_noble_1,itm_celtic_boots,itm_celtic_round_shild3,itm_celtic_sword2,itm_britton_helm_noble_2,itm_horse_1], knight_attrib_5,wp(250),knight_skills_5, 0x00000004a201300836db6db6db4c031400000000001d46cc0000000000000000],

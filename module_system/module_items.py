@@ -190,6 +190,10 @@ pants_shirt_armor = weight(get_armor_weight(19))|abundance(120)|head_armor(0)|bo
 pants_shirt_cape_price = get_barmour_price(13,10)
 pants_shirt_cape_armor = weight(get_armor_weight(23))|abundance(120)|head_armor(0)|body_armor(13)|leg_armor(10)|difficulty(0)
 
+#pants with light armor
+pants_light_armor_price = get_barmour_price(20,9)
+pants_light_armor = weight(get_armor_weight(29))|abundance(110)|head_armor(0)|body_armor(13)|leg_armor(9)|difficulty(6)
+
 #pants with medium armor
 pants_medium_armor_price = get_barmour_price(20,9)
 pants_medium_armor_armor = weight(get_armor_weight(29))|abundance(110)|head_armor(0)|body_armor(20)|leg_armor(9)|difficulty(6)
@@ -1387,6 +1391,19 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 pants_price, pants_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [fac_culture_garamantian] ],
 
+["garamantian_light_amour_1", "Garamantian Loincloth with simple Breastplate", [("lybian_light_armour_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+pants_light_armor_price, pants_light_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
+["garamantian_light_amour_2", "Garamantian Loincloth with simple Breastplate", [("lybian_light_armour_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+pants_light_armor_price, pants_light_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
+["garamantian_light_amour_3", "Garamantian Loincloth with simple Breastplate", [("lybian_light_armour_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+pants_light_armor_price, pants_light_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
+["garamantian_light_amour_4", "Garamantian Loincloth with simple Breastplate", [("lybian_light_armour_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+pants_light_armor_price, pants_light_armor, imodbits_cloth, [(ti_on_init_item,[
+(call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
+
 ["garamantian_noble_cloak_1", "Noble Garamantian Loincloth with Coat", [("lybian_coat_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
@@ -1416,22 +1433,22 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [fac_culture_garamantian] ],
 
-["berber_nobel_tunic_1", "Berber Nobel Tunic", [("berber_nobel_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_1", "Berber Nobel Tunic", [("berber_noble_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
-["berber_nobel_tunic_2", "Berber Nobel Tunic", [("berber_nobel_tunic_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_2", "Berber Nobel Tunic", [("berber_noble_tunic_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
-["berber_nobel_tunic_3", "Berber Nobel Tunic", [("berber_nobel_tunic_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_3", "Berber Nobel Tunic", [("berber_noble_tunic_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
-["berber_nobel_tunic_4", "Berber Nobel Tunic", [("berber_nobel_tunic_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_4", "Berber Nobel Tunic", [("berber_noble_tunic_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
-["berber_nobel_tunic_5", "Berber Nobel Tunic", [("berber_nobel_tunic_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_5", "Berber Nobel Tunic", [("berber_noble_tunic_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
-["berber_nobel_tunic_6", "Berber Nobel Tunic", [("berber_nobel_tunic_6",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+["berber_noble_tunic_6", "Berber Nobel Tunic", [("berber_noble_tunic_6",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
 
@@ -3465,8 +3482,19 @@ light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garaman
 ["african_feather_band_2", "Bandana with Feathers", [("african_feather_band_2",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
 light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garamantian,fac_culture_nubian] ],
 
-["lion_head", "Lion Helm", [("a_lion_head",0)], itp_type_head_armor   ,0,
+["lion_head", "Lion Head", [("a_lion_head",0)], itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
 light_head_price,light_head,imodbits_plate, [], [fac_culture_garamantian,fac_culture_nubian,fac_culture_berber] ],
+["lion_head_helm", "Galea with Lion Head", [("a_lion_head_helm",0)], itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+signifer_head_price,signifer_head,imodbits_plate, [], [fac_culture_garamantian,fac_culture_nubian,fac_culture_berber] ],
+
+["a_old_numidian_helm", "Old Numidian Galea with Plume", [("a_old_numidian_helm",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_berber] ],
+["a_old_numidian_helm_2", "Old Numidian Galea", [("a_old_numidian_helm_2",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_berber] ],
+["a_old_numidian_helm_3", "Old Numidian Galea with Plume", [("a_old_numidian_helm_3",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_berber] ],
+["a_old_numidian_helm_4", "Old Numidian Galea", [("a_old_numidian_helm_4",0)],  itp_merchandise|itp_type_head_armor|itp_fit_to_head|itp_attach_armature,0,
+signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_berber] ],
 
 ["pilos_old", "Old Pilos", [("pilos_old",0)], itp_unique|itp_type_head_armor |itp_covers_beard ,0,
 medium_head_price,medium_head,imodbits_plate, [], [] ],
@@ -5752,16 +5780,16 @@ weight(get_shield_weight(shield_armor_t3,45,87))|hit_points(shield_hitpoints_t3)
 # generic scutum
 ["old_scutum", "Old Scutum",   [("old_roman_scutum" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3,55,108),
-weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek]],
+weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_syrian]],
 ["old_scutum_2", "Old Scutum",   [("old_roman_scutum_2" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3,55,108),
-weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek]],
+weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_syrian]],
 ["old_scutum_3", "Old Scutum",   [("old_roman_scutum_3" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3,55,108),
-weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek]],
+weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_syrian]],
 ["old_scutum_4", "Old Scutum",   [("old_roman_scutum_4" ,0)], itp_merchandise|itp_type_shield|itp_cant_use_on_horseback|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3,55,108),
-weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek]],
+weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek,fac_culture_egyptian,fac_culture_syrian]],
 
 # OLD ROMAN ROUND SHIELDS
 ["old_round_shield_5", "Old Roman Round Shield", [("old_round_shield_5",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
@@ -5781,22 +5809,22 @@ get_shield_price(shield_armor_t3,30,0),
 weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
 
 # ROMAN round shields
-["roman_shield_1",         "Round Shield", [("roman_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_1",         "Roman Round Shield", [("roman_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
 ["roman_shield_2",         "Round Shield", [("roman_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
-["roman_shield_3",         "Round Shield", [("roman_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_3",         "Roman Round Shield", [("roman_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
-["roman_shield_4",         "Round Shield", [("roman_shield_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_4",         "Roman Round Shield", [("roman_shield_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
-["roman_shield_5",         "Round Shield", [("roman_shield_5",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_5",         "Roman Round Shield", [("roman_shield_5",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
-["roman_shield_6",         "Round Shield", [("roman_shield_6",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_6",         "Roman Round Shield", [("roman_shield_6",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
 

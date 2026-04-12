@@ -73396,6 +73396,8 @@ scripts = scripts_hardcoded + [
     (this_or_next|eq, ":troop", "trp_parthian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_syrian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_egyptian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_garamantian_standard_bearer"),
+    (this_or_next|eq, ":troop", "trp_gaetulian_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_custom_standard_bearer"),
     (this_or_next|eq, ":troop", "trp_custom_standard_bearer_cav"),
     (this_or_next|eq, ":troop", "trp_custom_standard_bearer_skirmisher"),
