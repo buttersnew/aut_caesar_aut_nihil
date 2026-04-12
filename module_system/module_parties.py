@@ -109,6 +109,10 @@ parties = [
 ("town_50", "Mtskheta", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (135.04, 67.39), [], 125),
 ("town_51", "Nishapur", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (247.06, 53.03), [], 60),
 ("town_52", "Rhagae", icon_landing_point|pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (207.74, 20.85), [], 114),
+# Gaetuli
+("town_53", "Larbas", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-230.63, -62.98), []),
+# Garamantians
+("town_54", "Garama", icon_garamantian_town|pf_town, no_menu, pt_none, fac_kingdom_29, 0, ai_bhvr_hold, 0, (-110.41, -146.35), []),
 
 ("castle_1", "Carthago Nova", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-227.06, -16.37), [], 50),
 ("castle_2", "Gades", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-272.28, -15.38), [], 75),
@@ -192,6 +196,10 @@ parties = [
 ("castle_78", "Doclea", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-60, 38), []),
 ("castle_79", "Hormirzad", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (291, -27), []),
 ("castle_80", "Meyaneh", icon_landing_point|pf_castle, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (174.88, 31.74), []),
+# Gaetuli
+("castle_81", "Turres", icon_gaetulian_town|pf_castle, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-152.477, -63.047), []),
+# Garamantians
+("castle_82", "Gerisa", icon_garamantian_town|pf_castle, no_menu, pt_none, fac_kingdom_29, 0, ai_bhvr_hold, 0, (-105.691, -103.508), []),
 
 ("village_1", "Pengwern", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-227.3, 129), [], 100),
 ("village_2", "Seria Fama Iulia", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-274.1, -3.34), [], 110),
@@ -455,6 +463,15 @@ parties = [
 ("village_255", "Bampur", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (303.71, -7.59), [], 134),
 ("village_256", "Ghazwin", icon_landing_point|pf_village, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (186.89, 23.33), [], 203),
 ("village_257", "Arawa", icon_landing_point|pf_is_static|pf_always_visible, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (203.63, -20.45), [], 195),
+# Gaetuli
+("village_258", "Tazagourt", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-275.074, -86.492), []),
+("village_259", "Charef", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-205.023, -56.112), []),
+("village_260", "Zabi", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-192.524, -54.612), []),
+("village_261", "Nefte", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_28, 0, ai_bhvr_hold, 0, (-164.692, -59.609), []),
+# Garamantians
+("village_262", "Cidamus", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_29, 0, ai_bhvr_hold, 0, (-132.401, -99.723), []),
+("village_263", "Zinkekara", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_29, 0, ai_bhvr_hold, 0, (-92.334, -154.972), []),
+("village_264", "Aghrom Nodharif", icon_village_desert|pf_village, no_menu, pt_none, fac_kingdom_29, 0, ai_bhvr_hold, 0, (-141.370, -148.846), []),
 
 ("salt_mine", "Salt Mine", icon_village_barbarian|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (14.2, -31), []),
 ("four_ways_inn", "Four Ways Inn", icon_village_barbarian|pf_village|pf_disabled, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (4.8, -39.599998), []),
@@ -486,9 +503,10 @@ parties = [
 ("sea_raider_spawn_point_1", "Asia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (21.98, 3.71), []),
 ("sea_raider_spawn_point_12", "Cyrenaica", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-31.48, -79.89), []),
 ("sea_raider_spawn_point_13", "Pontus", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (43.47, 31.93), []),
-("sea_raider_spawn_point_2", "Mauretania", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-206.54, -54.6), []),
-("sea_raider_spawn_point_21", "Numidia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-149.29, -61.56), []),
-("sea_raider_spawn_point_23", "Africa", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-115.49, -96.56), []),
+("sea_raider_spawn_point_2", "Mauretania Tingitana", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-269.055, -61.509), []),
+("sea_raider_spawn_point_21", "Mauretania", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-206.54, -54.6), []),
+("sea_raider_spawn_point_23", "Cyrenaica", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-25.528, -127.610), []),
+("sea_raider_spawn_point_24", "Mauretania Tingitana", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-247.198, -83.411), []),
 ("desert_bandit_spawn_point", "Mesopotamia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (160.9, -37.8), []),
 ("desert_bandit_spawn_point1", "Syricae Deserta", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (124.86, -34.42), []),
 ("desert_bandit_spawn_point2", "Arabia", pf_disabled|icon_landing_point|pf_is_static|pf_label_large|pf_hide_defenders, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (133.45, -56.4), []),
@@ -589,8 +607,8 @@ parties = [
 ("holy_lance_cave","Montes Sinai", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.77, -77.54),[]),
 ("valley_of_elah","Vallis Elae", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(85.675, -60.00),[]),
 
-("gaetulian_town_1", "Larbas", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_gaetuli, 0, ai_bhvr_hold, 0, (-230.63, -62.98), []),
-("garamantian_town_1", "Garama", icon_garamantian_town|pf_town, no_menu, pt_none, fac_garamantes, 0, ai_bhvr_hold, 0, (-110.41, -146.35), []),
+("baquates_town_1", "Tocolisda", icon_desert_fortress|pf_town, no_menu, pt_none, fac_baquates, 0, ai_bhvr_hold, 0, (-263.881, -67.552), []),
+("nasamones_town_1", "Samah", icon_desert_fortress|pf_town, no_menu, pt_none, fac_nasamones, 0, ai_bhvr_hold, 0, (-55.993, -123.971), []),
 ("arabian_town_1", "Hegra", icon_arab_town|pf_town, no_menu, pt_none, fac_nabataea, 0, ai_bhvr_hold, 0, (138.4, -115.81), []),
 ("nubian_town_1", "Meroe", icon_nubian_town|pf_town, no_menu, pt_none, fac_kush, 0, ai_bhvr_hold, 0, (101.97, -187.42), []),
 ("irish_town_1", "Dun Ailinne", icon_village_barbarian|pf_town, no_menu, pt_none, fac_irish, 0, ai_bhvr_hold, 0,  (-252.73,151.97), []),

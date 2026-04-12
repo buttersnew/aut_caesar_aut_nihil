@@ -23315,7 +23315,7 @@ dialogs =[
   ], "Yes sorry.", "close_window",[]], #no pockets in dark ages
 
 [trp_nurse_african|plyr, "nurse_talk",[
-  (str_store_troop_name, s30, "trp_garamantian_queen"),
+  (str_store_troop_name, s30, "trp_nasamones_queen"),
   ], "Can you tell me were {s30} is gone.", "nurse_talk1",[]],
 [trp_nurse_african|plyr, "nurse_talk",[
 
@@ -23337,7 +23337,7 @@ dialogs =[
   ], "Here. Now, speak!", "nurse_talk3",[ (troop_remove_gold, "trp_player", 50),]],
 
 [trp_nurse_african, "nurse_talk3",[
-  (str_store_troop_name, s30, "trp_garamantian_queen"),
+  (str_store_troop_name, s30, "trp_nasamones_queen"),
 ], "Thank you. The king has put {s30} under house arrest for undefined time. She has a special illness and needs protection.", "close_window",[]],
 
 [trp_nurse_african|plyr, "nurse_talk",[
@@ -24553,14 +24553,14 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
       (call_script, "script_npc_morale", "$g_talk_troop"),
       (assign, "$npc_quit_morale", reg0),
 ]],
-[trp_garamantian_queen,"member_chat",
+[trp_nasamones_queen,"member_chat",
 [
 (store_conversation_troop,"$g_talk_troop"),
 (troop_is_hero,"$g_talk_troop"),
 ], "What do you want?", "dara_talk",
 []],
 
-[trp_garamantian_queen|plyr,"dara_talk",
+[trp_nasamones_queen|plyr,"dara_talk",
 [(store_conversation_troop,"$g_talk_troop"),
 (troop_is_hero,"$g_talk_troop"),], "How is the journey?", "dara_talk2",[]],
 
@@ -77329,8 +77329,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (eq,"$random_quest_no", "qst_destroy_bandit_lair"),
   (quest_get_slot, ":bandit_lair", "qst_destroy_bandit_lair", slot_quest_target_party),
   (party_get_template_id, ":bandit_type", ":bandit_lair"),
-  (this_or_next|eq, ":bandit_type", "pt_numidian_bandit_lair"),
-  (this_or_next|eq, ":bandit_type", "pt_gaetuli_bandit_lair"),
+  (this_or_next|eq, ":bandit_type", "pt_nasamones_bandit_lair"),
+  (this_or_next|eq, ":bandit_type", "pt_baquates_bandit_lair"),
   (this_or_next|eq, ":bandit_type", "pt_nabatean_lair"),
   (eq, ":bandit_type", "pt_nubian_lair"),
 ],
@@ -82667,15 +82667,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "battle_reason_stated",[
 ]],
 
-[party_tpl|pt_garamantes,"start",[
-  (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
+[party_tpl|pt_nasamones,"start",[
+  (eq, "$g_encountered_party_template", "pt_nasamones"),#to fix bug in dialog
   (eq,"$talk_context",tc_party_encounter),(encountered_party_is_attacker)
 ],"Prepare to die!",
 "battle_reason_stated",[
 ]],
 
-[party_tpl|pt_gaetuli,"start",[
-  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+[party_tpl|pt_baquates,"start",[
+  (eq, "$g_encountered_party_template", "pt_baquates"),#to fix bug in dialog
   (eq,"$talk_context",tc_party_encounter),
   (encountered_party_is_attacker)
 ],"We will see us on the battlefield.",
@@ -82706,8 +82706,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "battle_reason_stated",[
 ]],
 
-[party_tpl|pt_gaetuli,"start",[
-  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+[party_tpl|pt_baquates,"start",[
+  (eq, "$g_encountered_party_template", "pt_baquates"),#to fix bug in dialog
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
 ],"You again! Prepare to die.",
@@ -82721,8 +82721,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"The sky-god will protect us! Be ready for battle!",
 "battle_reason_stated",[]],
 
-[party_tpl|pt_garamantes,"start",[
-  (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
+[party_tpl|pt_nasamones,"start",[
+  (eq, "$g_encountered_party_template", "pt_nasamones"),#to fix bug in dialog
   (store_relation, ":bandit_relation", "fac_player_faction", "$g_encountered_party_faction"),
 	(lt, ":bandit_relation", 0),
 ],"Die you scum!",
@@ -82740,13 +82740,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"Welcome stranger. We are the mighty Saka people and part of the Dahae tribe. What is your desire?",
 "garamanten_talk",[]],
 
-[party_tpl|pt_garamantes,"start",[
-  (eq, "$g_encountered_party_template", "pt_garamantes"),#to fix bug in dialog
+[party_tpl|pt_nasamones,"start",[
+  (eq, "$g_encountered_party_template", "pt_nasamones"),#to fix bug in dialog
 ],"Welcome stranger. We are the mighty Garamantian people. What is your desire?",
 "garamanten_talk",[]],
 
-[party_tpl|pt_gaetuli,"start",[
-  (eq, "$g_encountered_party_template", "pt_gaetuli"),#to fix bug in dialog
+[party_tpl|pt_baquates,"start",[
+  (eq, "$g_encountered_party_template", "pt_baquates"),#to fix bug in dialog
 ],"Welcome stranger. We are the Gaetulian people. How can I help you?",
 "garamanten_talk",[]],
 
@@ -83554,7 +83554,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ], "You will rot in my dungeon.", "close_window",[]],
 
   # reaction to you based on noble or low-birth
-[anyone,     "prisoner_chat_commoner",[(eq, "$g_talk_troop", "trp_garamantian_queen"),], "What do you want, asshole?", "prisoner_chat_queen",[]],
+[anyone,     "prisoner_chat_commoner",[(eq, "$g_talk_troop", "trp_nasamones_queen"),], "What do you want, asshole?", "prisoner_chat_queen",[]],
 [anyone|plyr,     "prisoner_chat_queen",[], "I only wanted to take a look at you.", "prisoner_chat_queen3",[]],
 [anyone,     "prisoner_chat_queen3",[], "You are a demon! I hope the gods will punish you for this!", "close_window",[]],
 [anyone|plyr,     "prisoner_chat_queen",[], "Nothing", "prisoner_chat_queen2",[]],
@@ -91167,53 +91167,53 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##End aeneas
 
   ##darat talk
-[trp_garamantian_queen, "start",
+[trp_nasamones_queen, "start",
 [
   (eq, "$talk_context", tc_escape),
  ],
   "Who are you and what do you want from me? The nurse said we would make a small walk ...", "darta_talky",
 []],
-[trp_garamantian_queen|plyr, "darta_talky",[],"You will come with me little princess.", "darta_talky2",[]],
+[trp_nasamones_queen|plyr, "darta_talky",[],"You will come with me little princess.", "darta_talky2",[]],
 
-[trp_garamantian_queen, "darta_talky2",[],"What? Who are you? What's going on? ^-- She starts crying. --", "darta_talky3",[]],
+[trp_nasamones_queen, "darta_talky2",[],"What? Who are you? What's going on? ^-- She starts crying. --", "darta_talky3",[]],
 
-[trp_garamantian_queen|plyr, "darta_talky3",[],"Stop crying you stupid bitch.", "darta_talky31",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),]],
-[trp_garamantian_queen|plyr, "darta_talky3",[],"Don't cry my princess.", "darta_talky31",[]],
+[trp_nasamones_queen|plyr, "darta_talky3",[],"Stop crying you stupid bitch.", "darta_talky31",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),]],
+[trp_nasamones_queen|plyr, "darta_talky3",[],"Don't cry my princess.", "darta_talky31",[]],
 
-[trp_garamantian_queen, "darta_talky31",[],"Who are you and what do you want? Are you a bandit? You are kidnapping me, I am sure.", "darta_talky32",[]],
-[trp_garamantian_queen|plyr, "darta_talky32",[],"I am {playername}. Can't you remember? We talked some days ago. I have met your father and he gave me the task\
+[trp_nasamones_queen, "darta_talky31",[],"Who are you and what do you want? Are you a bandit? You are kidnapping me, I am sure.", "darta_talky32",[]],
+[trp_nasamones_queen|plyr, "darta_talky32",[],"I am {playername}. Can't you remember? We talked some days ago. I have met your father and he gave me the task\
   to rescue you from the evil Garat. I will bring you back to your father.", "darta_talky33",[]],
-[trp_garamantian_queen, "darta_talky33",[],"You stupid idiot! I liked my life here in Garama. Garat is so nice to me. I don't want to marry this stupid Roman noble.\
+[trp_nasamones_queen, "darta_talky33",[],"You stupid idiot! I liked my life here in Garama. Garat is so nice to me. I don't want to marry this stupid Roman noble.\
   My father is an old idiot.^ -- She gets really hysterical. --", "darta_talky4",[]],
 
-[trp_garamantian_queen|plyr, "darta_talky4",[],"You stupid bitch. -- Give her a slap. --", "darta_talky41",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_garamantian_queen|plyr, "darta_talky4",[],"You must not marry the Roman noble, my princess.", "darta_talky41",[]],
+[trp_nasamones_queen|plyr, "darta_talky4",[],"You stupid bitch. -- Give her a slap. --", "darta_talky41",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
+[trp_nasamones_queen|plyr, "darta_talky4",[],"You must not marry the Roman noble, my princess.", "darta_talky41",[]],
 
-[trp_garamantian_queen|plyr, "darta_talky41",[],"Your family is missing you. They worry about you and want you back.", "darta_talky42",[]],
-[trp_garamantian_queen, "darta_talky42",[],"How stupid are you? If they would miss me and worry about me, they would not have sent me to Carthage to marry this stupid Roman noble.\
+[trp_nasamones_queen|plyr, "darta_talky41",[],"Your family is missing you. They worry about you and want you back.", "darta_talky42",[]],
+[trp_nasamones_queen, "darta_talky42",[],"How stupid are you? If they would miss me and worry about me, they would not have sent me to Carthage to marry this stupid Roman noble.\
   My father only wants me back, because the noble would give him tons of silver and gold in exchange for me! Bah this Roman noble. His name is Sextus Arthropoda.\
   He travelled through Africa to collect exotic things. As he met me at the first time he said: 'You are such a little hot bitch. I will make you my slave then I can fuck you everyday.'\
   Sextus doesn't want to marry me. He only wants me as slave.", "darta_talky43",[]],
 
-[trp_garamantian_queen|plyr, "darta_talky43",[],"By the gods. Your destiny is to be a slave.", "darta_talky44",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_garamantian_queen, "darta_talky44",[],"No, no. Oh {playername}. I would do everything for you, but please don't bring me back to my family.\
+[trp_nasamones_queen|plyr, "darta_talky43",[],"By the gods. Your destiny is to be a slave.", "darta_talky44",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
+[trp_nasamones_queen, "darta_talky44",[],"No, no. Oh {playername}. I would do everything for you, but please don't bring me back to my family.\
   ^-- She pulls down her dress and shows you her breasts. -- ^Play with me if you want, but don't send me back.", "darta_talky5",[
   #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
   (agent_unequip_item, "$g_talk_agent", "itm_sarranid_lady_dress_b"),
 ]],
 
-[trp_garamantian_queen|plyr, "darta_talky5",[],"You are nothing more than a whore!", "darta_talky51",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_garamantian_queen|plyr, "darta_talky51",[],"I will bring you to your family. You useless bitch!", "darta_talky52",[]],
-[trp_garamantian_queen, "darta_talky52",[],"No! No! No! ^-- She throws herself at your feet and cries. --^ Please not, please not!", "darta_talky53",[]],
+[trp_nasamones_queen|plyr, "darta_talky5",[],"You are nothing more than a whore!", "darta_talky51",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
+[trp_nasamones_queen|plyr, "darta_talky51",[],"I will bring you to your family. You useless bitch!", "darta_talky52",[]],
+[trp_nasamones_queen, "darta_talky52",[],"No! No! No! ^-- She throws herself at your feet and cries. --^ Please not, please not!", "darta_talky53",[]],
 
-[trp_garamantian_queen|plyr, "darta_talky53",[],"You useless bitch", "darta_talky54",[]],
-[trp_garamantian_queen, "darta_talky54",[],"-- You hit her in the face and kick her in the stomach until she loses consciousness. --", "close_window",[
+[trp_nasamones_queen|plyr, "darta_talky53",[],"You useless bitch", "darta_talky54",[]],
+[trp_nasamones_queen, "darta_talky54",[],"-- You hit her in the face and kick her in the stomach until she loses consciousness. --", "close_window",[
   (assign, "$temp", 1),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),
 
-  (troop_join_as_prisoner, "trp_garamantian_queen"),
+  (troop_join_as_prisoner, "trp_nasamones_queen"),
   (troop_join, "trp_nurse_african"),
-  (remove_member_from_party, "trp_garamantian_queen", "p_garamantian_town_1"),
+  (remove_member_from_party, "trp_nasamones_queen", "p_nasamones_town_1"),
   (rest_for_hours, 4, 2, 0),
   (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 4),
 
@@ -91221,15 +91221,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (display_message, "str_quest_updated", message_alert),
 ]],
 
-[trp_garamantian_queen|plyr, "darta_talky5",[],"You look ... good ...", "darta_talky6",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
-[trp_garamantian_queen, "darta_talky6",[],"(You have a good time her in the sand. After an hour of joy you remain lying in the sand while she sneakes away.)", "close_window",[
+[trp_nasamones_queen|plyr, "darta_talky5",[],"You look ... good ...", "darta_talky6",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
+[trp_nasamones_queen, "darta_talky6",[],"(You have a good time her in the sand. After an hour of joy you remain lying in the sand while she sneakes away.)", "close_window",[
   (assign, "$temp", 1),
   (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
 
-[trp_garamantian_queen|plyr, "darta_talky43",[],"I see. Stay here with Garat. I won't bring you to your father", "darta_leave",[]],
-[trp_garamantian_queen, "darta_leave",[],"Thank you {playername}. I won't forget your hounorable act. ^--She gives you a kiss. --", "close_window",[
+[trp_nasamones_queen|plyr, "darta_talky43",[],"I see. Stay here with Garat. I won't bring you to your father", "darta_leave",[]],
+[trp_nasamones_queen, "darta_leave",[],"Thank you {playername}. I won't forget your hounorable act. ^--She gives you a kiss. --", "close_window",[
   (assign, "$temp", 1),
   (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
   (display_message, "str_quest_updated", message_alert),
@@ -91365,11 +91365,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],
    "{s20}", "desert_queen_pretalk",[]],
 
-[trp_garamantian_queen|plyr, "desert_queen",[
+[trp_nasamones_queen|plyr, "desert_queen",[
   (neg|quest_slot_ge, "qst_blank_quest_20", slot_quest_temp_slot, 1),],
   "You are not from here?", "desert_queen_ask_talk2",[]],
 
-[anyone, "desert_queen_ask_talk2",[ (str_store_troop_name, s32, "trp_garamantian_king"),],
+[anyone, "desert_queen_ask_talk2",[ (str_store_troop_name, s32, "trp_nasamones_king"),],
   "Yes. I am from the Gaetuli people, I am the daughter of Takfarin. Years ago my father arranged a marriage with a Roman noble. This was when I was 14. Usually Gaetuli women marry with 12.\
   I was sent with an escort of 100 men to Carthago. But then we were ambushed by Garamantian raiders. The escort was slaughtered. They captured me and brought me to their king. Now I am his wife. The wife of {s32}.", "desert_queen_pretalk",
 [
@@ -91389,21 +91389,21 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	  (str_store_troop_name, s31, "trp_arabian_king"),
 	  (str_store_string, s23, "@I am {s30}, the wife of {s31} and queen of the {s32}."),
 	(else_try),
-	  (eq, "$g_talk_troop", "trp_garamantian_queen"),
-	  (str_store_troop_name, s31, "trp_gaetulian_king"),
+	  (eq, "$g_talk_troop", "trp_nasamones_queen"),
+	  (str_store_troop_name, s31, "trp_baquates_king"),
 	  (str_store_string, s23, "@I am {s30}, the daugther of {s31} and princess of the mighty Gaetulian people."),
 	(else_try),
-	  (eq, "$g_talk_troop", "trp_gaetulian_queen"),
-	  (str_store_troop_name, s31, "trp_gaetulian_king"),
+	  (eq, "$g_talk_troop", "trp_baquates_queen"),
+	  (str_store_troop_name, s31, "trp_baquates_king"),
     (str_store_string, s23, "@I am {s30}, wife of {s31} and the queen of the {s32}."),
 	(try_end),
 
  ],"{s23}", "desert_queen_pretalk",[]],
 
 [anyone|plyr, "desert_queen",[],"Is there anything I can do for you, my Lady?", "desert_queen_ask_for_quest",[]],
-[anyone, "desert_queen_ask_for_quest",[(party_count_members_of_type, ":lady", "p_garamantian_town_1", "trp_garamantian_queen"),
+[anyone, "desert_queen_ask_for_quest",[(party_count_members_of_type, ":lady", "p_nasamones_town_1", "trp_nasamones_queen"),
   (ge, ":lady", 1),
-  (eq, "$g_talk_troop", "trp_gaetulian_queen"),
+  (eq, "$g_talk_troop", "trp_baquates_queen"),
  ],"Oh if you could bring me back my daughter, but you can't nobody can. She was probably slaughtered by bandits.", "desert_queen",[]],
 [anyone, "desert_queen_ask_for_quest",[],"Currently I am not in need of a hero.", "desert_queen",[]],
 [anyone|plyr, "desert_queen",[],"Ave atque vale.", "desert_queen_leave",[]],
@@ -91599,11 +91599,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_set_flags, "p_kurgan", pf_always_visible, 1),
 ]],
 
-[trp_gaetulian_king|plyr, "desert_king",[
+[trp_baquates_king|plyr, "desert_king",[
   (check_quest_active, "qst_blank_quest_20"),
   (quest_slot_ge, "qst_blank_quest_20", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 1),
-  (str_store_troop_name, s20, "trp_garamantian_queen"),
+  (str_store_troop_name, s20, "trp_nasamones_queen"),
 ],"I want to talk about your daughter {s20}.", "desert_king_quest_daughter_talk",[
   (quest_set_slot, "qst_blank_quest_20", slot_quest_current_state, 1),
 ]],
@@ -91692,8 +91692,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king",[
   (check_quest_active, "qst_blank_quest_20"),
   (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 2),
-  (eq, "$g_talk_troop", "trp_garamantian_king"),
-  (str_store_troop_name, s20, "trp_garamantian_queen"),
+  (eq, "$g_talk_troop", "trp_nasamones_king"),
+  (str_store_troop_name, s20, "trp_nasamones_queen"),
  ],"I want to talk about your wife {s20}.", "desert_king_quest_gara_talk_daughter_22",[]],
 
 [anyone, "desert_king_quest_gara_talk_daughter_22",[
@@ -91765,8 +91765,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king",[
   (check_quest_active, "qst_blank_quest_20"),
   (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 5),
-  (eq, "$g_talk_troop", "trp_gaetulian_king"),
-  (str_store_troop_name, s20, "trp_garamantian_queen"),
+  (eq, "$g_talk_troop", "trp_baquates_king"),
+  (str_store_troop_name, s20, "trp_nasamones_queen"),
  ],"So my friend, we must talk about your daughter {s20}.", "desert_king_darta_1_talk",[]],
 
 [anyone, "desert_king_darta_1_talk",[],"Ha, I hope you bring good news! Is she fine?", "desert_king_darta_1_talk1",[]],
@@ -91793,15 +91793,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king",[
   (check_quest_active, "qst_blank_quest_20"),
   (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 4),
-  (eq, "$g_talk_troop", "trp_gaetulian_king"),
-  (str_store_troop_name, s20, "trp_garamantian_queen"),
+  (eq, "$g_talk_troop", "trp_baquates_king"),
+  (str_store_troop_name, s20, "trp_nasamones_queen"),
  ],"So my friend, I have your daughter {s20}.", "desert_king_darta_2_talk",[]],
 
 [anyone, "desert_king_darta_2_talk",[],"Well done {playername}. I must say that I had some doubt, but you have proven yourself as a reliable warrior.", "desert_king_darta_2_talk2",[]],
 [anyone|plyr, "desert_king_darta_2_talk2",[],"Now let's talk about my reward.", "desert_king_darta_2_talk3",[]],
 [anyone, "desert_king_darta_2_talk3",[],"Of course, but firstly, hand me over my daughter.", "desert_king_darta_2_talk4",[]],
 [anyone|plyr, "desert_king_darta_2_talk4",[],"Of course.", "desert_king_darta_2_talk_fuck",[
-  (remove_member_from_party, "trp_garamantian_queen", "p_main_party"),
+  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   ]],
 
@@ -91853,7 +91853,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king_darta_2_talk_reward_money6",[],"Very well. Now I hand over your daughter.", "close_window",[
   (add_xp_as_reward, 10000),
   (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (remove_member_from_party, "trp_garamantian_queen", "p_main_party"),
+  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   ]],
 [anyone|plyr, "desert_king_darta_2_talk_reward3",[],"... give me 50,000 denarii", "desert_king_darta_2_talk_reward_tribut",[]],
@@ -91863,7 +91863,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king_darta_2_talk_reward_tribut3",[],"Very good, I will hand over your daughter.", "close_window",[
   (add_xp_as_reward, 10000),
   (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (remove_member_from_party, "trp_garamantian_queen", "p_main_party"),
+  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   (finish_mission),
   ]],
@@ -91872,8 +91872,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (check_quest_active, "qst_blank_quest_20"),
   (neg|quest_slot_ge, "qst_blank_quest_20", slot_quest_current_state, 1),
   (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 1),
-  (eq, "$g_talk_troop", "trp_garamantian_king"),
-  (str_store_troop_name, s20, "trp_garamantian_queen"),
+  (eq, "$g_talk_troop", "trp_nasamones_king"),
+  (str_store_troop_name, s20, "trp_nasamones_queen"),
  ],"I want to talk about your wife {s20}.", "desert_king_quest_gara_talk",[]],
 
 [anyone, "desert_king_quest_gara_talk",[
@@ -91982,8 +91982,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
  (store_sub, ":herd_size", 3, ":difficulty"), #3 if good, 2 if normal, 1 if average
  (try_begin),
     (this_or_next|eq, "$current_town", "p_nubian_town_1"),
-    (this_or_next|eq, "$current_town", "p_gaetulian_town_1"),
-    (eq, "$current_town","p_garamantian_town_1"),
+    (this_or_next|eq, "$current_town", "p_baquates_town_1"),
+    (eq, "$current_town","p_nasamones_town_1"),
     (store_random_in_range, ":animal", "trp_elephant", "trp_wolf"),
     (quest_set_slot, "qst_elephant_hunt", slot_quest_target_faction, ":herd_size"),
  (else_try),
@@ -93628,7 +93628,7 @@ Amen.", "memercus_pretalk",
 [anyone, "start",
 [
     (store_current_scene, ":scene"),
-    (this_or_next|is_between, ":scene", "scn_gaetulian_town_1", "scn_slavemarket"),
+    (this_or_next|is_between, ":scene", "scn_baquates_town_1", "scn_slavemarket"),
     (eq, ":scene", "scn_langobard_village"),
     (this_or_next|is_between, "$g_talk_troop", bandits_begin,bandits_end),
     (is_between, "$g_talk_troop", mercenary_troops_begin,mercenary_troops_end),

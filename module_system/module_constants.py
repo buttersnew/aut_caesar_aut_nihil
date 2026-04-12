@@ -2306,7 +2306,7 @@ cultures_end   = "fac_player_faction"
 kingdoms_begin = "fac_player_supporters_faction"
 kingdoms_end = "fac_kingdoms_end"
 
-minor_kingdoms_begin = "fac_garamantes"
+minor_kingdoms_begin = "fac_nasamones"
 minor_kingdoms_end = "fac_minor_kingdoms_end"
 
 npc_kingdoms_begin = "fac_kingdom_1"
@@ -2333,7 +2333,7 @@ kings_begin = "trp_kingdom_1_lord"
 kings_end = lords_begin
 
 minor_kings_begin = "trp_slavic_king"
-minor_kings_end = "trp_gaetulian_queen"
+minor_kings_end = "trp_baquates_queen"
 
 minor_queens_begin = minor_kings_end
 minor_queens_end   = "trp_arabian_richmerchant"
@@ -3885,7 +3885,7 @@ slot_expedition_start_time_1 = 19
 
 kingmarshal_gold_bon = 3000#bonus income for king and marshal
 
-minor_towns_begin = "p_gaetulian_town_1"
+minor_towns_begin = "p_baquates_town_1"
 minor_towns_end   = "p_hanging_gardens"
 
 
@@ -4122,13 +4122,15 @@ p_asia_media = 52
 
 p_afrc_nubia = 53
 
-p_afrc_garamantia = 54
+p_afrc_garam = 54
 
 p_asia_chor = 55
 
 p_asia_osreon = 56
 
 p_adiabene = 57
+
+p_afrc_maur_ting = 58
 
 p_provinces_end = p_adiabene + 1
 

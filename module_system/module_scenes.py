@@ -1004,8 +1004,8 @@ scenes = [
   ##special scenes
   ("scriptorium", sf_indoors, "interior_castle_d", "bo_interior_castle_d", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("triumph_marsh", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000003300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_plain"),
-  ("gaetulian_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002dc6005088007d5f70000759c00007438000002c6",[], [], "outer_terrain_desert"),
-  ("garamantian_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002d32005088007d5f70000687180004e89000002c6",[], [], "outer_terrain_desert_b"),
+  ("baquates_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002dc6005088007d5f70000759c00007438000002c6",[], [], "outer_terrain_desert"),
+  ("nasamones_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002d32005088007d5f70000687180004e89000002c6",[], [], "outer_terrain_desert_b"),
   ("arabian_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002d32023e30007d5f700004d8400003ad2000049db",[], [], "outer_terrain_desert_b"),
   ("nubian_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002d42005000007d1f70000194c00000c1f000067f5",[], [], "outer_terrain_desert_b"),
   ("irish_town_1", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013005213200077dda0000733300002edf000052ba",[], [], "outer_terrain_plain_1 "),

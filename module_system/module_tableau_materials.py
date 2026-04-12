@@ -414,7 +414,7 @@ tableaus = [
      (set_fixed_point_multiplier, 100),
      (try_begin),
        (is_between, ":faction_no", minor_kingdoms_begin, minor_kingdoms_end), #Excluding player kingdom
-       (store_add, ":banner_mesh", "mesh_pic_arms_gaetuli", ":faction_no"),
+       (store_add, ":banner_mesh", "mesh_pic_arms_baquates", ":faction_no"),
        (val_sub, ":banner_mesh", minor_kingdoms_begin),
        (init_position, pos1),
        (position_set_y, pos1, -5),

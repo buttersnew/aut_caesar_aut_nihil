@@ -76,7 +76,12 @@ map_icons = [
   ("gaetulian_town",mcn_no_shadow,"icon_gaetulian",  0.34,0),
   ("arab_town",mcn_no_shadow,"icon_arab",  0.34,0),
   ("garamantian_town",mcn_no_shadow,"icon_garama",  0.28,0),
+  ("berber_town",mcn_no_shadow,"icon_berber_town",  0.28,0),
+  ("desert_fortress",mcn_no_shadow,"icon_desert_fortress",  0.28,0),
+
   ("village_desert",mcn_no_shadow,"icon_village_desert",  0.30,0),
+  ("village_desert_burned",mcn_no_shadow,"icon_village_desert_burned",  0.30,0),
+
   ("nubian_town",mcn_no_shadow,"icon_nubia",  0.33,0),
 
   # ("mine",mcn_no_shadow,"mine", 0.45, 0),
@@ -243,6 +248,18 @@ map_icons = [
   ("map_flag_40",0,"map_flag_40", banner_scale,0),
   ("map_flag_41",0,"map_flag_41", banner_scale,0),
   ("map_flag_42",0,"map_flag_42", banner_scale,0),
+  ("map_flag_43",0,"map_flag_43", banner_scale,0),
+  ("map_flag_44",0,"map_flag_44", banner_scale,0),
+  ("map_flag_45",0,"map_flag_45", banner_scale,0),
+  ("map_flag_46",0,"map_flag_46", banner_scale,0),
+  ("map_flag_47",0,"map_flag_47", banner_scale,0),
+  ("map_flag_48",0,"map_flag_48", banner_scale,0),
+  ("map_flag_49",0,"map_flag_49", banner_scale,0),
+  ("map_flag_50",0,"map_flag_50", banner_scale,0),
+  ("map_flag_51",0,"map_flag_51", banner_scale,0),
+  ("map_flag_52",0,"map_flag_52", banner_scale,0),
+  ("map_flag_53",0,"map_flag_53", banner_scale,0),
+  ("map_flag_54",0,"map_flag_54", banner_scale,0),
 
   ("map_legion_vexilium_italica_ii",0,"map_legion_vexilium_italica_ii", banner_scale,0),
   ("map_legion_vexilium_scythica_iv",0,"map_legion_vexilium_scythica_iv", banner_scale,0),

@@ -4457,6 +4457,14 @@ itm_leather_gloves,itm_palmyran_gladius_rich,itm_lance,itm_cataphract_horse_part
 itm_arab_noble_tunic_2,itm_ring_2],
 knight_attrib_1, wp(270), knight_skills_1, 0x000000091805318d251b89d69d71d96c00000000001da8d30000000000000000, ],
 
+["kingdom_28_lord", "Massinissa", "Massinissa", tf_hero, no_scene, reserved, fac_kingdom_28,
+[itm_berber_breastplate_1,itm_centurio_east_graves,itm_berber_spear_1,itm_african_round_shield,itm_caligea,itm_ring_2,itm_numidian_horse_3,itm_roman_spatha,itm_berber_noble_tunic_4,itm_lion_head_helm],
+knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000002811a14408d889b5949234d900000000001115a40000000000000000 ],
+
+["kingdom_29_lord", "Akhamuk", "Akhamuk", tf_hero, no_scene, reserved, fac_kingdom_29,
+[itm_garamantian_armor_2,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield,itm_caligea,itm_ring_1,itm_numidian_horse_1,itm_a_lybian_feathers_3],
+knight_attrib_4, wp(270), knight_skills_4|knows_trainer_5, 0x000000000a110407586588b6d5b0b6da00000000000a985c0000000000000000 ],
+
 ["knight_1_1", "Dacian Lord", "Avizina", tf_hero, no_scene, reserved, fac_kingdom_1,
 [itm_horse_1,itm_dacian_heavy1,itm_dacian_shield_large4,itm_dacian_heavy_helm_noble_1,itm_dacian_sword,itm_celtic_boots,itm_dacian_noble1],
 knight_attrib_5, wp(230), knight_skills_5|knows_trainer_1|knows_trainer_3, 0x0000000c3e08601414ab4dc6e39296b200000000001e231b0000000000000000 ],
@@ -4786,6 +4794,22 @@ itm_arab_noble_tunic_1,itm_ring_2], knight_attrib_2,wp(150),knight_skills_2, 0x0
 [itm_cav_decurio_helm_2,itm_roman_spatha,itm_horse_2,itm_musculata_legatus_2,itm_legio_armored_caligea,itm_officer_shield_2,itm_calceus_3,itm_roman_toga],knight_attrib_5,wp(300),knight_skills_5, 0x000000000701724b329571b71b6da72a00000000001e33630000000000000000, ],
 ["knight_19_3", "Batava Lord", "Julius Classicus", tf_hero, 0, reserved,fac_kingdom_19,
 [itm_cav_decurio_helm_3,itm_roman_spatha,itm_horse_1,itm_musculata_legatus_5,itm_legio_armored_caligea,itm_officer_shield_3,itm_calceus_3,itm_roman_toga],knight_attrib_5,wp(300),knight_skills_5, 0x000000000a0193cd329571b71b6da72a00000000001e33630000000000000000, ],
+
+#Gaetuli lords
+["knight_28_1", "Gaetulian Lord", "Zilalsan", tf_hero, no_scene, reserved, fac_kingdom_28,
+[itm_berber_mail_1,itm_centurio_east_graves,itm_numidian_spear_2,itm_african_round_shield_1,itm_caligea,itm_numidian_horse_1,itm_berber_noble_tunic_2,itm_a_old_numidian_helm_3],
+knight_attrib_4, wp(230), knight_skills_4|knows_trainer_3, 0x000000002011a1ce3aa14754936a335400000000000db7610000000000000000 ],
+["knight_28_2", "Gaetulian Lord", "Takfarin", tf_hero, 0, reserved, fac_kingdom_28,
+[itm_berber_mail_2,itm_centurio_east_graves,itm_numidian_spear_2,itm_african_round_shield_2,itm_caligea,itm_numidian_horse_2,itm_berber_noble_tunic_3,itm_a_old_numidian_helm_4],
+knight_attrib_3, wp(200), knight_skills_3, 0x000000001a115487351a2a571b65e0e400000000001cfae40000000000000000 ],
+
+#Garamantes lords
+["knight_29_1", "Garamantian Lord", "Ouksem", tf_hero, no_scene, reserved, fac_kingdom_29,
+[itm_garamantian_noble_cloak_3,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_3,itm_caligea,itm_numidian_horse_3,itm_a_lybian_feathers_2],
+knight_attrib_4, wp(230), knight_skills_4|knows_trainer_3, 0x000000003a10f0d27d1291bcf42e3b0c00000000000c352c0000000000000000 ],
+["knight_29_2", "Garamantian Lord", "Kabaon", tf_hero, 0, reserved, fac_kingdom_29,
+[itm_garamantian_noble_cloak_4,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_4,itm_caligea,itm_numidian_horse_1,itm_a_lybian_feathers_1],
+knight_attrib_3, wp(200), knight_skills_3, 0x000000002d11a40f434d4536736966a4000000000015371e0000000000000000 ],
 
 ###legatus legionis
 ["legatus_1", "Legatus Lucius Calpurnius Licinianus", "Lucius Calpurnius Licinianus", tf_hero, no_scene, reserved, fac_kingdom_7,
@@ -5215,6 +5239,14 @@ attrib_common_lady,wp(50),knows_common_lady,0x00000000100c004536e9a720567644b200
 
 ["kingdom_19_lady_1","GermanicLady","Veleda",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_19,[itm_celtic_boots], attrib_common_lady,wp(50),knows_common_lady,0x000000018804611b3a1b71d8db57346e00000000001f1b120000000000000000],
 
+#Gaetuli ladies
+["kingdom_28_lady_1","Gaetulian Lady","Tiziri",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_28, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x000000019500b317190b7c36db6db6db00000000001c68c20000000000000000],
+["kingdom_28_lady_2","Gaetulian Lady","Kahina",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_28, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x00000001b000b09b665cadd495d52294000000000014c7130000000000000000],
+
+#Garamantes ladies
+["kingdom_29_lady_1","Garamantian Lady","Dihya",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_29, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x000000018700a194245b90d4ac9097630000000000053b4d0000000000000000],
+["kingdom_29_lady_2","Garamantian Lady","Tamurt",tf_hero|tf_female|tf_unmoveable_in_party_window,0,reserved,fac_kingdom_29, [itm_caligea], attrib_common_lady,wp(50),knows_common_lady,0x00000001830080c55aab4e3adace6974000000000005d8e60000000000000000],
+
 ##special ladies
 ["gwenhwyfar", "Gwenhwyfar", "Gwenhwyfar", tf_female|tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
 [itm_celtic_boots,itm_dagger,itm_female_4_celt], str_10|agi_8|int_18|cha_20|level(10),
@@ -5469,6 +5501,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_arena_master","Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000ff60d75ce422173661bad2f0a00000000001d47930000000000000000],
 ["town_51_arena_master","Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000000000cb54537238e36fa98b8a2000000000011a29b0000000000000000],
 ["town_52_arena_master","Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000600408d3c966e3d1aadacdc00000000001674ab0000000000000000],
+["town_53_arena_master","Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000002310e3814374c56463ae48a500000000000da7650000000000000000],
+["town_54_arena_master","Auctor","{!}Auctor",tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000f10e30938b256d96b692b1400000000000ebaff0000000000000000],
 
 # Armor Merchants
 #arena_masters_end = zendar_armorer
@@ -5525,6 +5559,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_armorer","Armorer", "{!}Armorer",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x00000008ed05358d472d76e98b2a98dd00000000001e36610000000000000000],
 ["town_51_armorer","Armorer", "{!}Armorer",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000001b0cb58d47233632d915c87500000000000e3ae30000000000000000],
 ["town_52_armorer","Armorer", "{!}Armorer",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000000c08b2c5052352b74e55b70b00000000000c96d80000000000000000],
+["town_53_armorer","Armorer", "{!}Armorer",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000000f10e1835b1411acde2a468b00000000001dc9150000000000000000],
+["town_54_armorer","Armorer", "{!}Armorer",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000001a11a18432e95a8914b6d8f700000000001dc6b50000000000000000],
 
 # Weapon merchants
 ["town_1_weaponsmith", "Weaponsmith","{!}Weaponsmith",tf_hero|tf_female|tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x000000009501619a16d3294b6a32c56b00000000001c3ade0000000000000000],
@@ -5579,6 +5615,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_weaponsmith","Weaponsmith","{!}Weaponsmith",tf_hero| tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x0000000fc400244658a5464693b8ef13000000000009d72b0000000000000000],
 ["town_51_weaponsmith","Weaponsmith","{!}Weaponsmith",tf_hero| tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000000508f289491c8dcbdd71395a000000000016c3150000000000000000],
 ["town_52_weaponsmith","Weaponsmith","{!}Weaponsmith",tf_hero| tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000003f0d204d2ccd3714ac69b7ac00000000001db3570000000000000000],
+["town_53_weaponsmith","Weaponsmith","{!}Weaponsmith",tf_hero| tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000000b1145c64f5c6cc95b61396900000000000a25980000000000000000],
+["town_54_weaponsmith","Weaponsmith","{!}Weaponsmith",tf_hero| tf_is_merchant, 0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000001310e44414d6b248b295ad2a00000000000e3ccd0000000000000000],
 
 #Tavern keepers entry 9
 
@@ -5634,6 +5672,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_tavernkeeper","Tavern_Keeper","{!}Tavern_Keeper",tf_hero,0,0,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000000320132c6125c696ba449cb2400000000001da6610000000000000000],
 ["town_51_tavernkeeper","Tavern_Keeper","{!}Tavern_Keeper",tf_hero,0,0,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000d7f00e1d14a9c9ac89ba2366200000000001dc74c0000000000000000],
 ["town_52_tavernkeeper","Tavern_Keeper","{!}Tavern_Keeper",tf_hero,0,0,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000d6b0550862ca3ab25b495bcdd00000000001d4a630000000000000000],
+["town_53_tavernkeeper","Tavern_Keeper","{!}Tavern_Keeper",tf_hero,0,0,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000000f10b54c2522b2d8929136e400000000001da6ec0000000000000000],
+["town_54_tavernkeeper","Tavern_Keeper","{!}Tavern_Keeper",tf_hero,0,0,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000002c10e10e16e285393190a4e60000000000017d620000000000000000],
 
 #Goods Merchants # entry 9
 
@@ -5689,6 +5729,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_merchant","Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x000000002e11124e52e329d51991a69500000000001eb95a0000000000000000],
 ["town_51_merchant","Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d6d00628449abae354b319ba2000000000009b9620000000000000000],
 ["town_52_merchant","Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d4c08b349251a56272679b7b100000000001e57320000000000000000],
+["town_53_merchant","Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x000000002810f48446d1b3385b99c6e400000000001d455c0000000000000000],
+["town_54_merchant","Merchant","{!}Merchant", tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x000000003b11404330ed6d5b5c93455100000000000e38e30000000000000000],
 
 # Horse Merchants
 ["town_1_horse_merchant","Horse Merchant","{!}Town 1 Horse Merchant",tf_hero|tf_is_merchant|tf_female,0, 0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000b400021182a8d69cadb85db2c00000000001eb8e20000000000000000],
@@ -5744,6 +5786,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_horse_merchant","Horse Merchant","{!}Town 18 Horse Merchant",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x00000000100434424b1a2cbd1392552a00000000001d15240000000000000000],
 ["town_51_horse_merchant","Horse Merchant","{!}Town 18 Horse Merchant",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x0000000d4700600e4ae1c9ebec92c6f900000000000dd3220000000000000000],
 ["town_52_horse_merchant","Horse Merchant","{!}Town 18 Horse Merchant",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x0000000d7208f5d146526c84dbd6c68b0000000000093b100000000000000000],
+["town_53_horse_merchant","Horse Merchant","{!}Town 18 Horse Merchant",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000000810d1c1535569a91bb23aec00000000001dab1b0000000000000000],
+["town_54_horse_merchant","Horse Merchant","{!}Town 18 Horse Merchant",tf_hero|tf_is_merchant,0, 0, fac_commoners,[],def_attrib|level(5),wp(20),knows_inventory_management_10,0x000000002311a00a56ea96e4e36da89c00000000001d47530000000000000000],
 
 #Town Mayors#itm_linen_tunic itm_linen_tunic itm_linen_tunic itm_linen_tunic itm_linen_tunic itm_rich_outfit
 ["town_1_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000008e300030136939222d592a95c00000000001dbb250000000000000000],
@@ -5798,6 +5842,8 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["town_50_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x000000002108334e5cdd3e389a21270c00000000001244d30000000000000000],
 ["town_51_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000d7f0c200d22968ea8deb12ada00000000001d26630000000000000000],
 ["town_52_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000d710cb58e54e49a271b4ab96b00000000001e2cdb0000000000000000],
+["town_53_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x00000009e310e10468aed1dc5371669400000000001e37350000000000000000],
+["town_54_mayor", "Magister Civium", "{!}Magister Civium", tf_hero, 0,reserved,fac_commoners,[],def_attrib|level(2),wp(20),knows_common,0x0000000cb711508736cb6ca9539ab6c900000000001f37620000000000000000],
 #Village elders
 ["village_1_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000f4e092302568b7748ed72c8d200000000001d326e0000000000000000],
 ["village_2_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000e1304b14139626a685a59d92a00000000001b39640000000000000000],
@@ -6056,6 +6102,13 @@ attrib_level_12,wp(100),knows_level_12,0x0000000abe0052ce32c17d332ac2b6be0000000
 ["village_255_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d690cb142429b2ddb196a56ad00000000001f46e10000000000000000],
 ["village_256_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d660931c1446dee38db915b1a00000000001dece60000000000000000],
 ["village_257_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x00000000311104861af54f4f55d1b6dc000000000012209e0000000000000000],
+["village_258_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d4b10e40c26a530d91d16b85b000000000019cb230000000000000000],
+["village_259_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d6310a185346a8e4722bec79b00000000000ec51a0000000000000000],
+["village_260_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d6811054615b13419234dc71100000000001357220000000000000000],
+["village_261_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d6611a5c945315286ed6ed756000000000011b5e10000000000000000],
+["village_262_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d5210804c15294a1d55092ae5000000000006c8a40000000000000000],
+["village_263_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d57115340430b723b9364a69c00000000001dc6940000000000000000],
+["village_264_elder", "Local_Leader", "{!}village_1_elder",tf_hero|tf_is_merchant, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0x0000000d78110151752dc934ed52c6ac00000000001d48a60000000000000000],
 
 # Place extra merchants before this point
 ["merchants_end","merchants_end","merchants_end",tf_hero, 0,0, fac_commoners,[],def_attrib|level(2),wp(20),knows_inventory_management_10,0],
@@ -6705,7 +6758,7 @@ itm_old_scutum,itm_old_scutum_2,itm_old_scutum_3,itm_old_scutum_4], attrib_level
 [itm_caligea,itm_roman_rich1,itm_roman_rich2,itm_roman_toga], def_attrib|level(4), wp(60), knows_common, 0x000000074000c21137547356db6db6db00000000001db0db0000000000000000],
 ["diplomat_eastern", "Kashta", "Diplomats", tf_hero, no_scene, reserved, fac_neutral,
 [itm_caligea,itm_roman_rich1,itm_roman_rich2,itm_roman_toga], def_attrib|level(4), wp(60), knows_common, 0x000000003f0070005cdc7407dfefe6db00000000001e0edc0000000000000000],
-["diplomat_africa", "Gar Daram Senur", "Diplomats", tf_hero, no_scene, reserved, fac_garamantes,
+["diplomat_africa", "Gar Daram Senur", "Diplomats", tf_hero, no_scene, reserved, fac_nasamones,
 [itm_caligea,itm_roman_rich1,itm_roman_rich2,itm_roman_toga], def_attrib|level(4), wp(60), knows_common, 0x00000003bf0070005adb6d9396aff6db00000000001db6d30000000000000000],
 ["diplomat_india", "Kanishka", "Diplomats", tf_hero, no_scene, reserved, fac_commoners,
 [itm_caligea,itm_roman_rich1,itm_roman_rich2,itm_roman_toga], def_attrib|level(4), wp(60), knows_common,0x000000003f00b08e36db6db6db6db6db00000000001db6db0000000000000000],
@@ -6819,10 +6872,10 @@ attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000087f08e3154a11
 ["arabian_king", "Malik Malichus", "Malik Malichus", tf_hero|tf_randomize_face, no_scene, reserved, fac_nabataea,
 [itm_camel,itm_centurio_east_graves,itm_sarranid_cavalry_robe,itm_sarranid_cavalry_sword,itm_eastern_helm6,itm_arrows,itm_arabian_bow_2],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, arab_face_young, arab_face_old ],
-["garamantian_king", "Gadarat", "Gadarat", tf_hero|tf_randomize_face, no_scene, reserved, fac_garamantes,
+["nasamones_king", "Kacalla Pishamelki", "Pishamelki", tf_hero|tf_randomize_face, no_scene, reserved, fac_nasamones,
 [itm_centurio_east_graves,itm_garamantian_armor_1,itm_headcloth,itm_kopis,itm_african_round_shield],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, african_face_younger, african_face_older ],
-["gaetulian_king", "Takfarin", "Takfarin", tf_hero|tf_randomize_face, no_scene, reserved, fac_gaetuli,
+["baquates_king", "Agellid Susus Yuba", "Susus Yuba", tf_hero|tf_randomize_face, no_scene, reserved, fac_baquates,
 [itm_numidian_horse_2,itm_centurio_east_graves, itm_numidian_armor_4,itm_sarranid_felt_hat,itm_sarranid_mace_1,itm_ad_mixed_round_shields_14],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, african_face_younger, african_face_older ],
 ["georgian_king", "Khachik", "Khachik", tf_hero, no_scene, reserved, fac_georgians,
@@ -6833,13 +6886,13 @@ attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000003f0513053b84
 [itm_eastern_shoe_r,itm_saka_armour_2,itm_saka_helmet_2,itm_lance, itm_alan_long_sword_ring, itm_cataphract_horse_steppe_2],
 attrib_level_31_warrior, wp(250), knows_level_31_warrior, 0x000000064000939036eb723ad38ddcdc00000000001dd6db0000000000000000, arab_face_old],
 
-["gaetulian_queen", "Farina", "Farina", tf_hero|tf_female, no_scene, reserved, fac_gaetuli,
+["baquates_queen", "Farina", "Farina", tf_hero|tf_female, no_scene, reserved, fac_baquates,
 [itm_eastern_shoe_r,itm_sarranid_lady_dress],
 def_attrib|level(4), wp(60), knows_common, 0x0000000c7404c29447036d4cebae386300000000001cc6ec0000000000000000],
 ["arabian_queen", "Sheikha Shaqilath", "Sheikha Shaqilath", tf_hero|tf_female, no_scene, reserved, fac_nabataea,
 [itm_eastern_shoe_b,itm_sarranid_lady_dress_b],
 def_attrib|level(4), wp(60), knows_common, 0x000000079100a19b3f137236e394da6300000000001d9aeb0000000000000000],
-["garamantian_queen", "Darta", "Darta", tf_hero|tf_female, no_scene, reserved, fac_garamantes,
+["nasamones_queen", "Darta", "Darta", tf_hero|tf_female, no_scene, reserved, fac_nasamones,
 [itm_eastern_shoe_y,itm_sarranid_lady_dress_b],
 def_attrib|level(4), wp(60), knows_common, 0x00000003ff00b1961c90b4c262b1689900000000001f34dc0000000000000000 ],
 
@@ -6956,6 +7009,9 @@ def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_
 ["slave_trader_gaetulian","Gaitoulos Doulemporos","Gaitouloi Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
   itm_caligea,itm_numidian_armor_2],
 def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Gaetulian Slave Trader
+["slave_trader_autololes","Autololos Doulemporos","Autololos Doulemporoi", tf_male_north_african|tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[
+  itm_caligea,itm_numidian_armor_2],
+def_attrib|level(18),wp(60),knows_common,north_african_man_face_middle_1, north_african_man_face_old_1], # Autololes Slave Trader
 
 ["slave_trader_bandit","Lestes Doulemporos","Lestai Doulemporoi", tf_hero|tf_randomize_face|tf_is_merchant,0,reserved,fac_commoners,[itm_caligea,itm_roman_poor1],
 def_attrib|level(18),wp(60),knows_common,bandit_face1, bandit_face2], # Bandit Slave Trader
@@ -7419,7 +7475,7 @@ knight_attrib_5, wp(300), knight_skills_5,0x000000003f00159236db6db6db6db6db0000
 [itm_celtic_boots,itm_celtic_heavy3,itm_britton_helm2,itm_celtic_long_shild3,itm_celtic_sword3],
 knight_attrib_5, wp(300), knight_skills_5,0x0000000cee11214556dc6dc9256ecae300000000001da8db0000000000000000],
 
-["yaaba", "Yaaba", "Yaaba", tf_hero|tf_female|tf_is_merchant, no_scene, reserved, fac_gaetuli,
+["yaaba", "Yaaba", "Yaaba", tf_hero|tf_female|tf_is_merchant, no_scene, reserved, fac_baquates,
 [itm_caligea, itm_nubian_noble_dress_2],
 def_attrib|level(4), wp(60), knows_common, 0x00000001a000e043489149aba26926d300000000001d50d10000000000000000],
 

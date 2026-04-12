@@ -3953,6 +3953,8 @@ strings = [
   ("kingdom_25_adjective","Vespasian Roman"),
   ("kingdom_26_adjective","Vitellian Roman"),
   ("kingdom_27_adjective","Galban Roman"),
+  ("kingdom_28_adjective","Berber"),
+  ("kingdom_29_adjective","Garamantian"),
 
 
   ("credits_1", "Mount&Blade: Warband Copyright 2008-2015 Taleworlds Entertainment"),
@@ -5710,7 +5712,7 @@ strings = [
   ("culture_9_title_male", "Strategos {s0}"),
   ("culture_10_title_male", "Rabb {s0}"),
   ("culture_11_title_male", "Mass {s0}"),
-  ("culture_12_title_male", "Mass {s0}"),
+  ("culture_12_title_male", "Ciyama {s0}"),
   ("culture_13_title_male", "Peseto {s0}"),
   ("culture_14_title_male", "Kshatrapa {s0}"),
   ("culture_15_title_male", "Morat {s0}"),
@@ -5729,7 +5731,7 @@ strings = [
   ("culture_9_title_male_leader", "Basileus {s0}"),
   ("culture_10_title_male_leader", "Malik {s0}"),
   ("culture_11_title_male_leader", "Agellid {s0}"),
-  ("culture_12_title_male_leader", "Agellid {s0}"),
+  ("culture_12_title_male_leader", "Kacalla {s0}"),
   ("culture_13_title_male_leader", "Qore {s0}"),
   ("culture_14_title_male_leader", "Shah {s0}"),
   ("culture_15_title_male_leader", "Malka {s0}"),
@@ -5754,7 +5756,7 @@ strings = [
   ("culture_9_title_female", "Kyria {s0}"),
   ("culture_10_title_female", "Rabbah {s0}"),
   ("culture_11_title_female", "Tamasst {s0}"),
-  ("culture_12_title_female", "Tamasst {s0}"),
+  ("culture_12_title_female", "Gəmsu {s0}"),
   ("culture_13_title_female", "{s0}"),
   ("culture_14_title_female", "Banuka {s0}"),
   ("culture_15_title_female", "Marto {s0}"),
@@ -5773,7 +5775,7 @@ strings = [
   ("culture_9_title_female_leader", "Sebaste {s0}"),
   ("culture_10_title_female_leader", "Malikah {s0}"),
   ("culture_11_title_female_leader", "Tagellidt {s0}"),
-  ("culture_12_title_female_leader", "Tagellidt {s0}"),
+  ("culture_12_title_female_leader", "Gəmsu {s0}"),
   ("culture_13_title_female_leader", "Kandake {s0}"),
   ("culture_14_title_female_leader", "Banuka {s0}"),
   ("culture_15_title_female_leader", "Malka {s0}"),
@@ -8811,6 +8813,14 @@ strings = [
 ("kingdom_23_reinforcements_b","Syrian Lordly Retinue"),
 ("kingdom_23_reinforcements_c","Syrian Royal Retinue"),
 
+("kingdom_10_reinforcements_a","Berber Levies"),
+("kingdom_10_reinforcements_b","Berber Retinue"),
+("kingdom_10_reinforcements_c","Berber Guard"),
+
+("kingdom_11_reinforcements_a","Garamantian Levies"),
+("kingdom_11_reinforcements_b","Garamantian Retinue"),
+("kingdom_11_reinforcements_c","Garamantian Guard"),
+
 ("hair_1","hair_1"),
 # ("hair_2","hair_2"),
 # ("hair_3","hair_3"),
@@ -9636,6 +9646,7 @@ strings = [
 ("subculture_hispanic_baetican", "Iberian"),
 ("subculture_hispanic_lusitanian", "Iberian"),
 ("subculture_african_mauretanian", "Berber"), # Could also be "Moorish" or "Numidian" depending on nuance
+("subculture_african_mauretanian_tingitanian", "Berber"),
 ("subculture_african_proconsular", "Berber"), # For Africa Proconsularis
 ("subculture_african_cyrenaican", "Garamantian"),
 ("subculture_african_egyptian", "Egyptian"),

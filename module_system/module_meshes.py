@@ -157,6 +157,8 @@ meshes = [
   ("pic_arms_vespasian", 0, "pic_arms_vespasian", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_vitellius", 0, "pic_arms_vitellius", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_galba", 0, "pic_arms_galba", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_arms_gaetuli", 0, "pic_arms_gaetuli", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_arms_garamantes", 0, "pic_arms_garamantes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
   ("pic_castle1", 0, "pic_castle1", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_castledes", 0, "pic_castledes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -210,8 +212,8 @@ meshes = [
   ("pic_lupanar_2", 0, "pic_lupanar_2", 0, 0, 0, 0, 0, 0, 1, 1, 1),
 
   #minor factions
-  ("pic_arms_gaetuli", 0, "pic_arms_gaetuli", 0, 0, 0, 0, 0, 0, 1, 1, 1),
-  ("pic_arms_garamantes", 0, "pic_arms_garamantes", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_arms_baquates", 0, "pic_arms_baquates", 0, 0, 0, 0, 0, 0, 1, 1, 1),
+  ("pic_arms_nasamones", 0, "pic_arms_nasamones", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_nabataea", 0, "pic_arms_nabataea", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_kush", 0, "pic_arms_kush", 0, 0, 0, 0, 0, 0, 1, 1, 1),
   ("pic_arms_irish", 0, "pic_arms_irish", 0, 0, 0, 0, 0, 0, 1, 1, 1),
@@ -353,6 +355,18 @@ meshes = [
   ("banner_40", 0, "banner_40", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_41", 0, "banner_41", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_42", 0, "banner_42", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_43", 0, "banner_43", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_44", 0, "banner_44", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_45", 0, "banner_45", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_46", 0, "banner_46", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_47", 0, "banner_47", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_48", 0, "banner_48", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_49", 0, "banner_49", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_50", 0, "banner_50", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_51", 0, "banner_51", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_52", 0, "banner_52", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_53", 0, "banner_53", 0, 0, 0, -90, 0, 0, 1, 1, 1),
+  ("banner_54", 0, "banner_54", 0, 0, 0, -90, 0, 0, 1, 1, 1),
 
   ("banner_legion_vexilium_italica_ii",0,"banner_legion_vexilium_italica_ii", 0, 0, 0, -90, 0, 0, 1, 1, 1),
   ("banner_legion_vexilium_scythica_iv",0,"banner_legion_vexilium_scythica_iv", 0, 0, 0, -90, 0, 0, 1, 1, 1),

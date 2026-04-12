@@ -706,6 +706,17 @@ scripts_hardcoded = [
     (call_script, "script_give_village_to_center", "p_village_252", "p_town_52"),
     (call_script, "script_give_village_to_center", "p_village_251", "p_town_52"),
 
+    (call_script, "script_give_village_to_center", "p_village_258", "p_town_53"),
+    (call_script, "script_give_village_to_center", "p_village_259", "p_town_53"),
+    (call_script, "script_give_village_to_center", "p_village_260", "p_town_53"),
+
+    (call_script, "script_give_village_to_center", "p_village_261", "p_castle_81"),
+
+    (call_script, "script_give_village_to_center", "p_village_263", "p_town_54"),
+    (call_script, "script_give_village_to_center", "p_village_264", "p_town_54"),
+
+    (call_script, "script_give_village_to_center", "p_village_262", "p_castle_82"),
+
     (call_script, "script_give_village_to_center", "p_village_255", "p_castle_79"),
     (call_script, "script_give_village_to_center", "p_village_256", "p_castle_80"),
 
@@ -924,6 +935,10 @@ scripts_hardcoded = [
     (call_script, "script_give_center_to_faction_aux", "p_town_51", "fac_kingdom_6"),
     (call_script, "script_give_center_to_faction_aux", "p_town_52", "fac_kingdom_6"),
 
+    (call_script, "script_give_center_to_faction_aux", "p_town_53", "fac_kingdom_28"),
+    (call_script, "script_give_center_to_faction_aux", "p_town_54", "fac_kingdom_29"),
+
+
     (call_script, "script_give_center_to_faction_aux", "p_castle_1", "fac_kingdom_7"),
     (call_script, "script_give_center_to_faction_aux", "p_castle_2", "fac_kingdom_7"),
     (call_script, "script_give_center_to_faction_aux", "p_castle_3", "fac_kingdom_7"),
@@ -1014,6 +1029,9 @@ scripts_hardcoded = [
     (call_script, "script_give_center_to_faction_aux", "p_castle_78", "fac_kingdom_7"),
     (call_script, "script_give_center_to_faction_aux", "p_castle_79", "fac_kingdom_6"),
     (call_script, "script_give_center_to_faction_aux", "p_castle_80", "fac_kingdom_6"),
+
+    (call_script, "script_give_center_to_faction_aux", "p_castle_81", "fac_kingdom_28"),
+    (call_script, "script_give_center_to_faction_aux", "p_castle_82", "fac_kingdom_29"),
 
     #set original factions
     (try_for_range, ":center_no", centers_begin, centers_end),
@@ -1163,6 +1181,9 @@ scripts_hardcoded = [
     (call_script, "script_give_center_to_lord2", "p_town_24", "trp_kingdom_2_lord", 0),
     (call_script, "script_give_center_to_lord2", "p_town_7", "trp_kingdom_3_lord", 0),
 
+    (call_script, "script_give_center_to_lord2", "p_town_53", "trp_kingdom_28_lord", 0),
+    (call_script, "script_give_center_to_lord2", "p_town_54", "trp_kingdom_29_lord", 0),
+
     (party_set_slot, "p_town_6", slot_center_has_slave_market, 1),
     (party_set_slot, "p_town_13", slot_center_has_slave_market, 1),
     (party_set_slot, "p_town_20", slot_center_has_slave_market, 1),
@@ -1183,6 +1204,8 @@ scripts_hardcoded = [
     (troop_set_slot, "trp_kingdom_8_lord", slot_troop_home, "p_town_43"),
     (troop_set_slot, "trp_kingdom_2_lord", slot_troop_home, "p_town_24"),
     (troop_set_slot, "trp_kingdom_3_lord", slot_troop_home, "p_town_7"),
+    (troop_set_slot, "trp_kingdom_28_lord", slot_troop_home, "p_town_53"),
+    (troop_set_slot, "trp_kingdom_29_lord", slot_troop_home, "p_town_54"),
 
     (call_script, "script_assign_lords_to_empty_centers"),
 
@@ -1667,6 +1690,8 @@ scripts_hardcoded = [
     (faction_set_slot, "fac_kingdom_25", slot_faction_adjective, "str_kingdom_25_adjective"),
     (faction_set_slot, "fac_kingdom_26", slot_faction_adjective, "str_kingdom_26_adjective"),
     (faction_set_slot, "fac_kingdom_27", slot_faction_adjective, "str_kingdom_27_adjective"),
+    (faction_set_slot, "fac_kingdom_28", slot_faction_adjective, "str_kingdom_28_adjective"),
+    (faction_set_slot, "fac_kingdom_29", slot_faction_adjective, "str_kingdom_29_adjective"),
 
     (call_script, "script_get_player_party_morale_values"),
     (party_set_morale, "p_main_party", reg0),
@@ -1987,8 +2012,9 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_type, "pt_egyptian_bandit_lair"),
     (party_template_set_slot, "pt_nubian", slot_party_template_lair_type, "pt_nubian_lair"),
     (party_template_set_slot, "pt_nabatean", slot_party_template_lair_type, "pt_nabatean_lair"),
-    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_type, "pt_numidian_bandit_lair"),
-    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_type, "pt_gaetuli_bandit_lair"),
+    (party_template_set_slot, "pt_nasamones", slot_party_template_lair_type, "pt_nasamones_bandit_lair"),
+    (party_template_set_slot, "pt_baquates", slot_party_template_lair_type, "pt_baquates_bandit_lair"),
+    (party_template_set_slot, "pt_autololes", slot_party_template_lair_type, "pt_autololes_bandit_lair"),
 
     (party_template_set_slot, "pt_sakas", slot_party_template_lair_spawnpoint, "p_saka_spawn"),
     (party_template_set_slot, "pt_steppe_bandits", slot_party_template_lair_spawnpoint, "p_steppe_bandit_spawn_point"), #the stepp
@@ -1997,9 +2023,10 @@ scripts_hardcoded = [
     (party_template_set_slot, "pt_forest_bandits", slot_party_template_lair_spawnpoint, "p_forest_bandit_spawn_point"), #hispania
     (party_template_set_slot, "pt_sea_raiders", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_1"), # the coast
     (party_template_set_slot, "pt_black_sea_pirates", slot_party_template_lair_spawnpoint, "p_black_sea_pirates_spawn_1"), # the coast
-    (party_template_set_slot, "pt_garamantes", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_23"), # africa
+    (party_template_set_slot, "pt_nasamones", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_23"), # africa
     (party_template_set_slot, "pt_nubian", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point3"), # africa
-    (party_template_set_slot, "pt_gaetuli", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_2"), # mauretania
+    (party_template_set_slot, "pt_baquates", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_2"), # mauretania^
+    (party_template_set_slot, "pt_autololes", slot_party_template_lair_spawnpoint, "p_sea_raider_spawn_point_24"), # mauretania
     (party_template_set_slot, "pt_desert_bandits", slot_party_template_lair_spawnpoint, "p_desert_bandit_spawn_point2"), #arabia
     (party_template_set_slot, "pt_nabatean", slot_party_template_lair_spawnpoint, "p_mountain_bandit_spawn_point"), #nabatea
     (party_template_set_slot, "pt_egyptian_rebels", slot_party_template_lair_spawnpoint, "p_egyptian_spawn"), #egypt
