@@ -29419,6 +29419,7 @@ scripts = scripts_hardcoded + [
         (neg|party_slot_ge, "p_gaetulian_town_1", slot_party_looted_left_days, 1),
         (lt,":num_parties",5),
 
+        (store_random_in_range, ":r", 0, 100),
         (try_begin),
             (lt, ":r", 30),
             (assign, ":spawn_point", "p_sea_raider_spawn_point_21"),
@@ -29443,6 +29444,7 @@ scripts = scripts_hardcoded + [
         (neg|party_slot_ge, "p_nubian_town_1", slot_party_looted_left_days, 1),
         (lt,":num_parties",5),
 
+        (store_random_in_range, ":r", 0, 100),
         (try_begin),
             (lt, ":r", 30),
             (assign, ":spawn_point", "p_nubian_town_1"),
@@ -29733,8 +29735,8 @@ scripts = scripts_hardcoded + [
         (store_random_in_range, ":random_xp", 0, 50001),
         (call_script, "script_create_looter_party", "p_main_party", ":random_xp"),
 
-        (assign, ":spawned_party_id", reg0),
-        (party_set_flags, ":spawned_party_id", pf_quest_party, 1),
+        (assign, ":spawned_party", reg0),
+        (party_set_flags, ":spawned_party", pf_quest_party, 1),
     (try_end),
 
     (try_begin),##spawn less looters, was 60
