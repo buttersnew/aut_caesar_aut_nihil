@@ -97,7 +97,7 @@ factions = [
   ("judean_rebels",-0.10),("forest_bandits",-0.10),("deserters",-0.10),], [], 0xFFFF00),
 
   ("picton","Piktoi", 0, 0.9,[("player_supporters_faction",-0.20),("merchants",-0.5),("outlaws",-0.6),("judean_rebels",-0.10),("deserters",-0.10),("player_faction",-0.4),], [], 0x6AB2FF),
-  ("autololes","Autololes", 0, 0.9,[("player_supporters_faction",-0.30),("merchants",-0.5),("outlaws",-0.30),("judean_rebels",-0.10),("deserters",-0.10),("player_faction",-0.4),("nasamones",-0.4),("baquates",-0.8)], [], 0x6AB2FF),
+  ("autololes","Autololes", 0, 0.9,[("player_supporters_faction",-0.30),("merchants",-0.5),("outlaws",-0.30),("judean_rebels",-0.10),("deserters",-0.10),("player_faction",-0.4),("nasamones",-0.4),("baquates",-0.8)], [], 0x786E3B),
   ##minor factions begin
   ("nasamones","Nasamones", 0, 0.9,[("kingdom_29",-0.5),("merchants",-0.5),("outlaws",-0.6),("judean_rebels",-0.10),("roman_rebells",-0.10),("deserters",-0.10),], [], 0xDBDBDB),
   ("baquates","Baquates", 0, 0.9,[("kingdom_28",-0.5),("merchants",-0.5),("outlaws",-0.6),("judean_rebels",-0.10),("roman_rebells",-0.10),("deserters",-0.10),], [], 0x599DBD),

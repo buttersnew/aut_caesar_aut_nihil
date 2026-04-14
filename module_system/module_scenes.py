@@ -300,6 +300,7 @@ scenes = [
   ("lair_sea_raiders", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000b00562e200040900000063f40000679f00006cda",[], [], "outer_terrain_beach"),
   ("lair_african", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000005024cd120005595400003882000037a90000673e",[], [], "outer_terrain_desert"),
   ("lair_african_2", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000005024cd120005595400003882000037a90000673e",[], [], "outer_terrain_desert"),
+  ("lair_african_3", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000002d5a00d63000775da00001781000054ef00001831",[], [], "outer_terrain_desert"),
   ("lair_arabian", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000005024cd120005595400003882000037a90000673e",[], [], "outer_terrain_desert"),
   ("lair_pirates", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000003000000000036cd5000041ef00005ae800003c55",[], [], "outer_terrain_beach"),
 
