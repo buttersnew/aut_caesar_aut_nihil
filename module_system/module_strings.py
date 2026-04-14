@@ -5756,7 +5756,7 @@ strings = [
   ("culture_9_title_female", "Kyria {s0}"),
   ("culture_10_title_female", "Rabbah {s0}"),
   ("culture_11_title_female", "Tamasst {s0}"),
-  ("culture_12_title_female", "Gəmsu {s0}"),
+  ("culture_12_title_female", "Gamsu {s0}"),
   ("culture_13_title_female", "{s0}"),
   ("culture_14_title_female", "Banuka {s0}"),
   ("culture_15_title_female", "Marto {s0}"),
@@ -5775,7 +5775,7 @@ strings = [
   ("culture_9_title_female_leader", "Sebaste {s0}"),
   ("culture_10_title_female_leader", "Malikah {s0}"),
   ("culture_11_title_female_leader", "Tagellidt {s0}"),
-  ("culture_12_title_female_leader", "Gəmsu {s0}"),
+  ("culture_12_title_female_leader", "Gamsu {s0}"),
   ("culture_13_title_female_leader", "Kandake {s0}"),
   ("culture_14_title_female_leader", "Banuka {s0}"),
   ("culture_15_title_female_leader", "Malka {s0}"),
@@ -8845,30 +8845,31 @@ strings = [
 
 ("diplo_casus_expired_reparations_accepted","In order to avoid war they decide to accept the demand. A sum of {reg40} denarii has been paid as tribute."),
 ("diplo_casus_expired_reparations_refused_war","They refuse the demand and declare war!"),
-
-("minor_faction_description_garamantes",
-  "The Garamantes were an ancient civilization based in the southern region of Libya. They were descended from Berber tribes and Saharan pastoralists, and their civilization emerged around 1000 BC, "
-  +"lasting until the late 7th century AD. The Garamantes were known for their innovative agricultural practices, particularly their extensive qanat irrigation system. Their kingdom covered a vast area in "
-  +"the Fezzan region of southern Libya, and they established the first urban society in a major desert not centered on a river system. "
-  +"^^Historical references to the Garamantes date back to the 5th century BC, with Herodotus describing them as a significant nation involved in cattle herding and date farming. Roman writers had mixed "
-  +"perceptions of the Garamantes, with some describing them as having diverse racial types. The Garamantes were known for bearing ritual scars and tattoos, and they engaged in conflicts with Roman forces. "
-  +"The decline of their culture may have been due to worsening climatic conditions and the overuse of water resources. "
-  +"^^The Garamantes built an extensive network of tunnels and shafts to extract fossil water, known as foggaras. This allowed agriculture to thrive in the desert, and slave labor was used to maintain these "
-  +"systems. The Tichitt culture may have contributed to Garamantian culture in areas such as domestic architecture and ceramics. "
-  +"^^There is speculation regarding the Garamantes involvement in slave raiding, as Herodotus mentioned them hunting Troglodyte Ethiopians on chariots, potentially for purposes of enslavement "
-  +"or trade in ancient times. "
+("minor_faction_description_nasamones",
+  "The Nasamones were a powerful ancient Berber confederation based in the coastal region of Syrtica and the inland oases of modern-day Libya. "
+  +"A semi-nomadic people, they dominated the dangerous shores of the Gulf of Sirte and controlled highly lucrative trans-Saharan trade routes. "
+  +"^^Historical references to the Nasamones date back to the 5th century BC, with Herodotus describing them as a numerous and fierce nomadic nation. "
+  +"During the summer, they would leave their cattle on the coast and journey inland to the Awjila oasis to harvest dates. They were also renowned "
+  +"for launching daring exploratory expeditions deep into the unforgiving Sahara desert.^^"
+  +"The Nasamones had a fearsome reputation among the Greeks and Romans, known for preying on the many merchant ships that wrecked along their treacherous coastline. "
+  +"They fiercely resisted Roman expansion and taxation. In the late 1st century AD, they launched a massive revolt, completely defeating a Roman governor's army. "
+  +"However, they were ambushed and massacred after drinking themselves to sleep on plundered Roman wine, prompting Emperor Domitian to falsely boast he had 'forbidden them to exist.'^^"
+  +"Economically, they controlled crucial trade hubs and derived wealth from both commerce and raiding. In Greco-Roman mythology, their lineage was traced "
+  +"back to a founding king named Nasamon, who was said to be the grandson of the god Apollo."
 ),
-("minor_faction_description_gaetuli",
-  "The Gaetuli were an ancient Berber tribe in North Africa. They originally inhabited a region that covered the desert area south of the Atlas Mountains and the Sahara, "
-  +"but there is evidence they also lived along the Mediterranean coasts of what is now Algeria and Tunisia. During Roman times, the Autololes Gaetuli established themselves "
-  +"in modern-day Morocco. They were known for their skills in horse rearing and the production of purple dye from shellfish.^^ "
-  +"Roman perceptions of the Gaetuli varied, with some early accounts portraying them as uncivilized, while later accounts acknowledged ethnic diversity among Berber tribes. "
-  +"Roman records show that the Gaetuli played a role in the Jugurthine War and the Bellum Octavianum, and they later engaged in the Gaetulian War. They also provided "
-  +"the Roman Empire with exotic animals and purple dye through trade.^^ "
-  +"The Gaetuli had a diverse lifestyle due to the region's varying climates. They lived in huts in mountainous areas but some were also nomads in the deserts. "
-  +"They were known for their warlike tendencies and frequent invasions, targeting both Roman territories and other Numidian tribes. The Gaetuli often intermarried with other tribes.^^ "
-  +"Economically self-sufficient due to their nomadic nature, the Gaetuli relied on hunting and farming for sustenance. They traded with Roman colonies for goods such as murex for purple dye and "
-  +"exotic animals like lions, gazelles, and tigers.^^Religiously, Iarbas, a figure from Roman mythology, was said to be the first king of the Gaetuli "
+("minor_faction_description_baquates",
+  "The Baquates were a prominent ancient Moorish-Berber tribe located in the province of Mauretania Tingitana, in modern-day Morocco. "
+  +"They primarily inhabited the rugged Middle Atlas mountains and the surrounding inland valleys, situated directly on the frontier "
+  +"of the major Roman city of Volubilis.^^"
+  +"Living a largely semi-nomadic and transhumant lifestyle, the Baquates moved their herds down into the fertile Roman plains during the winter "
+  +"and retreated to their mountain strongholds in the summer. Rather than existing merely as disorganized raiders, they were a highly structured political entity "
+  +"that engaged in complex, shifting diplomacy with the Roman Empire.^^"
+  +"The Baquates are famous in the historical record for their peace treaties. Archaeologists have discovered numerous inscribed stone altars at Volubilis, "
+  +"documenting formal agreements between Roman governors and the ruling chieftains, or 'principes', of the tribe. Depending on the political climate, "
+  +"they vacillated between being sworn allies and dangerous enemies of Rome.^^"
+  +"When the Roman military presence weakened, the Baquates frequently forged massive tribal confederations with neighboring groups like the Macenites. "
+  +"These alliances posed such a severe military threat to the settled agricultural plains that they eventually forced the Romans to construct heavy defensive "
+  +"walls around Volubilis to protect the city from being sacked."
 ),
 ("minor_faction_description_nabataea",
   "The Nabataeans were an ancient Arab people who inhabited northern Arabia and the southern Levant. They emerged as a distinct civilization between the 4th and 2nd centuries BCE, "

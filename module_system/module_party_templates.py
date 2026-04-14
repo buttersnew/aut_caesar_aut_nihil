@@ -392,7 +392,7 @@ party_templates = [
 ("nubian_lair" ,"Nubian Village",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_kush,bandit_personality,[(trp_meroe_archers,10,40),(trp_meroe_infantry,20,50),(trp_meroe_guard,5,15)]),
 ("nasamones_bandit_lair" ,"Awjilah",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_nasamones,bandit_personality,[(trp_garamantian_horseman_merc,30,90)]),
 ("baquates_bandit_lair" ,"Volubilis",icon_village_desert|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_baquates,bandit_personality,[(trp_gaetuli_horseman_merc,30,90)]),
-("autololes_bandit_lair" ,"Campus Autololes",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_baquates,bandit_personality,[(trp_gaetuli_horseman_merc,50,90)]),
+("autololes_bandit_lair" ,"Campus Autololes",icon_gaetulian_town|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_autololes,bandit_personality,[(trp_gaetuli_horseman_merc,50,90)]),
 ("forest_bandit_lair" ,"Hispanic Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_forest_bandits,bandit_personality,[(trp_hispanic_rebell,30,90)]),
 ("mountain_bandit_lair" ,"Judean Hideout",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_judean_rebels,bandit_personality,[(trp_judean_rebel,30,90)]),
 ("sea_raider_lair","Sea Raider Landing",icon_map_bandit_lair|carries_goods(20)|pf_is_static|pf_hide_defenders,0,fac_outlaws,bandit_personality,[(trp_sea_raider,30,90)]),

@@ -1338,6 +1338,9 @@ scripts_hardcoded = [
 
     (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_1", "fac_kingdom_7", 0), # make peace between Rome and Dacians
 
+    (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_28", "fac_kingdom_7", 0), # gaetulians
+    (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_29", "fac_kingdom_7", 0), # garamantians
+
     # (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_8", "fac_kingdom_7", 0),
     # (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_9", "fac_kingdom_7", 0),
     (call_script, "script_dplmc_start_trade_between_kingdoms", "fac_kingdom_10", "fac_kingdom_7", 0),
@@ -6835,7 +6838,7 @@ scripts_hardcoded = [
         (str_store_string, s0, "@The {s48} are ruled by {s49}^^Your relation with them: {reg33}^", 0),
 
         (store_sub, ":string", ":faction_no", minor_kingdoms_begin),
-        (val_add, ":string", "str_minor_faction_description_garamantes"),
+        (val_add, ":string", "str_minor_faction_description_nasamones"),
         (str_store_string, s48, ":string"),
         (str_store_string, s0, "@{s0}^{s48}"),
         (set_trigger_result, 1),
