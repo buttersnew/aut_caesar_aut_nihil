@@ -1998,6 +1998,9 @@ scripts = scripts_hardcoded + [
     #fonteius capito
     (troop_set_slot, "trp_statthalter_new_11", slot_troop_age, 41),
 
+    # Caeselius Bassus
+    (troop_set_slot, "trp_statthalter_new_12", slot_troop_age, 31),
+
     (store_mul, ":same_father", "trp_statthalter_new_5", DPLMC_VIRTUAL_RELATIVE_MULTIPLIER),#defined in module_constants.py
     (val_add, ":same_father", DPLMC_VIRTUAL_RELATIVE_FATHER_OFFSET),#defined in module_constants.py
     (troop_set_slot, "trp_statthalter_new_5", slot_troop_father, ":same_father"),
