@@ -1182,7 +1182,7 @@ strings = [
   ("npc20_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc21_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc22_backstory_response_1", "A gladiator's discipline could be useful. I'm interested."),
-  ("npc23_backstory_response_1", "A trained soldier I might find use for…maybe."),
+  ("npc23_backstory_response_1", "A trained soldier I might find use for...maybe."),
   ("npc24_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc25_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
   ("npc26_backstory_response_1", "If you're looking for work, I can use experienced soldiers."),
@@ -1503,7 +1503,7 @@ strings = [
   ("npc39_payment", "{!}"),
   ("npc40_payment", "Just one more thing before we leave, would you mind lending me {reg3} denarii? I am ashamed, but I have made myself a bit of debt in {s20} as I was workless for half a year.... But I still had to pay all the bills and buy food. So I had to take a loan ..."),
   ("npc41_payment", "{!}"),
-  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}… Some unpaid bills. I ask you for {reg3} denarii. I know it's much, but I don't want to leave my mother and sisters with debts."),
+  ("npc42_payment", "Just one moment. I am ashamed to mention it, but I have debts in {s20}... Some unpaid bills. I ask you for {reg3} denarii. I know it's much, but I don't want to leave my mother and sisters with debts."),
 
   ("npc1_payment_response", "Very well, here's {reg3} denarii. Now, fall in with the rest."),
   ("npc2_payment_response", "{!}."),
@@ -2073,7 +2073,7 @@ strings = [
   ("npc20_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc21_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc22_retirement_speech", "I've had enough, Captain. The road is long and the pay is not worth the blood anymore. I'm going to buy a small farm, maybe train fighters. Live a quiet life as a free citizen."),
-  ("npc23_retirement_speech", "Why did I ever think that going on as a lone soldier would be a salvation to me. What will I do now…maybe I ought to become a farmer."),
+  ("npc23_retirement_speech", "Why did I ever think that going on as a lone soldier would be a salvation to me. What will I do now...maybe I ought to become a farmer."),
   ("npc24_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc25_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
   ("npc26_retirement_speech", "I've had good times in your company. But I think I should retire again. It isn't going as I thought it would."),
@@ -2800,7 +2800,7 @@ strings = [
   ("npc39_kingsupport_3", "{!}"),
   ("npc40_kingsupport_3", "If I could go about this land for a few weeks, telling the people that you were this king, coming from the East to help them and to rule them. Then that you would help you gain right to rule among the people. I am sure."),
   ("npc41_kingsupport_3", "{!}"),
-  ("npc42_kingsupport_3", "If I could travel home to Sarmatia for a week I could try to gather support among the nobles and chieftains. It would be involved with some risks, as my family was banned, but I would still give it a try… also because I want to see my home again. I miss the steppes a lot. And if the people of Sarmatia support you, you could forge and alliance which would help you defeating your eneimes."),
+  ("npc42_kingsupport_3", "If I could travel home to Sarmatia for a week I could try to gather support among the nobles and chieftains. It would be involved with some risks, as my family was banned, but I would still give it a try... also because I want to see my home again. I miss the steppes a lot. And if the people of Sarmatia support you, you could forge and alliance which would help you defeating your eneimes."),
 
   ("npc1_kingsupport_objection", "Master -- you've given leave to Aturius Spurus to go tell the nobles that they will have rights over pasture,"
 	+" market, and forest? I can't say I like that. Give him his way, and he'll set up gibbets in every village in the land, where there"
@@ -3146,7 +3146,7 @@ strings = [
   ("npc39_turn_against", "{!}"),
   ("npc40_turn_against", "I am sorry to find you as opponent on the field of battle ... But fate must go as it does."),
   ("npc41_turn_against", "{!}"),
-  ("npc42_turn_against", "My old Chief. It's terrible that we see each other now on opposing sides… But I know that you are great warrior. It is an honor to fight you."),
+  ("npc42_turn_against", "My old Chief. It's terrible that we see each other now on opposing sides... But I know that you are great warrior. It is an honor to fight you."),
  #NPC companion changes end
 
 #Troop Commentaries begin
