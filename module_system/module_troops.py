@@ -2292,11 +2292,11 @@ attrib_level_31, wp(180), knows_level_31, saka_face_1, saka_face_2 ],
 
 ["garamantian_prison_guard", "Prison Guard", "Prison Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
 [itm_centurio_east_graves,itm_caligea,itm_garamantian_armor_1,itm_garamantian_armor_2,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
-itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
+itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_1, north_african_man_face_old_1 ],
 ["garamantian_castle_guard", "Castle Guard", "Castle Guard", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
 [itm_centurio_east_graves,itm_caligea,itm_garamantian_armor_1,itm_garamantian_armor_2,itm_garamantian_armor_3,itm_garamantian_armor_4,itm_sarranid_felt_hat,itm_headcloth,itm_african_shield_1,itm_african_shield_2,itm_african_feather_band,itm_african_feather_band_2,
-itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+horse_numidian+desert_turbans_2,
+itm_numidian_spear_2,itm_javelin_berber,itm_eastern_helm1,itm_eastern_helm2,itm_eastern_helm3,itm_eastern_helm4]+desert_turbans_2,
 attrib_level_31, wp(180), knows_level_31, north_african_man_face_middle_2, north_african_man_face_old_2 ],
 ##end
 
