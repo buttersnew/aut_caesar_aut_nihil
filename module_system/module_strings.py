@@ -7887,6 +7887,12 @@ strings = [
 ("persian_tunic_1_skin_midage2",  "persian_tunic_1_skin_midage2"),
 ("persian_tunic_1_skin",  "persian_tunic_1_skin"),
 
+("nubian_armor_body_1_african", "nubian_armor_body_1_african"),
+("nubian_armor_body_1_black3", "nubian_armor_body_1_black3"),
+("nubian_armor_body_1_rugged", "nubian_armor_body_1_rugged"),
+("nubian_armor_body_1_midage2", "nubian_armor_body_1_midage2"),
+("nubian_armor_body_1", "nubian_armor_body_1"),
+
 ("arms_tunic","arms_tunic"),
 
 ("woman_dress_arms","woman_dress_arms"),

@@ -1535,6 +1535,29 @@ breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_in
 breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
 (call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
 
+["light_nubian_armor_01_normal", "Light Nubian Scale Armour", [("light_nubian_armor_01_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+bandit_armor_price, bandit_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["light_nubian_armor_02_normal", "Nubian Clothing", [("light_nubian_armor_02_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["light_nubian_armor_03_normal", "Light Nubian Scale Armour", [("light_nubian_armor_03_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+bandit_armor_price, bandit_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["light_nubian_armor_04_normal", "Nubian Clothing", [("light_nubian_armor_04_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
+["light_nubian_armor_05_normal", "Light Nubian Scale Armour", [("light_nubian_armor_05_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+bandit_armor_price, bandit_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+["light_nubian_armor_06_normal", "Light Nubian Scale Armour", [("light_nubian_armor_06_normal",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+bandit_armor_price, bandit_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_nubian_light"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
+
 ["nubian_padded_armour_1", "Nubian Padded Armour", [("nubian_padded_armour_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_light_armor_price, tunic_light_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_roman_simple"),],),], [fac_culture_nubian,fac_culture_egyptian] ],
