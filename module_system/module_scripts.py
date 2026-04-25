@@ -7598,13 +7598,12 @@ scripts = scripts_hardcoded + [
      (str_store_troop_name, s0, ":troop_id"),
      ]),
 
-  #script_training_ground_sub_routine_2_for_melee_details
-  # INPUT:
-  # value
-  #OUTPUT:
-  # none
-  ("training_ground_sub_routine_2_for_melee_details",
-   [
+#script_training_ground_sub_routine_2_for_melee_details
+# INPUT:
+# value
+#OUTPUT:
+# none
+("training_ground_sub_routine_2_for_melee_details",[
      (store_script_param, ":value", 1),
      (val_sub, ":value", 1),
      (try_begin),
@@ -7623,7 +7622,7 @@ scripts = scripts_hardcoded + [
        (val_add, "$temp_2", 1),
        (jump_to_menu, "mnu_training_ground_selection_details_melee_2"),
      (try_end),
-     ]),
+]),
 
   #script_cf_training_ground_sub_routine_for_training_result
   # INPUT:
@@ -7896,7 +7895,7 @@ scripts = scripts_hardcoded + [
        (try_end),
      (try_end),
      (mission_tpl_entry_clear_override_items, "mt_training_ground_training", 0),
-     (mission_tpl_entry_add_override_item, "mt_training_ground_training", 0, "itm_practice_boots"),
+    #  (mission_tpl_entry_add_override_item, "mt_training_ground_training", 0, "itm_practice_boots"),
      (try_begin),
        (ge, ":training_default_weapon_1", 0),
        (try_begin),
@@ -7933,7 +7932,7 @@ scripts = scripts_hardcoded + [
          # (store_add, ":cur_entry_point", ":i", 1),
          (set_visitor, ":cur_entry_point", ":cur_troop"),
          (mission_tpl_entry_clear_override_items, "mt_training_ground_training", ":cur_entry_point"),
-         (mission_tpl_entry_add_override_item, "mt_training_ground_training", ":cur_entry_point", "itm_practice_boots"),
+        #  (mission_tpl_entry_add_override_item, "mt_training_ground_training", ":cur_entry_point", "itm_practice_boots"),
          (call_script, "script_get_random_melee_training_weapon"),
          (mission_tpl_entry_add_override_item, "mt_training_ground_training", ":cur_entry_point", reg0),
          (try_begin),
@@ -51770,8 +51769,10 @@ scripts = scripts_hardcoded + [
     (try_for_agents, ":agent_no"),
         (agent_is_active, ":agent_no"),
         (agent_is_human, ":agent_no"),
+        (agent_get_entry_no, ":entry_no", ":agent_no"),
+        (neg|is_between, ":entry_no", 0, 5),
         # (agent_get_troop_id, ":troop_no", ":agent_no"), #a spectator
-        (neg|agent_has_item_equipped, ":agent_no", "itm_practice_boots"),
+        # (neg|agent_has_item_equipped, ":agent_no", "itm_practice_boots"),
         (store_random_in_range, ":random_no", ":cur_morale", 250),
         (gt, ":random_no", ":boundary"),
         (val_add, ":boundary", 15),

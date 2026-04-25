@@ -11669,11 +11669,11 @@ mission_templates = [
     "training_ground_training", mtf_arena_fight|mtf_no_blood, -1,
     "Training.",
     [
-      (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (2,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (3,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
-      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff,itm_practice_boots]),
+      (0,mtef_visitor_source|mtef_team_0,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
+      (1,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
+      (2,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
+      (3,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
+      (4,mtef_visitor_source|mtef_team_1,af_override_everything,aif_start_alarmed,1,[itm_practice_staff]),
       (8,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (9,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
       (10,mtef_visitor_source,af_override_weapons|af_override_horse|af_override_head,0,1,[]),
@@ -11690,15 +11690,16 @@ mission_templates = [
         (ti_on_agent_spawn, 0, 0, [
             (store_trigger_param_1,":agent_no"),
             (agent_is_human, ":agent_no"),
-            (agent_get_item_slot, ":item_no", ":agent_no", ek_foot),
-            (neq, ":item_no", "itm_practice_boots"), #not equipped on spectator troops
+            (agent_get_entry_no, ":entry_no", ":agent_no"),
+            (is_between, ":entry_no", 0, 5),
+            # (agent_get_item_slot, ":item_no", ":agent_no", ek_foot),
+            # (neq, ":item_no", "itm_practice_boots"), #not equipped on spectator troops
             # (agent_get_entry_no, ":entry_no", ":agent_no"),
             # (assign, reg1, ":entry_no"),
             # (str_store_agent_name, s1, ":agent_no"),
             # (display_message, "@{s1} at {reg1}"),
             # (gt, ":entry_no", 4),
-          ],
-          [
+          ],[
             # (set_fixed_point_multiplier, 100),
             (store_trigger_param_1,":agent_no"),
             (agent_get_troop_id, ":troop_no", ":agent_no"),
