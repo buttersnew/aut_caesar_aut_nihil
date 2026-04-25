@@ -75595,11 +75595,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
  Do you have anything to say?", "move_cattle_herd_failed",
 []],
 
-[anyone,"mayor_begin",[(check_quest_active, "qst_blank_quest_10"),
-      (quest_slot_eq, "qst_blank_quest_10", slot_quest_giver_troop, "$g_talk_troop"),
-      (check_quest_failed, "qst_blank_quest_10"),
-      (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
-      (str_store_item_name, s9, ":quest_target_item"),
+[anyone,"mayor_begin",[
+  (check_quest_active, "qst_blank_quest_10"),
+  (quest_slot_eq, "qst_blank_quest_10", slot_quest_giver_troop, "$g_talk_troop"),
+  (check_quest_failed, "qst_blank_quest_10"),
+  (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
+  (str_store_item_name, s9, ":quest_target_item"),
 ],
     "I heard that you lost a fight against the runaway guard and my valuable {s9} is gone forever. " +
     "I am very disappointed, {playername}, as I heard so many good things about your reliability. ", "close_window",
@@ -75654,15 +75655,16 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (assign, reg5, ":quest_gold_reward"),
   ]],
 
-[anyone,"mayor_begin",[(check_quest_active, "qst_troublesome_bandits"),
-                          (check_quest_succeeded, "qst_troublesome_bandits"),
-                          (quest_slot_eq, "qst_troublesome_bandits", slot_quest_giver_troop, "$g_talk_troop"),
-  ],
-   "I have heard about your deeds. You have given those bandits the punishment they deserved.\
+[anyone,"mayor_begin",[
+  (check_quest_active, "qst_troublesome_bandits"),
+  (check_quest_succeeded, "qst_troublesome_bandits"),
+  (quest_slot_eq, "qst_troublesome_bandits", slot_quest_giver_troop, "$g_talk_troop"),
+],"I have heard about your deeds. You have given those bandits the punishment they deserved.\
  You are really as good as they say.\
  Here is your reward: {reg5} denarii.\
  I would like to give more but those bandits almost brought me to bankruptcy.",
-   "mayor_friendly_pretalk",[(quest_get_slot, ":quest_gold_reward", "qst_troublesome_bandits", slot_quest_gold_reward),
+"mayor_friendly_pretalk",[
+  (quest_get_slot, ":quest_gold_reward", "qst_troublesome_bandits", slot_quest_gold_reward),
   (call_script, "script_troop_add_gold", "trp_player", ":quest_gold_reward"),
   (assign, ":xp_reward", ":quest_gold_reward"),
   (val_mul, ":xp_reward", 2),
@@ -75671,35 +75673,53 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_change_troop_renown", "trp_player", 3),
   (call_script, "script_end_quest", "qst_troublesome_bandits"),
   (assign, reg5, ":quest_gold_reward"),
-  ]],
+]],
 
-  #destroy lair quest end dialogs taken from here
-[anyone,"mayor_begin",[(check_quest_active, "qst_blank_quest_10"),
-      (check_quest_succeeded, "qst_blank_quest_10"),
-      (quest_slot_eq, "qst_blank_quest_10", slot_quest_giver_troop, "$g_talk_troop"),
-      (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
-      (player_has_item, ":quest_target_item"),
-      (str_store_item_name, s13, ":quest_target_item"),
+[anyone,"mayor_begin",[
+  (check_quest_active, "qst_blank_quest_10"),
+  (check_quest_succeeded, "qst_blank_quest_10"),
+  (quest_slot_eq, "qst_blank_quest_10", slot_quest_giver_troop, "$g_talk_troop"),
+  (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
+  (player_has_item, ":quest_target_item"),
+  (str_store_item_name, s13, ":quest_target_item"),
 ],
-    "I have heard that you found the perpetrator and recovered my valuable {s13}. " +
-    "You are really as good as they say. " +
-    "Here is your reward: {reg5} denarii.",
-    "mayor_friendly_pretalk",[(quest_get_slot, ":quest_gold_reward", "qst_blank_quest_10", slot_quest_gold_reward),
-      (call_script, "script_troop_add_gold", "trp_player", ":quest_gold_reward"),
-      (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
-      (troop_remove_item, "trp_player", ":quest_target_item"),
-      (assign, ":xp_reward", ":quest_gold_reward"),
-      (val_mul, ":xp_reward", 2),
-      (add_xp_as_reward, ":xp_reward"),
-      (call_script, "script_change_player_relation_with_center", "$current_town", 10),
-      (call_script, "script_change_troop_renown", "trp_player", 3),
-      (call_script, "script_end_quest", "qst_blank_quest_10"),
-      (assign, reg5, ":quest_gold_reward"),
-  ]],
+"I have heard that you found the perpetrator and recovered my valuable {s13}. " +
+"You are really as good as they say. " +
+"Here is your reward: {reg5} denarii.",
+"mayor_friendly_pretalk",[
+  (quest_get_slot, ":quest_gold_reward", "qst_blank_quest_10", slot_quest_gold_reward),
+  (call_script, "script_troop_add_gold", "trp_player", ":quest_gold_reward"),
+  (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
+  (troop_remove_item, "trp_player", ":quest_target_item"),
+  (assign, ":xp_reward", ":quest_gold_reward"),
+  (val_mul, ":xp_reward", 2),
+  (add_xp_as_reward, ":xp_reward"),
+  (call_script, "script_change_player_relation_with_center", "$current_town", 10),
+  (call_script, "script_change_troop_renown", "trp_player", 3),
+  (call_script, "script_end_quest", "qst_blank_quest_10"),
+  (assign, reg5, ":quest_gold_reward"),
+]],
 
-[anyone,"mayor_begin",[(ge, "$debt_to_merchants_guild", 50)],
-   "According to my accounts, you owe the merchants city council {reg1} denarii.\
- I'd better collect that now.", "merchant_ask_for_debts",[(assign,reg(1),"$debt_to_merchants_guild")]],
+[anyone,"mayor_begin",[
+  (check_quest_active, "qst_blank_quest_10"),
+  (check_quest_succeeded, "qst_blank_quest_10"),
+  (quest_slot_eq, "qst_blank_quest_10", slot_quest_giver_troop, "$g_talk_troop"),
+  (quest_get_slot, ":quest_target_item", "qst_blank_quest_10", slot_quest_target_item),
+  (neg|player_has_item, ":quest_target_item"),
+  (str_store_item_name, s13, ":quest_target_item"),
+],
+"I have heard that you found the perpetrato. But where is my {s13}? " +
+"You don't seem to have it with you. Do you have it? Bring it to me if you want any reward.",
+"mayor_pretalk",[
+]],
+
+[anyone,"mayor_begin",[
+  (ge, "$debt_to_merchants_guild", 50)
+],"According to my accounts, you owe the merchants city council {reg1} denarii. I'd better collect that now.",
+"merchant_ask_for_debts",[
+  (assign,reg(1),"$debt_to_merchants_guild")
+]],
+
 [anyone|plyr,"merchant_ask_for_debts",[
 [store_troop_gold,reg(5),"trp_player"],[ge,reg(5),"$debt_to_merchants_guild"]
 ],
@@ -78245,7 +78265,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [ (str_store_party_name_link, s3,"$g_encountered_party"),
       (quest_set_slot, "qst_blank_quest_10", slot_quest_current_state, 0),
       (quest_get_slot, ":quest_giver_troop", "qst_blank_quest_10", slot_quest_giver_troop),
-      (str_store_troop_name, s9, ":quest_giver_troop"),
+      (str_store_troop_name_plural, s9, ":quest_giver_troop"),
       (setup_quest_text, "qst_blank_quest_10"),
 
       #villages to investigate
@@ -97522,27 +97542,24 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [trp_praetoriani_milites_exp,"start",[
   (eq, "$talk_context", tc_pret_event_1),
-],
-"Hey, there's our change of the guard. Did you bring any wine? Hehehe. I'm not too tired yet, we'll keep you company.", "event_pret_talk_1",[]],
+],"Hey, there's our change of the guard. Did you bring any wine? Hehehe. I'm not too tired yet, we'll keep you company.", "event_pret_talk_1",[]],
 
 [anyone,"event_pret_talk_1",[
-],
-"Easiest post you will find, guarding this FAT COWARD'S bedroom door.", "event_pret_talk_2",[]],
+],"Easiest post you will find, guarding this FAT COWARD'S bedroom door.", "event_pret_talk_2",[]],
 
 [anyone,"event_pret_talk_2",[
-],
-"But HE NEEDS US SO BAD, because you know BIG SCARY MURDERERS CAN COME FOR HIM ANY MINUTE", "event_pret_talk_4",[]],
+],"But HE NEEDS US SO BAD, because you know BIG SCARY MURDERERS CAN COME FOR HIM ANY MINUTE",
+"event_pret_talk_4",[]],
 
 [anyone,"event_pret_talk_4",[
-],
-"And they'll GUT HIM LIKE A PIG. Hehehe. He can hear us. The bastard's been shaking locked in there all day.", "event_pret_talk_5",[]],
+],"And they'll GUT HIM LIKE A PIG. Hehehe. He can hear us. The bastard's been shaking locked in there all day.",
+"event_pret_talk_5",[]],
 
-[anyone,"event_pret_talk_5",[
-],
-"Wait. Listen. It's too quiet in there.", "event_pret_talk_5_1",[]],
+[anyone,"event_pret_talk_5",[],
+"Wait. Listen. It's too quiet in there.",
+"event_pret_talk_5_1",[]],
 [anyone,"event_pret_talk_5_1",[
-],
-"Did you hear that, soldier? I think an assasin might be in the room. Hehehe.", "event_pret_talk_6",[]],
+],"Did you hear that, soldier? I think an assasin might be in the room. Hehehe.", "event_pret_talk_6",[]],
 [anyone|other(trp_quest_tiro),"event_pret_talk_6",[
 ],
 "Yes, Sir!",
