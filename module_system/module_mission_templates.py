@@ -11685,53 +11685,11 @@ mission_templates = [
     ], p_wetter +
     [
       cannot_spawn_commoners,
-    improved_lightning,
-        # #SB : set spectator randomized cheering
-        (ti_on_agent_spawn, 0, 0, [
-            (store_trigger_param_1,":agent_no"),
-            (agent_is_human, ":agent_no"),
-            (agent_get_entry_no, ":entry_no", ":agent_no"),
-            (neg|is_between, ":entry_no", 0, 5),
-            # (agent_get_item_slot, ":item_no", ":agent_no", ek_foot),
-            # (neq, ":item_no", "itm_practice_boots"), #not equipped on spectator troops
-            # (agent_get_entry_no, ":entry_no", ":agent_no"),
-            # (assign, reg1, ":entry_no"),
-            # (str_store_agent_name, s1, ":agent_no"),
-            # (display_message, "@{s1} at {reg1}"),
-            # (gt, ":entry_no", 4),
-          ],[
-            # (set_fixed_point_multiplier, 100),
-            (store_trigger_param_1,":agent_no"),
-            (agent_get_troop_id, ":troop_no", ":agent_no"),
-            # (try_begin),
-              # (call_script, "script_cf_gender_toggle", ":troop_no"),
-              # (store_random_in_range, ":gender", 0, 2),
-              # (troop_set_type, ":troop_no", ":gender"),
-            # (try_end),
-            (store_random_in_range, ":cheer", 0, 300),
-            (try_begin),
-              (is_between, ":troop_no", companions_begin, companions_end),
-              (call_script, "script_dplmc_npc_morale", ":troop_no", 0),
-            (else_try),
-              (call_script, "script_game_get_morale_of_troops_from_faction", ":troop_no"),
-            (try_end),
-            (val_add, ":cheer", reg0),
-            (try_begin),
-              (ge, ":cheer", 150),
-              (store_random_in_range, ":stand_animation", "anim_wedding_guest", "anim_wedding_dad_stairs"),
-              (agent_set_stand_animation, ":agent_no", ":stand_animation"),
-              (agent_set_animation, ":agent_no", ":stand_animation"),
-              (store_random_in_range, ":random_no", 0, 100),
-              (agent_set_animation_progress, ":agent_no", ":random_no"),
-            (try_end),
-            #assign other cheer action when player kills in ctm_melee or hits gourds
-        ]),
-
+      improved_lightning,
         #SB : wound troops and heroes
       (ti_on_agent_killed_or_wounded, 0, 0, [
         (eq, "$g_mt_mode", ctm_melee),
-        ],
-       [
+      ],[
        (store_trigger_param_1, ":agent_no"),
        (store_trigger_param_2, ":killer"),
        (agent_get_troop_id, ":troop_no", ":agent_no"),
@@ -11758,29 +11716,27 @@ mission_templates = [
          (call_script, "script_agents_cheer_during_training"),
        (try_end),
 
-       ]),
-      (ti_before_mission_start, 0, 0, [],
-       [
-         (assign, "$g_last_destroyed_gourds", 0),
-         (call_script, "script_change_banners_and_chest")]),
+      ]),
+      (ti_before_mission_start, 0, 0, [],[
+        (assign, "$g_last_destroyed_gourds", 0),
+        (call_script, "script_change_banners_and_chest")
+      ]),
 
       common_arena_fight_tab_press,
 
-      (ti_question_answered, 0, 0, [],
-       [
-         (store_trigger_param_1,":answer"),
-         (eq,":answer",0),
-         (assign, "$g_training_ground_training_success_ratio", 0),
+      (ti_question_answered, 0, 0, [],[
+        (store_trigger_param_1,":answer"),
+        (eq,":answer",0),
+        (assign, "$g_training_ground_training_success_ratio", 0),
 
-         (call_script, "script_troop_set_training_health_from_agent"), #SB : store health
-         (jump_to_menu, "mnu_training_ground_training_result"),
-         (finish_mission),
-         ]),
+        (call_script, "script_troop_set_training_health_from_agent"), #SB : store health
+        (jump_to_menu, "mnu_training_ground_training_result"),
+        (finish_mission),
+      ]),
 
       common_inventory_not_available,
 
-      (0, 0, ti_once,
-       [
+      (0, 0, ti_once,[
          (try_begin),
            (eq, "$g_mt_mode", ctm_ranged),
            (set_fixed_point_multiplier, 100),
@@ -11953,8 +11909,7 @@ mission_templates = [
          (assign, "$g_last_destroyed_gourds", 0),
          ],
        [(call_script, "script_agents_cheer_during_training"),]),
-    ],
-  ),
+]),
 
   (
     "sneak_caught_fight",mtf_battle_mode|mtf_synch_inventory,-1,
