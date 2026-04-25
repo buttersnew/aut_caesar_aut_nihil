@@ -176,11 +176,11 @@ scenes = [
   ("castle_7_interior", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_7_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",[], []),
 
-  ("castle_garamantian_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000050044e900003dd02000077b20000400100005697",[], [], "outer_terrain_plain"),
+  ("castle_garamantian_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000050044e900003dd02000077b20000400100005697",[], [], "outer_terrain_desert"),
   ("castle_garamantian_interior", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_garamantian_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",[], []),
 
-  ("castle_berber_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000130025cb20006097f00005b1400000e2f00005fd9",[], [], "outer_terrain_plain"),
+  ("castle_berber_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000130025cb20006097f00005b1400000e2f00005fd9",[], [], "outer_terrain_steppe"),
   ("castle_berber_interior", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_berber_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",[], []),
 
