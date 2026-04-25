@@ -24943,6 +24943,10 @@ scripts = scripts_hardcoded + [
 # Input: none
 # Output: none
 ("siege_move_archers_to_archer_positions",[
+    (assign, ":fixed_point_backup", 1),
+    (convert_to_fixed_point, ":fixed_point_backup"),
+    (set_fixed_point_multiplier, 1),
+
     (try_for_agents, ":agent_no"),
         (agent_is_alive, ":agent_no"),
         (agent_is_active, ":agent_no"),
@@ -25070,7 +25074,6 @@ scripts = scripts_hardcoded + [
         (try_end),
         # (agent_get_troop_id, ":agent_troop",":agent_no"),
         (try_begin),
-            (set_fixed_point_multiplier, 1),
             (agent_get_position, pos0, ":agent_no"),
             (entry_point_get_position, pos1, ":random_entry_point"),
 
@@ -25116,6 +25119,8 @@ scripts = scripts_hardcoded + [
             (try_end),
         (try_end),
     (try_end),
+
+    (set_fixed_point_multiplier, ":fixed_point_backup"),
 ]),
 
 # script_camp_defenders_move_to_defender_position

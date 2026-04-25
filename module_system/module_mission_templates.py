@@ -10754,6 +10754,10 @@ mission_templates = [
 
     #let defenders hold position
     (0, 0, ti_once,[
+      (assign, ":fixed_point_backup", 1),
+      (convert_to_fixed_point, ":fixed_point_backup"),
+      (set_fixed_point_multiplier, 1),
+
       #set variables
       (assign, "$defender_team", 0),
       (assign, "$attacker_team", 1),
@@ -10910,6 +10914,8 @@ mission_templates = [
       (entry_point_get_position, pos10, 63),
       (team_set_order_position, "$attacker_team_2", 8, pos10),
       (team_set_order_position, "$attacker_team", 8, pos10),
+
+      (set_fixed_point_multiplier, ":fixed_point_backup"),
 
       (set_show_messages, 1),
     ],[]),
