@@ -30765,7 +30765,7 @@ game_menus = [
       (eq, "$g_speech", 0),
       (eq, reg39, 0),
     ],"Give a speech.",[
-      (call_script, "script_give_a_speech", "$current_town"),
+      (call_script, "script_give_a_speech", "$current_town", 1),
     ]),
       # ("con",[(eq, "$g_bribe", 0),],"Try to bribe (15000 denarii)",
         # [
@@ -41560,7 +41560,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (change_screen_mission),
     ]),
     ("choice_2",[(eq, "$g_speech", 0),],"Try to convince them with a speech",[
-      (call_script, "script_give_a_speech", "$current_town"),
+      (call_script, "script_give_a_speech", "$current_town", 1),
     ]),
     ("choice_4",[],"Threaten them with violence!",[
       (call_script, "script_change_player_honor", -15),
