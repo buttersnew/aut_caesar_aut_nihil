@@ -85,7 +85,7 @@ dialogs =[
         (is_between, "$g_talk_troop", mayors_begin, mayors_end),
         (is_between, "$g_encountered_party", centers_begin, centers_end),
         (party_slot_eq, "$g_encountered_party", slot_town_elder, "$g_talk_troop"),
-        (party_get_slot, "$g_talk_troop_relation", "$current_town", slot_center_player_relation),
+        (party_get_slot, "$g_talk_troop_relation", "$g_encountered_party", slot_center_player_relation),
     (try_end),
     (store_relation, "$g_talk_troop_faction_relation", "$g_talk_troop_faction", "fac_player_faction"),
 
