@@ -53357,6 +53357,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 
     (call_script, "script_get_closest_center", "p_main_party"),
     (assign, ":town", reg0),
+    (assign, "$temp1", -1),
     (store_distance_to_party_from_party, ":distance", ":town", "p_main_party"),
     (try_begin),
       (le, ":distance", 25),
@@ -53450,6 +53451,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (call_script, "script_get_unit_according_to_subculture", walker_bandit, ":town", tf_male),
       (assign, "$temp1", reg0),
     (try_end),
+    # check temp1 for validity, if it is -1, assign a default troop
+    (try_begin),
+      (neg|is_between, "$temp1", 1, "trp_troops_end"),
+      (assign, "$temp1", "trp_bandit"),
+    (try_end),
     # (str_store_troop_name_plural, s2, "$temp1"),
     (store_random_in_range, "$temp2", 20, 31),
   ],[
@@ -53474,83 +53480,66 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("freelancer_task_tribute_fight",0,
-    "Now it is too late to retreat. Missiles rain down around you. It's time for a fight and crush this small uprising.",
-    "none",
-    [
-
+  "Now it is too late to retreat. Missiles rain down around you. It's time for a fight and crush this small uprising.",
+  "none",[
     (set_background_mesh, "mesh_pic_charge"),
+  ],[
+    ("continue",[],"Fight.",[
+      (assign, ":min_distance", 9999999),
+      (assign, ":center", -1),
+      (try_for_range, ":center_no", villages_begin, villages_end),
+          (store_distance_to_party_from_party, ":party_distance", "$enlisted_party", ":center_no"),
+          (lt, ":party_distance", ":min_distance"),
+          (assign, ":min_distance", ":party_distance"),
+          (assign, ":center", ":center_no"),
+      (try_end),
 
-      ],
-    [
-      ("continue",[],"Fight.",
-       [
-    (assign, ":min_distance", 9999999),
-    (assign, ":center", -1),
-    (try_for_range, ":center_no", villages_begin, villages_end),
-        (store_distance_to_party_from_party, ":party_distance", "$enlisted_party", ":center_no"),
-        (lt, ":party_distance", ":min_distance"),
-        (assign, ":min_distance", ":party_distance"),
-        (assign, ":center", ":center_no"),
-    (try_end),
+      (party_get_slot, ":fac", ":center", slot_center_culture),
+      (faction_get_slot, ":enemy", ":fac", slot_faction_tier_1_troop),
+      (store_random_in_range, ":number", 20, 31),
 
-    (party_get_slot, ":fac", ":center", slot_center_culture),
-    (faction_get_slot, ":enemy", ":fac", slot_faction_tier_1_troop),
-    (store_random_in_range, ":number", 20, 31),
+      (assign, "$g_arena_training_kills", 0),
+      (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
+      (assign, "$talk_context", 0),#fix a possible bug
 
-    (assign, "$g_arena_training_kills", 0),
-    (assign, "$g_encountered_party", "$enlisted_party"),#to fix bug in dialog
-    (assign, "$talk_context", 0),#fix a possible bug
+      (party_get_slot,":scene_to_use", ":center", slot_town_center),
+      (jump_to_scene, ":scene_to_use"),
+      (modify_visitors_at_site,":scene_to_use"),
+      (reset_visitors),
+      (set_visitor, 0, "trp_player"),
+      (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
+      (troop_get_slot, ":legion", ":lord", slot_troop_legion),
+      (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
+      (set_visitors, 0, ":troop", 21),
+      (set_visitors, 3, ":enemy", ":number"),
+      (set_jump_mission, "mt_freelancer_mission_bandit"),
+      (change_screen_mission),
+    ]),
+]),
 
-    (party_get_slot,":scene_to_use", ":center", slot_town_center),
-    (jump_to_scene, ":scene_to_use"),
-    (modify_visitors_at_site,":scene_to_use"),
-    (reset_visitors),
-    (set_visitor, 0, "trp_player"),
-    (quest_get_slot, ":lord", "qst_freelancing", slot_quest_giver_troop),
-    (troop_get_slot, ":legion", ":lord", slot_troop_legion),
-    (store_add, ":troop", ":legion", "trp_eastern_elite_infantry_vet"),
-    (set_visitors, 0, ":troop", 21),
-    (set_visitors, 3, ":enemy", ":number"),
-    (set_jump_mission, "mt_freelancer_mission_bandit"),
-    (change_screen_mission),
-        ]),
-
-     ]
-),
-(
-    "freelancer_task_patrol_rider_commoner",0,
-    "You imprison the rider. It turns out he is indeed a local commoner. He seems to have a wealthy patron, who is angry about your abuse of office.",
-    "none",
-    [
+("freelancer_task_patrol_rider_commoner",0,
+  "You imprison the rider. It turns out he is indeed a local commoner. He seems to have a wealthy patron, who is angry about your abuse of office.",
+  "none",[
     (set_background_mesh, "mesh_pic_deserters"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+  ],[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (call_script, "script_freelancer_add_progress", -3),
       (change_screen_map),
-        ]),
+    ]),
+]),
 
-     ]
-),
-(
-    "freelancer_task_patrol_rider_bandit",0,
-    "You imprison the rider. It turns out the rider is a local bandit, who is accused for many crimes. He is crucified next to the road.",
-    "none",
-    [
+("freelancer_task_patrol_rider_bandit",0,
+  "You imprison the rider. It turns out the rider is a local bandit, who is accused for many crimes. He is crucified next to the road.",
+  "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+  ],[
+    ("continue",[],"Continue.",[
       (add_xp_as_reward, 150),
       (call_script, "script_freelancer_add_progress", 25),
       (change_screen_map),
-        ]),
-
-     ]
-),
+    ]),
+]),
 
 (
     "go_hunting",0,
@@ -53764,84 +53753,61 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
      ]
 ),
 
-(
-    "freelancer_task_training_debrief",0,
-    "The training is over. You defeated {reg1} opponents.",
-    "none",
-    [
+("freelancer_task_training_debrief",0,
+  "The training is over. You defeated {reg1} opponents.",
+  "none",[
     (set_background_mesh, "mesh_pic_mb_warrior_2"),
     (assign, reg1, "$g_arena_training_kills"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+  ],[
+      ("continue",[],"Continue.",[
         (add_xp_as_reward, 250),
         (val_add, "$g_arena_training_kills", 1),
         (call_script, "script_freelancer_add_progress", "$g_arena_training_kills"),
         (change_screen_map),
-        ]),
+      ]),
+]),
 
-     ]
-),
+("freelancer_task_tribute_retreat",0,
+  "Your force retreats back to the legion camp. The other officers call you a coward because you ran away from peasants.^More troops are send to the village to punish them properly."+
+  " As the peasants see the overwhelming force approaching they surrender.^As punishment they are forced to kiss the eagle of the legion. Double the amount of the tribute is taking from them."+
+  " Half of their wives and children is enslaved and their elder is crucified.",
+  "none",[
+  ],[
+    ("continue",[],"Continue.",[
+      (call_script, "script_change_troop_renown", "trp_player", -2),
+      (add_xp_as_reward, 50),
+      (change_screen_map),
+    ]),
+]),
 
-(
-    "freelancer_task_tribute_retreat",0,
-    "Your force retreats back to the legion camp. The other officers call you a coward because you ran away from peasants.^More troops are send to the village to punish them properly."+
-    " As the peasants see the overwhelming force approaching they surrender.^As punishment they are forced to kiss the eagle of the legion. Double the amount of the tribute is taking from them."+
-    " Half of their wives and children is enslaved and their elder is crucified.",
-    "none",
-    [
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
-        (call_script, "script_change_troop_renown", "trp_player", -2),
-        (add_xp_as_reward, 50),
-        (change_screen_map),
-        ]),
-
-     ]
-),
-(
-    "freelancer_task_failed",0,
-    "You managed to defeat {reg24} enemies, but it wasn't enough. Your patrol was defeated, but luckily you survived. As punishment you get less rations for the next days.",
-    "none",
-    [
+("freelancer_task_failed",0,
+  "You managed to defeat {reg24} enemies, but it wasn't enough. Your patrol was defeated, but luckily you survived. As punishment you get less rations for the next days.",
+  "none",[
     (assign, reg24, "$g_arena_training_kills"),
     (set_background_mesh, "mesh_pic_defeat"),
     #(val_sub, "$g_arena_training_kills", 3),
     (call_script, "script_freelancer_add_progress", "$g_arena_training_kills"),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+  ],[
+      ("continue",[],"Continue.",[
         (add_xp_as_reward, 50),
         (change_screen_map),
-        ]),
+      ]),
+]),
 
-     ]
-),
-
-(
-    "freelancer_task_completed",0,
-    "You managed to defeat {reg24} enemies and the ambush was defeated. As a reward, you get a bag of denarii and extra rations for today.",
-    "none",
-    [
+("freelancer_task_completed",0,
+  "You managed to defeat {reg24} enemies and the ambush was defeated. As a reward, you get a bag of denarii and extra rations for today.",
+  "none",[
     (assign, reg24, "$g_arena_training_kills"),
     (set_background_mesh, "mesh_pic_victory"),
     (val_add, "$g_arena_training_kills", 7),
     (call_script, "script_freelancer_add_progress", "$g_arena_training_kills"),
     (troop_add_gold, "trp_player", 250),
     (add_xp_as_reward, 250),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
+  ],[
+      ("continue",[],"Continue.",[
         (change_screen_map),
-        ]),
-
-     ]
-),
+      ]),
+]),
 
 ##pharaoh ceremony events
 ("pharaoh_event_1",0,
