@@ -749,6 +749,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_kingdom_21_lord", slot_troop_age, 24),#<-- Moved from above
     (troop_set_slot, "trp_kingdom_22_lord", slot_troop_age, 33),#<-- Moved from above
     (troop_set_slot, "trp_kingdom_23_lord", slot_troop_age, 40),#<-- Moved from above
+    (troop_set_slot, "trp_kingdom_28_lord", slot_troop_age, 36),
+    (troop_set_slot, "trp_kingdom_29_lord", slot_troop_age, 60),
 
     (try_for_range, ":kings", kings_begin, kings_end),
        (troop_set_slot, ":kings", slot_troop_occupation, slto_kingdom_hero),
@@ -904,6 +906,11 @@ scripts = scripts_hardcoded + [
 	(troop_set_slot, "trp_kingdom_7_lady_27", slot_troop_age, 47),
 	(troop_set_slot, "trp_kingdom_7_lady_28", slot_troop_age, 14),
 	(troop_set_slot, "trp_kingdom_7_lady_new_4", slot_troop_age, 25),
+
+    (troop_set_slot, "trp_kingdom_28_lady_1", slot_troop_age, 39),
+    (troop_set_slot, "trp_kingdom_28_lady_2", slot_troop_age, 19),
+    (troop_set_slot, "trp_kingdom_29_lady_1", slot_troop_age, 50),
+    (troop_set_slot, "trp_kingdom_29_lady_2", slot_troop_age, 35),
 
    #trp_thestia_tomitia and trp_gwenhwyfar are special, we dont need them
     (try_for_range, ":cur_lady", "trp_kingdom_1_lady_1", "trp_gwenhwyfar"),
@@ -1067,6 +1074,12 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_knight_17_1", slot_troop_age, 41),
     (troop_set_slot, "trp_knight_17_2", slot_troop_age, 36),
     (troop_set_slot, "trp_knight_17_3", slot_troop_age, 40),
+
+    (troop_set_slot, "trp_knight_28_1", slot_troop_age, 41),
+    (troop_set_slot, "trp_knight_28_2", slot_troop_age, 23),
+
+    (troop_set_slot, "trp_knight_29_1", slot_troop_age, 35),
+    (troop_set_slot, "trp_knight_29_2", slot_troop_age, 19),
 
     (try_for_range, ":cur_lord", lords_begin, lords_end),
         (troop_set_slot, ":cur_lord", slot_troop_occupation, slto_kingdom_hero),
@@ -77390,6 +77403,30 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_arab_noble_tunic_2"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_eastern_shoe_b"),
         (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
+    (else_try),# Massinissa
+        (eq, ":king", "trp_kingdom_28_lord"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_african_round_shield"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_lion_head_helm"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_berber_breastplate_1"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_centurio_east_graves"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_numidian_horse_3"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_berber_noble_tunic_4"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_caligea"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_2"),
+    (else_try),# Akhamuk
+        (eq, ":king", "trp_kingdom_29_lord"),
+        (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_garamantian_spear_2"),
+        (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_african_round_shield"),
+        (troop_set_inventory_slot, "trp_player", ek_head, "itm_a_lybian_feathers_3"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_garamantian_armor_2"),
+        (troop_set_inventory_slot, "trp_player", ek_foot, "itm_centurio_east_graves"),
+        (troop_set_inventory_slot, "trp_player", ek_horse, "itm_numidian_horse_1"),
+        ## civilian
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_body, "itm_garamantian_armor_2"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_foot, "itm_caligea"),
+        (troop_set_inventory_slot, "trp_pseudo_troop_end", ek_gloves, "itm_ring_1"),
     (else_try), # Otho
         (eq, ":king", "trp_statthalter_9"),
         (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_roman_spatha_rich_3"),
