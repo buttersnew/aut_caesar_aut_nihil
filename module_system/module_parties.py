@@ -607,7 +607,7 @@ parties = [
 ("holy_lance_cave","Montes Sinai", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(78.77, -77.54),[]),
 ("valley_of_elah","Vallis Elae", icon_forest_palms|pf_is_static|pf_hide_defenders, no_menu, pt_none, fac_neutral,0,ai_bhvr_hold,0,(85.675, -60.00),[]),
 
-("baquates_town_1", "Tocolisda", icon_desert_fortress|pf_town, no_menu, pt_none, fac_baquates, 0, ai_bhvr_hold, 0, (-263.881, -67.552), []),
+("baquates_town_1", "Tocolisda", icon_gaetulian_town|pf_town, no_menu, pt_none, fac_baquates, 0, ai_bhvr_hold, 0, (-263.881, -67.552), []),
 ("nasamones_town_1", "Samah", icon_desert_fortress|pf_town, no_menu, pt_none, fac_nasamones, 0, ai_bhvr_hold, 0, (-55.993, -123.971), []),
 ("arabian_town_1", "Hegra", icon_arab_town|pf_town, no_menu, pt_none, fac_nabataea, 0, ai_bhvr_hold, 0, (138.4, -115.81), []),
 ("nubian_town_1", "Meroe", icon_nubian_town|pf_town, no_menu, pt_none, fac_kush, 0, ai_bhvr_hold, 0, (101.97, -187.42), []),

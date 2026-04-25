@@ -424,7 +424,7 @@ scenes = [
   ("town_34_tavern", sf_indoors, "viking_interior_tavern_a", "bo_viking_interior_tavern_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_34_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001300010c800054d5c00004af000005d3f00002ca0",[], [], "outer_terrain_plain"),
 
-  ("town_berber_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013001c98d0005b56d000072a70000240a00001e09",[], [], "outer_terrain_plain"),
+  ("town_berber_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013001c98d0005b56d000072a70000240a00001e09",[], [], "outer_terrain_desert"),
   ("town_berber_castle", sf_indoors, "viking_interior_keep_a", "bo_viking_interior_keep_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_berber_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x3002cd340002b4ac00002ccd800026dc00000c1d",[], [], "outer_terrain_desert"),
   ("town_berber_prison", sf_indoors, "interior_prison_cell_a", "bo_interior_prison_cell_a", (-100, -100), (100, 100), -100, "0",["exit"], []),

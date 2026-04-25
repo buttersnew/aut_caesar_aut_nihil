@@ -2944,6 +2944,9 @@ scripts_hardcoded = [
             (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_48"),
             (party_set_slot,":village_no", slot_town_center, "scn_village_egypt"),
         (else_try),
+            (party_slot_eq, ":village_no", slot_village_bound_center, "p_town_54"),
+            (party_set_slot,":village_no", slot_town_center, "scn_village_garamantian_2"),
+        (else_try),
          ##special for deserts###
             (party_get_current_terrain, ":terrain", ":village_no"),
             (this_or_next|eq, ":terrain", rt_desert),

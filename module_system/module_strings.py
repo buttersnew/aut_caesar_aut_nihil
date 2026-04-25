@@ -7277,6 +7277,7 @@ strings = [
   ("chorasmia", "Chorasmia"),
   ("osreon", "Osreon"),
   ("adiabene", "Adiabene"),
+  ("mauritania_tingitana", "Mauretania Tingitana"),
 
   ("simple_names_begin","No region"),
   ("hispania_simple","HS"),
