@@ -75719,7 +75719,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (neg|player_has_item, ":quest_target_item"),
   (str_store_item_name, s13, ":quest_target_item"),
 ],
-"I have heard that you found the perpetrato. But where is my {s13}? " +
+"I have heard that you found the perpetrator. But where is my {s13}? " +
 "You don't seem to have it with you. Do you have it? Bring it to me if you want any reward.",
 "mayor_pretalk",[
 ]],
@@ -97571,7 +97571,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "Wait. Listen. It's too quiet in there.",
 "event_pret_talk_5_1",[]],
 [anyone,"event_pret_talk_5_1",[
-],"Did you hear that, soldier? I think an assasin might be in the room. Hehehe.", "event_pret_talk_6",[]],
+],"Did you hear that, soldier? I think an assassin might be in the room. Hehehe.", "event_pret_talk_6",[]],
 [anyone|other(trp_quest_tiro),"event_pret_talk_6",[
 ],
 "Yes, Sir!",

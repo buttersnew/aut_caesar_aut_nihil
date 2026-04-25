@@ -11691,7 +11691,7 @@ mission_templates = [
             (store_trigger_param_1,":agent_no"),
             (agent_is_human, ":agent_no"),
             (agent_get_entry_no, ":entry_no", ":agent_no"),
-            (is_between, ":entry_no", 0, 5),
+            (neg|is_between, ":entry_no", 0, 5),
             # (agent_get_item_slot, ":item_no", ":agent_no", ek_foot),
             # (neq, ":item_no", "itm_practice_boots"), #not equipped on spectator troops
             # (agent_get_entry_no, ":entry_no", ":agent_no"),
