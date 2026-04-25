@@ -1,4 +1,4 @@
-6005
+6006
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6004,3 +6004,4 @@ qstr_Check2 Check2
 qstr_Chance_of_rebellion: Chance_of_rebellion:_{reg1}
 qstr_The_slave_trader_is_ The_slave_trader_is_unavailable_right_now...
 qstr_The_slave_trader_is_s The_slave_trader_is_sick...
+qstr_{s7} {s7}
