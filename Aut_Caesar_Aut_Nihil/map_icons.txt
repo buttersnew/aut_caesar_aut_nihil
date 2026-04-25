@@ -1,5 +1,5 @@
 map_icons_file version 1
-183
+198
 flagbearer_b 0 flagbearer_b 0.200000 114 0.160000 0.173000 0.000000 0
 
 
@@ -99,7 +99,7 @@ forest 1 forest 0.900000 0 0 0 0 0
 forest_palms 1 forest_palms 2.000000 0 0 0 0 0
 
 
-gaetulian_town 1 icon_gaetulian 0.340000 0 0 0 0 0
+gaetulian_town 1 icon_gaetulian 0.190000 0 0 0 0 0
 
 
 arab_town 1 icon_arab 0.340000 0 0 0 0 0
@@ -108,7 +108,16 @@ arab_town 1 icon_arab 0.340000 0 0 0 0 0
 garamantian_town 1 icon_garama 0.280000 0 0 0 0 0
 
 
+berber_town 1 icon_berber_town 0.280000 0 0 0 0 0
+
+
+desert_fortress 1 icon_desert_fortress 0.280000 0 0 0 0 0
+
+
 village_desert 1 icon_village_desert 0.300000 0 0 0 0 0
+
+
+village_desert_burned 1 icon_village_desert_burned 0.300000 0 0 0 0 0
 
 
 nubian_town 1 icon_nubia 0.330000 0 0 0 0 0
@@ -464,6 +473,42 @@ map_flag_41 0 map_flag_41 0.400000 0 0 0 0 0
 
 
 map_flag_42 0 map_flag_42 0.400000 0 0 0 0 0
+
+
+map_flag_43 0 map_flag_43 0.400000 0 0 0 0 0
+
+
+map_flag_44 0 map_flag_44 0.400000 0 0 0 0 0
+
+
+map_flag_45 0 map_flag_45 0.400000 0 0 0 0 0
+
+
+map_flag_46 0 map_flag_46 0.400000 0 0 0 0 0
+
+
+map_flag_47 0 map_flag_47 0.400000 0 0 0 0 0
+
+
+map_flag_48 0 map_flag_48 0.400000 0 0 0 0 0
+
+
+map_flag_49 0 map_flag_49 0.400000 0 0 0 0 0
+
+
+map_flag_50 0 map_flag_50 0.400000 0 0 0 0 0
+
+
+map_flag_51 0 map_flag_51 0.400000 0 0 0 0 0
+
+
+map_flag_52 0 map_flag_52 0.400000 0 0 0 0 0
+
+
+map_flag_53 0 map_flag_53 0.400000 0 0 0 0 0
+
+
+map_flag_54 0 map_flag_54 0.400000 0 0 0 0 0
 
 
 map_legion_vexilium_italica_ii 0 map_legion_vexilium_italica_ii 0.400000 0 0 0 0 0

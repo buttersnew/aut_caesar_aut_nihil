@@ -1,5 +1,5 @@
 scenesfile version 1
- 907
+ 930
 scn_random_scene random_scene 1792 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x300028000003e8fa0000034e00004b34000059be 
   0 
   0 
@@ -130,7 +130,7 @@ scn_reserved12 reserved12 1 thirsty_lion bo_thirsty_lion -100.000000 -100.000000
  0 
 scn_training_ground training_ground 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x30000500400360d80000189f00002a8380006d91 
   0 
-  2  1285  1286 
+  2  1329  1330 
  outer_terrain_plain_1 
 scn_tutorial_1 tutorial_1 1 tutorial_1_scene bo_tutorial_1_scene -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
@@ -516,6 +516,30 @@ scn_castle_7_prison castle_7_prison 1 interior_prison_i bo_interior_prison_i -10
   0 
   0 
  0 
+scn_castle_garamantian_exterior castle_garamantian_exterior 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000050044e900003dd02000077b20000400100005697 
+  0 
+  0 
+ outer_terrain_desert 
+scn_castle_garamantian_interior castle_garamantian_interior 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_castle_garamantian_prison castle_garamantian_prison 1 interior_prison_i bo_interior_prison_i -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  0 
+  0 
+ 0 
+scn_castle_berber_exterior castle_berber_exterior 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000130025cb20006097f00005b1400000e2f00005fd9 
+  0 
+  0 
+ outer_terrain_steppe 
+scn_castle_berber_interior castle_berber_interior 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_castle_berber_prison castle_berber_prison 1 interior_prison_i bo_interior_prison_i -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  0 
+  0 
+ 0 
 scn_roman_castle_1_exterior roman_castle_1_exterior 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000023007858000049d2a00003c37000040ef000037cd 
   0 
   0 
@@ -756,6 +780,14 @@ scn_village_emesa village_emesa 256 none none 0.000000 0.000000 120.000000 120.0
   0 
   0 
  outer_terrain_steppe_desert 
+scn_village_berber village_berber 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000000500005020005a16800003f9900007d5600002a9c 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_village_garamantian_2 village_garamantian_2 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000000500005020005a16800003f9900007d5600002a9c 
+  0 
+  0 
+ outer_terrain_desert_b 
 scn_village_syria_1 village_syria_1 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000000300000000005194a000041ef00005ae800003c55 
   0 
   0 
@@ -824,6 +856,10 @@ scn_lair_african_2 lair_african_2 256 none none 0.000000 0.000000 100.000000 100
   0 
   0 
  outer_terrain_desert 
+scn_lair_african_3 lair_african_3 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002d5a00d63000775da00001781000054ef00001831 
+  0 
+  0 
+ outer_terrain_desert 
 scn_lair_arabian lair_arabian 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000005024cd120005595400003882000037a90000673e 
   0 
   0 
@@ -862,7 +898,7 @@ scn_tutorial_training_ground tutorial_training_ground 256 none none 0.000000 0.0
  outer_terrain_plain 
 scn_town_6_room town_6_room 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x00000002300005000004e53a0000483e0000673c0000553f 
   0 
-  1  2062 
+  1  2127 
  outer_terrain_plain 
 scn_meeting_scene_steppe meeting_scene_steppe 0 ch_meet_steppe_a bo_encounter_spot -40.000000 -40.000000 40.000000 40.000000 -100.000000 0 
   0 
@@ -1058,7 +1094,7 @@ scn_random_scene_mountain random_scene_mountain 1792 none none 0.000000 0.000000
  outer_terrain_mountain 
 scn_imperial_palace imperial_palace 256 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x00000002300000000004fd4a000041ef00005ae800003c55 
   0 
-  1  2069 
+  1  2134 
  outer_terrain_plain 
 scn_imperial_garden imperial_garden 256 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x00000002300000000004fd4a000041ef00005ae800003c55 
   0 
@@ -1070,11 +1106,11 @@ scn_imperial_dinning_room imperial_dinning_room 1 interior_castle_k bo_interior_
  0 
 scn_imperial_bed_room imperial_bed_room 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2074 
+  1  2139 
  0 
 scn_imperial_palace_augusta_room imperial_palace_augusta_room 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2075 
+  1  2140 
  0 
 scn_underworld underworld 256 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x0000000235e201c40005194a0000a29f00005ae800003c55 
   0 
@@ -1176,6 +1212,62 @@ scn_town_34_walls town_34_walls 256 none none 0.000000 0.000000 100.000000 100.0
   0 
   0 
  outer_terrain_plain 
+scn_town_berber_arena town_berber_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000013001c98d0005b56d000072a70000240a00001e09 
+  0 
+  0 
+ outer_terrain_desert 
+scn_town_berber_castle town_berber_castle 1 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_berber_center town_berber_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x3002cd340002b4ac00002ccd800026dc00000c1d 
+  0 
+  0 
+ outer_terrain_desert 
+scn_town_berber_prison town_berber_prison 1 interior_prison_cell_a bo_interior_prison_cell_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_berber_store town_berber_store 1 viking_interior_merchant_a bo_viking_interior_merchant_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_berber_tavern town_berber_tavern 1 viking_interior_tavern_a bo_viking_interior_tavern_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_berber_walls town_berber_walls 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x3002cd340002b4ac00002ccd800026dc00000c1d 
+  0 
+  0 
+ outer_terrain_plain 
+scn_town_garamantian_arena town_garamantian_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_town_garamantian_castle town_garamantian_castle 256 none none -100.000000 -100.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
+  1  100000 
+  0 
+ 0 
+scn_town_garamantian_center town_garamantian_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001300010c800054d5c00004af000005d3f00002ca0 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_town_garamantian_prison town_garamantian_prison 1 interior_prison_cell_a bo_interior_prison_cell_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_garamantian_store town_garamantian_store 1 viking_interior_merchant_a bo_viking_interior_merchant_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_garamantian_tavern town_garamantian_tavern 1 viking_interior_tavern_a bo_viking_interior_tavern_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
+  1  100000 
+  0 
+ 0 
+scn_town_garamantian_walls town_garamantian_walls 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001300010c800054d5c00004af000005d3f00002ca0 
+  0 
+  0 
+ outer_terrain_desert_b 
 scn_town_20_arena town_20_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
   0 
   0 
@@ -2222,7 +2314,7 @@ scn_commu_exterrior commu_exterrior 256 none none 0.000000 0.000000 100.000000 1
  outer_terrain_plain 
 scn_commu_interior commu_interior 1 interior_castle_j bo_interior_castle_j -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  1314 
+  1  1358 
  0 
 scn_commu_prison commu_prison 1 interior_prison_cell_a bo_interior_prison_cell_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
@@ -2250,7 +2342,7 @@ scn_londinium_prison londinium_prison 1 interior_prison_i bo_interior_prison_i -
  0 
 scn_romanized_celt_castle_ext romanized_celt_castle_ext 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000013000000000083e1200009d1f00000fbb0000a6f0 
   0 
-  1  2068 
+  1  2133 
  outer_terrain_plain 
 scn_romanized_celt_castle_int romanized_celt_castle_int 1 arabian_interior_keep_b bo_arabian_interior_keep_b -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2366,7 +2458,7 @@ scn_town_7_center town_7_center 256 none none 0.000000 0.000000 100.000000 100.0
  outer_terrain_beach_desert 
 scn_town_7_castle town_7_castle 1 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  977 
+  1  1017 
  0 
 scn_town_7_tavern town_7_tavern 1 viking_interior_tavern_a bo_viking_interior_tavern_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2418,7 +2510,7 @@ scn_town_9_center town_9_center 256 none none 0.000000 0.000000 100.000000 100.0
  outer_terrain_beach 
 scn_town_9_castle town_9_castle 1 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  979 
+  1  1019 
  0 
 scn_town_9_tavern town_9_tavern 1 viking_interior_tavern_a bo_viking_interior_tavern_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2438,11 +2530,11 @@ scn_town_9_walls town_9_walls 256 none none 0.000000 0.000000 100.000000 100.000
  outer_terrain_beach 
 scn_town_41_center town_41_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000013001c98d0005b56d000072a70000240a00001e09 
   0 
-  1  2198 
+  1  2263 
  outer_terrain_plain_3 
 scn_town_41_castle town_41_castle 1 interior_castle_n bo_interior_castle_n -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  1003 
+  1  1043 
  0 
 scn_town_41_tavern town_41_tavern 1 interior_tavern_b bo_interior_tavern_b -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2466,7 +2558,7 @@ scn_town_32_center town_32_center 256 none none 0.000000 0.000000 100.000000 100
  outer_terrain_plain_1 
 scn_town_32_castle town_32_castle 1 interior_castle_n bo_interior_castle_n -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  991 
+  1  1031 
  0 
 scn_town_32_tavern town_32_tavern 1 interior_tavern_b bo_interior_tavern_b -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2642,7 +2734,7 @@ scn_castle_caucasus_exterior castle_caucasus_exterior 256 none none 0.000000 0.0
  outer_terrain_steppe 
 scn_castle_caucasus_interior castle_caucasus_interior 1 dungeon_entry_a bo_dungeon_entry_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  1370 
+  1  1414 
  0 
 scn_castle_caucasus_prison castle_caucasus_prison 1 interior_prison_a bo_interior_prison_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
@@ -2714,7 +2806,7 @@ scn_carthago_walls carthago_walls 256 none none 0.000000 0.000000 100.000000 100
  sea_outer_terrain_2 
 scn_carthago_center carthago_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000013a01c85000057ddf700072a70000240a00001e090 
   0 
-  1  2071 
+  1  2136 
  sea_outer_terrain_2 
 scn_carthago_castle carthago_castle 1 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
@@ -2790,7 +2882,7 @@ scn_town_19_tavern town_19_tavern 1 interior_town_house_steppe_d bo_interior_tow
  0 
 scn_town_19_castle town_19_castle 1 arabian_interior_keep_c bo_arabian_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  839 
+  1  873 
  0 
 scn_ctesiphon_arena ctesiphon_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002532005000009425300006a2500002b1200007456 
   0 
@@ -2810,7 +2902,7 @@ scn_nisha_tavern nisha_tavern 1 interior_town_house_steppe_d bo_interior_town_ho
  0 
 scn_nisha_castle nisha_castle 1 arabian_interior_keep_a bo_arabian_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  839 
+  1  873 
  0 
 scn_nisha nisha 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002532005000009425300006a2500002b1200007456 
   0 
@@ -2934,7 +3026,7 @@ scn_german_temple_3 german_temple_3 256 none none 0.000000 0.000000 240.000000 2
  outer_terrain_plain 
 scn_pyramid pyramid 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x000000005a060700000d234800005ab500002c3c00005703 
   0 
-  1  2063 
+  1  2128 
  outer_terrain_desert 
 scn_mine_plain mine_plain 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x000000013a00376300055154000019dc0000466900001afc 
   0 
@@ -2970,7 +3062,7 @@ scn_temple_jerusalem temple_jerusalem 256 none none 0.000000 0.000000 240.000000
  outer_terrain_desert 
 scn_villa_player villa_player 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x0000000240a3773b80062d8b000051df00003be000001e13 
   0 
-  1  2061 
+  1  2126 
  outer_terrain_beach 
 scn_hord hord 1280 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x0000000224400a0c00076ddd000079ef00005d26000057ea 
   0 
@@ -2984,11 +3076,11 @@ scn_triumph_marsh triumph_marsh 256 none none 0.000000 0.000000 100.000000 100.0
   0 
   0 
  outer_terrain_plain 
-scn_gaetulian_town_1 gaetulian_town_1 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002dc6005088007d5f70000759c00007438000002c6 
+scn_baquates_town_1 baquates_town_1 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002dc6005088007d5f70000759c00007438000002c6 
   0 
   0 
  outer_terrain_desert 
-scn_garmantian_town_1 garmantian_town_1 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002d32005088007d5f70000687180004e89000002c6 
+scn_nasamones_town_1 nasamones_town_1 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002d32005088007d5f70000687180004e89000002c6 
   0 
   0 
  outer_terrain_desert_b 
@@ -3150,7 +3242,7 @@ scn_grove grove 256 none none -100.000000 -100.000000 100.000000 100.000000 -100
  outer_terrain_mountain 
 scn_vally_of_kings vally_of_kings 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x0000000051ef626300095e54000024e1000072a800003ce2 
   0 
-  1  2064 
+  1  2129 
  outer_terrain_desert 
 scn_barracks barracks 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x00000002300005000004e53a0000483e0000673c0000553f 
   0 
@@ -3186,7 +3278,7 @@ scn_house_1 house_1 1 winery_interior bo_winery_interior -100.000000 -100.000000
  0 
 scn_house_2 house_2 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x00000002300005000004e53a0000483e0000673c0000553f 
   0 
-  1  2065 
+  1  2130 
  outer_terrain_plain 
 scn_duel_plain_forest duel_plain_forest 256 none none 0.000000 0.000000 200.000000 200.000000 -0.500000 0x00000000300005000005495000002ee4000032f600000753 
   0 
@@ -3314,7 +3406,7 @@ scn_slavic_holy_side slavic_holy_side 256 none none 0.000000 0.000000 120.000000
  outer_terrain_mountain 
 scn_hanging_gardens hanging_gardens 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000002564005630008f23b0000549f00004ba500006801 
   0 
-  1  2080 
+  1  2145 
  outer_terrain_desert 
 scn_library library 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000013a01c85000057ddf700072a70000240a00001e090 
   0 
@@ -3322,7 +3414,7 @@ scn_library library 256 none none 0.000000 0.000000 120.000000 120.000000 -100.0
  outer_terrain_plain_1 
 scn_cave cave 1 cave-p01 bo_cave-p01 -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
-  1  2066 
+  1  2131 
  0 
 scn_cave_outside cave_outside 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000013a01c85000057ddf700072a70000240a00001e090 
   0 
@@ -3330,7 +3422,7 @@ scn_cave_outside cave_outside 256 none none 0.000000 0.000000 120.000000 120.000
  outer_terrain_plain_1 
 scn_sacred_grove sacred_grove 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000013a01c85000057ddf700072a70000240a00001e090 
   0 
-  1  2067 
+  1  2132 
  outer_terrain_plain_1 
 scn_starting_villa starting_villa 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x0000000242c005000006c1b1000055bb00007699000051a2 
   0 
@@ -3346,11 +3438,11 @@ scn_mount_olymp mount_olymp 256 none none 0.000000 0.000000 120.000000 120.00000
  outer_terrain_mountain_2 
 scn_domus_mare_interior domus_mare_interior 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2070 
+  1  2135 
  0 
 scn_domus_mare_interior_2 domus_mare_interior_2 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2070 
+  1  2135 
  0 
 scn_collusseum collusseum 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
   0 
@@ -3378,7 +3470,7 @@ scn_elysium elysium 256 none none 0.000000 0.000000 120.000000 120.000000 -100.0
  sea_outer_terrain_2 
 scn_arminius_tomb arminius_tomb 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000000bc6789000009024400004abd0000424f000078dd 
   0 
-  1  2060 
+  1  2125 
  outer_terrain_plain 
 scn_petrus_event petrus_event 256 none none 0.000000 0.000000 240.000000 240.000000 -100.000000 0x00000000300005000002acab0000094d0000144a00003cc5 
   0 
@@ -3426,7 +3518,7 @@ scn_village_garamantian village_garamantian 256 none none 0.000000 0.000000 100.
  outer_terrain_desert 
 scn_lair_egypt_bandits lair_egypt_bandits 256 none none 0.000000 0.000000 240.000000 240.000000 -20.000000 0x000000005a060700000d234800005ab500002c3c00005703 
   0 
-  1  2063 
+  1  2128 
  outer_terrain_desert 
 scn_roman_intro_1 roman_intro_1 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x000000003000050000046d1b0000189f00002a8380006d91 
   0 
@@ -3450,19 +3542,19 @@ scn_tarquinii tarquinii 256 none none 0.000000 0.000000 120.000000 120.000000 -1
  outer_terrain_plain 
 scn_tarquinii_tomb_1 tarquinii_tomb_1 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2078 
+  1  2143 
  0 
 scn_pillars pillars 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x000000003000050000046d1b0000189f00002a8380006d91 
   0 
-  1  2072 
+  1  2137 
  outer_terrain_beach_2 
 scn_grave_anatolia grave_anatolia 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x000000003000050000046d1b0000189f00002a8380006d91 
   0 
-  1  2073 
+  1  2138 
  outer_terrain_beach 
 scn_parthian_palace_garden parthian_palace_garden 256 none none -100.000000 -100.000000 100.000000 100.000000 -100.000000 0x000000003000050000046d1b0000189f00002a8380006d91 
   0 
-  1  2079 
+  1  2144 
  outer_terrain_desert 
 scn_gardens_of_manacea gardens_of_manacea 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x0000000230000500000a9ea90000654a0000214300005720 
   0 
@@ -3494,11 +3586,11 @@ scn_royal_tombs royal_tombs 256 none none 0.000000 0.000000 120.000000 120.00000
  outer_terrain_mountain_2 
 scn_old_mine old_mine 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000000300005000007d9f9000038b600001e7d00006b54 
   0 
-  1  2077 
+  1  2142 
  outer_terrain_mountain_2 
 scn_royal_tombs_interior royal_tombs_interior 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2076 
+  1  2141 
  0 
 scn_sacred_forests_seraca sacred_forests_seraca 256 none none 0.000000 0.000000 120.000000 120.000000 -100.000000 0x00000002bc60138000089e2900003837000010160000044c 
   0 
@@ -3526,7 +3618,7 @@ scn_cutscene_rome_victory cutscene_rome_victory 256 none none 0.000000 0.000000 
  outer_terrain_plain 
 scn_cave_olympia cave_olympia 1 cave-p01 bo_cave-p01 -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
-  1  2082 
+  1  2147 
  0 
 scn_scene_camp_forest scene_camp_forest 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x000000003c600563000d2348000052d4000067d5000029c1 
   0 
@@ -3542,11 +3634,11 @@ scn_kurgan kurgan 256 none none 0.000000 0.000000 100.000000 100.000000 -0.50000
  outer_terrain_steppe 
 scn_kurgan_enter kurgan_enter 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2078 
+  1  2143 
  0 
 scn_roman_latrina roman_latrina 1 interior_castle_k bo_interior_castle_k -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
-  1  2081 
+  1  2146 
  0 
 scn_shitty_tavern shitty_tavern 1 thirsty_lion bo_thirsty_lion -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   0 
@@ -3558,7 +3650,7 @@ scn_holy_lance_cave holy_lance_cave 256 none none 0.000000 0.000000 100.000000 1
  outer_terrain_desert_mountain 
 scn_valley_of_elah valley_of_elah 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000343e005000008661800004f9c00007e0c00003bf4 
   0 
-  1  2084 
+  1  2149 
  outer_terrain_steppe_3 
 scn_werdheri_bandit_lair werdheri_bandit_lair 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000130025cb20006097f00005b1400000e2f00005fd9 
   0 
@@ -3618,11 +3710,11 @@ scn_luparnium luparnium 1 lupanar bo_lupanar -100.000000 -100.000000 100.000000 
  0 
 scn_ruins_of_carthage ruins_of_carthage 256 none none -100.000000 -100.000000 100.000000 100.000000 -100.000000 0x0000000040000532000741d00000705300003aad00000ac4 
   0 
-  1  2083 
+  1  2148 
  outer_terrain_beach_desert_flat 
 scn_rhodogune_temple rhodogune_temple 256 none none 0.000000 0.000000 100.000000 100.000000 -0.500000 0x000000023000050000087a1b000030dc00007b34000040d5 
   0 
-  1  2085 
+  1  2150 
  outer_terrain_steppe_3 
 scn_multi_cromlech_moors multi_cromlech_moors 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000130190a180005114900003f7500000162000000fa 
   0 

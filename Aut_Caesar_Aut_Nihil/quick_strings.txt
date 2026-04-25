@@ -1,4 +1,4 @@
-6005
+6025
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6004,3 +6004,23 @@ qstr_Check2 Check2
 qstr_Chance_of_rebellion: Chance_of_rebellion:_{reg1}
 qstr_The_slave_trader_is_ The_slave_trader_is_unavailable_right_now...
 qstr_The_slave_trader_is_s The_slave_trader_is_sick...
+qstr_Berbers Berbers
+qstr_Garamntes Garamntes
+qstr_DEBUG_recruit:_troop DEBUG_recruit:_troop={s21}_(id={reg11}),_faction={s22},_occupation={reg10}
+qstr_DEBUG_recruit:_stand DEBUG_recruit:_standing={reg12},_player_supporters={s23},_players_kingdom={s24}
+qstr_DEBUG_recruit:_troop= DEBUG_recruit:_troop={s21}_(id={reg11}),_faction={s22}_(id={reg22}),_occupation={reg10}
+qstr_a_non_kingdom_factio a_non-kingdom_faction
+qstr_DEBUG_recruit:_standi DEBUG_recruit:_standing={reg12},_player_supporters={s23},_players_kingdom={s24},_original_faction={s25}
+qstr_DEBUG_recruit:_standin DEBUG_recruit:_standing={reg12},_player_supporters={s23},_players_kingdom={s24},_original_faction={s25}_(id={reg23})
+qstr_Condition_1 Condition_1
+qstr_Condition_2 Condition_2
+qstr_Condition_3 Condition_3
+qstr_Condition_4 Condition_4
+qstr_original_faction_lea original_faction_leader_{reg10},_{reg9}
+qstr_Garamantes Garamantes
+qstr_Berber Berber
+qstr_{s7} {s7}
+qstr_{s1}_at_{reg1} {s1}_at_{reg1}
+qstr_{!}_ERROR:_setup_tro {!}_ERROR:_setup_troop_meeting_aborted_-_invalid_troop.
+qstr_{!}_ERROR:_setup_party {!}_ERROR:_setup_party_meeting_aborted_-_party_has_no_valid_speaker_stack.
+qstr_Error___invalid_meet Error_-_invalid_meeting_troop_in_setup_party_meeting
