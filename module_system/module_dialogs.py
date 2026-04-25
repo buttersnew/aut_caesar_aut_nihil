@@ -29184,23 +29184,24 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ]],
 
 #SB : fix for redirecting dialog after encounter
-[anyone,"start",[(eq,"$talk_context",tc_ally_thanks),
-    (party_slot_eq, "$g_encountered_party", slot_party_type, spt_patrol),
-    # (party_slot_eq, "$g_encountered_party", slot_party_type, spt_reinforcement),
-    (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-    (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_WEAPON, s1),
+[anyone,"start",[
+  (eq,"$talk_context",tc_ally_thanks),
+  (party_slot_eq, "$g_encountered_party", slot_party_type, spt_patrol),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+  (call_script, "script_dplmc_print_cultural_word_to_sreg", "$g_talk_troop", DPLMC_CULTURAL_TERM_WEAPON, s1),
 ],
    "Thank you for lending your {s1}, {s0}. It was fortunate to have you nearby.", "close_window",[]],
 
 #also another for the more fragile civilian parties
-[anyone,"start",[(eq,"$talk_context",tc_ally_thanks),
-    (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, dplmc_spt_gift_caravan),
-    (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_messenger),
-    (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, dplmc_spt_recruiter),
-    (party_slot_eq, "$g_encountered_party", slot_party_type, spt_scout),
-    (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
-    (party_get_num_companions, ":num_companions", "$g_encountered_party"),
-    (store_sub, reg1, ":num_companions", 1),
+[anyone,"start",[
+  (eq,"$talk_context",tc_ally_thanks),
+  (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, dplmc_spt_gift_caravan),
+  (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_messenger),
+  (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, dplmc_spt_recruiter),
+  (party_slot_eq, "$g_encountered_party", slot_party_type, spt_scout),
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),
+  (party_get_num_companions, ":num_companions", "$g_encountered_party"),
+  (store_sub, reg1, ":num_companions", 1),
 ],
    "It was fortunate to have you here, {s0}. I don't know what {reg1?we:I} could have done without you.", "close_window",[]],
 
@@ -29290,6 +29291,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 
 ##patrol
 [party_tpl|pt_patrol_party, "start",[
+  (party_is_active, "$g_encountered_party"),
   (party_slot_eq, "$g_encountered_party", slot_party_type, spt_patrol),
   (party_slot_eq, "$g_encountered_party", dplmc_slot_party_mission_diplomacy, "trp_player"),
   (party_get_slot, ":target_party", "$g_encountered_party", slot_party_ai_object),
@@ -48537,7 +48539,8 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
 ]],
 
 [anyone,"lord_start",[
-  (party_slot_eq, "$g_encountered_party",slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
+  (is_between, "$g_encountered_party", centers_begin, centers_end),
+  (party_slot_eq, "$g_encountered_party", slot_town_lord, "$g_talk_troop"),#we are talking to Town's Lord.
   (ge,"$g_talk_troop_faction_relation",0),
   (neq, "$g_ransom_offer_rejected", 1),
   (lt, "$g_encountered_party_2", 0), #town is not under siege
@@ -48681,6 +48684,7 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_state, sfai_feast),
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_ai_object, "$g_encountered_party"),
   (ge, "$g_encountered_party_relation", 0),
+  (is_between, "$g_encountered_party", centers_begin, centers_end),
   (party_slot_eq, "$g_encountered_party", slot_town_lord, "$g_talk_troop"),
   (neq, "$talk_context", tc_castle_gate),
 ],"I wish to welcome you to my hall on this auspicious occasion. Now, what is it?",
@@ -63855,18 +63859,18 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    "Why haven't my family paid my ransom? You may hold me as prisoner, but it seems that you care for me more than they do!", "kingdom_lady_captive",[
  ]],
 
-[anyone|auto_proceed, "start",
-[
-    (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
+[anyone|auto_proceed, "start",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 	(neg|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
 	(neq, "$g_talk_troop_faction", "$g_encountered_party_faction"),
-    (troop_slot_eq, "$g_talk_troop", slot_troop_cur_center, "$g_encountered_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_cur_center, "$g_encountered_party"),
 
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
-	#(neq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
-    (neg|party_slot_eq, "$g_encountered_party", slot_center_last_taken_by_troop, "trp_player"),
+  (is_between, "$g_encountered_party", centers_begin, centers_end),
+  (neg|party_slot_eq, "$g_encountered_party", slot_center_last_taken_by_troop, "trp_player"),
 
+  (is_between, ":guardian", active_npcs_begin, active_npcs_end),
 	(store_faction_of_troop, ":guardian_faction", ":guardian"),
 	(neq, ":guardian_faction", "$g_encountered_party_faction"),
  ],
@@ -63879,20 +63883,19 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 "close_window",[
 ]],
 
-[anyone,"start",
-[
-    (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
+[anyone,"start",[
+  (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_lady),
 	(neg|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
 	(neq, "$g_talk_troop_faction", "$g_encountered_party_faction"),
-    (troop_slot_eq, "$g_talk_troop", slot_troop_cur_center, "$g_encountered_party"),
+  (troop_slot_eq, "$g_talk_troop", slot_troop_cur_center, "$g_encountered_party"),
 
-    (party_slot_eq, "$g_encountered_party", slot_center_last_taken_by_troop, "trp_player"),
+  (is_between, "$g_encountered_party", centers_begin, centers_end),
+  (party_slot_eq, "$g_encountered_party", slot_center_last_taken_by_troop, "trp_player"),
 
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
 	(store_faction_of_troop, ":guardian_faction", ":guardian"),
 	(neq, ":guardian_faction", "$g_encountered_party_faction"),
-
 ],
 	#Changed "ladies" to "{reg65?ladies:lads}"
    "{playername} -- I assume that you, as a {man/lady} of honor, will accord gentle-born {reg65?ladies:lads} such as ourselves the right to return to our families, and not demand a ransom.", "lady_talk_refugee",[
@@ -64074,10 +64077,11 @@ But the peope here are either drunk or busy with other things, you know. Tell me
    #SB : reset global if rejected
    (assign, "$g_ransom_offer_rejected", 0),
  ]],#incomplete
-[anyone|plyr,"kingdom_lady_captive",
-[(neg|party_slot_eq, "$g_encountered_party", slot_village_state, svs_under_siege),],
-   "I am moving you to another location.", "kingdom_lady_move",[
- ]],#incomplete
+[anyone|plyr,"kingdom_lady_captive",[
+  (neg|party_slot_eq, "$g_encountered_party", slot_village_state, svs_under_siege),
+],"I am moving you to another location.",
+"kingdom_lady_move",[
+]],#incomplete
 
 [anyone,"kingdom_lady_move",
 [],
@@ -67125,6 +67129,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
     (try_for_range, ":lord", active_npcs_begin, kingdom_ladies_end), #use this as the basis for "troop_describe_relation_with_troop"
       (call_script, "script_troop_get_family_relation_to_troop", "$g_talk_troop", ":lord"), #The normal order is reversed, because the lady is describing herself
       (this_or_next|gt, reg0, 5),
+      (is_between, "$g_encountered_party", centers_begin, centers_end),
       (party_slot_eq, "$g_encountered_party", slot_town_lord, ":lord"),
       (gt, reg0, 0),
 
@@ -69508,6 +69513,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ],"Please don't attack us! We are just poor merchants.", "merchant_talk",[]],
 
 [anyone,"start",[
+  (party_is_active, "$g_encountered_party"),
   (this_or_next|party_slot_eq, "$g_encountered_party", slot_party_type, spt_kingdom_caravan),
   (party_slot_eq, "$g_encountered_party", slot_party_type, spt_merchant_caravan),
   (this_or_next|eq,"$talk_context", tc_party_encounter),
@@ -69762,25 +69768,27 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr,"merchant_talk",[], "[Leave]", "close_window",[(assign, "$g_leave_encounter",1)]],
 
 # Prison Guards
-[anyone,"start",[(eq, "$talk_context", 0),(faction_slot_eq, "$g_encountered_party_faction", slot_faction_prison_guard_troop, "$g_talk_troop"),
-					##diplomacy start+ Handle player is co-ruler of NPC kingdom
-					(assign, ":is_coruler", 0),
-					(try_begin),
-						(eq, "$g_encountered_party_faction", "$players_kingdom"),
-						(is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-						(call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-						(ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-						(assign, ":is_coruler", 1),
-					(try_end),
-                    (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
-					(this_or_next|eq, ":is_coruler", 1),
-					##diplomacy end+
-                    (this_or_next|eq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
-                    (this_or_next|party_slot_eq, "$g_encountered_party", slot_town_lord, ":spouse"),
-                    (             party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
-					##diplomacy start+
-					#it may be appropriate to use "your highness" instead of "my {lord/lady}"
-					(call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),#added
+[anyone,"start",[
+  (eq, "$talk_context", 0),
+  (faction_slot_eq, "$g_encountered_party_faction", slot_faction_prison_guard_troop, "$g_talk_troop"),
+  ##diplomacy start+ Handle player is co-ruler of NPC kingdom
+  (assign, ":is_coruler", 0),
+  (try_begin),
+    (eq, "$g_encountered_party_faction", "$players_kingdom"),
+    (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+    (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
+    (ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
+    (assign, ":is_coruler", 1),
+  (try_end),
+  (troop_get_slot, ":spouse", "trp_player", slot_troop_spouse),
+  (this_or_next|eq, ":is_coruler", 1),
+  ##diplomacy end+
+  (this_or_next|eq, "$g_encountered_party_faction", "fac_player_supporters_faction"),
+  (this_or_next|party_slot_eq, "$g_encountered_party", slot_town_lord, ":spouse"),
+  (party_slot_eq, "$g_encountered_party", slot_town_lord, "trp_player"),
+  ##diplomacy start+
+  #it may be appropriate to use "your highness" instead of "my {lord/lady}"
+  (call_script, "script_dplmc_print_subordinate_says_sir_madame_to_s0"),#added
  ],
    "Good day, {s0}. Will you be visiting the prison?", "prison_guard_players",[]],#changed "my {lord/lady}" to "{s0}"
    ##diplomacy end+
