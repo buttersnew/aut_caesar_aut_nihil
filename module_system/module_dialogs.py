@@ -22248,6 +22248,7 @@ dialogs =[
       (try_end),
   (else_try),
       (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
+      (is_between, "$g_center_taken_by_player_faction", centers_begin, centers_end),
       (party_get_slot, ":province", "$g_center_taken_by_player_faction", slot_center_province),
       (troop_get_slot, ":governor", "trp_province_array", ":province"),
       (try_begin),
