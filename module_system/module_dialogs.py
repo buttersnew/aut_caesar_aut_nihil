@@ -54441,7 +54441,8 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 (display_message, "str_not_enough_influence", color_bad_news),
 ]],
 
-[anyone|plyr,"nero_ask_title2",[(faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
+[anyone|plyr,"nero_ask_title2",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
 ],
 "I think one of your governors is a bad choice, you better appoint someone else.", "nero_ask_province",[]],
 
@@ -54475,6 +54476,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 #[anyone,"nero_ask_province_select_2",[], ".", "lady_pretalk",[]],
 
 [anyone|plyr,"nero_ask_title2",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
 ],"I think one of your legates is a bad choice, I would suggest someone else.",
 "nero_ask_legion",[]],
 
