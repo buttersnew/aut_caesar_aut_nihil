@@ -65874,10 +65874,9 @@ scripts = scripts_hardcoded + [
 
 ##script is used to give a speech in senate
 # script_give_a_speech
-("give_a_speech",
-[
-    (store_script_param_1, ":town"),
-    (store_script_param_2, ":execute"),
+("give_a_speech",[
+    (store_script_param, ":town", 1),
+    (store_script_param, ":execute", 2),
     (store_skill_level, ":oratory", "skl_oratory", "trp_player"),
     (store_mul, ":chance", ":oratory", 8),#maximum of 95% change
     (val_add, ":chance", 15),
@@ -65947,13 +65946,12 @@ scripts = scripts_hardcoded + [
     (else_try),
         (assign, reg0, ":chance"),
     (try_end),
-    ]),
+]),
 ##kill count of heroes shown after battle
-    ("print_kill_count_to_s0",
-    [
-      (assign, ":total_reported", 0),
-      (str_clear, s0),
-      (try_for_agents, ":cur_agent"),
+("print_kill_count_to_s0",[
+    (assign, ":total_reported", 0),
+    (str_clear, s0),
+    (try_for_agents, ":cur_agent"),
         (agent_is_human, ":cur_agent"),
         (agent_get_troop_id, ":agent_troop_id", ":cur_agent"),
         (troop_is_hero, ":agent_troop_id"),
@@ -65973,38 +65971,38 @@ scripts = scripts_hardcoded + [
         (assign, reg5, ":num_wounded"),
         (str_store_string, s2, "@{reg4} killed, {reg5} wounded"),
         (try_begin),
-          (eq, ":agent_troop_id", "trp_player"),
-          (str_store_string, s0, "@{s0}^{s1}: {reg3} ({s2})"),
-          (try_begin),#freelancer
-            (gt, "$enlisted_party", -1),
-            (quest_get_slot, ":progress", "qst_freelancing", slot_quest_freelancer_progress),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_kill, reg3),
-            (val_add, reg3, 1),
-            (val_mul, reg3, 3),
-            (val_div, reg3, 2),
-            (val_clamp, reg3, 1, 101),
-            (val_add, ":progress", reg3),
-            (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progress"),
-            (val_mul, ":progress", 2),
-            (add_xp_as_reward, ":progress"),
-            (display_message, "@You gained {reg3} progress points from contribution to battle."),
-          (try_end),#freelancer end
+            (eq, ":agent_troop_id", "trp_player"),
+            (str_store_string, s0, "@{s0}^{s1}: {reg3} ({s2})"),
+            (try_begin),#freelancer
+                (gt, "$enlisted_party", -1),
+                (quest_get_slot, ":progress", "qst_freelancing", slot_quest_freelancer_progress),
+                (quest_set_slot, "qst_freelancing", slot_quest_freelancer_kill, reg3),
+                (val_add, reg3, 1),
+                (val_mul, reg3, 3),
+                (val_div, reg3, 2),
+                (val_clamp, reg3, 1, 101),
+                (val_add, ":progress", reg3),
+                (quest_set_slot, "qst_freelancing", slot_quest_freelancer_progress, ":progress"),
+                (val_mul, ":progress", 2),
+                (add_xp_as_reward, ":progress"),
+                (display_message, "@You gained {reg3} progress points from contribution to battle."),
+            (try_end),#freelancer end
         (else_try),
-          (is_between, ":agent_troop_id", companions_begin, companions_end),
-          (str_store_string, s0, "@{s0}^{s1}: {reg3} ({s2})"),
+            (is_between, ":agent_troop_id", companions_begin, companions_end),
+            (str_store_string, s0, "@{s0}^{s1}: {reg3} ({s2})"),
         (else_try),
-          (agent_is_ally, ":cur_agent"),
-          (str_store_string, s0, "@{s0}^{s1}(ally): {reg3} ({s2})"),
+            (agent_is_ally, ":cur_agent"),
+            (str_store_string, s0, "@{s0}^{s1}(ally): {reg3} ({s2})"),
         (else_try),
-          (str_store_string, s0, "@{s0}^{s1}(enemy): {reg3} ({s2})"),
+            (str_store_string, s0, "@{s0}^{s1}(enemy): {reg3} ({s2})"),
         (try_end),
         (val_add, ":total_reported", 1),
-      (try_end),
-      (try_begin),
+    (try_end),
+    (try_begin),
         (eq, ":total_reported", 0),
         (str_store_string, s0, "@^None"),
-      (try_end),
-  ]),
+    (try_end),
+]),
 ############TROOP TREE BEGIN
 ###scripts for troop tree report
 ("prsnt_upgrade_tree_ready",[
