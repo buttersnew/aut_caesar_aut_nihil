@@ -3216,7 +3216,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_bread", slot_item_output_per_run, 8),
     (item_set_slot, "itm_bread", slot_item_overhead_per_run, 150),
     (item_set_slot, "itm_bread", slot_item_base_price, 100),
-    (item_set_slot, "itm_bread", slot_item_enterprise_building_cost, 6000),
+    (item_set_slot, "itm_bread", slot_item_enterprise_building_cost, 8000),
 
     (item_set_slot, "itm_ale", slot_item_urban_demand, 10),
     (item_set_slot, "itm_ale", slot_item_rural_demand, 15),
@@ -3229,7 +3229,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_ale", slot_item_output_per_run, 6),
     (item_set_slot, "itm_ale", slot_item_overhead_per_run, 200),
     (item_set_slot, "itm_ale", slot_item_base_price, 240),
-    (item_set_slot, "itm_ale", slot_item_enterprise_building_cost, 9000),
+    (item_set_slot, "itm_ale", slot_item_enterprise_building_cost, 12000),
 
     (item_set_slot, "itm_wine", slot_item_urban_demand, 15),
     (item_set_slot, "itm_wine", slot_item_rural_demand, 10),
@@ -3241,7 +3241,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_wine", slot_item_output_per_run, 3),
     (item_set_slot, "itm_wine", slot_item_overhead_per_run, 200),
     (item_set_slot, "itm_wine", slot_item_base_price, 440),
-    (item_set_slot, "itm_wine", slot_item_enterprise_building_cost, 12000),
+    (item_set_slot, "itm_wine", slot_item_enterprise_building_cost, 16000),
 
     (item_set_slot, "itm_raw_grapes", slot_item_urban_demand, 0),
     (item_set_slot, "itm_raw_grapes", slot_item_rural_demand, 0),
@@ -3316,7 +3316,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_leatherwork", slot_item_output_per_run, 7),
     (item_set_slot, "itm_leatherwork", slot_item_overhead_per_run, 300),
     (item_set_slot, "itm_leatherwork", slot_item_base_price, 440),
-    (item_set_slot, "itm_leatherwork", slot_item_enterprise_building_cost, 15000),
+    (item_set_slot, "itm_leatherwork", slot_item_enterprise_building_cost, 20000),
 
     (item_set_slot, "itm_raw_leather", slot_item_urban_demand, 0),
     (item_set_slot, "itm_raw_leather", slot_item_rural_demand, 0),
@@ -3350,7 +3350,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_wool_cloth", slot_item_output_per_run, 6),
     (item_set_slot, "itm_wool_cloth", slot_item_overhead_per_run, 350),
     (item_set_slot, "itm_wool_cloth", slot_item_base_price, 500),
-    (item_set_slot, "itm_wool_cloth", slot_item_enterprise_building_cost, 15000),
+    (item_set_slot, "itm_wool_cloth", slot_item_enterprise_building_cost, 20000),
 
     (item_set_slot, "itm_raw_flax", slot_item_urban_demand, 0),
     (item_set_slot, "itm_raw_flax", slot_item_rural_demand, 0),
@@ -3370,7 +3370,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_linen", slot_item_output_per_run, 6),
     (item_set_slot, "itm_linen", slot_item_overhead_per_run, 350),
     (item_set_slot, "itm_linen", slot_item_base_price, 500),
-    (item_set_slot, "itm_linen", slot_item_enterprise_building_cost, 15000),
+    (item_set_slot, "itm_linen", slot_item_enterprise_building_cost, 20000),
 
     (item_set_slot, "itm_iron", slot_item_urban_demand, 0),
     (item_set_slot, "itm_iron", slot_item_rural_demand, 0),
@@ -3390,7 +3390,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_tools", slot_item_output_per_run, 6),
     (item_set_slot, "itm_tools", slot_item_overhead_per_run, 200),
     (item_set_slot, "itm_tools", slot_item_base_price, 810),
-    (item_set_slot, "itm_tools", slot_item_enterprise_building_cost, 18000),
+    (item_set_slot, "itm_tools", slot_item_enterprise_building_cost, 24000),
 
     (item_set_slot, "itm_pottery", slot_item_urban_demand, 15),
     (item_set_slot, "itm_pottery", slot_item_rural_demand, 5),
@@ -3408,7 +3408,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_oil", slot_item_output_per_run, 3),
     (item_set_slot, "itm_oil", slot_item_overhead_per_run, 250),
     (item_set_slot, "itm_oil", slot_item_base_price, 900),
-    (item_set_slot, "itm_oil", slot_item_enterprise_building_cost, 9000),
+    (item_set_slot, "itm_oil", slot_item_enterprise_building_cost, 12000),
 
     (item_set_slot, "itm_raw_olives", slot_item_urban_demand, 2),
     (item_set_slot, "itm_raw_olives", slot_item_rural_demand, 2),
@@ -3429,7 +3429,7 @@ scripts = scripts_hardcoded + [
     (item_set_slot, "itm_velvet", slot_item_overhead_per_run, 400),
     (item_set_slot, "itm_velvet", slot_item_base_price, 2050),
     (item_set_slot, "itm_velvet", slot_item_secondary_raw_material, "itm_raw_dyes"),
-    (item_set_slot, "itm_velvet", slot_item_enterprise_building_cost, 21000),
+    (item_set_slot, "itm_velvet", slot_item_enterprise_building_cost, 28000),
 
     (item_set_slot, "itm_raw_silk", slot_item_urban_demand, 5),
     (item_set_slot, "itm_raw_silk", slot_item_rural_demand, 0),

@@ -75065,37 +75065,12 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 
 [anyone,"master_craftsman_auction_price",[
   (party_get_slot, ":item_produced", "$g_encountered_party", slot_center_player_enterprise),
-  (item_get_slot, ":base_price",":item_produced", slot_item_base_price),
-  (item_get_slot, ":number_runs", ":item_produced", slot_item_output_per_run),
-  (store_mul, "$liquidation_price", ":base_price", ":number_runs"),
-  (val_mul, "$liquidation_price", 4),
-
-  (troop_get_inventory_capacity, ":total_capacity", "$g_talk_troop"),
-  (try_for_range, ":capacity_iterator", 0, ":total_capacity"),
-		(troop_get_inventory_slot, ":item_in_slot", "$g_talk_troop", ":capacity_iterator"),
-		(gt, ":item_in_slot", 0),
-		(item_get_slot, ":price_for_inventory_item", ":item_in_slot", slot_item_base_price),
-#		(troop_inventory_slot_get_item_amount, ":item_ammo", "$g_talk_troop", ":capacity_iterator"),
-#		(troop_inventory_slot_get_item_max_amount, ":item_max_ammo", "$g_talk_troop", ":capacity_iterator"),
-#		(try_begin),
-#			(lt, ":item_ammo", ":item_max_ammo"),
-#			(val_mul, ":price_for_inventory_item", ":item_ammo"),
-#			(val_div, ":price_for_inventory_item", ":item_max_ammo"),
-#		(try_end),
-
-        (store_sub, ":item_slot_no", ":item_in_slot", trade_goods_begin),
-        (val_add, ":item_slot_no", slot_town_trade_good_prices_begin),
-        (party_get_slot, ":index", "$g_encountered_party", ":item_slot_no"),
-		(val_mul, ":price_for_inventory_item", ":index"),
-		(val_div, ":price_for_inventory_item", 1200),
-		#modify by site
-		#divide by 1200 not 1000
-		(val_add, "$liquidation_price", ":price_for_inventory_item"),
-  (try_end),
-
+  (item_get_slot, "$liquidation_price",":item_produced", slot_item_enterprise_building_cost),
+  (val_mul, "$liquidation_price", 900),#reduce to 90% of building cost
+  (val_div, "$liquidation_price", 1000),
   (assign, reg4, "$liquidation_price"),
-
- ], "A pity, my {lord/lady}. If we sell the land and the equipment, and liquidate the inventories, I estimate that we can get {reg4} denarii.", "master_craftsman_auction_decide",[]],
+], "A pity, my {lord/lady}. If we sell the land and the equipment, and liquidate the inventories, I estimate that we can get {reg4} denarii.", "master_craftsman_auction_decide",[
+]],
 
 [anyone|plyr,"master_craftsman_auction_decide",[
  ], "That sounds reasonable. Please proceed with the sale.", "master_craftsman_liquidation",[
@@ -91705,7 +91680,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],"What is with my wife? She is beautiful, that's what you wanted to say, don't you?", "desert_king_quest_gara_talk_daughter",[]],
 
 [anyone|plyr, "desert_king_quest_gara_talk_daughter",[(store_troop_gold, ":gold", "trp_player"),
-  (ge, ":gold", 10000),],"I want to buy your wife for 10000 denarii.", "desert_king_quest_gara_talk_daughter2",[]],
+  (ge, ":gold", 10000),],"I want to buy your wife for 10,000 denarii.", "desert_king_quest_gara_talk_daughter2",[]],
 [anyone, "desert_king_quest_gara_talk_daughter2",[],"You son of a whore! I will never sale my wife like a slave!", "desert_king_quest_gara_talk_daughter",[]],
 [anyone|plyr, "desert_king_quest_gara_talk_daughter",[],"I am here to bring your wife Darta back to her family.", "desert_king_quest_gara_talk_daughter3",[]],
 [anyone, "desert_king_quest_gara_talk_daughter3",[],"What are you talking? You jackal, I won't give you my wife. I should ...", "desert_king_quest_gara_talk_daughter4",[]],
