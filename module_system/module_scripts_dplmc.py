@@ -5977,7 +5977,7 @@ scripts_dplmc = [
         (is_between, ":item", ":valid_items_begin", ":valid_items_end"),
         (neg|is_between, ":type", books_begin, books_end),
         (this_or_next|neg|is_between, ":type", food_begin, food_end),
-            (eq, ":imod", imod_rotten),
+        (eq, ":imod", imod_rotten),
         (neg|is_between, ":type", trade_goods_begin, trade_goods_end),
         (neq, ":imod", imod_lordly),#dplmc+: never sell "lordly" items
         #dplmc+ end added constraints
@@ -6245,7 +6245,10 @@ scripts_dplmc = [
     (try_for_range, ":i_slot", 10, ":inv_cap"),
         (troop_get_inventory_slot, ":item", ":merchant_troop", ":i_slot"),
         (gt, ":item", -1),
-        (is_between, ":item", food_begin, food_end),
+        (is_between, ":item", "itm_raw_date_fruit", food_end),
+        (neq, ":item", "itm_tea"),
+        (neq, ":item", "itm_furs"),
+        (neq, ":item", "itm_rice"),
         (troop_inventory_slot_get_item_amount, ":amount", ":merchant_troop", ":i_slot"),
         ##dplmc+: The next line required making a change to header_operations.py
         (troop_inventory_slot_get_item_max_amount, ":max_amount", ":merchant_troop", ":i_slot"),
@@ -6297,7 +6300,10 @@ scripts_dplmc = [
     (try_for_range, ":i_slot", 10, ":inv_cap"),
         (troop_get_inventory_slot, ":item", ":customer", ":i_slot"),
         (gt, ":item", -1),
-        (is_between, ":item", food_begin, food_end),
+        (is_between, ":item", "itm_raw_date_fruit", food_end),
+        (neq, ":item", "itm_tea"),
+        (neq, ":item", "itm_furs"),
+        (neq, ":item", "itm_rice"),
         (troop_get_inventory_slot_modifier, ":imod", ":customer", ":i_slot"),
         (eq, ":imod", imod_rotten),
         (store_free_inventory_capacity, ":free_inv_cap", ":merchant_troop"),
@@ -7056,7 +7062,10 @@ scripts_dplmc = [
             (display_message, "@{!}Initializing auto-loot.  This message should not appear more than once."),
         (try_end),
         #Initialize
-        (try_for_range, ":cur_food", food_begin, food_end),
+        (try_for_range, ":cur_food", "itm_raw_date_fruit", food_end),
+            (neq, ":cur_food", "itm_tea"),
+            (neq, ":cur_food", "itm_furs"),
+            (neq, ":cur_food", "itm_rice"),
             (item_set_slot, ":cur_food", dplmc_slot_item_food_portion, 1),
         (try_end),
         # #deprecated due to 1.165 operations
