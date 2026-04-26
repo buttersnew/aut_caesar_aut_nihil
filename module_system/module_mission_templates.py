@@ -21662,7 +21662,7 @@ mission_templates = [
             (eq, ":troop", "trp_senator"),
             (agent_set_slot, ":agent_no", slot_agent_courage_score, 0),
             (store_random_in_range, ":r", 40, 104),
-            (troop_get_slot, ":relation", "p_town_6", slot_center_player_relation),
+            (party_get_slot, ":relation", "p_town_6", slot_center_player_relation),
             (val_mul, ":relation", -1),
             (val_add, ":relation", 100),
             (val_mul, ":relation", 40),

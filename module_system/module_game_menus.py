@@ -5577,7 +5577,7 @@ game_menus = [
                             (ge, reg0, soldiers_begin),
                             (assign, ":best_troop", reg0),
                         (else_try),
-                            (troop_get_slot, ":players_culture", "trp_player", slot_faction_culture),
+                            (troop_get_slot, ":players_culture", "trp_player", slot_troop_culture),
                             (is_between, ":players_culture", cultures_begin, cultures_end),
                             (faction_get_slot, reg0, ":players_culture", slot_faction_guard_troop),
                             (ge, reg0, soldiers_begin),

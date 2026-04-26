@@ -18248,13 +18248,13 @@ scripts = scripts_hardcoded + [
         (try_for_range, ":quest_no", army_quests_begin, army_quests_end),
             (check_quest_active, ":quest_no"),
             (call_script, "script_cancel_quest", ":quest_no"),
-            (troop_get_slot, ":army_quest_giver_troop", ":quest_no", slot_quest_giver_troop),
+            (quest_get_slot, ":army_quest_giver_troop", ":quest_no", slot_quest_giver_troop),
             (assign, ":one_active", 1),
         (try_end),
         (try_begin),
             (check_quest_active, "qst_follow_army"),
             (assign, ":one_active", 1),
-            (troop_get_slot, ":army_quest_giver_troop", "qst_follow_army", slot_quest_giver_troop),
+            (quest_get_slot, ":army_quest_giver_troop", "qst_follow_army", slot_quest_giver_troop),
             (call_script, "script_end_quest", "qst_follow_army"),
         (try_end),
         (eq, ":one_active", 1),
@@ -45887,7 +45887,7 @@ scripts = scripts_hardcoded + [
 
 	(assign, ":player_possessions", 0),
 	(try_for_range, ":center", centers_begin, centers_end),
-		(troop_slot_eq, ":center", slot_town_lord, "trp_player"),
+		(party_slot_eq, ":center", slot_town_lord, "trp_player"),
 		(val_add, ":player_possessions", 1),
 	(try_end),
 
@@ -46018,7 +46018,7 @@ scripts = scripts_hardcoded + [
 		(str_store_string, s14, "str_nah_i_want_a_woman_wholl_keep_quiet_and_do_what_shes_told_i_dont_think_thats_you"),
 	(else_try), #no properties
 		(this_or_next|eq, ":npc_reputation_type", lrep_selfrighteous),
-			(eq, ":npc_reputation_type", lrep_debauched),
+        (eq, ":npc_reputation_type", lrep_debauched),
 
 		(ge, ":romantic_chemistry", 10),
 		(eq, ":player_possessions", 0),
@@ -46027,7 +46027,7 @@ scripts = scripts_hardcoded + [
 
 	(else_try), #you're a nobody - I can do better
 		(this_or_next|eq, ":npc_reputation_type", lrep_selfrighteous),
-			(eq, ":npc_reputation_type", lrep_debauched),
+        (eq, ":npc_reputation_type", lrep_debauched),
 
 		(eq, ":player_possessions", 0),
 
