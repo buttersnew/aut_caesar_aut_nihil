@@ -64911,7 +64911,7 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":copy_horse", 3),
 
     (try_begin),
-        (mission_tpl_entry_set_override_flags, ":mission_template", ":entry", af_override_all_but_horse | af_override_foot),
+        (mission_tpl_entry_set_override_flags, ":mission_template", ":entry", af_override_all | af_override_foot),
         (mission_tpl_entry_clear_override_items, ":mission_template", ":entry"),
 
         (try_for_range, ":slot", ek_item_0, ek_body),
