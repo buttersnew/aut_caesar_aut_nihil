@@ -435,7 +435,7 @@ scenes = [
   ("town_berber_tavern", sf_indoors, "viking_interior_tavern_a", "bo_viking_interior_tavern_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_berber_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x3002cd340002b4ac00002ccd800026dc00000c1d",[], [], "outer_terrain_plain"),
 
-  ("town_garamantian_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",[], [], "outer_terrain_desert_b"),
+  ("town_garamantian_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000013001c98d0005b56d000072a70000240a00001e09",[], [], "outer_terrain_desert_b"),
   ("town_garamantian_castle", sf_indoors, "viking_interior_keep_a", "bo_viking_interior_keep_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_garamantian_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001200000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_desert_b"),
   ("town_garamantian_prison", sf_indoors, "interior_prison_cell_a", "bo_interior_prison_cell_a", (-100, -100), (100, 100), -100, "0",["exit"], []),

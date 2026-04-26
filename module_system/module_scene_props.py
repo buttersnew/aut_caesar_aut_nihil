@@ -3576,4 +3576,12 @@ scene_props = [
 # from 'additional_props.brf': end (OpenBRF)
 
   ( "mp_mound_a_path_digg"                       ,sokf_moveable,"mp_mound_a_path","bo_mp_mound_a",[]),
+
+( "mud_wall",0,"mud_wall","bo_egy_wall_tower5",[]),
+( "mud_wall_destroyed",0,"mud_wall_destroyed","bo_mud_wall_destroyed",[]),
+( "mud_wall_gate",0,"mud_wall_gate","bo_egy_wall_tower3",[]),
+( "mud_wall_low",0,"mud_wall_low","bo_egy_wall_tower4",[]),
+( "mud_wall_tower_1",0,"mud_wall_tower_1","bo_egy_wall_tower2",[]),
+( "mud_wall_tower_2",0,"mud_wall_tower_2","bo_egy_wall_tower1",[]),
+
 ]
