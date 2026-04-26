@@ -1,5 +1,5 @@
 scenesfile version 1
- 930
+ 931
 scn_random_scene random_scene 1792 none none 0.000000 0.000000 240.000000 240.000000 -0.500000 0x300028000003e8fa0000034e00004b34000059be 
   0 
   0 
@@ -528,7 +528,7 @@ scn_castle_garamantian_prison castle_garamantian_prison 1 interior_prison_i bo_i
   0 
   0 
  0 
-scn_castle_berber_exterior castle_berber_exterior 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x0000000130025cb20006097f00005b1400000e2f00005fd9 
+scn_castle_berber_exterior castle_berber_exterior 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000000300000000005c577000041ef00005ae800003c55 
   0 
   0 
  outer_terrain_steppe 
@@ -785,6 +785,10 @@ scn_village_berber village_berber 256 none none 0.000000 0.000000 100.000000 100
   0 
  outer_terrain_desert_b 
 scn_village_garamantian_2 village_garamantian_2 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000000500005020005a16800003f9900007d5600002a9c 
+  0 
+  0 
+ outer_terrain_desert_b 
+scn_village_garamantian_3 village_garamantian_3 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000002562005000008da3800006e27000071660000587a 
   0 
   0 
  outer_terrain_desert_b 
@@ -1240,15 +1244,15 @@ scn_town_berber_walls town_berber_walls 256 none none 0.000000 0.000000 100.0000
   0 
   0 
  outer_terrain_plain 
-scn_town_garamantian_arena town_garamantian_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
+scn_town_garamantian_arena town_garamantian_arena 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x000000013001c98d0005b56d000072a70000240a00001e09 
   0 
   0 
  outer_terrain_desert_b 
-scn_town_garamantian_castle town_garamantian_castle 256 none none -100.000000 -100.000000 100.000000 100.000000 -100.000000 0xa0001d9300031ccb0000156f000048ba0000361c 
+scn_town_garamantian_castle town_garamantian_castle 1 viking_interior_keep_a bo_viking_interior_keep_a -100.000000 -100.000000 100.000000 100.000000 -100.000000 0 
   1  100000 
   0 
  0 
-scn_town_garamantian_center town_garamantian_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001300010c800054d5c00004af000005d3f00002ca0 
+scn_town_garamantian_center town_garamantian_center 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001200000000005194a000041ef00005ae800003c55 
   0 
   0 
  outer_terrain_desert_b 
@@ -1264,7 +1268,7 @@ scn_town_garamantian_tavern town_garamantian_tavern 1 viking_interior_tavern_a b
   1  100000 
   0 
  0 
-scn_town_garamantian_walls town_garamantian_walls 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001300010c800054d5c00004af000005d3f00002ca0 
+scn_town_garamantian_walls town_garamantian_walls 256 none none 0.000000 0.000000 100.000000 100.000000 -100.000000 0x00000001200000000005194a000041ef00005ae800003c55 
   0 
   0 
  outer_terrain_desert_b 

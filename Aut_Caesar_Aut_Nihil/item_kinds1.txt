@@ -1,5 +1,5 @@
 itemsfile version 3
-1959
+1962
  itm_no_item INVALID_ITEM INVALID_ITEM 1  invalid_item 0  12582914 9223388529554358287 3 0 1.500000 100 0 0 0 0 0 103 0 90 0 522 528
  0
 0
@@ -1747,6 +1747,24 @@ itemsfile version 3
  18
 1
 -50.000000  1 1 1 936748722493063925 
+
+ itm_lybian_breastplate_1 Lybian_Breastplate_with_Coat Lybian_Breastplate_with_Coat 1  lybian_breastplate_1 0  553648141 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ 1
+ 18
+1
+-50.000000  1 1 1 936748722493063932 
+
+ itm_lybian_breastplate_2 Lybian_Breastplate_with_Coat Lybian_Breastplate_with_Coat 1  lybian_breastplate_2 0  553648141 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ 1
+ 18
+1
+-50.000000  1 1 1 936748722493063932 
+
+ itm_lybian_breastplate_3 Lybian_Breastplate_with_Coat Lybian_Breastplate_with_Coat 1  lybian_breastplate_3 0  553648141 0 2881 704643236 28.000000 85 0 48 5 10 0 0 0 0 0 0 0
+ 1
+ 18
+1
+-50.000000  1 1 1 936748722493063932 
 
  itm_berber_noble_tunic_1 Berber_Nobel_Tunic Berber_Nobel_Tunic 1  berber_noble_tunic_1 0  553648141 0 33 123731968 1.000000 110 0 7 3 0 0 0 0 0 0 0 0
  1
