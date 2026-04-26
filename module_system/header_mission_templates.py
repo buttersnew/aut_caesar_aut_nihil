@@ -133,7 +133,7 @@ af_require_civilian         = 0x10000000
 af_override_all_but_horse   = af_override_weapons | af_override_head | af_override_body |af_override_gloves
 af_override_all             = af_override_horse | af_override_all_but_horse
 af_override_everything      = af_override_all | af_override_foot
-af_override_outfit_1        = af_override_all_but_horse | af_override_foot
+af_override_outfit_1        = af_override_all | af_override_foot
 
 requires_third_party = 0x00000001
 
