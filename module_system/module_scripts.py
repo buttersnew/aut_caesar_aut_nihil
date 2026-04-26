@@ -77430,7 +77430,7 @@ scripts = scripts_hardcoded + [
         (troop_set_inventory_slot, "trp_player", ek_item_0, "itm_garamantian_spear_2"),
         (troop_set_inventory_slot, "trp_player", ek_item_1, "itm_african_round_shield"),
         (troop_set_inventory_slot, "trp_player", ek_head, "itm_a_lybian_feathers_3"),
-        (troop_set_inventory_slot, "trp_player", ek_body, "itm_garamantian_armor_2"),
+        (troop_set_inventory_slot, "trp_player", ek_body, "itm_lybian_breastplate_1"),
         (troop_set_inventory_slot, "trp_player", ek_foot, "itm_centurio_east_graves"),
         (troop_set_inventory_slot, "trp_player", ek_horse, "itm_numidian_horse_1"),
         ## civilian

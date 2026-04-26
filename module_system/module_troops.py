@@ -730,6 +730,9 @@ garamantian_light_armour_noble = [
   itm_garamantian_noble_cloak_1,itm_garamantian_noble_cloak_2,
   itm_garamantian_noble_cloak_3,itm_garamantian_noble_cloak_4
 ]
+garamantian_heavy_armour = [
+  itm_lybian_breastplate_1, itm_lybian_breastplate_2, itm_lybian_breastplate_3
+]
 garamantian_shield_round_light = [
   itm_african_round_shield,itm_hide_covered_round_shield,
   itm_ad_mixed_round_shields_14,itm_ad_mixed_round_shields_15,
@@ -1482,10 +1485,10 @@ attrib_level_26, wp_melee(180), knows_level_26, north_african_man_face_middle_2,
 attrib_level_26, wp_melee(180), knows_level_26, north_african_man_face_middle_1, north_african_man_face_old_1 ],
 
 ["garamantian_standard_bearer", "Amazzal Asennay", "Imazzalen Isennayen", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
-[]+garamantian_foot_noble+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_standards,
+[]+garamantian_foot_noble+garamantian_heavy_armour+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_standards,
 attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["garamantian_hornman", "Amazzal Imzad", "Imazzalen Imzad", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
-[]+garamantian_foot_noble+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_spears+garamantian_horns,
+[]+garamantian_foot_noble+garamantian_heavy_armour+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_spears+garamantian_horns,
 attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 # ["hornman", "Xenikos Moysikos", "Xenikoi Moysikoi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
@@ -1686,23 +1689,23 @@ attrib_level_23_warrior, wpe(140,170,170,170), knows_archer_exp, north_african_m
 attrib_level_26_warrior, wpe(160,190,190,190), knows_archer_elit, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["garamantian_noble_spearman","Amallagh Amghar", "Imallaghen Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_garamantian,
-[]+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_light+garamantian_helm_medium,
+[]+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_heavy_armour+garamantian_shield_light+garamantian_helm_medium,
 attrib_level_23_warrior, wp(160), knows_level_23_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["garamantian_noble_spearman_exp","Amallagh Amghar (exp)", "Imallaghen Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_garamantian,
-[]+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_light+garamantian_helm_medium,
+[]+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_heavy_armour+garamantian_shield_light+garamantian_helm_medium,
 attrib_level_26_warrior, wp(175), knows_level_26_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["garamantian_noble_spearman_vet","Amallagh Amghar (vet)", "Imallaghen Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet, no_scene, reserved, fac_culture_garamantian,
-[]+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_light+garamantian_helm_medium,
+[]+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_heavy_armour+garamantian_shield_light+garamantian_helm_medium,
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["garamantian_noble_cav","Amanay Amghar", "Imanayan Imgharen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse, no_scene, reserved, fac_culture_garamantian,
-[]+horse_numidian+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_round_light+garamantian_helm_medium,
+[]+horse_numidian+garamantian_foot_noble+garamantian_foot_light+garamantian_spears+garamantian_light_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_heavy_armour+garamantian_shield_round_light+garamantian_helm_medium,
 attrib_level_23_warrior, wp(160), knows_level_23_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["garamantian_noble_cav_exp","Amanay Amghar (exp)", "Imanayan Imgharen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse, no_scene, reserved, fac_culture_garamantian,
-[]+horse_numidian+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_round_light+garamantian_helm_medium,
+[]+horse_numidian+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_heavy_armour+garamantian_shield_round_light+garamantian_helm_medium,
 attrib_level_26_warrior, wp(175), knows_level_26_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["garamantian_noble_cav_vet","Amanay Amghar (vet)", "Imanayan Imgharen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_boots|tf_guarantee_helmet|tf_mounted|tf_guarantee_horse, no_scene, reserved, fac_culture_garamantian,
-[]+horse_numidian+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_shield_round_light+garamantian_helm_medium,
+[]+horse_numidian+garamantian_foot_noble+garamantian_spears+garamantian_feathers+garamantian_light_armour_noble+garamantian_heavy_armour    +garamantian_shield_round_light+garamantian_helm_medium,
 attrib_level_29_warrior, wp(190), knows_level_29_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["garamantian_skirmisher_cav","Amanay Ameggar", "Imanayan Imeggaren", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_boots|tf_mounted|tf_guarantee_horse, no_scene, reserved, fac_culture_garamantian,
@@ -4462,7 +4465,7 @@ knight_attrib_1, wp(270), knight_skills_1, 0x000000091805318d251b89d69d71d96c000
 knight_attrib_5, wp(320), knight_skills_5|knows_trainer_5, 0x000000002811a14408d889b5949234d900000000001115a40000000000000000 ],
 
 ["kingdom_29_lord", "Akhamuk", "Akhamuk", tf_hero, no_scene, reserved, fac_kingdom_29,
-[itm_garamantian_armor_2,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield,itm_caligea,itm_ring_1,itm_numidian_horse_1,itm_a_lybian_feathers_3],
+[itm_garamantian_armor_2,itm_lybian_breastplate_1,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield,itm_caligea,itm_ring_1,itm_numidian_horse_1,itm_a_lybian_feathers_3],
 knight_attrib_4, wp(270), knight_skills_4|knows_trainer_5, 0x000000000a110407586588b6d5b0b6da00000000000a985c0000000000000000 ],
 
 ["knight_1_1", "Dacian Lord", "Avizina", tf_hero, no_scene, reserved, fac_kingdom_1,
@@ -4805,10 +4808,10 @@ knight_attrib_3, wp(200), knight_skills_3, 0x000000001a115487351a2a571b65e0e4000
 
 #Garamantes lords
 ["knight_29_1", "Garamantian Lord", "Ouksem", tf_hero, no_scene, reserved, fac_kingdom_29,
-[itm_garamantian_noble_cloak_3,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_3,itm_caligea,itm_numidian_horse_3,itm_a_lybian_feathers_2],
+[itm_lybian_breastplate_2,itm_garamantian_noble_cloak_3,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_3,itm_caligea,itm_numidian_horse_3,itm_a_lybian_feathers_2],
 knight_attrib_4, wp(230), knight_skills_4|knows_trainer_3, 0x000000003a10f0d27d1291bcf42e3b0c00000000000c352c0000000000000000 ],
 ["knight_29_2", "Garamantian Lord", "Kabaon", tf_hero, 0, reserved, fac_kingdom_29,
-[itm_garamantian_noble_cloak_4,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_4,itm_caligea,itm_numidian_horse_1,itm_a_lybian_feathers_1],
+[itm_lybian_breastplate_3,itm_garamantian_noble_cloak_4,itm_centurio_east_graves,itm_garamantian_spear_2,itm_african_round_shield_4,itm_caligea,itm_numidian_horse_1,itm_a_lybian_feathers_1],
 knight_attrib_3, wp(200), knight_skills_3, 0x000000002d11a40f434d4536736966a4000000000015371e0000000000000000 ],
 
 ###legatus legionis

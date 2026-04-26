@@ -1433,6 +1433,16 @@ tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),]),], [fac_culture_garamantian] ],
 
+["lybian_breastplate_1", "Lybian Breastplate with Coat", [("lybian_breastplate_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_armor_merc"),],),], [fac_culture_garamantian] ],
+["lybian_breastplate_2", "Lybian Breastplate with Coat", [("lybian_breastplate_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_armor_merc"),],),], [fac_culture_garamantian] ],
+["lybian_breastplate_3", "Lybian Breastplate with Coat", [("lybian_breastplate_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+breastplate_iron_armor_price, breastplate_iron_armor, imodbits_armor, [(ti_on_init_item,[
+(call_script, "script_init_armor_merc"),],),], [fac_culture_garamantian] ],
+
 ["berber_noble_tunic_1", "Berber Nobel Tunic", [("berber_noble_tunic_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_desert_tunic"),]),], [fac_culture_berber] ],
