@@ -3152,6 +3152,9 @@ scripts_hardcoded = [
     (party_set_slot,"p_village_162", slot_town_center, "scn_village_patrae"),
     (party_set_slot,"p_village_166", slot_town_center, "scn_village_ephesus"),
 
+    (party_set_slot, "p_village_262", slot_town_center, "scn_village_garamantian_3"),
+    (party_set_slot, "p_village_258", slot_town_center, "scn_village_garamantian_3"),
+
     (party_set_extra_icon, "p_village_166","icon_wonder_artemis",0,0,0,0),
 
     (try_for_range, ":village_no", villages_begin, villages_end),#finally set all unassigned scenes yet

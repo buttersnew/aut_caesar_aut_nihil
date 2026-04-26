@@ -180,7 +180,7 @@ scenes = [
   ("castle_garamantian_interior", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_garamantian_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",[], []),
 
-  ("castle_berber_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000130025cb20006097f00005b1400000e2f00005fd9",[], [], "outer_terrain_steppe"),
+  ("castle_berber_exterior", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000300000000005c577000041ef00005ae800003c55",[], [], "outer_terrain_steppe"),
   ("castle_berber_interior", sf_indoors, "interior_castle_k", "bo_interior_castle_k", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("castle_berber_prison", sf_indoors, "interior_prison_i", "bo_interior_prison_i", (-100, -100), (100, 100), -100, "0",[], []),
 
@@ -289,6 +289,9 @@ scenes = [
 
   ("village_berber", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000500005020005a16800003f9900007d5600002a9c",  [],[],"outer_terrain_desert_b"),
   ("village_garamantian_2", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000000500005020005a16800003f9900007d5600002a9c",  [],[],"outer_terrain_desert_b"),
+
+  ("village_garamantian_3", sf_generate,"none", "none", (0,0),(100,100),-100,"0x00000002562005000008da3800006e27000071660000587a",  [],[],"outer_terrain_desert_b"),
+
 
 
   ("village_syria_1", sf_generate, "none", "none", (0, 0), (120, 120), -100, "0x00000000300000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_steppe_desert"),
@@ -433,12 +436,12 @@ scenes = [
   ("town_berber_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x3002cd340002b4ac00002ccd800026dc00000c1d",[], [], "outer_terrain_plain"),
 
   ("town_garamantian_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",[], [], "outer_terrain_desert_b"),
-  ("town_garamantian_castle", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",["exit"], []),
-  ("town_garamantian_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001300010c800054d5c00004af000005d3f00002ca0",[], [], "outer_terrain_desert_b"),
+  ("town_garamantian_castle", sf_indoors, "viking_interior_keep_a", "bo_viking_interior_keep_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
+  ("town_garamantian_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001200000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_desert_b"),
   ("town_garamantian_prison", sf_indoors, "interior_prison_cell_a", "bo_interior_prison_cell_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_garamantian_store", sf_indoors, "viking_interior_merchant_a", "bo_viking_interior_merchant_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
   ("town_garamantian_tavern", sf_indoors, "viking_interior_tavern_a", "bo_viking_interior_tavern_a", (-100, -100), (100, 100), -100, "0",["exit"], []),
-  ("town_garamantian_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001300010c800054d5c00004af000005d3f00002ca0",[], [], "outer_terrain_desert_b"),
+  ("town_garamantian_walls", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000001200000000005194a000041ef00005ae800003c55",[], [], "outer_terrain_desert_b"),
 
   ("town_20_arena", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",[], [], "outer_terrain_plain"),
   ("town_20_castle", sf_generate, "none", "none", (-100, -100), (100, 100), -100, "0xa0001d9300031ccb0000156f000048ba0000361c",["exit"], []),
