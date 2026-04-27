@@ -4126,6 +4126,10 @@ attrib_level_16_warrior,wp(150),knows_level_16_warrior,0x00000001bf00b09a37cf9d0
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_light_lance,itm_sarmatian_ringsword_1,itm_sarmatian_cap_3,itm_sarmatian_light5,itm_sarmatian_shoes,itm_steppe_horse_2],
 str_16|agi_16|int_15|cha_15|level(25), wp(160),knows_archer_elit_eastern,  0x0000000fee01128148a39ec87d6c349b00000000001e48f80000000000000000],
 
+["npc43", "Sabalus", "Sabalus", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+[itm_numidian_spear_2,itm_javelin_berber,itm_numidian_armor_4,itm_african_round_shield,itm_numidian_horse_2,itm_caligea],
+str_16|agi_14|int_12|cha_14|level(22), wp(145), knows_warrior_npc|knows_riding_4|knows_leadership_2|knows_spotting_2|knows_tracking_2|knows_looting_2, north_african_man_face_young_1],
+
 #NPC system changes end
 
 

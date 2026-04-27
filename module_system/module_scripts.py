@@ -32052,7 +32052,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc31", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc31", slot_troop_personalityclash_object, -1), #
     (troop_set_slot, "trp_npc31", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc31", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc31", slot_troop_personalitymatch_object, "trp_npc43"), #Sabalus
     (troop_set_slot, "trp_npc31", slot_troop_home, "p_town_21"), #Africa
     (troop_set_slot, "trp_npc31", slot_troop_payment_request, 15000),
     (troop_set_slot, "trp_npc31", slot_troop_kingsupport_argument, argument_victory),
@@ -32083,7 +32083,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc33", slot_troop_personalityclash_object, "trp_npc32"), #
-    (troop_set_slot, "trp_npc33", slot_troop_personalityclash2_object, -1), #
+    (troop_set_slot, "trp_npc33", slot_troop_personalityclash2_object, "trp_npc43"), #Sabalus
     (troop_set_slot, "trp_npc33", slot_troop_personalitymatch_object, -1), #
     (troop_set_slot, "trp_npc33", slot_troop_home, "p_town_33"), #Tarentum
     (troop_set_slot, "trp_npc33", slot_troop_payment_request, 0),
@@ -32241,6 +32241,23 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc42", slot_troop_culture, "fac_culture_sarmatian"),
     (troop_set_slot, "trp_npc42", slot_troop_age, 24),
     (troop_set_slot, "trp_npc42", slot_troop_renown, 200),
+
+    (troop_set_slot, "trp_npc43", slot_troop_morality_type, tmt_egalitarian), #
+    (troop_set_slot, "trp_npc43", slot_troop_morality_value, 2),
+    (troop_set_slot, "trp_npc43", slot_troop_2ary_morality_type, -1),
+    (troop_set_slot, "trp_npc43", slot_troop_2ary_morality_value, 0),
+    (troop_set_slot, "trp_npc43", slot_troop_personalityclash_object, "trp_npc33"), #Lucius Modius minor
+    (troop_set_slot, "trp_npc43", slot_troop_personalityclash2_object, -1), #
+    (troop_set_slot, "trp_npc43", slot_troop_personalitymatch_object, "trp_npc31"), #Ra Karak
+    (troop_set_slot, "trp_npc43", slot_troop_home, "p_gaetulian_town_1"), #Larbas
+    (troop_set_slot, "trp_npc43", slot_troop_payment_request, 8000),
+    (troop_set_slot, "trp_npc43", slot_troop_kingsupport_argument, argument_commons),
+    (troop_set_slot, "trp_npc43", slot_troop_kingsupport_opponent, "trp_npc33"), #
+    (troop_set_slot, "trp_npc43", slot_troop_town_with_contacts, "p_gaetulian_town_1"), #Larbas
+    (troop_set_slot, "trp_npc43", slot_lord_reputation_type, lrep_martial),
+    (troop_set_slot, "trp_npc43", slot_troop_culture, "fac_culture_berber"),
+    (troop_set_slot, "trp_npc43", slot_troop_age, 32),
+    (troop_set_slot, "trp_npc43", slot_troop_renown, 180),
 
     (store_sub, "$number_of_npc_slots", slot_troop_strings_end, slot_troop_intro),
     (try_for_range, ":npc", companions_begin, companions_end),
@@ -80615,6 +80632,10 @@ scripts = scripts_hardcoded + [
         (eq, ":town", "p_castle_4"),#Vindobona
         (eq, ":location", location_hall),
         (assign, ":companion", "trp_npc15"),
+    (else_try),
+        (eq, ":town", "p_gaetulian_town_1"),#Larbas
+        (eq, ":location", location_tavern),
+        (assign, ":companion", "trp_npc43"),
     (try_end),
     (assign, reg0, ":companion"),
 ]),
