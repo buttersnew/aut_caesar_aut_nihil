@@ -32211,7 +32211,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc31", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc31", slot_troop_personalityclash_object, -1), #
     (troop_set_slot, "trp_npc31", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc31", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc31", slot_troop_personalitymatch_object, "trp_npc43"), # Sabalus, fellow African warrior
     (troop_set_slot, "trp_npc31", slot_troop_home, "p_town_21"), #Africa
     (troop_set_slot, "trp_npc31", slot_troop_payment_request, 15000),
     (troop_set_slot, "trp_npc31", slot_troop_kingsupport_argument, argument_victory),
@@ -32226,7 +32226,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc32", slot_troop_personalityclash_object, "trp_npc33"), #
-    (troop_set_slot, "trp_npc32", slot_troop_personalityclash2_object, -1), #
+    (troop_set_slot, "trp_npc32", slot_troop_personalityclash2_object, "trp_npc43"), # Sabalus the Berber rebel
     (troop_set_slot, "trp_npc32", slot_troop_personalitymatch_object, -1), #
     (troop_set_slot, "trp_npc32", slot_troop_home, "p_town_6"), #Rome
     (troop_set_slot, "trp_npc32", slot_troop_payment_request, 0),
@@ -32400,6 +32400,23 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc42", slot_troop_culture, "fac_culture_sarmatian"),
     (troop_set_slot, "trp_npc42", slot_troop_age, 24),
     (troop_set_slot, "trp_npc42", slot_troop_renown, 200),
+
+    (troop_set_slot, "trp_npc43", slot_troop_morality_type, tmt_egalitarian), #
+    (troop_set_slot, "trp_npc43", slot_troop_morality_value, 3),
+    (troop_set_slot, "trp_npc43", slot_troop_2ary_morality_type, -1),
+    (troop_set_slot, "trp_npc43", slot_troop_2ary_morality_value, 0),
+    (troop_set_slot, "trp_npc43", slot_troop_personalityclash_object, "trp_npc32"), # Gaius Lemonius, Roman who looks down on Berber rebel
+    (troop_set_slot, "trp_npc43", slot_troop_personalityclash2_object, -1), #
+    (troop_set_slot, "trp_npc43", slot_troop_personalitymatch_object, "trp_npc31"), # Ra Karak, fellow African warrior
+    (troop_set_slot, "trp_npc43", slot_troop_home, "p_town_28"), # Carthago, North Africa
+    (troop_set_slot, "trp_npc43", slot_troop_payment_request, 5000),
+    (troop_set_slot, "trp_npc43", slot_troop_kingsupport_argument, argument_victory),
+    (troop_set_slot, "trp_npc43", slot_troop_kingsupport_opponent, "trp_npc32"), #
+    (troop_set_slot, "trp_npc43", slot_troop_town_with_contacts, "p_town_28"), # Carthago
+    (troop_set_slot, "trp_npc43", slot_lord_reputation_type, lrep_martial),
+    (troop_set_slot, "trp_npc43", slot_troop_culture, "fac_culture_berber"),
+    (troop_set_slot, "trp_npc43", slot_troop_age, 32),
+    (troop_set_slot, "trp_npc43", slot_troop_renown, 150),
 
     (store_sub, "$number_of_npc_slots", slot_troop_strings_end, slot_troop_intro),
     (try_for_range, ":npc", companions_begin, companions_end),
@@ -77670,6 +77687,10 @@ scripts = scripts_hardcoded + [
             (troop_set_slot, "trp_npc42", slot_troop_met, 1),
             (call_script, "script_recruit_troop_as_companion", "trp_npc42"),
         (else_try),
+            (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_berber"),#berber
+            (troop_set_slot, "trp_npc43", slot_troop_met, 1),
+            (call_script, "script_recruit_troop_as_companion", "trp_npc43"),
+        (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_celtic"),#celtic
             (troop_set_slot, "trp_npc6", slot_troop_met, 1),
             (call_script, "script_recruit_troop_as_companion", "trp_npc6"),
@@ -81039,6 +81060,8 @@ scripts = scripts_hardcoded + [
         (assign, ":companion", "trp_npc13"),
     (else_try),
         (eq, ":town", "p_town_28"),#Carthago
+        (eq, ":location", location_center),
+        (assign, ":companion", "trp_npc43"),
     (else_try),
         (eq, ":town", "p_town_29"),#Leptis Magna
         (eq, ":location", location_center),
