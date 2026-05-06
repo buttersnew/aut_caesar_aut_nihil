@@ -81539,7 +81539,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   "migdeu_story_talk_1_9",[]],
 
 [anyone,"migdeu_story_talk_1_9",[
- ], "It is the best and no one else, expect you, me and her, has smelt it so far. Million times better than the 'flowers of Egypt'. But despite my efforts... she .... she still rejects me.",
+ ], "It is the best and no one else, expect you, me and her, has smelt it so far. Million times better than the 'roses of Egypt'. But despite my efforts... she .... she still rejects me.",
   "migdeu_story_talk_1_10",[]],
 [anyone|plyr,"migdeu_story_talk_1_10",[
  ], "I will go and talk with her. I convince her and as reward you will give me a bottle of this perfume. Deal?",
