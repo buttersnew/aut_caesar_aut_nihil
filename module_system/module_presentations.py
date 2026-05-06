@@ -19579,7 +19579,7 @@ presentations = presentations_wse2 + [
       (eq, ":object", "$g_presentation_obj_admin_panel_4"),
       (str_store_string,s2,"@Enemies spotted messages"),
       (str_store_string,s3,"str_qual_life_feature"),
-      (str_store_string,s4,"@If enabled, you will recieve notification if enemies are spotted from nearby settlements or from settlements with messanger posts."),
+      (str_store_string,s4,"@If enabled, you will recieve notification if enemies are spotted from nearby settlements or from settlements with messenger posts."),
       (overlay_set_display, "$g_presentation_obj_4", 0),
     # (else_try),
       # (this_or_next|eq, ":object_plus_one", "$g_presentation_obj_admin_panel_3"),
