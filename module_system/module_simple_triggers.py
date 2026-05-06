@@ -7126,13 +7126,37 @@ simple_triggers = [
     (try_for_parties, ":party_no"),
         (gt, ":party_no", last_static_party),
         (party_is_active, ":party_no"),
-        (party_slot_eq, ":party_no", slot_party_type, spt_prisoner_train),
-        (party_is_in_any_town, ":party_no"),
-        (party_get_cur_town, ":cur_center", ":party_no"),
-        (assign, "$g_move_heroes", 1),
-        (party_detach, ":party_no"),
-        (call_script, "script_party_prisoners_add_party_prisoners", ":cur_center", ":party_no"),
-        (call_script, "script_destroy_party", ":party_no"),
+        (try_begin),
+            # Transfer party arrival handler (custos publicos troop transfers via dplmc_move_troops_party)
+            # These parties are spt_patrol with spai_retreating_to_center but are NOT registered in any
+            # town's slot_town_patrol_party, so the patrol AI above never processes them.
+            # When they arrive at their destination (target != home_center), deposit troops into the
+            # garrison and remove the party.
+            (gt, ":party_no", last_static_party),
+            (party_is_active, ":party_no"),
+            (party_slot_eq, ":party_no", slot_party_type, spt_patrol),
+            (party_slot_eq, ":party_no", slot_party_ai_state, spai_retreating_to_center),
+            (party_get_slot, ":home_center", ":party_no", slot_party_home_center),
+            (party_get_slot, ":target_center", ":party_no", slot_party_ai_object),
+            (is_between, ":target_center", walled_centers_begin, walled_centers_end),
+            (neq, ":target_center", ":home_center"), # transfer party: destination != origin
+            (store_distance_to_party_from_party, ":dist", ":party_no", ":target_center"),
+            (le, ":dist", 1),
+            # Transfer party has arrived: dump troops into destination garrison and remove
+            (str_store_party_name, s12, ":party_no"),
+            (str_store_party_name, s13, ":target_center"),
+            (display_log_message, "@{s12} has arrived at {s13}.", message_alert),
+            (call_script, "script_party_add_party", ":target_center", ":party_no"),
+            (call_script, "script_destroy_party", ":party_no"),
+        (else_try),
+            (party_slot_eq, ":party_no", slot_party_type, spt_prisoner_train),
+            (party_is_in_any_town, ":party_no"),
+            (party_get_cur_town, ":cur_center", ":party_no"),
+            (assign, "$g_move_heroes", 1),
+            (party_detach, ":party_no"),
+            (call_script, "script_party_prisoners_add_party_prisoners", ":cur_center", ":party_no"),
+            (call_script, "script_destroy_party", ":party_no"),
+        (try_end),
     (try_end),##patrol ai
 ]),
 
@@ -7261,7 +7285,7 @@ simple_triggers = [
                         (call_script, "script_party_prisoners_add_party_prisoners", ":target_party", ":party_no"),
                         (call_script, "script_party_remove_all_prisoners", ":party_no"),
                     (try_end),
-                    (try_begin),#if retreating check if the reached the center
+                    (try_begin),#if retreating check if they reached the center
                         (party_get_slot, ":ai_state", ":party_no", slot_party_ai_state),
                         (eq, ":ai_state", spai_retreating_to_center),
                         (try_begin),#refresh and start patrolling again

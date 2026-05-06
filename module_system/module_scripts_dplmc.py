@@ -3093,6 +3093,7 @@ scripts_dplmc = [
         (display_message, "@Invalid start_party: {reg13}"),
     (try_end),
 ]),
+#script_dplmc_move_troops_party
 ("dplmc_move_troops_party",[
     (store_script_param, ":start_party", 1),
     (store_script_param, ":target_party", 2),
