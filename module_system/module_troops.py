@@ -1491,14 +1491,12 @@ attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1
 []+garamantian_foot_noble+garamantian_heavy_armour+garamantian_light_armour_noble+garamantian_feathers+garamantian_helm_medium+garamantian_spears+garamantian_horns,
 attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-# ["hornman", "Xenikos Moysikos", "Xenikoi Moysikoi", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
-# [itm_leather_boots,itm_one_handed_war_axe_a,itm_bosporan_mail_2,itm_horn],
-# attrib_level_18|level(40), wp_melee(130), knows_level_18, white_face_11, white_face_12],
-
-# ##jewish troop
-# ["judean_hornman", "Antolikos Moysikos", "Antolikoi Moysikoi", tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet, no_scene, reserved, fac_culture_judean,
-# [itm_horn]+jew_scale+jew_boots_simple+jew_helm_heavy+jew_swords,
-# attrib_level_18|level(40), wp_melee(130), knows_level_18, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+["gaetulian_standard_bearer", "Awedday Asennay", "Iweddayen Isennayen", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_standards,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+["gaetulian_hornman", "Awedday Imzad", "Iweddayen Imzad", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
+[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_swords+berber_horns,
+attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["judean_light_clubman", "Judaios Thureophores", "Judaioi Thureophoroi", tf_male_eastern|tf_guarantee_polearm|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_judean,
 [itm_throwing_spears_roman,itm_throwing_spears_roman]+jew_boots_simple+jew_tunics_2+jew_helm_light+jew_swords_old+jew_shields_simple, attrib_level_18, wp_melee(120), knows_level_18, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
@@ -1769,12 +1767,7 @@ attrib_level_23_warrior, wp(180), knows_level_23_warrior|knows_riding_8, north_a
 []+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield+berber_spears+berber_javelins,
 attrib_level_26_warrior, wp(200), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
-["gaetulian_standard_bearer", "Awedday Asennay", "Iweddayen Isennayen", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
-[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_standards,
-attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
-["gaetulian_hornman", "Awedday Imzad", "Iweddayen Imzad", tf_male_north_african|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_polearm, no_scene, reserved, fac_culture_garamantian,
-[]+berber_foot_noble+berber_breastplate+berber_mail+berber_helm+berber_helm_old_noble+berber_helm_old+berber_swords+berber_horns,
-attrib_level_26, wp_melee(200), knows_level_26, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
+
 
 #germanic troops
 ["germanic_light_clubman", "Slagandz", "Slagandiz",tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_culture_germanic,
