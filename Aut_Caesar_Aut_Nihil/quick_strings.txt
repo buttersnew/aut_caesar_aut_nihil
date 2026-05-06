@@ -1,4 +1,4 @@
-6026
+6038
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6025,3 +6025,15 @@ qstr_{!}_ERROR:_setup_tro {!}_ERROR:_setup_troop_meeting_aborted_-_invalid_troop
 qstr_{!}_ERROR:_setup_party {!}_ERROR:_setup_party_meeting_aborted_-_party_has_no_valid_speaker_stack.
 qstr_Error___invalid_meet Error_-_invalid_meeting_troop_in_setup_party_meeting
 qstr_You_cannot_visit_the You_cannot_visit_the_scriptorium_while_in_disguise.
+qstr_called_mission_templ called_mission_template_0
+qstr_If_enabled_you_will If_enabled,_you_will_recieve_notification_if_enemies_are_spotted_from_nearby_settlements_or_from_settlements_with_messenger_posts.
+qstr_{s12}_has_arrived_at {s12}_has_arrived_at_{s13}.
+qstr_With_renown_{reg10}_y With_renown_{reg10}_you_can_have_{reg11}_household_slaves_and_{reg12}_cooks!
+qstr_[DBG]_corruption_mod [DBG]_corruption_modifier_(abs)_=_{reg0}
+qstr_[DBG]_workshops_tota [DBG]_workshops_total_(clamped>=0)_=_{reg0}
+qstr_[DBG]_base_=_worksho [DBG]_base_=_workshops({reg0}_-_latifundia={reg1})
+qstr_[DBG]_after_+centers [DBG]_after_+centers({reg1})_=_{reg0}
+qstr_[DBG]_after_*modifie [DBG]_after_*modifier_=_{reg0}
+qstr_[DBG]_after_/100_=_{ [DBG]_after_/100_=_{reg0}
+qstr_[DBG]_final_corrupti [DBG]_final_corruption_loss_(neg,_clamped)_=_{reg0}
+qstr_[DBG]_base__all_cent [DBG]_base_(all_centers_accumulated_total)_=_{reg0}

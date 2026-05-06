@@ -16,8 +16,8 @@ pt_village_defenders_cal Village_Defenders 1 0 1 7 251 5 10 0 263 1 4 0 260 3 6 
 pt_village_defenders_germ Village_Defenders 1 0 1 7 214 10 20 0 211 2 6 0 -1 -1 -1 -1 
 pt_village_defenders_sarm Village_Defenders 1 0 1 7 330 10 20 0 -1 -1 -1 -1 -1 
 pt_village_defenders_dac Village_Defenders 1 0 1 7 290 10 20 0 -1 -1 -1 -1 -1 
-pt_village_defenders_jew Village_Defenders 1 0 1 7 148 5 10 0 145 5 10 0 139 5 10 0 -1 -1 -1 
-pt_village_defenders_bos Village_Defenders 1 0 1 7 161 5 10 0 -1 -1 -1 -1 -1 
+pt_village_defenders_jew Village_Defenders 1 0 1 7 150 5 10 0 147 5 10 0 141 5 10 0 -1 -1 -1 
+pt_village_defenders_bos Village_Defenders 1 0 1 7 163 5 10 0 -1 -1 -1 -1 -1 
 pt_cattle_herd Cattle_Herd 2814749767106561 0 3 7 24 80 120 0 -1 -1 -1 -1 -1 
 pt_looters_2 Escaped_Slaves 2251799813685249 0 2 360 -1 -1 -1 -1 -1 -1 
 pt_looters Latrones 2251799813685249 0 2 360 -1 -1 -1 -1 -1 -1 
@@ -49,9 +49,9 @@ pt_steppe_bandits Alan_Raiders 562949953421313 0 62 360 595 30 45 0 69 20 35 0 7
 pt_taiga_bandits Illyrian_Rebels 562949953421313 0 60 360 596 14 58 0 56 3 20 0 57 5 50 0 -1 -1 -1 
 pt_desert_bandits Arab_Raiders 8444249301319681 0 61 360 109 14 68 0 110 5 20 0 -1 -1 -1 -1 
 pt_forest_bandits Iberian_Rebels 562949953421313 0 59 360 592 24 72 0 54 2 30 0 60 2 50 0 61 1 30 0 -1 -1 
-pt_judean_rebels_party Judean_Rebels 562949953421313 0 58 95 591 4 80 0 139 0 30 0 590 1 40 0 -1 -1 -1 
-pt_sea_raiders Sea_Raiders 562949953421313 0 2 360 593 15 75 0 2498 5 10 0 -1 -1 -1 -1 
-pt_black_sea_pirates Pirates 562949953421841 0 2 360 594 75 110 0 2498 10 25 0 -1 -1 -1 -1 
+pt_judean_rebels_party Judean_Rebels 562949953421313 0 58 95 591 4 80 0 141 0 30 0 590 1 40 0 -1 -1 -1 
+pt_sea_raiders Sea_Raiders 562949953421313 0 2 360 593 15 75 0 2499 5 10 0 -1 -1 -1 -1 
+pt_black_sea_pirates Pirates 562949953421841 0 2 360 594 75 110 0 2499 10 25 0 -1 -1 -1 -1 
 pt_egyptian_rebels Egyptian_Rebels 2251799813685249 0 64 360 106 2 4 0 103 15 40 0 104 25 60 0 105 25 60 0 133 2 4 0 132 2 4 0 
 pt_nasamones Nasamones_Raiders 8444249301319681 0 67 360 95 50 120 0 96 30 70 0 -1 -1 -1 -1 
 pt_baquates Baquates_Raiders 8444249301319681 0 68 360 97 50 120 0 98 30 70 0 -1 -1 -1 -1 
@@ -97,9 +97,9 @@ pt_village_illyrian Villagers 67108865 0 4 7 43 10 15 0 -1 -1 -1 -1 -1
 pt_village_gaul Villagers 67108865 0 4 7 45 10 15 0 -1 -1 -1 -1 -1 
 pt_village_nubian Villagers 67108865 0 4 7 46 10 15 0 -1 -1 -1 -1 -1 
 pt_village_saka Villagers 67108865 0 4 7 47 10 15 0 -1 -1 -1 -1 -1 
-pt_spy_partners Unremarkable_Travellers 2814749767434241 0 3 7 2173 1 1 0 50 5 11 0 -1 -1 -1 -1 
-pt_runaway_serfs Runaway_slaves 2251799814012929 0 3 7 2211 6 7 0 2237 3 3 0 -1 -1 -1 -1 
-pt_spy Ordinary_Townsman 1125899907170305 0 3 7 2172 1 1 0 -1 -1 -1 -1 -1 
+pt_spy_partners Unremarkable_Travellers 2814749767434241 0 3 7 2174 1 1 0 50 5 11 0 -1 -1 -1 -1 
+pt_runaway_serfs Runaway_slaves 2251799814012929 0 3 7 2212 6 7 0 2238 3 3 0 -1 -1 -1 -1 
+pt_spy Ordinary_Townsman 1125899907170305 0 3 7 2173 1 1 0 -1 -1 -1 -1 -1 
 pt_sacrificed_messenger Sacrificed_Messenger 844424930459649 0 3 7 -1 -1 -1 -1 -1 -1 
 pt_forager_party Foraging_Party 1407374887747585 0 1 7 -1 -1 -1 -1 -1 -1 
 pt_scout_party Scouts 281474980904961 0 1 360 -1 -1 -1 -1 -1 -1 
@@ -116,7 +116,7 @@ pt_mercenary_guard Mercenary_Guard 0 0 1 0 49 30 30 0 50 15 15 0 53 15 15 0 -1 -
 pt_mercenary_warband Mercenary_Warband 0 0 1 0 51 30 30 0 52 15 15 0 53 15 15 0 -1 -1 -1 
 pt_mercenary_cav Mercenary_Cavalry 0 0 1 0 54 20 20 0 55 30 30 0 -1 -1 -1 -1 
 pt_mercenary_illyrian Illyrian_Mercenaries 0 0 1 0 57 40 40 0 56 20 20 0 -1 -1 -1 -1 
-pt_gladiatores Gladiatores 0 0 1 0 2403 20 20 0 2404 10 10 0 2407 15 15 0 2405 25 25 0 -1 -1 
+pt_gladiatores Gladiatores 0 0 1 0 2404 20 20 0 2405 10 10 0 2408 15 15 0 2406 25 25 0 -1 -1 
 pt_mercenary_rhodos Mercenaries_from_Rhodos 0 0 1 0 58 60 60 0 -1 -1 -1 -1 -1 
 pt_mercenary_kreta Mercenaries_from_Kreta 0 0 1 0 59 60 60 0 -1 -1 -1 -1 -1 
 pt_mercenary_hispanic Hispanic_Mercenaries 0 0 1 0 60 40 40 0 61 20 20 0 -1 -1 -1 -1 
@@ -142,9 +142,9 @@ pt_mercenary_palmyra Palmyrean_Mercenaries 0 0 1 0 111 40 40 0 112 20 20 0 -1 -1
 pt_mercenary_caucasia North_Caucasian_Raiders 8444249301319681 0 1 0 87 40 40 0 86 20 20 0 -1 -1 -1 -1 
 pt_mercenary_dahae Saka_Raiders 8444249301319681 0 1 0 90 35 35 0 91 25 25 0 -1 -1 -1 -1 
 pt_mercenary_saka_amazon Saka_Amazons 8444249301319681 0 1 0 92 50 50 0 -1 -1 -1 -1 -1 
-pt_custom_infantry_retinue Infantry_retinue_(custom) 1 0 1 15 2424 1 1 0 2426 1 1 0 2418 80 80 0 -1 -1 -1 
-pt_custom_cavalry_retinue Cavalry_retinue_(custom) 1 0 1 15 2432 1 1 0 2434 30 30 0 2428 30 30 0 -1 -1 -1 
-pt_custom_skirmisher_retinue Skirmisher_retinue_(custom) 1 0 1 15 2446 1 1 0 2448 1 1 0 2438 40 40 0 2442 40 40 0 -1 -1 
+pt_custom_infantry_retinue Infantry_retinue_(custom) 1 0 1 15 2425 1 1 0 2427 1 1 0 2419 80 80 0 -1 -1 -1 
+pt_custom_cavalry_retinue Cavalry_retinue_(custom) 1 0 1 15 2433 1 1 0 2435 30 30 0 2429 30 30 0 -1 -1 -1 
+pt_custom_skirmisher_retinue Skirmisher_retinue_(custom) 1 0 1 15 2447 1 1 0 2449 1 1 0 2439 40 40 0 2443 40 40 0 -1 -1 
 pt_culture_1_town_watch Dacian_Townwatch 0 0 1 0 272 25 25 0 275 15 15 0 290 10 10 0 293 25 25 0 -1 -1 
 pt_culture_2_town_watch Celtic_Townwatch 0 0 1 0 230 25 25 0 233 15 15 0 239 10 10 0 242 25 25 0 -1 -1 
 pt_culture_2_1_town_watch Caledonian_Townwatch 0 0 1 0 251 15 15 0 254 25 25 0 260 10 10 0 263 25 25 0 -1 -1 
@@ -153,8 +153,8 @@ pt_culture_4_town_watch Germanic_Townwatch 0 0 1 0 205 25 25 0 208 15 15 0 217 1
 pt_culture_5_town_watch Caucasian_Townwatch 0 0 1 0 372 15 15 0 357 10 10 0 351 25 25 0 354 15 15 0 360 10 10 0 -1 
 pt_culture_6_town_watch Persian_Townwatch 0 0 1 0 411 15 15 0 405 20 20 0 408 25 25 0 414 15 15 0 -1 -1 
 pt_culture_7_town_watch Vigilia 0 0 1 0 477 2 2 0 512 40 40 0 508 25 25 0 511 5 5 0 515 5 5 0 -1 
-pt_culture_8_town_watch Judean_Townwatch 0 0 1 0 139 25 25 0 136 25 25 0 145 15 15 0 148 10 10 0 -1 -1 
-pt_culture_9_town_watch Bosporan_Townwatch 0 0 1 0 333 15 15 0 161 45 45 0 164 15 15 0 -1 -1 -1 
+pt_culture_8_town_watch Judean_Townwatch 0 0 1 0 141 25 25 0 138 25 25 0 147 15 15 0 150 10 10 0 -1 -1 
+pt_culture_9_town_watch Bosporan_Townwatch 0 0 1 0 333 15 15 0 163 45 45 0 166 15 15 0 -1 -1 -1 
 pt_culture_10_town_watch Arabian_Townwatch 0 0 1 0 110 20 20 0 109 45 45 0 -1 -1 -1 -1 
 pt_culture_11_town_watch Berber_Townwatch 0 0 1 0 98 20 20 0 97 45 45 0 -1 -1 -1 -1 
 pt_culture_12_town_watch Garamantian_Townwatch 0 0 1 0 96 20 20 0 95 45 45 0 -1 -1 -1 -1 
@@ -191,24 +191,24 @@ pt_kingdom_6_reinforcements_c Parthian_Royal_Retinue 0 0 1 0 429 26 26 0 426 10 
 pt_kingdom_7_reinforcements_a Turmae_Auxiliarum 0 0 1 0 478 1 1 0 483 25 25 0 -1 -1 -1 -1 
 pt_kingdom_7_reinforcements_b Cohors_Vigiliarum 0 0 1 0 477 1 1 0 508 20 20 0 512 40 40 0 -1 -1 -1 
 pt_kingdom_7_reinforcements_c Manipulus_Auxiliarum 0 0 1 0 477 1 1 0 508 25 25 0 511 50 50 0 -1 -1 -1 
-pt_kingdom_8_reinforcements_a Judean_Levies 0 0 1 0 139 25 25 0 136 25 25 0 145 15 15 0 591 10 10 0 117 1 1 0 116 1 1 0 
-pt_kingdom_8_reinforcements_b Judean_Retinue 0 0 1 0 151 35 35 0 148 20 20 0 142 20 20 0 117 1 1 0 116 1 1 0 -1 
-pt_kingdom_8_reinforcements_c Judean_Guard 0 0 1 0 154 10 10 0 117 1 1 0 116 1 1 0 157 35 35 0 159 25 25 0 -1 
-pt_kingdom_9_reinforcements_a Bosphoran_Levies 0 0 1 0 330 20 20 0 161 40 40 0 336 15 15 0 115 1 1 0 114 1 1 0 -1 
-pt_kingdom_9_reinforcements_b Bosphoran_Lordly_Retinue 0 0 1 0 161 10 10 0 167 40 40 0 164 25 25 0 115 1 1 0 114 1 1 0 -1 
-pt_kingdom_9_reinforcements_c Bosphoran_Royal_Retinue 0 0 1 0 336 10 10 0 345 15 15 0 170 25 25 0 -1 -1 -1 
+pt_kingdom_8_reinforcements_a Judean_Levies 0 0 1 0 141 25 25 0 138 25 25 0 147 15 15 0 591 10 10 0 117 1 1 0 116 1 1 0 
+pt_kingdom_8_reinforcements_b Judean_Retinue 0 0 1 0 153 35 35 0 150 20 20 0 144 20 20 0 117 1 1 0 116 1 1 0 -1 
+pt_kingdom_8_reinforcements_c Judean_Guard 0 0 1 0 156 10 10 0 117 1 1 0 116 1 1 0 159 35 35 0 161 25 25 0 -1 
+pt_kingdom_9_reinforcements_a Bosphoran_Levies 0 0 1 0 330 20 20 0 163 40 40 0 336 15 15 0 115 1 1 0 114 1 1 0 -1 
+pt_kingdom_9_reinforcements_b Bosphoran_Lordly_Retinue 0 0 1 0 163 10 10 0 169 40 40 0 166 25 25 0 115 1 1 0 114 1 1 0 -1 
+pt_kingdom_9_reinforcements_c Bosphoran_Royal_Retinue 0 0 1 0 336 10 10 0 345 15 15 0 172 25 25 0 -1 -1 -1 
 pt_kingdom_19_reinforcements_a Romano-Germanic_Levies 0 0 1 0 205 25 25 0 208 25 25 0 211 25 25 0 119 1 1 0 118 1 1 0 -1 
 pt_kingdom_19_reinforcements_b Romano-Germanic_Cohort 0 0 1 0 496 30 30 0 217 10 10 0 497 15 15 0 503 25 25 0 119 1 1 0 118 1 1 0 
 pt_kingdom_19_reinforcements_c Romano-Germanic_Retinue 0 0 1 0 224 25 25 0 221 25 25 0 119 1 1 0 118 1 1 0 -1 -1 
 pt_kingdom_23_reinforcements_a Syrian_Levies 0 0 1 0 393 55 55 0 390 30 30 0 130 1 1 0 131 1 1 0 -1 -1 
 pt_kingdom_23_reinforcements_b Syrian_Lordly_Retinue 0 0 1 0 396 50 50 0 399 20 20 0 -1 -1 -1 -1 
 pt_kingdom_23_reinforcements_c Syrian_Royal_Retinue 0 0 1 0 402 50 50 0 396 25 25 0 -1 -1 -1 -1 
-pt_kingdom_10_reinforcements_a Berber_Levies 0 0 1 0 188 25 25 0 191 20 20 0 194 25 25 0 203 1 1 0 204 1 1 0 -1 
-pt_kingdom_10_reinforcements_b Berber_Retinue 0 0 1 0 194 35 35 0 191 20 20 0 200 20 20 0 203 1 1 0 204 1 1 0 -1 
-pt_kingdom_10_reinforcements_c Berber_Guard 0 0 1 0 197 25 25 0 200 35 35 0 -1 -1 -1 -1 
-pt_kingdom_11_reinforcements_a Garamantian_Levies 0 0 1 0 173 25 25 0 176 20 20 0 179 25 25 0 134 1 1 0 135 1 1 0 -1 
-pt_kingdom_11_reinforcements_b Garamantian_Retinue 0 0 1 0 179 35 35 0 176 20 20 0 185 20 20 0 134 1 1 0 135 1 1 0 -1 
-pt_kingdom_11_reinforcements_c Garamantian_Guard 0 0 1 0 182 25 25 0 185 35 35 0 -1 -1 -1 -1 
+pt_kingdom_10_reinforcements_a Berber_Levies 0 0 1 0 190 25 25 0 193 20 20 0 196 25 25 0 136 1 1 0 137 1 1 0 -1 
+pt_kingdom_10_reinforcements_b Berber_Retinue 0 0 1 0 196 35 35 0 193 20 20 0 202 20 20 0 136 1 1 0 137 1 1 0 -1 
+pt_kingdom_10_reinforcements_c Berber_Guard 0 0 1 0 199 25 25 0 202 35 35 0 -1 -1 -1 -1 
+pt_kingdom_11_reinforcements_a Garamantian_Levies 0 0 1 0 175 25 25 0 178 20 20 0 181 25 25 0 134 1 1 0 135 1 1 0 -1 
+pt_kingdom_11_reinforcements_b Garamantian_Retinue 0 0 1 0 181 35 35 0 178 20 20 0 187 20 20 0 134 1 1 0 135 1 1 0 -1 
+pt_kingdom_11_reinforcements_c Garamantian_Guard 0 0 1 0 184 25 25 0 187 35 35 0 -1 -1 -1 -1 
 pt_steppe_bandit_lair Alan_Camp 5629499536311322 0 62 360 595 30 90 0 -1 -1 -1 -1 -1 
 pt_taiga_bandit_lair Illyrian_Lair 5629499536311322 0 60 360 596 30 90 0 -1 -1 -1 -1 -1 
 pt_desert_bandit_lair Arabic_Camp 5629499536311322 0 61 360 109 30 90 0 -1 -1 -1 -1 -1 
@@ -225,7 +225,7 @@ pt_black_sea_pirates_lair Pirate_hideout 5629499536311318 0 2 360 594 30 90 0 -1
 pt_saka_camp Saka_Camp 5629499536311316 0 75 360 90 30 90 0 -1 -1 -1 -1 -1 
 pt_looter_lair Kidnappers'_Hideout 5629499536311322 0 3 360 540 15 30 0 -1 -1 -1 -1 -1 
 pt_bandit_lair_templates_end {!}bandit_lair_templates_end 562949953422337 0 2 360 593 15 30 0 -1 -1 -1 -1 -1 
-pt_leaded_looters Band_of_robbers 2251799813947393 0 3 31 2204 1 1 0 540 3 3 0 -1 -1 -1 -1 
+pt_leaded_looters Band_of_robbers 2251799813947393 0 3 31 2205 1 1 0 540 3 3 0 -1 -1 -1 -1 
 pt_dplmc_gift_caravan Your_Caravan 7036874421960705 0 1 11 653 1 1 0 50 5 25 0 654 3 10 0 -1 -1 -1 
 pt_refugees Refugees 67239937 0 4 7 -1 -1 -1 -1 -1 -1 
 pt_legio_xxii_primigenia_staff Cohors_Prima_Legio_I_Adjuterix 1 0 32 154 435 160 160 0 447 1 1 0 459 1 1 0 476 1 1 0 475 1 1 0 473 1 1 0 
@@ -240,7 +240,7 @@ pt_legio_v_macedonia_staff Cohors_Prima_Legio_V_Macedonica 1 0 32 154 443 160 16
 pt_legio_vi_ferrata_staff Cohors_Prima_Legio_VI_Ferrata 1 0 32 154 444 160 160 0 456 1 1 0 468 1 1 0 476 1 1 0 475 1 1 0 473 1 1 0 
 pt_legio_x_fretensis_staff Cohors_Prima_Legio_X_Fretensis 1 0 32 154 445 160 160 0 457 1 1 0 469 1 1 0 476 1 1 0 475 1 1 0 473 1 1 0 
 pt_praetoriani_staff Cohors_Prima_Praetoriani 1 0 32 154 446 160 160 0 458 1 1 0 470 1 1 0 476 1 1 0 475 1 1 0 473 1 1 0 
-pt_player_legion_staff Staff 1 0 24 15 2450 160 160 0 2458 1 1 0 2462 1 1 0 2464 1 1 0 2466 1 1 0 2460 1 1 0 
+pt_player_legion_staff Staff 1 0 24 15 2451 160 160 0 2459 1 1 0 2463 1 1 0 2465 1 1 0 2467 1 1 0 2461 1 1 0 
 pt_legio_xxii_primigenia_cohors Cohors_Legio_I_Adjuterix 1 0 32 154 435 80 80 0 471 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
 pt_legio_iii_augusta_cohors Cohors_Legio_III_Augusta 1 0 32 154 436 80 80 0 471 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
 pt_legio_v_alaudae_cohors Cohors_Legio_V_Alaudae 1 0 32 154 437 80 80 0 471 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
@@ -253,7 +253,7 @@ pt_legio_v_macedonia_cohors Cohors_Legio_V_Macedonica 1 0 32 154 443 80 80 0 471
 pt_legio_vi_ferrata_cohors Cohors_Legio_VI_Ferrata 1 0 32 154 444 80 80 0 471 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
 pt_legio_x_fretensis_cohors Cohors_Legio_X_Fretensis 1 0 32 154 445 80 80 0 471 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
 pt_praetoriani_cohors Cohors_Praetoriani 1 0 32 154 446 80 80 0 472 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
-pt_player_cohort cohort 1 0 24 15 2450 80 80 0 2456 1 1 0 2460 1 1 0 2468 1 1 0 -1 -1 
+pt_player_cohort cohort 1 0 24 15 2451 80 80 0 2457 1 1 0 2461 1 1 0 2469 1 1 0 -1 -1 
 pt_cohors_aux Cohors_Auxiliarum 1 0 32 154 481 1 1 0 474 1 1 0 482 1 1 0 511 80 80 0 -1 -1 
 pt_cohors_alp Cohors_Alporum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 487 80 80 0 -1 -1 
 pt_cohors_afr Cohors_Maurorum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 489 80 80 0 -1 -1 
@@ -271,11 +271,11 @@ pt_ala_syr Ala_Ituraeorum 1 0 32 154 479 5 5 0 506 80 80 0 478 1 1 0 -1 -1 -1
 pt_ala_aux Ala_Auxiliarum 1 0 32 154 479 5 5 0 483 60 60 0 484 60 60 0 478 1 1 0 -1 -1 
 pt_ala_preat Ala_Praetoriani 1 0 32 154 480 5 5 0 485 80 80 0 478 1 1 0 -1 -1 -1 
 pt_ala_preat_2 Ala_Germani_Corporis_Custodes 1 0 32 154 480 5 5 0 486 80 80 0 478 1 1 0 -1 -1 -1 
-pt_player_aux_inf infantry 1 0 24 15 2470 1 1 0 2478 1 1 0 2476 1 1 0 2484 40 40 0 2486 40 40 0 -1 
-pt_player_aux_cav cavalry 1 0 24 15 2474 1 1 0 2472 5 5 0 2482 40 40 0 2480 40 40 0 -1 -1 
+pt_player_aux_inf infantry 1 0 24 15 2471 1 1 0 2479 1 1 0 2477 1 1 0 2485 40 40 0 2487 40 40 0 -1 
+pt_player_aux_cav cavalry 1 0 24 15 2475 1 1 0 2473 5 5 0 2483 40 40 0 2481 40 40 0 -1 -1 
 pt_praetoriani_archer_cohors Cohors_Sagittarii_Praetoriani 1 0 32 154 509 80 80 0 472 1 1 0 474 1 1 0 473 1 1 0 -1 -1 
 pt_engineer_cohort Manipulus_Ballistarium 1 0 32 154 515 25 25 0 -1 -1 -1 -1 -1 
-pt_engineer_cohort_custom Manipulus_Ballistarium_(custom) 1 0 32 154 2488 25 25 0 -1 -1 -1 -1 -1 
+pt_engineer_cohort_custom Manipulus_Ballistarium_(custom) 1 0 32 154 2489 25 25 0 -1 -1 -1 -1 -1 
 pt_cohors_aux_archer Cohors_Auxiliarum 1 0 32 154 481 1 1 0 474 1 1 0 482 1 1 0 508 80 80 0 -1 -1 
 pt_cohors_alp_archer Cohors_Alporum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 488 80 80 0 -1 -1 
 pt_cohors_afr_archer Cohors_Maurorum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 490 80 80 0 -1 -1 
@@ -286,13 +286,13 @@ pt_cohors_bata_archer Cohors_Batavorum 1 0 32 154 481 1 1 0 474 1 1 0 482 1 1 0 
 pt_cohors_brit_archer Cohors_Brittonum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 499 80 80 0 -1 -1 
 pt_cohors_thrac_archer Cohors_Thracum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 501 80 80 0 -1 -1 
 pt_cohors_jud_archer Cohors_Petreorum 1 0 32 154 474 1 1 0 481 1 1 0 482 1 1 0 507 80 80 0 -1 -1 
-pt_player_aux_archer infantry 1 0 24 15 2470 1 1 0 2478 1 1 0 2476 1 1 0 2490 80 80 0 -1 -1 
+pt_player_aux_archer infantry 1 0 24 15 2471 1 1 0 2479 1 1 0 2477 1 1 0 2491 80 80 0 -1 -1 
 pt_germans Germanic_Revolt 14073748839727105 0 1 255 221 250 350 0 205 350 450 0 208 350 450 0 220 150 250 0 211 200 300 0 217 100 200 0 
 pt_brits Celtic_Revolt 14073748839727105 0 1 255 248 250 350 0 230 350 450 0 233 350 450 0 236 150 250 0 239 200 300 0 242 100 200 0 
 pt_nomads Tribal_Revolt 14073748839727105 0 1 255 348 250 350 0 336 350 450 0 342 350 450 0 345 150 250 0 330 200 300 0 333 100 200 0 
 pt_cals Caledonian_Revolt 14073748839727105 0 1 255 269 250 350 0 251 350 450 0 254 350 450 0 257 150 250 0 260 200 300 0 263 100 200 0 
 pt_dacians Dacian_Revolt 14073748839727105 0 1 255 287 250 350 0 272 350 450 0 275 350 450 0 281 150 250 0 290 200 300 0 293 100 200 0 
-pt_jewish_revolt Great_Jewish_Revolt 562949953421313 0 58 360 591 550 650 0 59 30 50 0 51 30 50 0 142 100 200 0 136 100 200 0 -1 
+pt_jewish_revolt Great_Jewish_Revolt 562949953421313 0 58 360 591 550 650 0 59 30 50 0 51 30 50 0 144 100 200 0 138 100 200 0 -1 
 pt_slave_hideout Hideout 2098202 0 3 360 -1 -1 -1 -1 -1 -1 
 pt_player_camp Camp 1064975 0 24 15 -1 -1 -1 -1 -1 -1 
 pt_port port 6317162 0 0 0 -1 -1 -1 -1 -1 -1 
@@ -311,4 +311,4 @@ pt_slave_revolt Albus_party 562949953421313 0 3 31 571 20 25 0 541 10 15 0 600 5
 pt_grove Sacred_Grove 2098207 0 3 154 -1 -1 -1 -1 -1 -1 
 pt_latifundium Latifundium 1066091 0 3 154 -1 -1 -1 -1 -1 -1 
 pt_parthian_exp Expedition_Force 56294995346325505 0 1 255 418 600 800 0 421 600 800 0 406 400 500 0 424 400 500 0 430 300 400 0 412 400 500 0 
-pt_barbarus_fleet Barbarus_Rufus_fleet 2533274790789137 0 3 31 593 80 120 0 2498 30 50 0 -1 -1 -1 -1 
+pt_barbarus_fleet Barbarus_Rufus_fleet 2533274790789137 0 3 31 593 80 120 0 2499 30 50 0 -1 -1 -1 -1 
