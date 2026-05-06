@@ -2265,7 +2265,7 @@ strings = [
   ("npc40_home_intro", "{Domins/Domina}, we are close to the delta. I can feel its fresh air!"),
   ("npc41_home_intro", "{!}"),
   ("npc42_home_intro", "Chief! Can you smell the fresh air and see the endless plains! This is Sarmatia!"),
-  ("npc43_home_intro", "{Dominus/Domina}, we are near Carthago. I have stayed here as an exile, living in the shadows of the great old city. It is not my homeland, Mauretania is far to the west, but it is the land of Africa, and I know her rocks and her winds. Her spirit is the same."),
+  ("npc43_home_intro", "{Dominus/Domina}, we are near Larbas — a Gaetulian town. This is my homeland, the land of my people. I spent my childhood in these hills before I rode to war for king Ptolemy. The desert begins just to the south, and these rocky slopes are where my tribe has always lived. I know every pass and every waterhole between here and the Sahara."),
 
   ("npc1_home_description", "Well, Scythians have not always lived  here. It is said that the wandering Scythians once dwelt in Asia,"
 	+" and there warred with the Massagetae, but with ill success;"
@@ -2473,7 +2473,7 @@ strings = [
   ("npc40_home_recap", "I am from a small hamlet near {s21}."),
   ("npc41_home_recap", "{!}"),
   ("npc42_home_recap", "I am from {s21}."),
-  ("npc43_home_recap", "I am from Mauretania, in North Africa, though I have been wandering as an exile in {s21}."),
+  ("npc43_home_recap", "I am from Mauretania, in North Africa. My people, the Gaetuli, make their home around {s21}."),
 
   ("npc1_honorific", "Master"), #Pravare Ytarim
   ("npc2_honorific", "{Dominus/Domina}"), #Marius Gaius

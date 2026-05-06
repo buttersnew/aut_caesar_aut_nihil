@@ -32408,11 +32408,11 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc43", slot_troop_personalityclash_object, "trp_npc32"), # Gaius Lemonius, Roman who looks down on Berber rebel
     (troop_set_slot, "trp_npc43", slot_troop_personalityclash2_object, -1), #
     (troop_set_slot, "trp_npc43", slot_troop_personalitymatch_object, "trp_npc31"), # Ra Karak, fellow African warrior
-    (troop_set_slot, "trp_npc43", slot_troop_home, "p_town_28"), # Carthago, North Africa
+    (troop_set_slot, "trp_npc43", slot_troop_home, "p_town_53"), # Larbas, Gaetulian town
     (troop_set_slot, "trp_npc43", slot_troop_payment_request, 5000),
     (troop_set_slot, "trp_npc43", slot_troop_kingsupport_argument, argument_victory),
     (troop_set_slot, "trp_npc43", slot_troop_kingsupport_opponent, "trp_npc32"), #
-    (troop_set_slot, "trp_npc43", slot_troop_town_with_contacts, "p_town_28"), # Carthago
+    (troop_set_slot, "trp_npc43", slot_troop_town_with_contacts, "p_town_53"), # Larbas
     (troop_set_slot, "trp_npc43", slot_lord_reputation_type, lrep_martial),
     (troop_set_slot, "trp_npc43", slot_troop_culture, "fac_culture_berber"),
     (troop_set_slot, "trp_npc43", slot_troop_age, 32),
@@ -81060,8 +81060,6 @@ scripts = scripts_hardcoded + [
         (assign, ":companion", "trp_npc13"),
     (else_try),
         (eq, ":town", "p_town_28"),#Carthago
-        (eq, ":location", location_center),
-        (assign, ":companion", "trp_npc43"),
     (else_try),
         (eq, ":town", "p_town_29"),#Leptis Magna
         (eq, ":location", location_center),
@@ -81153,7 +81151,9 @@ scripts = scripts_hardcoded + [
     (else_try),
         (eq, ":town", "p_town_52"),#
     (else_try),
-        (eq, ":town", "p_town_53"),#
+        (eq, ":town", "p_town_53"),#Larbas
+        (eq, ":location", location_center),
+        (assign, ":companion", "trp_npc43"),
     (else_try),
         (eq, ":town", "p_town_54"),#
     (else_try),
