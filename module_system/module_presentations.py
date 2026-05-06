@@ -25584,7 +25584,7 @@ presentations = presentations_wse2 + [
     (call_script, "script_get_cook_limit"),
     (assign, reg12, reg0),
 
-    (create_text_overlay, reg1, "@With renown {reg10} you can have {reg11} cooks and {reg12} household slaves!", tf_left_align|tf_scrollable),
+    (create_text_overlay, reg1, "@With renown {reg10} you can have {reg11} household slaves and {reg12} cooks!", tf_left_align|tf_scrollable),
     (position_set_x, pos1, 530), # Higher, means more toward the right
     (position_set_y, pos1, 570), # Higher, means more toward the top
     (overlay_set_position, reg1, pos1),
