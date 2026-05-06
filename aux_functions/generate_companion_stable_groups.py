@@ -1,195 +1,120 @@
+import os
 import re
 
 # ==========================================
-# 1. THE RAW DATA
+# 1. DATA LOADING FROM MODULE SYSTEM
 # ==========================================
-raw_data = """
-<trp=686>Pravare Ytarim</> (Parthian): Likely in <p=27>Chersonesus</> (Streets).
-     +) Likes <trp=687>Marius Gaius</>
-     -) Hates <trp=692>Lavia</>
-     -) Hates <trp=701>Titocuna</>
-<trp=687>Marius Gaius</> (Roman): Likely in <p=42>Antiochia</> (Streets).
-     +) Likes <trp=686>Pravare Ytarim</>
-     -) Hates <trp=690>Satibarzanes</>
-     -) Hates <trp=694>Aturius Spurus</>
-<trp=688>Pulchra</> (Roman): Likely in <p=58>Nicomedia</> (Tavern).
-     +) Likes <trp=694>Aturius Spurus</>
-     -) Hates <trp=699>Titus</>
-     -) Hates <trp=693>Hildr</>
-<trp=689>Abadutiker</> (Germanic): Likely in <p=45>Tur</> (Streets).
-     +) Likes <trp=690>Satibarzanes</>
-     -) Hates <trp=695>Attaklos</>
-     -) Hates <trp=692>Lavia</>
-<trp=690>Satibarzanes</> (Parthian): Likely in <p=59>Ecbatana</> (Streets).
-     +) Likes <trp=689>Abadutiker</>
-     -) Hates <trp=687>Marius Gaius</>
-     -) Hates <trp=696>Dionysia</>
-<trp=691>Firentrix</> (Britonic): Likely in <p=50>Corduba</> (Tavern).
-     +) Likes <trp=697>Jeremus</>
-     -) Hates <trp=696>Dionysia</>
-     -) Hates <trp=698>Chanakya</>
-<trp=692>Lavia</> (Egyptian): Likely in <p=40>Alexandria</> (Streets).
-     +) Likes <trp=701>Titocuna</>
-     -) Hates <trp=686>Pravare Ytarim</>
-     -) Hates <trp=689>Abadutiker</>
-<trp=693>Hildr</> (Germanic): Likely in <p=65>Uburzis</> (Tavern).
-     +) Likes <trp=698>Chanakya</>
-     -) Hates <trp=697>Jeremus</>
-     -) Hates <trp=688>Pulchra</>
-<trp=694>Aturius Spurus</> (Roman): Likely in <p=32>Lugdunum</> (Tavern).
-     +) Likes <trp=688>Pulchra</>
-     -) Hates <trp=698>Chanakya</>
-     -) Hates <trp=687>Marius Gaius</>
-<trp=695>Attaklos</> (Roman): Likely in <p=57>Athenae</> (Tavern).
-     +) Likes <trp=696>Dionysia</>
-     -) Hates <trp=689>Abadutiker</>
-     -) Hates <trp=699>Titus</>
-<trp=696>Dionysia</> (Roman): Likely in <p=55>Thessalonica</> (Streets).
-     +) Likes <trp=695>Attaklos</>
-     -) Hates <trp=691>Firentrix</>
-     -) Hates <trp=690>Satibarzanes</>
-<trp=697>Jeremus</> (Roman): Likely in <p=22>Lutetia</> (Tavern).
-     +) Likes <trp=691>Firentrix</>
-     -) Hates <trp=693>Hildr</>
-     -) Hates <trp=700>Artimenus</>
-<trp=698>Chanakya</> (Sarmatian): Likely in <p=47>Ctesiphon</> (Streets).
-     +) Likes <trp=693>Hildr</>
-     -) Hates <trp=694>Aturius Spurus</>
-     -) Hates <trp=691>Firentrix</>
-<trp=699>Titus</> (Roman): Likely in <p=25>Mediolanum</> (Tavern).
-     +) Likes <trp=700>Artimenus</>
-     -) Hates <trp=688>Pulchra</>
-     -) Hates <trp=695>Attaklos</>
-<trp=700>Artimenus</> (Roman): Likely in <p=76>Vindobona</> (Hall).
-     +) Likes <trp=699>Titus</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=697>Jeremus</>
-<trp=701>Titocuna</> (Britonic): Likely in <p=21>Deva</> (Tavern).
-     +) Likes <trp=692>Lavia</>
-     -) Hates <trp=700>Artimenus</>
-     -) Hates <trp=686>Pravare Ytarim</>
-<trp=702>Anicetus</> (Roman): Likely in <p=34>Phasis</> (Tavern).
-<trp=703>Arminius Octavianus</> (Roman): Likely in <p=67>Palmyra</> (Streets).
-     +) Likes <trp=704>Tertius Maior</>
-     -) Hates <trp=722>Josephus</>
-     -) Hates <trp=696>Dionysia</>
-<trp=704>Tertius Maior</> (Roman): Likely in <p=67>Palmyra</> (Tavern).
-     +) Likes <trp=725>Kara Boga</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=705>Secundus Minor</> (Roman): Likely in <p=60>Dura Europos</> (Streets).
-     +) Likes <trp=727>Chaditox</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=706>Drusus</> (Roman): Likely in <p=56>Dyrrachium</> (Tavern).
-     +) Likes <trp=707>Libertus Tiro</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=707>Libertus Tiro</> (Roman): Likely in <p=52>Tarraco</> (Tavern).
-     +) Likes <trp=701>Titocuna</>
-     -) Hates <trp=708>Lucius Varrus Drusus</>
-     -) Hates <trp=712>Lucullus Caepio</>
-<trp=708>Lucius Varrus Drusus</> (Roman): Likely in <p=51>Augusta Emerita</> (Streets).
-<trp=709>Sidonius Apollinaris</> (Roman): Likely in <p=39>Hierosolyma</> (Tavern).
-     +) Likes <trp=710>Sollius Modestus</>
-     -) Hates <trp=727>Chaditox</>
-     -) Hates <trp=696>Dionysia</>
-<trp=710>Sollius Modestus</> (Roman): Likely in <p=68>Thebae</> (Streets).
-     +) Likes <trp=711>Albinus Basilius</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=711>Albinus Basilius</> (Roman): Likely in <p=70>Mtskheta</> (Tavern).
-     +) Likes <trp=712>Lucullus Caepio</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=712>Lucullus Caepio</> (Roman): Likely in <p=55>Thessalonica</> (Tavern).
-     +) Likes <trp=718>Lucius Modius minor</>
-     -) Hates <trp=716>Ra Karak</>
-     -) Hates <trp=722>Josephus</>
-<trp=713>Anicius</> (Roman): Likely in <p=24>Massilia</> (Tavern).
-     +) Likes <trp=714>Fabianus</>
-     -) Hates <trp=725>Kara Boga</>
-     -) Hates <trp=696>Dionysia</>
-<trp=714>Fabianus</> (Roman): Likely in <p=23>Augusta</> (Tavern).
-     +) Likes <trp=715>Rombus</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=715>Rombus</> (Roman): Likely in <p=28>Ancyra</> (Streets).
-     +) Likes <trp=688>Pulchra</>
-     -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
-<trp=716>Ra Karak</> (Berber): Joins during quest.
-<trp=717>Gaius Lemonius</> (Roman): Likely in <p=54>Neapolis</> (Streets).
-     -) Hates <trp=718>Lucius Modius minor</>
-<trp=718>Lucius Modius minor</> (Roman): Likely in <p=53>Tarentum</> (Streets).
-     -) Hates <trp=717>Gaius Lemonius</>
-<trp=719>Ligia</> (Germanic): Likely in <p=26>Roma</> (Backstreets).
-     +) Likes <trp=721>Marcus Vinicius</>
-     -) Hates <trp=723>Elazar Bar Yochai</>
-     -) Hates <trp=725>Kara Boga</>
-<trp=720>Ursus</> (Germanic): Joins together with Ligia.
-     -) Hates <trp=725>Kara Boga</>
-<trp=721>Marcus Vinicius</> (Roman): Likely in <p=26>Roma</> (Tavern).
-     +) Likes <trp=719>Ligia</>
-     -) Hates <trp=723>Elazar Bar Yochai</>
-<trp=722>Josephus</> (Judean): Likely in <p=116>Masada</> (Streets).
-     +) Likes <trp=690>Satibarzanes</>
-     -) Hates <trp=712>Lucullus Caepio</>
-     -) Hates <trp=703>Arminius Octavianus</>
-<trp=723>Elazar Bar Yochai</> (Judean): Likely in <p=49>Leptis Magna</> (Streets).
-     +) Likes <trp=722>Josephus</>
-     -) Hates <trp=721>Marcus Vinicius</>
-     -) Hates <trp=719>Ligia</>
-<trp=724>Mathildiz</> (Germanic): Joins during quest.
-<trp=725>Kara Boga</> (Egyptian): Likely in <p=40>Alexandria</> (Tavern).
-     +) Likes <trp=703>Arminius Octavianus</>
-     -) Hates <trp=713>Anicius</>
-     -) Hates <trp=719>Ligia</>
-<trp=726>Eamane Turakina</> (Saka): Joins during quest.
-<trp=727>Chaditox</> (Sarmatian): Likely in <p=46>Siracena</> (Streets).
-     +) Likes <trp=705>Secundus Minor</>
-     -) Hates <trp=709>Sidonius Apollinaris</>
-"""
+def load_companion_data():
+    """
+    Parse companion names and relationships directly from:
+      - module_system/module_troops.py  (name map)
+      - module_system/module_scripts.py (personality/hate slots)
 
-# ==========================================
-# 2. PARSING LOGIC
-# ==========================================
-def parse_data(data):
+    Returns the same (companions_list, conflicts_dict) as the old
+    parse_data(raw_data) helper, so the solver below is unchanged.
+    """
+    module_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), '..', 'module_system'
+    )
+
+    # --- 1. Build trp_id -> display_name map from module_troops.py ---
+    # Match the first two fields of every troop list entry:
+    #   ["npc1", "Pravare Ytarim", ...] or ["mathildiz", "Mathildiz", ...]
+    name_map = {}  # e.g. "trp_npc1" -> "Pravare Ytarim"
+    troops_path = os.path.join(module_dir, 'module_troops.py')
+    with open(troops_path, encoding='utf-8') as f:
+        troops_text = f.read()
+    for m in re.finditer(r'\[\s*"([^"]+)"\s*,\s*"([^"]+)"', troops_text):
+        troop_id, display_name = m.group(1), m.group(2)
+        if not display_name.startswith('{!}'):
+            name_map[f"trp_{troop_id}"] = display_name
+
+    # --- 2. Extract personality/hate slots from module_scripts.py ---
+    culture_map = {
+        "fac_culture_parthian":  "Parthian",
+        "fac_culture_roman":     "Roman",
+        "fac_culture_germanic":  "Germanic",
+        "fac_culture_celtic":    "Britonic",
+        "fac_culture_egyptian":  "Egyptian",
+        "fac_culture_judean":    "Judean",
+        "fac_culture_sarmatian": "Sarmatian",
+        "fac_culture_berber":    "Berber",
+        "fac_culture_saka":      "Saka",
+    }
+
+    clash1 = {}   # trp_id -> hated trp_id (primary)
+    clash2 = {}   # trp_id -> hated trp_id (secondary)
+    cultures = {} # trp_id -> culture label
+
+    scripts_path = os.path.join(module_dir, 'module_scripts.py')
+    with open(scripts_path, encoding='utf-8') as f:
+        scripts_text = f.read()
+
+    match_obj = {}  # trp_id -> liked trp_id
+
+    slot_re = re.compile(
+        r'\(\s*troop_set_slot\s*,\s*"(trp_[^"]+)"\s*,\s*'
+        r'(slot_troop_personalityclash_object'
+        r'|slot_troop_personalityclash2_object'
+        r'|slot_troop_personalitymatch_object'
+        r'|slot_troop_culture)'
+        r'\s*,\s*(-?\d+|"[^"]+")'
+    )
+    for m in slot_re.finditer(scripts_text):
+        trp  = m.group(1)
+        slot = m.group(2)
+        raw  = m.group(3).strip('"')
+
+        if slot == 'slot_troop_personalityclash_object':
+            clash1[trp] = None if raw in ('-1', '0') else raw
+        elif slot == 'slot_troop_personalityclash2_object':
+            clash2[trp] = None if raw in ('-1', '0') else raw
+        elif slot == 'slot_troop_personalitymatch_object':
+            match_obj[trp] = None if raw in ('-1', '0') else raw
+        elif slot == 'slot_troop_culture':
+            cultures[trp] = culture_map.get(raw, raw)
+
+    # --- 3. Build companions set, conflicts (hates) and likes dicts ---
+    all_trps = sorted(set(clash1) | set(clash2) | set(match_obj))
     companions = set()
-    conflicts = {} # Key: Troop Name, Value: List of hated names
+    conflicts  = {}  # name -> [hated names]
+    likes      = {}  # name -> liked name
 
-    current_companion = None
+    for trp in all_trps:
+        if trp not in name_map:
+            continue
+        name = name_map[trp]
+        companions.add(name)
+        if name not in conflicts:
+            conflicts[name] = []
 
-    lines = data.split('\n')
-    for line in lines:
-        line = line.strip()
+        for hate_trp in (clash1.get(trp), clash2.get(trp)):
+            if hate_trp and hate_trp in name_map:
+                hate_name = name_map[hate_trp]
+                companions.add(hate_name)
+                if hate_name not in conflicts:
+                    conflicts[hate_name] = []
+                if hate_name not in conflicts[name]:
+                    conflicts[name].append(hate_name)
 
-        # Check for main companion definition
-        main_match = re.search(r"<trp=\d+>(.*?)</>", line)
+        liked_trp = match_obj.get(trp)
+        if liked_trp and liked_trp in name_map:
+            likes[name] = name_map[liked_trp]
 
-        if main_match and not line.startswith(("+", "-")):
-            current_companion = main_match.group(1).strip()
-            companions.add(current_companion)
-            if current_companion not in conflicts:
-                conflicts[current_companion] = []
+    # name -> culture label
+    name_cultures = {
+        name_map[trp]: label
+        for trp, label in cultures.items()
+        if trp in name_map
+    }
 
-        # Check for Hate lines
-        elif current_companion and "-) Hates" in line:
-            hated_match = re.search(r"<trp=\d+>(.*?)</>", line)
-            if hated_match:
-                hated_person = hated_match.group(1).strip()
-                conflicts[current_companion].append(hated_person)
+    return list(companions), conflicts, name_cultures, likes
 
-                # Ensure hated person is in the master list
-                companions.add(hated_person)
-                if hated_person not in conflicts:
-                    conflicts[hated_person] = []
-
-    return list(companions), conflicts
 
 # ==========================================
-# 3. SOLVER ALGORITHM
+# 2. SOLVER ALGORITHM
 # ==========================================
+
 def solve_stable_groups(all_companions, raw_conflicts):
     # 1. Build Symmetric Conflict Graph (Adjacency Matrix of Hate)
     # If A hates B, then B cannot be with A. This is a bidirectional incompatibility.
@@ -284,7 +209,7 @@ def solve_stable_groups(all_companions, raw_conflicts):
 # ==========================================
 def main():
     print("Analyzing Companion Data...")
-    comps, conflicts = parse_data(raw_data)
+    comps, conflicts, _cultures, _likes = load_companion_data()
 
     print(f"Total Companions: {len(comps)}")
 
