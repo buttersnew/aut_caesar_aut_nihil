@@ -2267,14 +2267,13 @@ attrib_level_31, wp_melee(185), knows_level_31, armenian_face_young, armenian_fa
 
 ["armenian_elite_infantry", "Armenikos Epilektos Toxotes", "Armenikoi Epilektoi Toxotai", tf_guarantee_ranged|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_caucasian,
 [itm_khergit_arrows,itm_khergit_arrows,itm_strong_bow,itm_armenian_axe_1,itm_armenian_sword_1,itm_caucasian_short_sword]+eastern_armor_scale_armenian+eastern_armor_mail_armenian+eastern_boots_light+armenian_helm_heavy,
-attrib_level_26, wp_melee(165), knows_level_26, armenian_face_young, armenian_face_middle ],
+attrib_level_26, wpe(120,160,160,160), knows_archer_basic_eastern, armenian_face_young, armenian_face_middle ],
 ["armenian_elite_infantry_exp", "Armenikos Epilektos Toxotes (exp)", "Armenikoi Epilektoi Toxotai (exp)", tf_guarantee_ranged|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_caucasian,
 [itm_barbed_arrows,itm_barbed_arrows,itm_strong_bow,itm_armenian_axe_1,itm_armenian_sword_1,itm_caucasian_short_sword]+eastern_armor_scale_armenian+eastern_armor_mail_armenian+eastern_armor_scale_heavy_1+eastern_boots_light+armenian_helm_heavy,
-attrib_level_29, wp_melee(175), knows_level_29, armenian_face_young, armenian_face_middle ],
+attrib_level_29, wpe(140,175,175,175), knows_archer_exp_eastern, armenian_face_young, armenian_face_middle ],
 ["armenian_elite_infantry_vet", "Armenikos Epilektos Toxotes (vet)", "Armenikoi Epilektoi Toxotai (vet)", tf_guarantee_ranged|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_horse, no_scene, reserved, fac_culture_caucasian,
 [itm_barbed_arrows,itm_barbed_arrows,itm_strong_bow,itm_armenian_axe_1,itm_armenian_sword_1,itm_caucasian_short_sword]+eastern_armor_scale_armenian+eastern_armor_mail_armenian+eastern_armor_scale_heavy_1+eastern_boots_light+armenian_helm_heavy,
-attrib_level_31, wp_melee(185), knows_level_31, armenian_face_young, armenian_face_middle ],
-
+attrib_level_31, wpe(160,190,190,190), knows_archer_elit_eastern, armenian_face_young, armenian_face_middle ],
 
 ## syrian
 ["syrian_archer", "Kassat", "Kassata",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_syrian,
