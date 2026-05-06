@@ -30474,6 +30474,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_sewers_name_dacian"),
             (assign, ":string_description", "str_sewers_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_sewers_name_berber"),
+            (assign, ":string_description", "str_sewers_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_sewers_name_garamantian"),
+            (assign, ":string_description", "str_sewers_description_garamantian"),
         (try_end),
 
         (str_store_string, s0, ":string_name"),
@@ -30513,6 +30521,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_mills_name_dacian"),
             (assign, ":string_description", "str_mills_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_mills_name_berber"),
+            (assign, ":string_description", "str_mills_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_mills_name_garamantian"),
+            (assign, ":string_description", "str_mills_description_garamantian"),
         (try_end),
 
         (str_store_string, s0, ":string_name"),
@@ -30553,6 +30569,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_looms_name_dacian"),
             (assign, ":string_description", "str_looms_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_looms_name_berber"),
+            (assign, ":string_description", "str_looms_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_looms_name_garamantian"),
+            (assign, ":string_description", "str_looms_description_garamantian"),
         (try_end),
 
         (str_store_string, s0, ":string_name"),
@@ -30592,6 +30616,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_smithies_name_dacian"),
             (assign, ":string_description", "str_smithies_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_smithies_name_berber"),
+            (assign, ":string_description", "str_smithies_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_smithies_name_garamantian"),
+            (assign, ":string_description", "str_smithies_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30636,6 +30668,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_roads_name_dacian"),
             (assign, ":string_description", "str_roads_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_roads_name_berber"),
+            (assign, ":string_description", "str_roads_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_roads_name_garamantian"),
+            (assign, ":string_description", "str_roads_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30674,6 +30714,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_hospital_name_dacian"),
             (assign, ":string_description", "str_hospital_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_hospital_name_berber"),
+            (assign, ":string_description", "str_hospital_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_hospital_name_garamantian"),
+            (assign, ":string_description", "str_hospital_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30712,6 +30760,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_habour_name_dacian"),
             (assign, ":string_description", "str_habour_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_habour_name_berber"),
+            (assign, ":string_description", "str_habour_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_habour_name_garamantian"),
+            (assign, ":string_description", "str_habour_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30750,6 +30806,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_farming_name_dacian"),
             (assign, ":string_description", "str_farming_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_farming_name_berber"),
+            (assign, ":string_description", "str_farming_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_farming_name_garamantian"),
+            (assign, ":string_description", "str_farming_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30788,6 +30852,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_pasture_name_dacian"),
             (assign, ":string_description", "str_pasture_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_pasture_name_berber"),
+            (assign, ":string_description", "str_pasture_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_pasture_name_garamantian"),
+            (assign, ":string_description", "str_pasture_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30826,6 +30898,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_trader_name_dacian"),
             (assign, ":string_description", "str_trader_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_trader_name_berber"),
+            (assign, ":string_description", "str_trader_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_trader_name_garamantian"),
+            (assign, ":string_description", "str_trader_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30900,6 +30980,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_firefighters_name_dacian"),
             (assign, ":string_description", "str_firefighters_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_firefighters_name_berber"),
+            (assign, ":string_description", "str_firefighters_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_firefighters_name_garamantian"),
+            (assign, ":string_description", "str_firefighters_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -30944,6 +31032,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_school_name_dacian"),
             (assign, ":string_description", "str_school_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_school_name_berber"),
+            (assign, ":string_description", "str_school_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_school_name_garamantian"),
+            (assign, ":string_description", "str_school_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31000,6 +31096,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_forum_name_dacian"),
             (assign, ":string_description", "str_forum_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_forum_name_berber"),
+            (assign, ":string_description", "str_forum_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_forum_name_garamantian"),
+            (assign, ":string_description", "str_forum_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31046,6 +31150,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_theatre_name_dacian"),
             (assign, ":string_description", "str_theatre_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_theatre_name_berber"),
+            (assign, ":string_description", "str_theatre_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_theatre_name_garamantian"),
+            (assign, ":string_description", "str_theatre_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31084,6 +31196,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_public_baths_name_dacian"),
             (assign, ":string_description", "str_public_baths_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_public_baths_name_berber"),
+            (assign, ":string_description", "str_public_baths_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_public_baths_name_garamantian"),
+            (assign, ":string_description", "str_public_baths_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31122,6 +31242,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_triumphal_arch_name_dacian"),
             (assign, ":string_description", "str_triumphal_arch_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_triumphal_arch_name_berber"),
+            (assign, ":string_description", "str_triumphal_arch_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_triumphal_arch_name_garamantian"),
+            (assign, ":string_description", "str_triumphal_arch_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31163,6 +31291,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_barracks_name_dacian"),
             (assign, ":string_description", "str_barracks_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_barracks_name_berber"),
+            (assign, ":string_description", "str_barracks_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_barracks_name_garamantian"),
+            (assign, ":string_description", "str_barracks_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31201,6 +31337,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_culture_name_dacian"),
             (assign, ":string_description", "str_culture_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_culture_name_berber"),
+            (assign, ":string_description", "str_culture_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_culture_name_garamantian"),
+            (assign, ":string_description", "str_culture_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),
@@ -31239,6 +31383,14 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, ":string_name", "str_culture_name_dacian"),
             (assign, ":string_description", "str_culture_description_dacian"),
+        (else_try),
+            (eq, ":culture", "fac_culture_berber"),#Berber
+            (assign, ":string_name", "str_culture_name_berber"),
+            (assign, ":string_description", "str_culture_description_berber"),
+        (else_try),
+            (eq, ":culture", "fac_culture_garamantian"),#Garamantian
+            (assign, ":string_name", "str_culture_name_garamantian"),
+            (assign, ":string_description", "str_culture_description_garamantian"),
         (try_end),
         (str_store_string, s0, ":string_name"),
         (str_store_string, s1, ":string_description"),

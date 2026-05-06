@@ -8311,6 +8311,10 @@ strings = [
 ("sewers_description_dacian", "A quiet place with trees in the middle of the city will improve the health of the population and decrease probability of diseases."),
 ("sewers_name_nomadic", "Camp of Vitality"),
 ("sewers_description_nomadic", "A quiet place where the people can rest will improve the health of the population and decrease probability of diseases."),
+("sewers_name_berber", "Seguia"),
+("sewers_description_berber", "A seguia is a channel that directs water through the settlement. Keeping the water supply clean will improve the health of the population and decrease probability of diseases."),
+("sewers_name_garamantian", "Foggara"),
+("sewers_description_garamantian", "Foggaras are the underground water tunnels for which the Garamantes are famed. Supplying the settlement with fresh water will improve the health of the population and decrease probability of diseases."),
 
 ("mills_name_rome", "Industrial Mills"),
 ("mills_description_rome", "An industrial mill will increase production of bread and other goods and thus increase wealth and rents."),
@@ -8324,6 +8328,10 @@ strings = [
 ("mills_description_dacian", "Additional mills and a place to store the grain will increase production of bread and other goods and thus increase wealth and rents."),
 ("mills_name_nomadic", "Tribal Granary"),
 ("mills_description_nomadic", "A granary to store grain will increase production of bread and other goods and thus increase wealth and rents."),
+("mills_name_berber", "Amazigh Mills"),
+("mills_description_berber", "Building mills and granaries will increase production of bread and other goods and thus increase wealth and rents."),
+("mills_name_garamantian", "Desert Granary"),
+("mills_description_garamantian", "Building a desert granary will increase production of grain and other goods and thus increase wealth and rents."),
 
 ("looms_name_rome", "Industrial Looms"),
 ("looms_description_rome", "Industrial looms will increase production of linen and wool cloths and thus increase wealth and rents."),
@@ -8337,6 +8345,10 @@ strings = [
 ("looms_description_dacian", "Investing into loom workshops will increase production of linen and wool cloths and thus increase wealth and rents."),
 ("looms_name_nomadic", "Weavery Camp"),
 ("looms_description_nomadic", "Weaveries will increase production of linen and wool cloths and thus increase wealth and rents."),
+("looms_name_berber", "Berber Weavers"),
+("looms_description_berber", "The Berber people are renowned weavers. Investing in weaving workshops will increase production of linen and wool cloths and thus increase wealth and rents."),
+("looms_name_garamantian", "Desert Weavers"),
+("looms_description_garamantian", "Investing in weaving workshops will increase production of linen and wool cloths and thus increase wealth and rents."),
 
 ("smithies_name_rome", "Industrial Smithies"),
 ("smithies_description_rome", "Industrial smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
@@ -8350,6 +8362,10 @@ strings = [
 ("smithies_description_dacian", "Investing into iron smelt works will increase the production of iron and other metal goods and thus increase wealth and rents."),
 ("smithies_name_nomadic", "Tribal Smithies"),
 ("smithies_description_nomadic", "Smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
+("smithies_name_berber", "Tribal Smithies"),
+("smithies_description_berber", "Smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
+("smithies_name_garamantian", "Desert Smithies"),
+("smithies_description_garamantian", "Smithies will increase production of tools and other metal goods and thus increase wealth and rents."),
 
 ("fishing_name_rome", "Fishing Port"),
 ("fishing_description_rome", "Building an own port for a fishing fleet will increase the production of fish and thus increase rents. It will also generate 500 denarii which are added to the rents (tolls)."),
@@ -8367,6 +8383,10 @@ strings = [
 
 ("roads_name_nomadic", "Marketplace"),
 ("roads_description_nomadic", "A marketplace will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
+("roads_name_berber", "Desert Track"),
+("roads_description_berber", "Establishing reliable desert tracks and caravan routes will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
+("roads_name_garamantian", "Caravan Route"),
+("roads_description_garamantian", "Establishing reliable trans-Saharan caravan routes will increase trade and prosperity. It will also generate 2,000 denarii which are added to the rents (tolls)."),
 
 ("hospital_name_rome", "Hospital"),
 ("hospital_description_rome", "A hospital will improve the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
@@ -8380,6 +8400,10 @@ strings = [
 ("hospital_description_dacian", "Gaining the blessing of Derzelas will increase the health of the population and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 ("hospital_name_nomadic", "Shaman's Hut"),
 ("hospital_description_nomadic", "A shaman will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
+("hospital_name_berber", "Marabout Healer"),
+("hospital_description_berber", "A marabout healer will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
+("hospital_name_garamantian", "Oasis Healer"),
+("hospital_description_garamantian", "A healer at the oasis will improve the health of the population by treating their illnesses and increase your relation with the settlement. It has a monthly upkeep of 1,000 denarii which will be taken from the rents."),
 
 ("habour_name_rome", "Great Harbour"),
 ("habour_description_rome", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
@@ -8393,6 +8417,10 @@ strings = [
 ("habour_description_dacian", "Enlarging the port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 ("habour_name_nomadic", "Basic Port"),
 ("habour_description_nomadic", "Building a basic port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_name_berber", "Coastal Port"),
+("habour_description_berber", "Enlarging the coastal port will increase tariffs from sea trade and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
+("habour_name_garamantian", "Oasis Trading Post"),
+("habour_description_garamantian", "Expanding the oasis trading post will increase trade revenue and will increase prosperity and generate additional 2,500 denarii of rents (tolls). Building such a large project will give you renown and experience."),
 
 
 ("farming_name_rome", "Provincial Farming"),
@@ -8407,6 +8435,10 @@ strings = [
 ("farming_description_dacian", "Give lands to local aristocracy to harvest grain and other goods will increase rents."),
 ("farming_name_nomadic", "Tributary Farms"),
 ("farming_description_nomadic", "More farmers who pay tributes will mean an increase of rents."),
+("farming_name_berber", "Amazigh Farmsteads"),
+("farming_description_berber", "Investing into new farmsteads and irrigation will increase the production of grain and other goods and thus increase rents."),
+("farming_name_garamantian", "Oasis Farms"),
+("farming_description_garamantian", "Investing into oasis farms and irrigation will increase the production of grain, dates and other goods and thus increase rents."),
 
 
 ("pasture_name_rome", "Provincial pastureland"),
@@ -8421,6 +8453,10 @@ strings = [
 ("pasture_description_dacian", "Giving pastureland to local aristocracy will allow them to grow more cattle, sheep and horses, which will generate more rents over time."),
 ("pasture_name_nomadic", "Tribal Herds"),
 ("pasture_description_nomadic", "Enlarge the herds of the tribe with more cattle, sheep and horses, which will generate more rents over time."),
+("pasture_name_berber", "Berber Pasturelands"),
+("pasture_description_berber", "Increasing the pastureland will allow more cattle, sheep and horses to graze, which will generate more rents over time."),
+("pasture_name_garamantian", "Desert Herds"),
+("pasture_description_garamantian", "Increasing the desert herds of camels, goats and horses will generate more rents over time."),
 
 
 ("trader_name_rome", "Provincial Trader"),
@@ -8435,6 +8471,10 @@ strings = [
 ("trader_description_dacian", "Investment into regional trade will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 ("trader_name_nomadic", "Trading Post"),
 ("trader_description_nomadic", "A trading post will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
+("trader_name_berber", "Suq"),
+("trader_description_berber", "A suq will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
+("trader_name_garamantian", "Oasis Bazaar"),
+("trader_description_garamantian", "An oasis bazaar will increase the tariffs generated by villagers when entering the market town and will increase its prosperity. Additionally you will get 1,000 denarii per month added to your rents (tolls)."),
 
 
 ("ironmine_name_rome", "Iron mine"),
@@ -8465,6 +8505,10 @@ strings = [
 ("firefighters_description_dacian", "Make waster disposal more efficient to decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("firefighters_name_nomadic", "Altar"),
 ("firefighters_description_nomadic", "Build an altar to honor the gods. This will decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
+("firefighters_name_berber", "Sanctuary of Anzar"),
+("firefighters_description_berber", "Build a sanctuary for Anzar, the Berber god of rain, to honour him. This will decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
+("firefighters_name_garamantian", "Sanctuary of Gurzil"),
+("firefighters_description_garamantian", "Build a sanctuary to honor Gurzil, the Garamantian war deity. This will decrease chance of devastating events like fires. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("watchtower_name_rome", "Watch Tower"),
 ("watchtower_description_rome", "A watch tower lets the villagers raise alarm earlier. The time it takes for enemies to loot the village increases by 50%."),
@@ -8481,6 +8525,10 @@ strings = [
 ("school_description_dacian", "A school to teach the local aristocracy will increases the loyality by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 ("school_name_nomadic", "Learning Grove"),
 ("school_description_nomadic", "A learning grove increases the loyality of the villagers to you by +1 every month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
+("school_name_berber", "Assembly of Elders"),
+("school_description_berber", "Building a hall where the elders can gather will increase your relation by +1 each month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
+("school_name_garamantian", "Council of Elders"),
+("school_description_garamantian", "Building a place where the elders can gather will increase your relation by +1 each month and also increases wealth. It will cost 500 denarii a month to maintain (costs will be paid from rents)."),
 
 ("messenger_post_name_rome", "Messenger Post"),
 ("messenger_post_description_rome", "A messenger post lets the inhabitants send you a message whenever enemies are nearby, even if you are far away from here. It will cost 250 denarii a month to maintain (costs will be paid from rents)."),
@@ -8502,6 +8550,10 @@ strings = [
 ("forum_description_dacian", "Building a great temple for Zalmoxis is a sign of power. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the income from tariffs will be increased due to pilgrims coming into the town."),
 ("forum_name_nomadic", "Sanctuary of Api"),
 ("forum_description_nomadic", "Hounor the great goddess Api. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the tariffs income will be increased due to pilgrims entering town."),
+("forum_name_berber", "Agellid's Court"),
+("forum_description_berber", "Building a grand court for the agellid is a sign of power. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the income from tariffs will be raised due to increased trade."),
+("forum_name_garamantian", "Royal Court of the Garamantes"),
+("forum_description_garamantian", "Building a grand royal court is a sign of power. It will increase your renown and your relation with this center. It will also increase your reputation and gain you experience. Additionally the income from tariffs will be raised due to increased trade."),
 
 ("temple_name_rome", "Temple of {s38}"),
 ("temple_description_rome", "Your own temple to honor {s38} will allow you to make sacrifices at the town. It will for sure please {s38}."),
@@ -8518,6 +8570,10 @@ strings = [
 ("theatre_description_dacian", "Hosting various different types of games on a regular gives the people another possibility to enjoy. It is also a sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
 ("theatre_name_nomadic", "Great Horce Racing Games"),
 ("theatre_description_nomadic", "Horse races give the people another possibility to enjoy. Holding such games regularly is a sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
+("theatre_name_berber", "Tribal Gathering"),
+("theatre_description_berber", "Hosting great tribal gatherings gives the people another possibility to enjoy. It is also a sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
+("theatre_name_garamantian", "Chariot Games"),
+("theatre_description_garamantian", "Hosting great four-horse chariot races, for which the Garamantes are feared, gives the people another possibility to enjoy. It is also a sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
 
 ("public_baths_name_rome", "Public Baths"),
 ("public_baths_description_rome", "Baths are a place for people to enjoy. It is another sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
@@ -8531,6 +8587,10 @@ strings = [
 ("public_baths_description_dacian", "A great sanctuary to honor Kotys. It is another sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
 ("public_baths_name_nomadic", "House of the Ancestors"),
 ("public_baths_description_nomadic", "A holy place to honor the dead and drink to their memory. It is another sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
+("public_baths_name_berber", "Sacred Spring"),
+("public_baths_description_berber", "A sacred spring is a place of reverence and enjoyment. It is another sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
+("public_baths_name_garamantian", "Sacred Oasis"),
+("public_baths_description_garamantian", "A sacred oasis dedicated to the gods is a place of reverence and enjoyment. It is another sign of power and increase your renown and relation with this center. It will also increase your reputation and gain you experience."),
 
 ("triumphal_arch_name_rome", "Triumphal Arch"),
 ("triumphal_arch_description_rome", "A triumphal arch show your most famous victories over your enemies. It will increase your renown. Even after your death people will talk about you. It will also increase your reputation and gain you experience."),
@@ -8544,6 +8604,10 @@ strings = [
 ("triumphal_arch_description_dacian", "Build a scriptorium to spread your fame. It will increase your renown. Even after your death people will talk about you. It will also increase your reputation and gain you experience."),
 ("triumphal_arch_name_nomadic", "Kurgan Field"),
 ("triumphal_arch_description_nomadic", "Create a place to burry great nobles. It will increase your renown. Even after your death people will talk about you. It will also increase your reputation and gain you experience."),
+("triumphal_arch_name_berber", "Victory Stele"),
+("triumphal_arch_description_berber", "A stele to commemorate your most famous victories over your enemies. It will increase your renown. Even after your death people will talk about you. It will also increase your reputation and gain you experience."),
+("triumphal_arch_name_garamantian", "Victory Stele of the Garamantes"),
+("triumphal_arch_description_garamantian", "A great stele to commemorate your most famous victories. It will increase your renown. Even after your death people will talk about you. It will also increase your reputation and gain you experience."),
 
 
 ("barracks_name_rome", "Barracks"),
@@ -8558,6 +8622,10 @@ strings = [
 ("barracks_description_dacian", "Build a great hall to encourage warriors of your people to settle here. It will allow you to recruit troops of your kingdom."),
 ("barracks_name_nomadic", "Warrior Camp"),
 ("barracks_description_nomadic", "Build a camp to give warriors of your people a place to life. It will allow you to recruit troops of your kingdom."),
+("barracks_name_berber", "Warrior Encampment"),
+("barracks_description_berber", "Build a warrior encampment to encourage warriors of your people to settle here. It will allow you to recruit troops of your kingdom."),
+("barracks_name_garamantian", "Charioteer's Camp"),
+("barracks_description_garamantian", "Build a charioteer's camp to give warriors and charioteers of your people a place to train. It will allow you to recruit troops of your kingdom."),
 
 ("culture_name_rome", "Romanize the population"),
 ("culture_description_rome", "By introducing your traditions, laws and rituals to the local population, you can change the culture of the settlement in a peaceful way."),
@@ -8571,6 +8639,10 @@ strings = [
 ("culture_description_dacian", "By settling warriors and people of your culture you can change the culture of the settlement in a peaceful way."),
 ("culture_name_nomadic", "Settle people of your culture"),
 ("culture_description_nomadic", "By settling warriors and people of your culture you can change the culture of the settlement in a peaceful way."),
+("culture_name_berber", "Settle Berber People"),
+("culture_description_berber", "By settling Berber warriors and people you can change the culture of the settlement in a peaceful way."),
+("culture_name_garamantian", "Settle Garamantian People"),
+("culture_description_garamantian", "By settling Garamantian warriors and people you can change the culture of the settlement in a peaceful way."),
 
 ("event_mild_winter_name", "mild winter"),
 ("event_mild_winter_description", "The current winter is mild."),
