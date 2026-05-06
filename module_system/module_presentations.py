@@ -6246,7 +6246,7 @@ presentations = presentations_wse2 + [
         (val_max, ":workshops_total", 0),
         (store_add, ":corruption_loss", ":workshops_total", ":latifundia_total"),
         (val_add, ":corruption_loss", ":all_centers_accumulated_total"),
-        (val_add, ":corruption_loss", ":special_estate_costs"),
+        # (val_add, ":corruption_loss", ":special_estate_costs"),
         (val_mul, ":corruption_loss", ":household_corruption_modifier"),
         (val_div, ":corruption_loss", 100),
         (val_mul, ":corruption_loss", -1), #negative value
