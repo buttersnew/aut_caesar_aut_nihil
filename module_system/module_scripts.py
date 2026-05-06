@@ -81108,7 +81108,7 @@ scripts = scripts_hardcoded + [
     (try_end),
     (eq, ":continue", 1),
 ]),
-
+# script_spawn_companion
 ("spawn_companion",[
     (store_script_param, ":town", 1),
     (store_script_param, ":location", 2),
