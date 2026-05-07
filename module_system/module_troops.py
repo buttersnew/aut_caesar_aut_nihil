@@ -451,6 +451,7 @@ jew_mail_2= [itm_judean_mail_1, itm_judean_mail_2, itm_judean_mail_3]
 jew_scale = [itm_judean_scale_1,itm_judean_scale_2]
 
 old_roman_roundshields = [itm_old_round_shield_1,itm_old_round_shield_2,itm_old_round_shield_3,itm_old_round_shield_4,itm_old_round_shield_5]
+big_old_roman_roundshields = [itm_big_old_round_shield_1,itm_big_old_round_shield_2,itm_big_old_round_shield_3,itm_big_old_round_shield_4,itm_big_old_round_shield_5]
 
 roman_eastern_scale = [itm_auxilia_squamata_east_1,itm_auxilia_squamata_east_3]
 
@@ -707,8 +708,8 @@ berber_helm_old_noble = [
 berber_round_shield_light = [
   itm_african_round_shield_1,itm_african_round_shield_2,itm_african_round_shield_3,itm_african_round_shield_4
 ]
-berber_round_shield = [
-  itm_old_round_shield_1,itm_old_round_shield_2,itm_old_round_shield_3,itm_old_round_shield_4,itm_old_round_shield_5
+berber_round_shield_bigger = [
+  itm_big_old_round_shield_1,itm_big_old_round_shield_2,itm_big_old_round_shield_3,itm_big_old_round_shield_4,itm_big_old_round_shield_5
 ]
 berber_shields_inf_light = [
   itm_african_shield_inf_light1,itm_african_shield_inf_light2,itm_african_shield_inf_light3,itm_african_shield_inf_light4
@@ -1060,7 +1061,7 @@ attrib_level_6, wp(60), knows_level_6, north_african_man_face_younger_1, north_a
 [itm_sling_rock1,itm_sling,itm_sword_akinakes,itm_roman_poor1,itm_roman_poor2,itm_roman_poor4,itm_roman_poor5,itm_caligea],
 attrib_level_12, wp(110), knows_level_12, white_face_11, white_face_12 ],
 ["caravan_guard", "Custos", "Custodes", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
-[itm_caligea,itm_armenian_tunic_1,itm_bosporan_light1,itm_bosporan_light2,itm_germanic_light7]+items_roman_horses+jew_helm_light+jew_spears+jew_swords+old_roman_roundshields,
+[itm_caligea,itm_armenian_tunic_1,itm_bosporan_light1,itm_bosporan_light2,itm_germanic_light7]+items_roman_horses+jew_helm_light+jew_spears+jew_swords+big_old_roman_roundshields,
 attrib_level_18, wp(115), knows_level_18|knows_riding_4, white_face_11, white_face_12 ],
 ["mercenary_swordsman", "Mercenarius Hastatus", "Mercenarii Hastati", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_gloves|tf_guarantee_shield, no_scene, reserved, fac_commoners,
 [itm_war_spear,itm_spear,itm_cavalry_spear,itm_caligea,itm_armenian_tunic_3,itm_bosporan_light3,itm_dacian_light7,itm_dacian_light8]+old_roman_roundshields+jew_helm_light,
@@ -1554,13 +1555,13 @@ attrib_level_29, wp_melee(180), knows_level_29, eastern_man_face_younger_1, east
 attrib_level_31, wp_melee(210), knows_level_31, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["judean_cav", "Judaios Hippakontistes", "Ioudaioi Hippakontistai",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,
-[itm_javelin]+horse_parth+jew_boots_simple+jew_mail_2+jew_mail_1+jew_helm_light+jew_helm_heavy+jew_spears+old_roman_roundshields,
+[itm_javelin]+horse_parth+jew_boots_simple+jew_mail_2+jew_mail_1+jew_helm_light+jew_helm_heavy+jew_spears+big_old_roman_roundshields,
 attrib_level_23, wp_melee(130), knows_level_26, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
 ["judean_cav_exp", "Judaios Hippakontistes (exp)", "Ioudaioi Hippakontistai (exp)",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,
-[itm_javelin]+horse_parth+jew_boots_heavy+jew_mail_2+jew_mail_1+jew_helm_heavy+jew_spears+old_roman_roundshields,
+[itm_javelin]+horse_parth+jew_boots_heavy+jew_mail_2+jew_mail_1+jew_helm_heavy+jew_spears+big_old_roman_roundshields,
 attrib_level_26, wp_melee(150), knows_level_29, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 ["judean_cav_vet", "Judaios Hippakontistes (vet)", "Ioudaioi Hippakontistai (vet)",tf_male_eastern|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_helmet|tf_guarantee_shield|tf_guarantee_polearm|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,
-[itm_javelin]+horse_parth+jew_boots_heavy+jew_mail_1+jew_scale+jew_helm_heavy+jew_spears+old_roman_roundshields,
+[itm_javelin]+horse_parth+jew_boots_heavy+jew_mail_1+jew_scale+jew_helm_heavy+jew_spears+big_old_roman_roundshields,
 attrib_level_29, wp_melee(170), knows_level_31, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["judean_guard","Sebastenos Peltastes","Sebastenoi Peltastai",tf_guarantee_soldier,0,0,fac_culture_judean,
@@ -1748,13 +1749,13 @@ attrib_level_26_warrior, wp(175), knows_level_26_warrior, north_african_man_face
 attrib_level_29_warrior, wp(190), knows_level_29_warrior, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["gaetulian_noble_cav","Amanay Ameqqran", "Imanayan Imeqqranen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[itm_javelin_berber]+berber_light_noble+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light,
+[itm_javelin_berber]+berber_light_noble+berber_breastplate+berber_swords+berber_spears+berber_round_shield_bigger+horse_numidian+berber_foot_light,
 attrib_level_23_warrior, wp(160), knows_level_23_warrior|knows_riding_6, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_noble_cav_exp","Amanay Ameqqran (exp)", "Imanayan Imeqqranen (exp)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
+[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield_bigger+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
 attrib_level_26_warrior, wp(175), knows_level_26_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_noble_cav_vet","Amanay Ameqqran (vet)", "Imanayan Imeqqranen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_horse|tf_mounted|tf_guarantee_shield|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
+[itm_javelin_berber]+berber_mail+berber_breastplate+berber_swords+berber_spears+berber_round_shield_bigger+horse_numidian+berber_foot_light+berber_helm+berber_helm_old+berber_helm_old_noble,
 attrib_level_29_warrior, wp(190), knows_level_29_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 ["gaetulian_skirmisher_cav","Amanay Awedday", "Imanayan Iweddayen", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_horse|tf_mounted|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
@@ -1764,7 +1765,7 @@ attrib_level_20_warrior, wp(160), knows_level_20_warrior|knows_riding_6, north_a
 []+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield_light+berber_spears+berber_javelins,
 attrib_level_23_warrior, wp(180), knows_level_23_warrior|knows_riding_8, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 ["gaetulian_skirmisher_cav_vet","Amanay Awedday (vet)", "Imanayan Iweddayen (vet)", tf_male_north_african|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_shield|tf_guarantee_horse|tf_mounted|tf_guarantee_boots, no_scene, reserved, fac_culture_garamantian,
-[]+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield+berber_spears+berber_javelins,
+[]+horse_numidian+berber_light_armour+berber_foot_light+berber_helm_light+desert_turbans_2+berber_round_shield_bigger+berber_spears+berber_javelins,
 attrib_level_26_warrior, wp(200), knows_level_26_warrior|knows_riding_10, north_african_man_face_younger_1, north_african_man_face_middle_2 ],
 
 

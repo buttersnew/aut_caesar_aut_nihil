@@ -8087,6 +8087,7 @@ strings = [
 ("pic_settlement_manor_dacian",  "pic_settlement_manor_dacian"),
 ("pic_settlement_manor_eastern",  "pic_settlement_manor_eastern"),
 ("pic_settlement_manor_nomadic",  "pic_settlement_manor_nomadic"),
+("pic_settlement_manor_african",  "pic_settlement_manor_african"),
 
 ("pic_settlement_mill",  "pic_settlement_mill"),
 ("pic_settlement_watchtower",  "pic_settlement_watchtower"),
@@ -8097,6 +8098,7 @@ strings = [
 ("pic_settlement_school_germanic",  "pic_settlement_school_germanic"),
 ("pic_settlement_school_celtic",  "pic_settlement_school_celtic"),
 ("pic_settlement_school_nomadic",  "pic_settlement_school_nomadic"),
+("pic_settlement_school_african",  "pic_settlement_school_african"),
 
 ("pic_settlement_ironmine",  "pic_settlement_ironmine"),
 
@@ -8106,12 +8108,14 @@ strings = [
 ("pic_settlement_changeculture_armenian",  "pic_settlement_changeculture_armenian"),
 ("pic_settlement_changeculture_dacian",  "pic_settlement_changeculture_dacian"),
 ("pic_settlement_changeculture_nomadic",  "pic_settlement_changeculture_nomadic"),
+("pic_settlement_changeculture_african",  "pic_settlement_changeculture_african"),
 
 ("pic_settlement_farms",  "pic_settlement_farms"),
 ("pic_settlement_farms_eastern",  "pic_settlement_farms_eastern"),
 ("pic_settlement_farms_celtic",  "pic_settlement_farms_celtic"),
 ("pic_settlement_farms_germanic",  "pic_settlement_farms_germanic"),
 ("pic_settlement_farms_dacian",  "pic_settlement_farms_dacian"),
+("pic_settlement_farms_african",  "pic_settlement_farms_african"),
 
 ("pic_settlement_cattle",  "pic_settlement_cattle"),
 
@@ -8121,6 +8125,7 @@ strings = [
 ("pic_settlement_trader_nomadic",  "pic_settlement_trader_nomadic"),
 ("pic_settlement_trader_celtic",  "pic_settlement_trader_celtic"),
 ("pic_settlement_trader_dacian",  "pic_settlement_trader_dacian"),
+("pic_settlement_trader_african",  "pic_settlement_trader_african"),
 
 ("pic_settlement_quarry",  "pic_settlement_quarry"),
 ("pic_settlement_irigation",  "pic_settlement_irigation"),
@@ -8134,6 +8139,7 @@ strings = [
 ("pic_settlement_roads_celtic",  "pic_settlement_roads_celtic"),
 ("pic_settlement_roads_dacian",  "pic_settlement_roads_dacian"),
 ("pic_settlement_roads_nomadic",  "pic_settlement_roads_nomadic"),
+("pic_settlement_roads_african",  "pic_settlement_roads_african"),
 
 ("pic_settlement_hospital",  "pic_settlement_hospital"),
 ("pic_settlement_hospital_eastern",  "pic_settlement_hospital_eastern"),
@@ -8141,6 +8147,7 @@ strings = [
 ("pic_settlement_hospital_celtic",  "pic_settlement_hospital_celtic"),
 ("pic_settlement_hospital_dacian",  "pic_settlement_hospital_dacian"),
 ("pic_settlement_hospital_nomadic",  "pic_settlement_hospital_nomadic"),
+("pic_settlement_hospital_african",  "pic_settlement_hospital_african"),
 
 ("pic_settlement_prison",  "pic_settlement_prison"),
 
@@ -8150,6 +8157,7 @@ strings = [
 ("pic_settlement_fire_nomadic",  "pic_settlement_fire_nomadic"),
 ("pic_settlement_fire_celtic",  "pic_settlement_fire_celtic"),
 ("pic_settlement_fire_dacian",  "pic_settlement_fire_dacian"),
+("pic_settlement_fire_african",  "pic_settlement_fire_african"),
 
 ("pic_settlement_training",  "pic_settlement_training"),
 ("pic_settlement_slavemarket",  "pic_settlement_slavemarket"),
@@ -8160,32 +8168,38 @@ strings = [
 ("pic_settlement_barracks_germanic",  "pic_settlement_barracks_germanic"),
 ("pic_settlement_barracks_dacian",  "pic_settlement_barracks_dacian"),
 ("pic_settlement_barracks_nomadic",  "pic_settlement_barracks_nomadic"),
+("pic_settlement_barracks_african",  "pic_settlement_barracks_african"),
 
 ("pic_settlement_sewers",  "pic_settlement_sewers"),
 ("pic_settlement_sewers_eastern",  "pic_settlement_sewers_eastern"),
 ("pic_settlement_sewers_nomadic",  "pic_settlement_sewers_nomadic"),
 ("pic_settlement_sewers_germanic",  "pic_settlement_sewers_germanic"),
 ("pic_settlement_sewers_barbarian",  "pic_settlement_sewers_barbarian"),
+("pic_settlement_sewers_african",  "pic_settlement_sewers_african"),
 
 ("pic_settlement_industry",  "pic_settlement_industry"),
 ("pic_settlement_industry_eastern",  "pic_settlement_industry_eastern"),
 ("pic_settlement_industry_barbarian",  "pic_settlement_industry_barbarian"),
 ("pic_settlement_industry_grain",  "pic_settlement_industry_grain"),
+("pic_settlement_industry_african",  "pic_settlement_industry_african"),
 
 ("pic_settlement_loom",  "pic_settlement_loom"),
 ("pic_settlement_loom_eastern",  "pic_settlement_loom_eastern"),
 ("pic_settlement_loom_germanic",  "pic_settlement_loom_germanic"),
 ("pic_settlement_loom_celtic",  "pic_settlement_loom_celtic"),
 ("pic_settlement_loom_dacian",  "pic_settlement_loom_dacian"),
+("pic_settlement_loom_african",  "pic_settlement_loom_african"),
 
 ("pic_settlement_smithy",  "pic_settlement_smithy"),
 ("pic_settlement_smithy_generic",  "pic_settlement_smithy_generic"),
 ("pic_settlement_smithy_barbarian",  "pic_settlement_smithy_barbarian"),
+("pic_settlement_smithy_african",  "pic_settlement_smithy_african"),
 
 
 ("pic_settlement_port",  "pic_settlement_port"),
 ("pic_settlement_port_eastern",  "pic_settlement_port_eastern"),
 ("pic_settlement_port_barbarian",  "pic_settlement_port_barbarian"),
+("pic_settlement_port_african",  "pic_settlement_port_african"),
 
 ("pic_settlement_forum",  "pic_settlement_forum"),
 ("pic_settlement_forum_celtic",  "pic_settlement_forum_celtic"),
@@ -8193,6 +8207,7 @@ strings = [
 ("pic_settlement_forum_dacian",  "pic_settlement_forum_dacian"),
 ("pic_settlement_forum_nomadic",  "pic_settlement_forum_nomadic"),
 ("pic_settlement_forum_germanic",  "pic_settlement_forum_germanic"),
+("pic_settlement_forum_african",  "pic_settlement_forum_african"),
 
 ("pic_settlement_theatre",  "pic_settlement_theatre"),
 ("pic_settlement_theatre_eastern",  "pic_settlement_theatre_eastern"),
@@ -8200,6 +8215,7 @@ strings = [
 ("pic_settlement_theatre_germanic",  "pic_settlement_theatre_germanic"),
 ("pic_settlement_theatre_dacian",  "pic_settlement_theatre_dacian"),
 ("pic_settlement_theatre_nomadic",  "pic_settlement_theatre_nomadic"),
+("pic_settlement_theatre_african",  "pic_settlement_theatre_african"),
 
 ("pic_settlement_triumph",  "pic_settlement_triumph"),
 ("pic_settlement_triumph_germanic",  "pic_settlement_triumph_germanic"),
@@ -8207,6 +8223,7 @@ strings = [
 ("pic_settlement_triumph_celtic",  "pic_settlement_triumph_celtic"),
 ("pic_settlement_triumph_dacian",  "pic_settlement_triumph_dacian"),
 ("pic_settlement_triumph_nomadic",  "pic_settlement_triumph_nomadic"),
+("pic_settlement_triumph_african",  "pic_settlement_triumph_african"),
 
 ("pic_settlement_water",  "pic_settlement_water"),
 ("pic_settlement_water_eastern",  "pic_settlement_water_eastern"),
@@ -8214,10 +8231,12 @@ strings = [
 ("pic_settlement_water_celtic",  "pic_settlement_water_celtic"),
 ("pic_settlement_water_dacian",  "pic_settlement_water_dacian"),
 ("pic_settlement_water_nomadic",  "pic_settlement_water_nomadic"),
+("pic_settlement_water_african",  "pic_settlement_water_african"),
 
 ("pic_settlement_temple",  "pic_settlement_temple"),
 ("pic_settlement_temple_barbarian",  "pic_settlement_temple_barbarian"),
 ("pic_settlement_temple_eastern",  "pic_settlement_temple_eastern"),
+("pic_settlement_temple_african",  "pic_settlement_temple_african"),
 
 ("pic_settlement_amphitheatre", "pic_settlement_amphitheatre"),
 

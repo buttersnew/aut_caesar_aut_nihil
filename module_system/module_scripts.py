@@ -76185,6 +76185,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_manor_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_manor_african"),
         (try_end),
     (else_try),
         (eq, ":improvement_no", slot_center_has_guard),
@@ -76212,6 +76216,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_sewers_barbarian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_sewers_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_sewers"),
@@ -76238,6 +76246,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_industry_grain"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_industry_african"),
         (else_try),##fallback
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76266,6 +76278,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_loom_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_loom_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_loom"),
@@ -76292,6 +76308,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_smithy_generic"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_smithy_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76323,6 +76343,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_roads_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_roads_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_roads"),
@@ -76349,6 +76373,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_hospital_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_hospital_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76377,6 +76405,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_port_barbarian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_port_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_port"),
@@ -76403,6 +76435,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_farms_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_farms_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76458,6 +76494,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_trader_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_trader_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_trader"),
@@ -76503,6 +76543,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_fire_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_fire_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_fire"),
@@ -76532,6 +76576,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_school_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_school_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76569,6 +76617,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_forum_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_forum_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_forum"),
@@ -76595,6 +76647,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_temple_barbarian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_temple_african"),
         (else_try),
             (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             (eq, ":culture", "fac_culture_roman"),#roman
@@ -76623,6 +76679,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_theatre_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_theatre_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_theatre"),
@@ -76649,6 +76709,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_water_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_water_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76677,6 +76741,10 @@ scripts = scripts_hardcoded + [
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_triumph_dacian"),
         (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_triumph_african"),
+        (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
             (assign, reg0, "str_pic_settlement_triumph"),
@@ -76703,6 +76771,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_barracks_dacian"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_barracks_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
@@ -76731,6 +76803,10 @@ scripts = scripts_hardcoded + [
         (else_try),
             (eq, ":culture", "fac_culture_dacian"),#Dacian
             (assign, reg0, "str_pic_settlement_changeculture"),
+        (else_try),
+            (this_or_next|eq, ":culture", "fac_culture_berber"),#african
+            (eq, ":culture", "fac_culture_garamantian"),#african
+            (assign, reg0, "str_pic_settlement_changeculture_african"),
         (else_try),
             # (this_or_next|eq, ":culture", "fac_culture_bosporan"),#bosporan
             # (eq, ":culture", "fac_culture_roman"),#roman
