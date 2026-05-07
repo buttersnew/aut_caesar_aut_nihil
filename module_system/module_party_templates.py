@@ -92,7 +92,7 @@ party_templates = [
 
 ("nasamones","Nasamones Raiders",icon_peasant|carries_goods(30),0,fac_nasamones,bandit_personality,[(trp_garamantian_horseman_merc,50,120),(trp_garamantian_noble_horseman_merc,30,70)]),
 ("baquates","Baquates Raiders",icon_peasant|carries_goods(30),0,fac_baquates,bandit_personality,[(trp_gaetuli_horseman_merc,50,120),(trp_gaetuli_noble_horseman_merc,30,70)]),
-("autololes","Autololes Raiders",icon_peasant|carries_goods(30),0,fac_baquates,bandit_personality,[(trp_gaetuli_horseman_merc,50,120),(trp_gaetuli_noble_horseman_merc,30,70)]),
+("autololes","Autololes Raiders",icon_peasant|carries_goods(30),0,fac_autololes,bandit_personality,[(trp_gaetuli_horseman_merc,50,120),(trp_gaetuli_noble_horseman_merc,30,70)]),
 ("nabatean","Nabataean Raiders",icon_peasant|carries_goods(30),0,fac_nabataea,bandit_personality,[(trp_desert_bandit,25,60),(trp_arab_noble_cav,15,30),(trp_mercenary_swordsman, 40, 90),]),
 ("nubian","Nubian Raiders",icon_peasant|carries_goods(30),0,fac_kush,bandit_personality,[(trp_meroe_archers,30,65),(trp_meroe_infantry,25,50),(trp_meroe_guard, 10, 25),(trp_meroe_axemen,30,75),]),
 ("irish","Irish Raiders",icon_peasant|carries_goods(30),0,fac_irish,bandit_personality,[(trp_irish_vetran,30,65),(trp_irish_skirmisher,50,115),]),
