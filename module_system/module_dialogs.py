@@ -6623,7 +6623,7 @@ dialogs =[
 "close_window",[
   (str_store_party_name_link, s22, "p_town_13"),
   (quest_set_slot, "qst_wlodowiecus_adventure_4", slot_quest_current_state, 3),
-  (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_4", 3, "@At the party, The Libyan told you about his desire to establish trade relations with silk merchants from China, as he loves working with silk. He presented to the group a new member to join, an Arab caravan guard named Ali, who will also serve as guide on our way to Bactria."
+  (add_quest_note_from_sreg, "qst_wlodowiecus_adventure_4", 3, "@At the party, The Libyan told you about his desire to establish trade relations with silk merchants from China, as he loves working with silk. He presented to the group a new member to join, an Arab caravan guard named Ali, who will also serve as guide on your way to Bactria."
   +" Travell to {s22} and meet one of The Lybian's associates in a local tavern.", 0),
   (display_message, "str_quest_updated", message_alert),
   (jump_to_menu, "mnu_wlodowiecus_adventure_1_4_lybicus_feast_2"),
@@ -91210,21 +91210,21 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (rest_for_hours, 4, 2, 0),
   (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 4),
 
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@Now I have Darta. I should ask for a huge reward.", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@Now you have Darta. You should ask for a huge reward.", 0),
   (display_message, "str_quest_updated", message_alert),
 ]],
 
 [trp_garamantian_queen|plyr, "darta_talky5",[],"You look ... good ...", "darta_talky6",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
 [trp_garamantian_queen, "darta_talky6",[],"(You have a good time her in the sand. After an hour of joy you remain lying in the sand while she sneakes away.)", "close_window",[
   (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@You don't have Darta. You will tell that she was killed by a snake or something like that.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
 
 [trp_garamantian_queen|plyr, "darta_talky43",[],"I see. Stay here with Garat. I won't bring you to your father", "darta_leave",[]],
 [trp_garamantian_queen, "darta_leave",[],"Thank you {playername}. I won't forget your hounorable act. ^--She gives you a kiss. --", "close_window",[
   (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@You don't have Darta. You will tell that she was killed by a snake or something like that.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_honor", 5),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 80),]],
@@ -91627,7 +91627,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_king_quest_daughter_talk_plan3",[],"I will be back with your daughter.", "desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@I have talked with {s20} about his daughter. I will rescue her and bring her back to {s20}. I am sure he will pay me well. Maybe I can persuade Gadarat to sell his wife to me? Or should I use violence?", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@You have talked with {s20} about his daughter. You will rescue her and bring her back to {s20}. You are sure he will pay you well. Maybe you can persuade Gadarat to sell his wife to you? Or should you use violence?", 0),
   (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 2),
   ]],
 
@@ -91705,7 +91705,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "desert_king_quest_gara_talk_daughter5",[],"Well to bad for you. Guards, kill this scum!", "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I should look for an ally in the palace.", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@You should look for an ally in the palace.", 0),
   (display_message, "@Quest notes have been updated"),
           (try_for_agents,":agent_no"),
             (agent_is_alive,":agent_no"),
@@ -91874,7 +91874,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],"What is wrong with my wife? He?", "desert_king_quest_gara_talk2",[ (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-2),
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@I have talked with {s20} about his wife. It seems like he wants to hide something.", 0),
+  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@You have talked with {s20} about his wife. It seems like he wants to hide something.", 0),
   ]],
 [anyone|plyr, "desert_king_quest_gara_talk2",[],"Nothing. Forget it.", "desert_king_pretalk",[]],
 [anyone|plyr, "desert_king_quest_gara_talk2",[],"She isn't from here, right?", "desert_king_quest_gara_talk3",[]],
