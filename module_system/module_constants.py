@@ -2332,6 +2332,9 @@ lords_end = "trp_knight_1_1_wife"
 kings_begin = "trp_kingdom_1_lord"
 kings_end = lords_begin
 
+bandit_leaders_begin = "trp_bandit_autololes_leader"
+bandit_leaders_end = "trp_senator_trump"
+
 minor_kings_begin = "trp_slavic_king"
 minor_kings_end = "trp_baquates_queen"
 

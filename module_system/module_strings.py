@@ -2265,7 +2265,7 @@ strings = [
   ("npc40_home_intro", "{Domins/Domina}, we are close to the delta. I can feel its fresh air!"),
   ("npc41_home_intro", "{!}"),
   ("npc42_home_intro", "Chief! Can you smell the fresh air and see the endless plains! This is Sarmatia!"),
-  ("npc43_home_intro", "{Dominus/Domina}, we are near Larbas — a Gaetulian town. This is my homeland, the land of my people. I spent my childhood in these hills before I rode to war for king Ptolemy. The desert begins just to the south, and these rocky slopes are where my tribe has always lived. I know every pass and every waterhole between here and the Sahara."),
+  ("npc43_home_intro", "{Dominus/Domina}, we are near Larbas - a Gaetulian town. This is my homeland, the land of my people. I spent my childhood in these hills before I rode to war for king Ptolemy. The desert begins just to the south, and these rocky slopes are where my tribe has always lived. I know every pass and every waterhole between here and the Sahara."),
 
   ("npc1_home_description", "Well, Scythians have not always lived  here. It is said that the wandering Scythians once dwelt in Asia,"
 	+" and there warred with the Massagetae, but with ill success;"
@@ -2559,7 +2559,7 @@ strings = [
   ("npc19_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc20_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc21_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
-  ("npc22_kingsupport_1", "Captain, the Empire is built on the backs of men like me—slaves and freedmen. But we are treated with scorn. You could change that."),
+  ("npc22_kingsupport_1", "Captain, the Empire is built on the backs of men like me-slaves and freedmen. But we are treated with scorn. You could change that."),
   ("npc23_kingsupport_1", "I do not consider kingly matters, but you got my support. Don't expect me to kneel."),
   ("npc24_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),
   ("npc25_kingsupport_1", "Very good, commander. The Emperors in the past have done nothing for the Empire. I am sure you would finally bring the Pax Romana from Augustian times back."),

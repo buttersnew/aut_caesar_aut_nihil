@@ -6892,7 +6892,7 @@ def_attrib|level(4), wp(60), knows_common, 0x0000000c7404c29447036d4cebae3863000
 ["arabian_queen", "Sheikha Shaqilath", "Sheikha Shaqilath", tf_hero|tf_female, no_scene, reserved, fac_nabataea,
 [itm_eastern_shoe_b,itm_sarranid_lady_dress_b],
 def_attrib|level(4), wp(60), knows_common, 0x000000079100a19b3f137236e394da6300000000001d9aeb0000000000000000],
-["nasamones_queen", "Darta", "Darta", tf_hero|tf_female, no_scene, reserved, fac_nasamones,
+["baquates_princess", "Darta", "Darta", tf_hero|tf_female, no_scene, reserved, fac_nasamones,
 [itm_eastern_shoe_y,itm_sarranid_lady_dress_b],
 def_attrib|level(4), wp(60), knows_common, 0x00000003ff00b1961c90b4c262b1689900000000001f34dc0000000000000000 ],
 
@@ -7973,6 +7973,10 @@ tf_hero|tf_inactive, 0,reserved,fac_neutral,[],def_attrib|level(18),wp(60),knows
 
 ["household_end", "end of household", "end of household", 0, no_scene, reserved, fac_neutral, [], def_attrib, wp(0),
 knows_common,0x00000000000c311b712cf5b6db6db6db00000000001db6d80000000000000000],
+
+["bandit_autololes_leader","Garat","Garat",tf_male_north_african|tf_hero|tf_randomize_face,no_scene,reserved,fac_autololes,
+[itm_caligea,itm_centurio_east_graves,itm_berber_breastplate_5,itm_lion_head_helm,itm_berber_spear_1,itm_african_round_shield_4,itm_roman_spatha_3,itm_numidian_horse_3],
+attrib_level_31_warrior, wp_melee(250), knows_level_31_warrior, north_african_man_face_young_1, north_african_man_face_middle_2],
 
 ["senator_trump","Aurantius Licinius Rumpus","Aurantius Licinius Rumpus",tf_hero,0,0,fac_neutral,
 [itm_caligea,itm_calceus,itm_calceus_4,itm_calceus_3,itm_calceus_2,itm_roman_toga,itm_dagger],

@@ -359,7 +359,7 @@ quests = [
   "{!}placeholder"
   ),
 
-  ("blank_quest_20", "Special Quest: Blossom in the Desert", qf_random_quest,
+  ("blossom_in_the_desert", "Special Quest: Blossom in the Desert", qf_random_quest,
   "{!}placeholder"
   ),
 

@@ -2219,7 +2219,7 @@ dialogs =[
 "nero_lists_supplies", []],
 
 [anyone, "nero_lists_supplies", [
-], "I will need three things. First, the finest Falernian wine—none of this local swill. Second, peacocks from the East; their meat is divine and their plumage will adorn the platters. And finally, saffron, a king's ransom in saffron to turn the sauces to gold. See to it. This feast must be a masterpiece.",
+], "I will need three things. First, the finest Falernian wine-none of this local swill. Second, peacocks from the East; their meat is divine and their plumage will adorn the platters. And finally, saffron, a king's ransom in saffron to turn the sauces to gold. See to it. This feast must be a masterpiece.",
 "player_accepts_supply_quest", []],
 
 [anyone|plyr, "player_accepts_supply_quest", [],
@@ -2930,8 +2930,8 @@ dialogs =[
 
 [anyone, "slaver_talk_explain", [
 ],"A discerning buyer! A man who understands that not all stock is created equal. Matching the right slave to the right labor is the key to a profitable enterprise."
-+" For tasks of the mind—managing a household, keeping your accounts, or educating your children—you cannot do better than a Greek. A word of caution, however: their minds are as quick as their fingers, and you must watch them closely. A literate Syrian or Roman can also serve these roles well, and often with less trouble."
-+"^^For the toil of the fields or the quarry, you need pure strength and endurance. Look to the north—the Germans, Celts, and Dacians. They are hardy stock, built for labor. Slaves from Africa are also excellent for fieldwork; they endure the noon sun better than most."
++" For tasks of the mind-managing a household, keeping your accounts, or educating your children-you cannot do better than a Greek. A word of caution, however: their minds are as quick as their fingers, and you must watch them closely. A literate Syrian or Roman can also serve these roles well, and often with less trouble."
++"^^For the toil of the fields or the quarry, you need pure strength and endurance. Look to the north-the Germans, Celts, and Dacians. They are hardy stock, built for labor. Slaves from Africa are also excellent for fieldwork; they endure the noon sun better than most."
 +"^I would advise against a Sarmatian for farm work. A nomad is more at home on a horse than behind a plow. And for the mines... if you need to send a soul into that darkness, take a German. Their frames are powerful, and they last longer down there than any other."
 +"^If you wish to delight your palate, the finest cooks come from the East. A Syrian, in particular, can craft a meal that would impress Lucullus himself. A Greek or a Roman will also serve you well in the kitchen. As for the other barbarians... I would not trust them to boil an egg without starting a fire.",
 "slaver_pretalk", []],
@@ -3654,12 +3654,12 @@ dialogs =[
 "prohpecy_seneshall_final_10_2",[
 ]],
 [anyone,"prohpecy_seneshall_final_10_2",[
-], "-- He takes the money. --^^Generous, indeed. I trust this sum is intended to ease the wounds left on the pride of this city—and perhaps on your own dignity. Very well, I accept your offer, but do tread carefully from now on. Such incidents tarnish not only your name but also the honor of Rome itself.",
+], "-- He takes the money. --^^Generous, indeed. I trust this sum is intended to ease the wounds left on the pride of this city-and perhaps on your own dignity. Very well, I accept your offer, but do tread carefully from now on. Such incidents tarnish not only your name but also the honor of Rome itself.",
 "prohpecy_seneshall_final_11",[
   (troop_remove_gold, "trp_player", 5000),
 ]],
 [anyone|other(trp_statthalter_new_12),"prohpecy_seneshall_final_11",[
-], "I deeply regret that matters spiraled out of control like this. As for the lingerie, I want no part of it—you may keep it or destroy it as you see fit. Perhaps we shall meet again at the next feast in Rome. Until then, ave atque vale!",
+], "I deeply regret that matters spiraled out of control like this. As for the lingerie, I want no part of it-you may keep it or destroy it as you see fit. Perhaps we shall meet again at the next feast in Rome. Until then, ave atque vale!",
 "close_window",[
   (call_script, "script_set_conversation_troop", "trp_statthalter_new_12"),
   (jump_to_menu, "mnu_auto_return_map"),
@@ -3835,7 +3835,7 @@ dialogs =[
 "prophecy_treasure_talk_6",[
 ]],
 [anyone,"prophecy_treasure_talk_6",[
-],"-- He continues sniffing. --^^This scent... it's intoxicating! It's as if the very essence of a goddess herself lingers in the air—rich, floral, almost sacred. It pulls at my senses, fills my mind with visions of divine realms. How can something so mundane as fabric carry such an otherworldly fragrance? It's as if the roses themselves were blessed by the gods!",
+],"-- He continues sniffing. --^^This scent... it's intoxicating! It's as if the very essence of a goddess herself lingers in the air-rich, floral, almost sacred. It pulls at my senses, fills my mind with visions of divine realms. How can something so mundane as fabric carry such an otherworldly fragrance? It's as if the roses themselves were blessed by the gods!",
 "prophecy_treasure_talk_7",[
 ]],
 [anyone|plyr,"prophecy_treasure_talk_7",[
@@ -3958,7 +3958,7 @@ dialogs =[
 "prophecy_slaves_talk_finish_angry",[]],
 
 [anyone,"prophecy_slaves_talk_finish_angry",[
-],"Perhaps, but I was busy ensuring the site was secure and undisturbed. Organizing everything myself would have delayed us even further. Now, let's not waste more time—shall we proceed?"
+],"Perhaps, but I was busy ensuring the site was secure and undisturbed. Organizing everything myself would have delayed us even further. Now, let's not waste more time-shall we proceed?"
 +" Do you have the coins with you?",
 "prophecy_slaves_talk_finish_angry_2",[]],
 
@@ -4027,7 +4027,7 @@ dialogs =[
 ],"Why didn't you mention earlier that it was buried? We could have made the necessary preparations.",
 "prophecy_begin3_talk_4",[]],
 [anyone,"prophecy_begin3_talk_4",[
-],"Ah, my apologies, {playername}. I thought it was obvious—such treasures are rarely left in plain sight. The gods, of course, wouldn't allow it to be so easy. But fear not, the treasure is close, and with the proper preparations, we'll have it unearthed in no time.",
+],"Ah, my apologies, {playername}. I thought it was obvious-such treasures are rarely left in plain sight. The gods, of course, wouldn't allow it to be so easy. But fear not, the treasure is close, and with the proper preparations, we'll have it unearthed in no time.",
 "prophecy_begin3_talk_5",[]],
 [anyone|plyr,"prophecy_begin3_talk_5",[
 ],"I assume I will have to buy some slaves, right?",
@@ -4063,7 +4063,7 @@ dialogs =[
   (quest_slot_eq, "qst_prophecy_of_caeselius_bassus", slot_quest_current_state, 3),
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_ruins_of_carthage"),
-],"Ah, here we are. This is it—the Temple of Dido. According to legend, the queen herself once prayed here, seeking the gods' favor for her great city. The treasure is said to be hidden beneath these very stones, guarded by the ancient powers she invoked. We must tread carefully, for this place is sacred, and the gods will be watching.",
+],"Ah, here we are. This is it-the Temple of Dido. According to legend, the queen herself once prayed here, seeking the gods' favor for her great city. The treasure is said to be hidden beneath these very stones, guarded by the ancient powers she invoked. We must tread carefully, for this place is sacred, and the gods will be watching.",
 "prophecy_begin2_talk_1",[]],
 [anyone|plyr,"prophecy_begin2_talk_1",[
 ],"Fascinating. But where is the treasure? I can't see it.",
@@ -4205,7 +4205,7 @@ dialogs =[
 [trp_slave,"start",[
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_players_tent"),
-],"Dominus, forgive my intrusion, but this matter is urgent. A woman approached our camp demanding to speak with you immediately. She reeks as though she hasn't bathed in months. At first, we assumed she was a prostitute and told her to leave, but she refused, claiming you would punish us all if we didn't obey her. Thinking her mad, I struck her with a stick to drive her away. Instead, she snatched it from my hand and turned it against me, beating me instead. The others found it amusing and laughed at my plight. Now, Dominus, I humbly seek your guidance—what should be done with her? I beg you to punish her, for her behavior is an insult to your authority. Perhaps you could give her to us slaves; we would deal with her properly and teach her the respect she clearly lacks.",
+],"Dominus, forgive my intrusion, but this matter is urgent. A woman approached our camp demanding to speak with you immediately. She reeks as though she hasn't bathed in months. At first, we assumed she was a prostitute and told her to leave, but she refused, claiming you would punish us all if we didn't obey her. Thinking her mad, I struck her with a stick to drive her away. Instead, she snatched it from my hand and turned it against me, beating me instead. The others found it amusing and laughed at my plight. Now, Dominus, I humbly seek your guidance-what should be done with her? I beg you to punish her, for her behavior is an insult to your authority. Perhaps you could give her to us slaves; we would deal with her properly and teach her the respect she clearly lacks.",
 "slave_antonia_talk3_1",[]],
 [anyone|plyr,"slave_antonia_talk3_1",[
 ],"That is Antonia! You are a fucking imbecile! Bring her to me gently and prepare us a proper lunch. Also, get the best wine for her you can find. And don't you dare to touch her!",
@@ -4434,7 +4434,7 @@ dialogs =[
 
 [anyone,"antonia_talk3_slave_1_1",[
 ],"-- She rolls her eyes, then slaps you. --"
-+"This is partly revenge for the inappropriate behavior of your slaves. But don't think I came here just to slap you — I'm here to discuss the next steps of our plan.",
++"This is partly revenge for the inappropriate behavior of your slaves. But don't think I came here just to slap you - I'm here to discuss the next steps of our plan.",
 "antonia_talk3_slave_2",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
 ]],
@@ -4601,13 +4601,13 @@ dialogs =[
 ]],
 
 [anyone|other(trp_lybian),"wlodowiecus_4_lybian_final_talk_1",[
-],"My esteemed guests, I trust you enjoyed the humble meal I offered. It brings me great joy to see you all return safely—Hermes, for once, has answered my prayers! And not only have you come back in one piece, but with new companions as well. I must say, I'm particularly surprised to see you again, Lei Li, and equally intrigued to find a Parthian among your ranks.",
+],"My esteemed guests, I trust you enjoyed the humble meal I offered. It brings me great joy to see you all return safely-Hermes, for once, has answered my prayers! And not only have you come back in one piece, but with new companions as well. I must say, I'm particularly surprised to see you again, Lei Li, and equally intrigued to find a Parthian among your ranks.",
 "wlodowiecus_4_lybian_final_talk_2",[
   (call_script, "script_set_conversation_troop", "trp_lybian"),
 ]],
 
 [anyone|other(trp_phamanus),"wlodowiecus_4_lybian_final_talk_2",[
-],"-- He speaks in Latin, his voice steady and respectful. --^^I am deeply honored to be your guest, Dominus, and I extend my gratitude for the exquisite meal. As head of a caravan network that traverses much of the known world—most notably Asia—I had the good fortune of meeting {playername} and their company as they returned from their journey to Seres. I accompanied them on their way back to Alexandria. Now, I come to you with a proposal. I seek to expand my caravan business to new trade routes, particularly those which these adventurers have already traveled. However, I am in need of two vital resources: knowledge of these routes and the funds to embark on this venture. I ask {playername} and their companions to share their valuable insights with me, and I humbly request your financial backing to make this expansion a reality.",
+],"-- He speaks in Latin, his voice steady and respectful. --^^I am deeply honored to be your guest, Dominus, and I extend my gratitude for the exquisite meal. As head of a caravan network that traverses much of the known world-most notably Asia-I had the good fortune of meeting {playername} and their company as they returned from their journey to Seres. I accompanied them on their way back to Alexandria. Now, I come to you with a proposal. I seek to expand my caravan business to new trade routes, particularly those which these adventurers have already traveled. However, I am in need of two vital resources: knowledge of these routes and the funds to embark on this venture. I ask {playername} and their companions to share their valuable insights with me, and I humbly request your financial backing to make this expansion a reality.",
 "wlodowiecus_4_lybian_final_talk_3",[
   (call_script, "script_set_conversation_troop", "trp_phamanus"),
 ]],
@@ -5664,7 +5664,7 @@ dialogs =[
   (call_script, "script_set_conversation_troop", "trp_mancinellus"),
 ]],
 [anyone|other(trp_old_mercenary),"wlodowiecus_4_mancinellus_steppe_talk_25",[
-],"You're all fools. Don't act like we, the people of the gods, are any better. How many tribes in the past were forced by Romans—or other tribes—to abandon their gods and worship what was called superior? Jupiter, Mars, and those beardless statues of marble forced down my people's throats. The Druids of Mona—exterminated by the Romans because they refused to join the Empire. My people's druids, and those of the Gauls before them, butchered. This is how it has always been.",
+],"You're all fools. Don't act like we, the people of the gods, are any better. How many tribes in the past were forced by Romans-or other tribes-to abandon their gods and worship what was called superior? Jupiter, Mars, and those beardless statues of marble forced down my people's throats. The Druids of Mona-exterminated by the Romans because they refused to join the Empire. My people's druids, and those of the Gauls before them, butchered. This is how it has always been.",
 "wlodowiecus_4_mancinellus_steppe_talk_26",[
   (call_script, "script_set_conversation_troop", "trp_old_mercenary"),
 ]],
@@ -5845,7 +5845,7 @@ dialogs =[
 
 [anyone ,"wlodowiecus_4_alan_guide_2",[
 ],"Your friends are already waiting for you. They've been arguing over who's to blame for some incident that happened in Alexandria..."
-+" I found it amusing to listen to, though I'm not sure what it was all about. Anyway, gather your belongings—we'll be heading to Chersonesus first, then following the Silk Route.",
++" I found it amusing to listen to, though I'm not sure what it was all about. Anyway, gather your belongings-we'll be heading to Chersonesus first, then following the Silk Route.",
 "wlodowiecus_4_alan_guide_3",[
 ]],
 [anyone|plyr ,"wlodowiecus_4_alan_guide_3",[
@@ -5981,7 +5981,7 @@ dialogs =[
   (is_between, "$g_talk_troop", kingdom_ladies_begin, kingdom_ladies_end),
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_lybian_villa"),
-],"Ah, {playername}, you finally decided to show up. I was beginning to think you'd skip the feast entirely. The Lybian seems to have taken quite an interest in you—he speaks highly of your so-called adventures. I suppose I wouldn't mind hearing what all the fuss is about... if you care to share. ",
+],"Ah, {playername}, you finally decided to show up. I was beginning to think you'd skip the feast entirely. The Lybian seems to have taken quite an interest in you-he speaks highly of your so-called adventures. I suppose I wouldn't mind hearing what all the fuss is about... if you care to share. ",
 "wlodowiecus_4_intro_roman_lady_3",[
 ]],
 
@@ -6045,7 +6045,7 @@ dialogs =[
 ],"You went alone? So you traveled all the way to India! I've only read about it in books.",
 "wlodowiecus_4_intro_roman_lady_detail_2",[]],
 [anyone|plyr ,"wlodowiecus_4_intro_roman_lady_detail_2",[
-],"Yes! First, I traveled to Ctesiphon and joined a caravan led by a merchant named Phamanus, who was heading toward India. After a long and exhausting journey, I finally reached Sagala, the destination of the expedition. I found the members—Hadrianus and Wlodowiecus—all in chains! They had been imprisoned because Mancinellus, one of the companions, killed a cow, which is sacred in India.",
+],"Yes! First, I traveled to Ctesiphon and joined a caravan led by a merchant named Phamanus, who was heading toward India. After a long and exhausting journey, I finally reached Sagala, the destination of the expedition. I found the members-Hadrianus and Wlodowiecus-all in chains! They had been imprisoned because Mancinellus, one of the companions, killed a cow, which is sacred in India.",
 "wlodowiecus_4_intro_roman_lady_detail_3",[]],
 [anyone ,"wlodowiecus_4_intro_roman_lady_detail_3",[
 ],"No wonder they were angry! Our gods also have sacred animals.",
@@ -6069,19 +6069,19 @@ dialogs =[
 ],"Please, tell me more!",
 "wlodowiecus_4_intro_roman_lady_10",[]],
 [anyone|plyr ,"wlodowiecus_4_intro_roman_lady_10",[
-],"Our second adventure began with the idea to travel deep into Africa to find the cities of Tombouze and Gao, and establish trade routes for spices, gold, and ivory—things we could sell for high profit back in Rome. We were foolish enough to believe Mancinellus, and we agreed. Two more joined our expedition: an old British mercenary and a veteran named Varus.",
+],"Our second adventure began with the idea to travel deep into Africa to find the cities of Tombouze and Gao, and establish trade routes for spices, gold, and ivory-things we could sell for high profit back in Rome. We were foolish enough to believe Mancinellus, and we agreed. Two more joined our expedition: an old British mercenary and a veteran named Varus.",
 "wlodowiecus_4_intro_roman_lady_11",[]],
 [anyone ,"wlodowiecus_4_intro_roman_lady_11",[
 ],"Hahaha! There are already plenty of spice traders in Rome. I would've known right away it wouldn't work.",
 "wlodowiecus_4_intro_roman_lady_12",[]],
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_12",[
-],"You're smarter than we were. Still, we went on the journey, traveling to Africa where we met a band of Garamantians who would be our guards and guides. The trek across the great desert was long and brutal—poisonous snakes, scorpions, and hostile Gaetulian warriors plagued us. Tempers flared, especially with the heat, but eventually, we reached a settlement. Unfortunately, it wasn't the wealthy town we were hoping for—it was just a small village of huts.",
+],"You're smarter than we were. Still, we went on the journey, traveling to Africa where we met a band of Garamantians who would be our guards and guides. The trek across the great desert was long and brutal-poisonous snakes, scorpions, and hostile Gaetulian warriors plagued us. Tempers flared, especially with the heat, but eventually, we reached a settlement. Unfortunately, it wasn't the wealthy town we were hoping for-it was just a small village of huts.",
 "wlodowiecus_4_intro_roman_lady_13",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_13",[
 ],"Hahaha! I wish I could've seen your faces!",
 "wlodowiecus_4_intro_roman_lady_14",[]],
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_14",[
-],"We were furious with Mancinellus. But that village wasn't Gao; it was Tombouze. Mancinellus insisted we continue, and eventually, we found Gao. It was larger, but practically deserted—only a few elders and women remained. They told us only the king knew the location of the gold mines. Fed up, we decided to head back. The Garamantians suggested we travel to a place called Djenne Djano before returning to Roman Africa. When we reached it, we were attacked by Gaetulians, but we drove them off and earned the locals' trust. They gifted us African rice, I received a strong bow, and Mancinellus returned with a girl... and an angry woman named Yaaba.",
+],"We were furious with Mancinellus. But that village wasn't Gao; it was Tombouze. Mancinellus insisted we continue, and eventually, we found Gao. It was larger, but practically deserted-only a few elders and women remained. They told us only the king knew the location of the gold mines. Fed up, we decided to head back. The Garamantians suggested we travel to a place called Djenne Djano before returning to Roman Africa. When we reached it, we were attacked by Gaetulians, but we drove them off and earned the locals' trust. They gifted us African rice, I received a strong bow, and Mancinellus returned with a girl... and an angry woman named Yaaba.",
 "wlodowiecus_4_intro_roman_lady_15",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_15",[
 ],"You brought back African rice? I've heard of it, but never tasted it.",
@@ -6099,7 +6099,7 @@ dialogs =[
 ],"Hahaha! Mancinellus will never be a good trader.",
 "wlodowiecus_4_intro_roman_lady_20",[]],
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_20",[
-],"That's certain. This journey was similar to the first, but this time we faced the cold—snow and hostile Germanic tribes. We had warriors from the Winnilli tribe as our guards, since they were friends of Wlodowiecus, who, by the way, is German. There were moments when I thought we wouldn't survive, either due to the cold or Germanic raiders. We even lost Varus in a skirmish. But finally, we reached a settlement of the Sciri tribe, and they invited us to a feast.",
+],"That's certain. This journey was similar to the first, but this time we faced the cold-snow and hostile Germanic tribes. We had warriors from the Winnilli tribe as our guards, since they were friends of Wlodowiecus, who, by the way, is German. There were moments when I thought we wouldn't survive, either due to the cold or Germanic raiders. We even lost Varus in a skirmish. But finally, we reached a settlement of the Sciri tribe, and they invited us to a feast.",
 "wlodowiecus_4_intro_roman_lady_21",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_21",[
 ],"A feast with barbarians! What did they serve? Deer meat on wooden plates and beer in wooden cups?",
@@ -6143,7 +6143,7 @@ dialogs =[
 "wlodowiecus_4_intro_roman_lady_flirt_1",[]],
 
 [anyone|plyr,"wlodowiecus_4_intro_roman_lady_exag_summary",[
-],"It all started when I met Olivarius, the famous sculptor. His expedition to India vanished, so I volunteered to track them down. After crossing deserts and fighting off bandits, I found the group imprisoned—because Mancinellus killed a sacred cow!",
+],"It all started when I met Olivarius, the famous sculptor. His expedition to India vanished, so I volunteered to track them down. After crossing deserts and fighting off bandits, I found the group imprisoned-because Mancinellus killed a sacred cow!",
 "wlodowiecus_4_intro_roman_lady_exag_summary_1",[]],
 [anyone,"wlodowiecus_4_intro_roman_lady_exag_summary_1",[
 ],"Of course he did! And how did you get them out?",
@@ -6356,7 +6356,7 @@ dialogs =[
 "wlodowiecus_4_intro_roman_noble_4",[]],
 [anyone ,"wlodowiecus_4_intro_roman_noble_4",[
 ],"Ah, now that's the spirit! To Bacchus and Fortuna, may they bless us with abundance and joy tonight.^^-- He raises his cup, a glint in his eye as the wine swirls. --^^"
-+"Now, if you'll excuse me, I must mingle. But let's find each other later for another toast—there's still much night left to enjoy.",
++"Now, if you'll excuse me, I must mingle. But let's find each other later for another toast-there's still much night left to enjoy.",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
@@ -11436,7 +11436,7 @@ dialogs =[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
 [anyone|other(trp_aux_inf),"soldiers_talk_1",[],
-"He said he'd rather die than worship a false god. 'Fine,' we said, 'have it your way.' So we worked him over a bit and asked again. Same answer. We kept this up for a week. The man was a bloody pulp, but he still wouldn't break. So we said, 'Alright, let your god decide.' We offered him a choice: be tied to a stake in the desert for a week—if you survive, you're free—or just admit Caesar is a god and walk away with a full purse. He chose the desert. When we went back, the vultures had already found him. I'm telling you, Judaea is a pit, full of fanatics. You do that to a Gaul, he'd be worshiping Caesar's sandals by the first day.",
+"He said he'd rather die than worship a false god. 'Fine,' we said, 'have it your way.' So we worked him over a bit and asked again. Same answer. We kept this up for a week. The man was a bloody pulp, but he still wouldn't break. So we said, 'Alright, let your god decide.' We offered him a choice: be tied to a stake in the desert for a week-if you survive, you're free-or just admit Caesar is a god and walk away with a full purse. He chose the desert. When we went back, the vultures had already found him. I'm telling you, Judaea is a pit, full of fanatics. You do that to a Gaul, he'd be worshiping Caesar's sandals by the first day.",
 "soldiers_talk_2",[
   (call_script, "script_set_conversation_troop", "trp_aux_inf"),
 ]],
@@ -13363,7 +13363,7 @@ dialogs =[
   (eq, "$temp4", 3),
   (store_current_scene, ":scene"),
   (eq, ":scene", "scn_imperial_palace"),
-],"Damn it! The other Praetorians haven’t turned against you, but neither did they stand by your side. Not that it matters now—they wouldn’t have helped me, as I suspected all along. I’m at your mercy. Yelling for help would be pointless. Just end it. Kill me already.",
+],"Damn it! The other Praetorians haven’t turned against you, but neither did they stand by your side. Not that it matters now-they wouldn’t have helped me, as I suspected all along. I’m at your mercy. Yelling for help would be pointless. Just end it. Kill me already.",
 "goy_final_defeated_antonia",[
   (assign, "$temp4", 4),
   (quest_set_slot, "qst_four_emperors", slot_quest_target_item, 3),
@@ -18289,7 +18289,7 @@ dialogs =[
 "paulus_talk_5_finish",[]],
 
 [anyone, "paulus_talk_12",
-[],"Ah, you see through the eyes of this world. Is it weakness for a father to forgive his lost son? Forgiveness is the ultimate strength. Your heart still clings to the pride of men—that revenge is justice and strength is dominance. But that is the law of beasts, not of God. Christus teaches us to love, even our enemies. He teaches that all are equal in His sight: slave and Caesar, tribune and beggar. All are His children.",
+[],"Ah, you see through the eyes of this world. Is it weakness for a father to forgive his lost son? Forgiveness is the ultimate strength. Your heart still clings to the pride of men-that revenge is justice and strength is dominance. But that is the law of beasts, not of God. Christus teaches us to love, even our enemies. He teaches that all are equal in His sight: slave and Caesar, tribune and beggar. All are His children.",
 "paulus_talk_13",[]],
 
 [anyone|plyr, "paulus_talk_13",
@@ -18891,7 +18891,7 @@ dialogs =[
 # Issue Response: High Unrest
 [trp_senator_trump, "senate_talk_about_issues",[
   (gt, "$g_unrest", 40),
-],"It's a disaster, a total disaster. We have revolts, we have slaves—bad hombres—killing masters. It's terrible. The streets are a mess. And the bandits? They're pouring in. We need law and order! We need to be tough! Nobody is tougher than me, believe me.",
+],"It's a disaster, a total disaster. We have revolts, we have slaves-bad hombres-killing masters. It's terrible. The streets are a mess. And the bandits? They're pouring in. We need law and order! We need to be tough! Nobody is tougher than me, believe me.",
 "senate_pretalk",[]],
 
 # Issue Response: High Prosperity
@@ -21018,7 +21018,7 @@ dialogs =[
 "petrus_talk_4",[]],
 
 [anyone,"petrus_talk_4",[],
-"God is not a stage magician, my friend. He does not perform tricks for an audience. The stories of the old gods are just that—stories. And no Caesar, however powerful, has ever been more than a man.",
+"God is not a stage magician, my friend. He does not perform tricks for an audience. The stories of the old gods are just that-stories. And no Caesar, however powerful, has ever been more than a man.",
 "petrus_talk_5",[]],
 
 [anyone|plyr,"petrus_talk_5",[],
@@ -21074,7 +21074,7 @@ dialogs =[
 "petrus_talk_17",[]],
 
 [anyone,"petrus_talk_17",[],
-"God does not want us to suffer. But He gave us free will—the freedom to choose. And with that freedom comes the ability to make sinful choices that cause suffering for ourselves and for others. The man who steals will answer for his crime in the afterlife. God's path is to live without sin, even when it is difficult.",
+"God does not want us to suffer. But He gave us free will-the freedom to choose. And with that freedom comes the ability to make sinful choices that cause suffering for ourselves and for others. The man who steals will answer for his crime in the afterlife. God's path is to live without sin, even when it is difficult.",
 "petrus_talk_18",[]],
 
 [anyone|plyr,"petrus_talk_18",[],
@@ -21645,13 +21645,13 @@ dialogs =[
   ]],
 
 [anyone|other(trp_greek_philosopher),"greek_roman_talk_3",[],
-  "Hah! First, you Romans are all rutting goats, so you are experts on the subject. Second, when I speak of 'love,' I am not speaking of the base grunting between a man and a woman. A woman is a simple creature, driven by emotion. No, I speak of Platonic love—the pure, intellectual bond between two men. That is the highest form of affection.",
+  "Hah! First, you Romans are all rutting goats, so you are experts on the subject. Second, when I speak of 'love,' I am not speaking of the base grunting between a man and a woman. A woman is a simple creature, driven by emotion. No, I speak of Platonic love-the pure, intellectual bond between two men. That is the highest form of affection.",
   "greek_roman_talk_4",[
     (call_script, "script_set_conversation_troop", "trp_greek_philosopher"),
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_4",[],
-  "Friendship is important, I grant you. But the flesh is weak. A man requires certain things for a stable life: a good friend for counsel, a wife for his... base urges and to produce heirs, and a proper house—not too grand, not too humble. That is the Roman way. Order and moderation.",
+  "Friendship is important, I grant you. But the flesh is weak. A man requires certain things for a stable life: a good friend for counsel, a wife for his... base urges and to produce heirs, and a proper house-not too grand, not too humble. That is the Roman way. Order and moderation.",
   "greek_roman_talk_5",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
@@ -21743,7 +21743,7 @@ dialogs =[
   ]],
 
 [anyone|other(trp_roman_philosopher),"greek_roman_talk_18",[],
-  "Weak? Who collects your taxes? A Roman. Who rules this city, and yours, and a hundred others? Rome! Your squabbling city-states were always subjects to someone—the Persians, the Macedonians, and now us. Rome conquered the world because we had men of virtus—brave but not reckless, proud but not arrogant! And women of virtue—modest, chaste, and obedient. These are things barbarians and Greeks cannot understand.",
+  "Weak? Who collects your taxes? A Roman. Who rules this city, and yours, and a hundred others? Rome! Your squabbling city-states were always subjects to someone-the Persians, the Macedonians, and now us. Rome conquered the world because we had men of virtus-brave but not reckless, proud but not arrogant! And women of virtue-modest, chaste, and obedient. These are things barbarians and Greeks cannot understand.",
   "greek_roman_talk_19",[
     (call_script, "script_set_conversation_troop", "trp_roman_philosopher"),
   ]],
@@ -23282,132 +23282,205 @@ dialogs =[
 "Why, if you want a fight, you shall have one!", "drunk_fight_start",[]],
 
 [anyone|plyr, "drunk_player_high_renown",[],
-"I thought as much. Now, remove yourself from here", "close_window",
-[
-(store_conversation_agent, "$g_main_attacker_agent",),
-
-(assign, "$drunks_dont_pick_fights", 1),
-(troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
-
-(call_script, "script_deactivate_tavern_attackers"),
-
-(assign, "$g_belligerent_drunk_leaving", "$g_main_attacker_agent"),
-
-(mission_enable_talk),
-
-(try_for_agents, ":agent"),
-  (agent_is_active, ":agent"),
-  (agent_is_alive, ":agent"),
-  (agent_get_position, pos4, ":agent"),
-  (agent_set_scripted_destination, ":agent", pos4),
-(try_end),
-
-(entry_point_get_position, pos1, 0),
-(agent_set_scripted_destination, "$g_main_attacker_agent", pos1),
-
-(assign, "$g_main_attacker_agent", 0),
+"I thought as much. Now, remove yourself from here", "close_window",[
+  (store_conversation_agent, "$g_main_attacker_agent",),
+  (assign, "$drunks_dont_pick_fights", 1),
+  (troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
+  (call_script, "script_deactivate_tavern_attackers"),
+  (assign, "$g_belligerent_drunk_leaving", "$g_main_attacker_agent"),
+  (mission_enable_talk),
+  (try_for_agents, ":agent"),
+    (agent_is_active, ":agent"),
+    (agent_is_alive, ":agent"),
+    (agent_get_position, pos4, ":agent"),
+    (agent_set_scripted_destination, ":agent", pos4),
+  (try_end),
+  (entry_point_get_position, pos1, 0),
+  (agent_set_scripted_destination, "$g_main_attacker_agent", pos1),
+  (assign, "$g_main_attacker_agent", 0),
 ]],
 
 [trp_nurse_african, "start",[
-      #  (eq, "$talk_context", tc_garden),
-  ], "Can't you see that I am busy?", "nurse_talk",[]],
+], "What do you want? I am occupied.",
+"nurse_talk", []],
 
-[trp_nurse_african|plyr, "nurse_talk",[
-  ], "Yes sorry.", "close_window",[]], #no pockets in dark ages
+[anyone|plyr, "nurse_talk",[
+], "Forgive me. I will leave you to it.",
+"close_window", []],
 
-[trp_nurse_african|plyr, "nurse_talk",[
-  (str_store_troop_name, s30, "trp_nasamones_queen"),
-  ], "Can you tell me were {s30} is gone.", "nurse_talk1",[]],
-[trp_nurse_african|plyr, "nurse_talk",[
+[anyone|plyr, "nurse_talk",[
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
+  (str_store_troop_name, s30, "trp_baquates_princess"),
+], "Do you know where {s30} has gone?",
+"nurse_talk1", []],
 
-  ], "Who are you?", "nurse_talk_question",[]],
-[trp_nurse_african, "nurse_talk_question",[
+[anyone|plyr, "nurse_talk",[
+], "Who are you?",
+"nurse_talk_question", []],
 
-  ], "I am the nurse of Darta.", "nurse_talk",[]],
+[anyone, "nurse_talk_question",[
+], "I am the nurse of Darta, lady of this house. Now unless you have business here, move along.",
+"nurse_talk", []],
 
-[trp_nurse_african, "nurse_talk1",[
-  ], "I would gladly tell you, but only if you find 50 denarii in your pocket.", "nurse_talk2",[]],
+[anyone|plyr, "nurse_talk",[
+    (check_quest_active, "qst_blossom_in_the_desert"),
+    (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
+], "I need your help with a matter of some delicacy.", "nurse_talk1_help", []],
 
-[trp_nurse_african|plyr, "nurse_talk2",[
-  ], "Don't think I want to pay you.", "nurse_talk2_taky_endy",[]],
-[trp_nurse_african, "nurse_talk2_taky_endy",[
-  ], "Then you won't recieve any information from me.", "close_window",[]],
+[anyone|plyr, "nurse_talk",[
+    (check_quest_active, "qst_blossom_in_the_desert"),
+    (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 3),
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 8000),
+], "I have the eight thousand denarii you asked for.",
+"nurse_deal", [
+  (assign, "$temp", 8000),
+]],
 
-[trp_nurse_african|plyr, "nurse_talk2",[	  (store_troop_gold, ":gold", "trp_player"),
-      (ge, ":gold", 50),
-  ], "Here. Now, speak!", "nurse_talk3",[ (troop_remove_gold, "trp_player", 50),]],
+[anyone, "nurse_talk1",[
+], "I might know something. But my tongue does not move without encouragement. Fifty denarii would loosen it considerably.", "nurse_talk2", []],
 
-[trp_nurse_african, "nurse_talk3",[
-  (str_store_troop_name, s30, "trp_nasamones_queen"),
-], "Thank you. The king has put {s30} under house arrest for undefined time. She has a special illness and needs protection.", "close_window",[]],
+[anyone|plyr, "nurse_talk2",[
+], "I have no intention of paying you.", "nurse_talk2_taky_endy", []],
 
-[trp_nurse_african|plyr, "nurse_talk",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_eq, "qst_blank_quest_20",slot_quest_temp_slot, 2),
- ], "I need your help.", "nurse_talk1_help",[]],
+[anyone, "nurse_talk2_taky_endy",[
+], "Then you will receive nothing from me. Good day.", "close_window", []],
 
-[trp_nurse_african|plyr, "nurse_talk",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_eq, "qst_blank_quest_20",slot_quest_temp_slot, 3),
-  (store_troop_gold, ":gold", "trp_player"),
-  (ge, ":gold", 8000),
- ], "I have the money.", "nurse_deal",[(assign, "$temp", 8000),]],
+[anyone|plyr, "nurse_talk2",[
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 50),
+], "Here. Now speak, and quickly.",
+"nurse_talk3", [
+  (troop_remove_gold, "trp_player", 50),
+]],
 
-[trp_nurse_african, "nurse_talk1_help",[], "My help? I may help you. But this depends strongly on your payment. And the payment depends on the kind of help you want.", "nurse_talk1_help2",[]],
-[trp_nurse_african|plyr, "nurse_talk1_help2",[], "I want to kidnap Darta. You can help me. I am sure.", "nurse_talk1_help3",[]],
-[trp_nurse_african, "nurse_talk1_help3",[], "That would be very dangerous. Hm... ^If you give me 10000 denarii I will do it.", "nurse_talk1_help4",[]],
-[trp_nurse_african|plyr, "nurse_talk1_help4",[], "10000 denarii?! That's too much.", "nurse_talk1_help5",[]],
-[trp_nurse_african, "nurse_talk1_help5",[], "If they catch me I am dead!", "nurse_talk1_help6",[]],
-[trp_nurse_african|plyr, "nurse_talk1_help6",[], "That's true, but if you are dead you don't need any money any more.", "nurse_talk1_help7",[]],
-[trp_nurse_african, "nurse_talk1_help7",[], "Good joke. I laugh my head off. Well, I thought you are a man of wealth. But if you are so poor, my friend, I would do it for 8000 denarii. For the sake of our friendship.", "nurse_talk8",[]],
-[trp_nurse_african|plyr, "nurse_talk8",[], "That's still too much.", "nurse_talk_angry",[]],
-[trp_nurse_african, "nurse_talk_angry",[], "Are you a beggar? Do you have any money? He? If you want her you must give me some shiny coins or I will do nothing to help you.", "nurse_talk_angry2",[]],
+[anyone, "nurse_talk3",[
+    (str_store_troop_name, s30, "trp_baquates_princess"),
+], "You are generous. The king has confined {s30} to her quarters. He says she is unwell - but between you and me, it is less an illness and more a cage.",
+"close_window", []],
 
-[trp_nurse_african|plyr, "nurse_talk_angry2",[(store_troop_gold, ":gold", "trp_player"), (ge, ":gold", 8000),], "Okay good. Here take 8000 denarii",
-"nurse_talk_angry22",[(assign, "$temp", 8000)]],
+[anyone, "nurse_talk1_help",[
+], "My help? Perhaps. But I do not work for gratitude alone. Tell me what you need, and I will tell you what it costs.",
+"nurse_talk1_help2", []],
 
-[trp_nurse_african|plyr, "nurse_talk_angry2",[], "I am only a poor man", "nurse_talk_angry23",[]],
-[trp_nurse_african, "nurse_talk_angry23",[], "Listen. I could call the guards. Garat would give me much money if he would find out that you wanted to kidnap his wife.", "nurse_talk_angry24",[]],
+[anyone|plyr, "nurse_talk1_help2",[
+], "I want to take Darta out of this camp. You have access to her. You could help me.",
+"nurse_talk1_help3", []],
 
-[trp_nurse_african|plyr, "nurse_talk_angry24",[
+[anyone, "nurse_talk1_help3",[
+], "You ask me to risk my neck for a stranger. That is a bold request.^If you give me ten thousand denarii, I will do what I can.",
+"nurse_talk1_help4", []],
+
+[anyone|plyr, "nurse_talk1_help4",[
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 10000),
+], "Ten thousand denarii. We have a deal.",
+"nurse_deal", [
+  (assign, "$temp", 10000),
+]],
+
+[anyone|plyr, "nurse_talk1_help4",[
+], "Ten thousand denarii? That is far too much.",
+"nurse_talk1_help5", []],
+
+[anyone, "nurse_talk1_help5",[
+], "If they catch me, they will not simply dismiss me. I would be flogged, or worse.",
+"nurse_talk1_help6", []],
+
+[anyone|plyr, "nurse_talk1_help6",[
+], "True enough. Though if you are dead, the coin will not matter to you at all.",
+"nurse_talk1_help7", []],
+
+[anyone, "nurse_talk1_help7",[
+], "How generous of you. Very well - I can see you are not as rich as I had hoped. For the sake of goodwill, eight thousand denarii, and I will see what can be done.",
+"nurse_talk8", []],
+
+[anyone|plyr, "nurse_talk8",[
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 8000),
+], "Eight thousand denarii. We have a deal.",
+"nurse_deal", [
+  (assign, "$temp", 8000),
+]],
+
+[anyone|plyr, "nurse_talk8",[
+], "Eight thousand is still more than I am willing to pay.",
+"nurse_talk_angry", []],
+
+[anyone, "nurse_talk_angry",[
+], "Then you are a beggar who comes to me for favours. If you want this woman out of the camp, you will pay. Otherwise stop wasting my time.",
+"nurse_talk_angry2", []],
+
+[anyone|plyr, "nurse_talk_angry2",[
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 8000),
+], "Very well. Here are your eight thousand denarii.",
+"nurse_talk_angry22", [
+  (assign, "$temp", 8000),
+]],
+
+[anyone|plyr, "nurse_talk_angry2",[
+], "I do not have that kind of money.",
+"nurse_talk_angry23", []],
+
+[anyone, "nurse_talk_angry23",[
+], "Then perhaps I should call the guards instead. Garat would pay handsomely to know a stranger was asking questions about his wife.",
+"nurse_talk_angry24", []],
+
+[anyone|plyr, "nurse_talk_angry24",[
     (store_troop_gold, reg49, "trp_player"),
     (ge, reg49, 1000),
     (lt, reg49, 8000),
-], "Please, I have only {reg49} denarii. Take them all.",
-"nurse_talk_angry22",[
-  (assign, "$temp", reg49)
+], "Please - it is all I have. {reg49} denarii. Take everything.",
+"nurse_talk_angry22", [
+  (assign, "$temp", reg49),
 ]],
 
-[trp_nurse_african|plyr, "nurse_talk_angry24",[(store_troop_gold, ":gold", "trp_player"), (ge, ":gold", 8000),],
-"No don't tell it Garat. I give you 8000 denarii",
-"nurse_talk_angry22",[(assign, "$temp", 8000)]],
+[anyone|plyr, "nurse_talk_angry24",[
+    (store_troop_gold, ":gold", "trp_player"),
+    (ge, ":gold", 8000),
+], "Wait. Do not tell Garat. I will bring you the eight thousand denarii.",
+"nurse_talk_angry22", [
+  (assign, "$temp", 8000),
+]],
 
-[trp_nurse_african|plyr, "nurse_talk_angry24",[], "As I said before I am a poor man, but I can bring you the money",
-"nurse_talk_angry33",[]],
+[anyone|plyr, "nurse_talk_angry24",[
+], "I do not have it on me, but I can return with the coin.",
+"nurse_talk_angry33", []],
 
-[trp_nurse_african|plyr, "nurse_talk_angry24",[], "Forget it old witch.",
-"nurse_talk_angry33_end",[]],
+[anyone|plyr, "nurse_talk_angry24",[
+], "Forget it. This is not worth the trouble.",
+"nurse_talk_angry33_end", []],
 
-[trp_nurse_african, "nurse_talk_angry33_end",[], "Bah. Go away you goat.", "close_window",[]],
+[anyone, "nurse_talk_angry33_end",[
+], "Then go. And do not come back.",
+"close_window", []],
 
-[trp_nurse_african, "nurse_talk_angry33",[], "Good. Go and get some money and then come back. I want 8000 denarii.", "close_window",[(quest_set_slot, "qst_blank_quest_20",slot_quest_temp_slot, 3),]],
+[anyone, "nurse_talk_angry33",[
+], "Do not take long. I want eight thousand denarii. Come back when you have it.",
+"close_window", [
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 3),
+]],
 
-[trp_nurse_african, "nurse_talk_angry22",[], "Very good. Bring it on.", "nurse_deal",[]],
+[anyone, "nurse_talk_angry22",[
+], "Good. Give me the coin and I will see to the rest.",
+"nurse_deal", []],
 
-[trp_nurse_african|plyr, "nurse_talk8",[(store_troop_gold, ":gold", "trp_player"), (ge, ":gold", 8000),], "8000 denarii. We have a deal.", "nurse_deal",[(assign, "$temp", 8000),]],
+[anyone, "nurse_deal",[
+], "I will bring Darta to you. An hour's ride from here there is an oasis - three palms rising from the sand, you cannot miss it. "
++ "Wait for us there. I will give Garat a sleeping draught and when he is under, I will bring the girl out to you. "
++ "Now give me my coin and go. We have said enough.",
+"nurse_deal2", []],
 
-[trp_nurse_african|plyr, "nurse_talk1_help4",[(store_troop_gold, ":gold", "trp_player"), (ge, ":gold", 10000),], "10000 denarii. We have a deal.", "nurse_deal",[(assign, "$temp", 10000),]],
-
-[trp_nurse_african, "nurse_deal",[], "I will bring you Darta. A mile from here is a oasis which I know well. The oasis has three palms. You can't miss it. There we will meet\
-  I will give Garat a potion. The potion will make him tired and let him sleep. Then I will come with Darta to the Oasis. Now farewell and give me my money!", "nurse_deal2",[]],
-[trp_nurse_african|plyr, "nurse_deal2",[], "Here take it. I will wait for you.", "close_window",[
-
-  (troop_remove_gold, "trp_player", "$temp"),
-  (assign, "$temp", 0),
-  (jump_to_menu, "mnu_desert_wait"),
-  (finish_mission),
-
-  ]],
+[anyone|plyr, "nurse_deal2",[
+], "Here. I will be at the oasis.", "close_window",[
+    (troop_remove_gold, "trp_player", "$temp"),
+    (assign, "$temp", 0),
+    (jump_to_menu, "mnu_desert_wait"),
+    (mission_cam_animate_to_screen_color, 0xFF000000, 3000),
+    (finish_mission, 3),
+    (mission_disable_talk),
+]],
 
 [trp_nurse_for_lady, "start",[
       #  (eq, "$talk_context", tc_garden),
@@ -24554,18 +24627,40 @@ Please send me back home my love, with a good escort, please.", "wife_talk_leave
       (call_script, "script_npc_morale", "$g_talk_troop"),
       (assign, "$npc_quit_morale", reg0),
 ]],
-[trp_nasamones_queen,"member_chat",
-[
-(store_conversation_troop,"$g_talk_troop"),
-(troop_is_hero,"$g_talk_troop"),
-], "What do you want?", "dara_talk",
+
+[trp_baquates_princess, "member_chat", [
+  (store_conversation_troop, "$g_talk_troop"),
+  (troop_is_hero, "$g_talk_troop"),
+], "What is it?", "dara_talk_prisoner",
 []],
 
-[trp_nasamones_queen|plyr,"dara_talk",
-[(store_conversation_troop,"$g_talk_troop"),
-(troop_is_hero,"$g_talk_troop"),], "How is the journey?", "dara_talk2",[]],
+[anyone|plyr, "dara_talk_prisoner", [],
+"How are you holding up?",
+"dara_talk_prisoner_holding", []],
 
-[anyone,"dara_talk2",[], "It is quite exhausting. I am spoiled from the palast life.", "close_window",[]],
+[anyone|plyr, "dara_talk_prisoner", [],
+"Do you know where we are headed?",
+"dara_talk_prisoner_destination", []],
+
+[anyone|plyr, "dara_talk_prisoner", [],
+"I am letting you go. You are free.",
+"dara_freed", []],
+
+[anyone, "dara_talk_prisoner_holding", [],
+"^-- She glances at the horizon, then back at you. --^ I have slept in a tent half my life. I know how to ride. The desert holds no mystery for me. ^What is hard is not knowing what comes next.",
+"close_window", []],
+
+[anyone, "dara_talk_prisoner_destination", [],
+"Back to my father, I imagine. And from there, wherever he decides to send me. ^-- A pause. --^ I have stopped pretending I have a say in it.",
+"close_window", []],
+
+[anyone, "dara_freed", [],
+"^-- She is still for a long moment, searching your face. --^ ^You mean it. ^Then I will go. I do not know what comes next, but I will choose it myself. That is more than I had this morning.",
+"close_window", [
+    (troop_set_slot, "trp_baquates_princess", slot_troop_prisoner_of_party, -1),
+    (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
+    (call_script, "script_change_player_honor", 1),
+]],
 
 # ##members lead parties
 #[anyone,"start",[
@@ -35209,11 +35304,11 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
   (store_faction_of_party, ":fac", "p_town_28"),#carthage
   (eq, ":fac", "$players_kingdom"),
   (troop_slot_ge, "trp_player", slot_troop_renown, 300),
-],"I hear you've been having dreams about a treasure—is that true?",
+],"I hear you've been having dreams about a treasure-is that true?",
 "prophecy_of_bassus",[]],
 [anyone,"prophecy_of_bassus",[
   (ge, "$g_talk_troop_effective_relation", 0),
-],"Indeed, I have! The gods themselves revealed it to me in a vision—an unimaginable treasure buried beneath the ruins of Ancient Punic Carthage, waiting to be unearthed. I am certain of its existence, and with support, one could claim it!",
+],"Indeed, I have! The gods themselves revealed it to me in a vision-an unimaginable treasure buried beneath the ruins of Ancient Punic Carthage, waiting to be unearthed. I am certain of its existence, and with support, one could claim it!",
 "prophecy_of_bassus_2",[]],
 [anyone,"prophecy_of_bassus",[
 ],"I don't trust you enough to talk with you about such matters!",
@@ -44093,7 +44188,7 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 ]],
 
 [anyone, "attambelos_explains_position", [
-], "'Vassal' is a word for warriors. I am a merchant. The world's riches flow through my ports—silks from the Seres, spices from India, pearls from the Gulf. I take my toll. In return for a share of that toll, the Shahanshah keeps the land routes clear of troublesome nomads and ensures my kingdom's security. It is not servitude; it is a profitable business arrangement.",
+], "'Vassal' is a word for warriors. I am a merchant. The world's riches flow through my ports-silks from the Seres, spices from India, pearls from the Gulf. I take my toll. In return for a share of that toll, the Shahanshah keeps the land routes clear of troublesome nomads and ensures my kingdom's security. It is not servitude; it is a profitable business arrangement.",
 "attambelos_player_reaction", []],
 
 [anyone|plyr, "attambelos_player_reaction", [],
@@ -83547,23 +83642,25 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr,"prisoner_chat_lady_2",[
 ], "You will rot in my dungeon.", "close_window",[]],
 
-  # reaction to you based on noble or low-birth
-[anyone,     "prisoner_chat_commoner",[(eq, "$g_talk_troop", "trp_nasamones_queen"),], "What do you want, asshole?", "prisoner_chat_queen",[]],
-[anyone|plyr,     "prisoner_chat_queen",[], "I only wanted to take a look at you.", "prisoner_chat_queen3",[]],
-[anyone,     "prisoner_chat_queen3",[], "You are a demon! I hope the gods will punish you for this!", "close_window",[]],
-[anyone|plyr,     "prisoner_chat_queen",[], "Nothing", "prisoner_chat_queen2",[]],
-[anyone,     "prisoner_chat_queen2",[], "Then leave me alone. You rat.", "close_window",[]],
+# reaction to you based on noble or low-birth
+[trp_baquates_princess, "prisoner_chat_commoner",[
+], "What do you want, asshole?",
+"dara_talk_prisoner",[]],
 
-[anyone,     "prisoner_chat_commoner",[(eq, "$g_talk_troop", "trp_albus")], "What do you want, Roman?", "albus_prisoner",[]],
+[trp_albus,     "prisoner_chat_commoner",[
+], "What do you want, Roman?",
+"albus_prisoner",[]],
+
 [anyone|plyr,     "albus_prisoner",[], "I have only come to whip you a little bit.", "albus_prisoner_2",[]],
 [anyone|plyr,     "albus_prisoner",[], "Soon you will be crucified you useless rat.", "albus_prisoner_1",[]],
-[anyone,     "albus_prisoner_1",[], "You bastard. I will send you to Hades!^^(He tries to free himself to attack you.\
- You take your officer's whip and beat him until he falls to the ground and loses consciousness)", "close_window",[]],
-[anyone,     "albus_prisoner_2",[], "You satisitic pig, may the gods give you a cruel death!^^(He tries to free himself to attack you.\
- You take your officer's whip and beat him until he falls to the ground and loses consciousness)", "close_window",[]],
-[anyone|plyr,     "albus_prisoner",[], "Nothing.", "prisoner_chat_queen2",[]],
+[anyone,     "albus_prisoner_1",[], "You bastard. I will send you to Hades!^^-- He tries to free himself to attack you. You take your officer's whip and beat him until he falls to the ground and loses consciousness. --", "close_window",[]],
+[anyone,     "albus_prisoner_2",[], "You satisitic pig, may the gods give you a cruel death!^^-- He tries to free himself to attack you. You take your officer's whip and beat him until he falls to the ground and loses consciousness. --", "close_window",[]],
 
-[anyone,     "prisoner_chat_commoner",[], "Me?! (Gulp!)", "prisoner_chat_menu",[]],
+[anyone|plyr, "albus_prisoner",[], "Nothing.", "close_window",[]],
+
+[anyone, "prisoner_chat_commoner",[], "Me?!^^-- Gulp! --",
+"prisoner_chat_menu",[]],
+
 [anyone,"prisoner_chat_lord",[
   (str_store_troop_name, s1, "trp_player")
 ], "Yes, {Lord/Lady} {s1}?",
@@ -86192,9 +86289,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (str_store_troop_name, s5, ":faction_leader"),
 ],
 "Yes, yes... Now, a couple of my men have the watch captain pinned down in a back room, with a pugio at his throat. I'll need to drag him before {s5} and explain what this breach of the peace is all about."
-+" I'll tell you what—if all goes well, I'll meet you in the tavern again shortly and let you know how it turned out. If you don't see me in the tavern but instead see me thrown to the beasts,"
++" I'll tell you what-if all goes well, I'll meet you in the tavern again shortly and let you know how it turned out. If you don't see me in the tavern but instead see me thrown to the beasts,"
 +" I'll assume you'll know enough to stay out of town for a while and forget this whole episode ever happened."
-+"^^Before I forget, here's a fake document I prepared—it declares you as a freed slave. You are now officially free. Hopefully, we'll meet again. Until then, enjoy your freedom!",
++"^^Before I forget, here's a fake document I prepared-it declares you as a freed slave. You are now officially free. Hopefully, we'll meet again. Until then, enjoy your freedom!",
 "merchant_finale_2",[]],
 
 [anyone|plyr,"merchant_finale_2",
@@ -91160,123 +91257,364 @@ I will need 500 denarii.", "bardo_sing2",[]],
   "Hear how grass and the leaves rustle in the wind. Hear the surf of the waves. Smell the flowers and eat fruit from the trees while the sun strokes your face with shimmering rays. No cloud darkens the sky.", "close_window",[]],
 ##End aeneas
 
-  ##darat talk
-[trp_nasamones_queen, "start",
-[
+  ##darta talk at oasis
+[trp_baquates_princess, "start",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
   (eq, "$talk_context", tc_escape),
- ],
-  "Who are you and what do you want from me? The nurse said we would make a small walk ...", "darta_talky",
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+  (str_clear, s13),
+  (try_begin),
+    (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
+    (str_store_string, s13, "@ Then you went to Garat and started a fight."),
+  (try_end),
+],
+"You. ^-- She is very still. --^ You told me my mother sent you.{s13} Now you are here, with the nurse gone. ^-- Quietly, almost to herself: --^ She was in on it from the start.", "darta_talky",
 []],
-[trp_nasamones_queen|plyr, "darta_talky",[],"You will come with me little princess.", "darta_talky2",[]],
 
-[trp_nasamones_queen, "darta_talky2",[],"What? Who are you? What's going on? ^-- She starts crying. --", "darta_talky3",[]],
+[trp_baquates_princess, "start",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (eq, "$talk_context", tc_escape),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+  (str_clear, s13),
+  (try_begin),
+    (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
+    (str_store_string, s13, "@ - who accused him, started a fight and fled"),
+  (try_end),
+],
+"You! ^-- Her eyes go wide. --^ Garat spoke of a stranger who came to the camp asking questions{s13}. That was you. ^-- She glances back toward the palms. --^ Where is the nurse? What is this?", "darta_talky",
+[]],
 
-[trp_nasamones_queen|plyr, "darta_talky3",[],"Stop crying you stupid bitch.", "darta_talky31",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),]],
-[trp_nasamones_queen|plyr, "darta_talky3",[],"Don't cry my princess.", "darta_talky31",[]],
 
-[trp_nasamones_queen, "darta_talky31",[],"Who are you and what do you want? Are you a bandit? You are kidnapping me, I am sure.", "darta_talky32",[]],
-[trp_nasamones_queen|plyr, "darta_talky32",[],"I am {playername}. Can't you remember? We talked some days ago. I have met your father and he gave me the task\
-  to rescue you from the evil Garat. I will bring you back to your father.", "darta_talky33",[]],
-[trp_nasamones_queen, "darta_talky33",[],"You stupid idiot! I liked my life here in Garama. Garat is so nice to me. I don't want to marry this stupid Roman noble.\
-  My father is an old idiot.^ -- She gets really hysterical. --", "darta_talky4",[]],
+[trp_baquates_princess, "start",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (eq, "$talk_context", tc_escape),
+],
+"You again. ^-- She looks past you, searching the shade of the palms. --^ The nurse brought me here, said we would take the air. Now she has vanished and you are standing in her place. What is going on?", "darta_talky",
+[]],
 
-[trp_nasamones_queen|plyr, "darta_talky4",[],"You stupid bitch. -- Give her a slap. --", "darta_talky41",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_nasamones_queen|plyr, "darta_talky4",[],"You must not marry the Roman noble, my princess.", "darta_talky41",[]],
+[anyone|plyr, "darta_talky",
+[], "You are coming with me. Do not make this harder than it needs to be.",
+"darta_talky2", []],
 
-[trp_nasamones_queen|plyr, "darta_talky41",[],"Your family is missing you. They worry about you and want you back.", "darta_talky42",[]],
-[trp_nasamones_queen, "darta_talky42",[],"How stupid are you? If they would miss me and worry about me, they would not have sent me to Carthage to marry this stupid Roman noble.\
-  My father only wants me back, because the noble would give him tons of silver and gold in exchange for me! Bah this Roman noble. His name is Sextus Arthropoda.\
-  He travelled through Africa to collect exotic things. As he met me at the first time he said: 'You are such a little hot bitch. I will make you my slave then I can fuck you everyday.'\
-  Sextus doesn't want to marry me. He only wants me as slave.", "darta_talky43",[]],
+[anyone, "darta_talky2",[
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+], "My mother's errand. ^-- Her voice is flat, not angry. --^ You told me she sent you. Then you went to Garat, failed, and fell back on coin and deception. ^-- She looks past you at the empty palms. --^ I wonder if she knows the methods you use in her name.",
+"darta_talky3", []],
 
-[trp_nasamones_queen|plyr, "darta_talky43",[],"By the gods. Your destiny is to be a slave.", "darta_talky44",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_nasamones_queen, "darta_talky44",[],"No, no. Oh {playername}. I would do everything for you, but please don't bring me back to my family.\
-  ^-- She pulls down her dress and shows you her breasts. -- ^Play with me if you want, but don't send me back.", "darta_talky5",[
+[anyone, "darta_talky2",[
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+], "Coming with you. ^-- Her voice drops. --^ So you failed to take me by force, and now you have bought my nurse instead. ^-- She steps back. --^ I trusted her.",
+"darta_talky3", []],
+
+[anyone, "darta_talky2",[
+], "^-- She does not move. --^ You came to my husband's camp, spoke with me, and now you are here - with the nurse gone and no one else in sight. You planned this. ^-- Quietly: --^ How much did you pay her?",
+"darta_talky3", []],
+
+[anyone|plyr, "darta_talky3",
+[], "Stop wailing. You will draw every man in a mile.",
+"darta_talky31", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10)
+]],
+
+[anyone|plyr, "darta_talky3",
+[], "Peace. I will not harm you. I need you to listen.",
+"darta_talky31", []],
+
+[anyone, "darta_talky31",
+[], "Listen? You deceived my nurse, dragged me out here, and now you tell me to listen? Who sent you? What do you want with me?",
+"darta_talky32", []],
+
+[anyone|plyr, "darta_talky32",[
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+], "You already know who I am and who sent me. Your mother wants you home. I intend to see that happen.",
+"darta_talky33", []],
+
+[anyone|plyr, "darta_talky32",
+[], "I am {playername}. Your father sent me. He wants you returned - returned to the life that was arranged before Garat took you into the desert.",
+"darta_talky33", []],
+
+
+[anyone, "darta_talky33",
+[], "My father. ^-- Her tears stop. Something behind her eyes hardens. --^ Do you know what life my father arranged for me? Garat did not take me. I went with him. I chose the desert over what waited for me in Carthago.",
+"darta_talky4", []],
+
+[anyone|plyr, "darta_talky4",
+[], "I was paid to bring you back. What you chose or did not choose is not my concern.",
+"darta_talky4a", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20)
+]],
+
+[anyone|plyr, "darta_talky4",
+[], "What were you running from? What waited for you in Carthago that was worse than the desert?",
+"darta_talky4b", []],
+
+[anyone|plyr, "darta_talky4",
+[], "Your father is a powerful man. Going back to him would at least keep you safe.",
+"darta_talky4c", []],
+
+# --- branch A: mercenary, cold ---
+[anyone, "darta_talky4a",
+[], "A job. ^-- She looks at you as though she is memorising your face. --^Then there is nothing more to say.",
+"darta_talky43", []],
+
+# --- branch B: curious, she reveals the truth about Sextus ---
+[anyone, "darta_talky4b",
+[], "His name is Sextus Arthropoda. He came down from Rome into Africa collecting curiosities - rare animals, strange stones, foreign women. When he first laid eyes on me he looked me over the way a merchant inspects grain. He spoke of keeping me close. He did not mean as a wife. ^-- She holds your gaze. --^ Garat treats me as a person. Sextus would keep me as a possession, as a slave! My father knows this and does not care. That is what I was running from.",
+"darta_talky43", [
+]],
+
+# --- branch C: pragmatic, she rejects the idea of safety under her father ---
+[anyone, "darta_talky4c",
+[], "Safe. ^-- A quiet, humourless sound. --^ I would live behind walls, handed from my father's house to a Roman's bed, and you would call that safety. Garat asks nothing of me that I have not given freely. I had rather starve in the desert as a free woman than eat well as a man's property.",
+"darta_talky43", []],
+
+[anyone|plyr, "darta_talky43",
+[], "Whatever. You will go where I take you.",
+"darta_talky44", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20)
+]],
+
+[anyone|plyr, "darta_talky43",
+[], "Just follow my orders and no harm will happen to you.",
+"darta_talky44", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10)
+]],
+
+[anyone, "darta_talky44",
+[], "Then I am begging you. ^-- She steps closer, her voice falling to almost nothing. -- ^ I have nothing to offer but myself. Take what you want from me. Only do not hand me over to that man.^^-- She undresses, then grabs your hands with hers and presses them against her breasts. --",
+"darta_talky5", [
   #(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
   (agent_unequip_item, "$g_talk_agent", "itm_sarranid_lady_dress_b"),
 ]],
 
-[trp_nasamones_queen|plyr, "darta_talky5",[],"You are nothing more than a whore!", "darta_talky51",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),]],
-[trp_nasamones_queen|plyr, "darta_talky51",[],"I will bring you to your family. You useless bitch!", "darta_talky52",[]],
-[trp_nasamones_queen, "darta_talky52",[],"No! No! No! ^-- She throws herself at your feet and cries. --^ Please not, please not!", "darta_talky53",[]],
+[anyone|plyr, "darta_talky5",
+[], "Cover yourself. You dishonour us both.",
+"darta_talky51", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20)
+]],
 
-[trp_nasamones_queen|plyr, "darta_talky53",[],"You useless bitch", "darta_talky54",[]],
-[trp_nasamones_queen, "darta_talky54",[],"-- You hit her in the face and kick her in the stomach until she loses consciousness. --", "close_window",[
+[anyone|plyr, "darta_talky51",
+[], "I was hired to bring you to your father. That is what I will do.",
+"darta_talky52", []],
+
+[anyone, "darta_talky52",
+[], "No - please - ^-- Tears run freely now. --^ You cannot send me back to him. You cannot.",
+"darta_talky53", []],
+
+[anyone|plyr, "darta_talky53",
+[], "Release me. This is done.",
+"darta_talky54", []],
+
+[anyone, "darta_talky54",
+[], "-- She fights you. You restrain her by force until she goes still. You bind her hands and make ready to leave the oasis. --",
+"close_window", [
   (assign, "$temp", 1),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),
-
-  (troop_join_as_prisoner, "trp_nasamones_queen"),
+  (troop_join_as_prisoner, "trp_baquates_princess"),
   (troop_join, "trp_nurse_african"),
-  (remove_member_from_party, "trp_nasamones_queen", "p_nasamones_town_1"),
+  (remove_member_from_party, "trp_baquates_princess", "p_nasamones_town_1"),
   (rest_for_hours, 4, 2, 0),
-  (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 4),
-
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@Now I have Darta. I should ask for a huge reward.", 0),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta is bound and in my custody. She came unwillingly. Her father will have her back - what I demand in return is another matter.", 0),
   (display_message, "str_quest_updated", message_alert),
 ]],
 
-[trp_nasamones_queen|plyr, "darta_talky5",[],"You look ... good ...", "darta_talky6",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
-[trp_nasamones_queen, "darta_talky6",[],"(You have a good time her in the sand. After an hour of joy you remain lying in the sand while she sneakes away.)", "close_window",[
-  (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
-  (display_message, "str_quest_updated", message_alert),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),]],
+[anyone|plyr, "darta_talky5",
+[], "You are... not what I was led to expect... maybe",
+"darta_talky6", [
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10)
+]],
 
-[trp_nasamones_queen|plyr, "darta_talky43",[],"I see. Stay here with Garat. I won't bring you to your father", "darta_leave",[]],
-[trp_nasamones_queen, "darta_leave",[],"Thank you {playername}. I won't forget your hounorable act. ^--She gives you a kiss. --", "close_window",[
+[anyone, "darta_talky6",
+[], "-- The afternoon passes in shade and silence and sand. When you come to your senses, she is gone - nothing left but the cooling desert air and the sound of the wind through the palms. --",
+"close_window", [
   (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I don't have Darta. I will tell that she was killed by a snake or something like that.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta slipped away while you were distracted. She is gone and you have no way to recover her. You must decide what to tell her father.", 0),
+  (display_message, "str_quest_updated", message_alert),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
+]],
+
+[anyone|plyr, "darta_talky43",
+[], "I see. Stay with Garat. I will not drag you back against your will.",
+"darta_leave", []],
+
+[anyone, "darta_leave",
+[], "You are a better man than I thought, {playername}. Whatever brought you here, you leave with your honour intact. ^-- She takes your hand briefly, then steps back. --",
+"close_window", [
+  (assign, "$temp", 1),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta told you the truth about her betrothal to Sextus. You chose not to force her back. She is free, but her father will expect an answer. You must decide how to face him.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_honor", 5),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 80),]],
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 80),
+]],
 ##END Darta talk for quest
 
 #desert queen generic talk
+#
+[trp_baquates_princess, "start",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+],"Please, leave me alone now!",
+"close_window",
+[]],
+
+[trp_baquates_queen, "start",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  # (neg|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 4),
+  (this_or_next|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"You return. Tell me — what news of {s20}?",
+"desert_queen_progress_hub",[]],
+
+[anyone|plyr, "desert_queen_progress_hub",[
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+  (quest_slot_lt, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+],"I found her and spoke with her. She is alive.",
+"desert_queen_quest_daughter_found_return_1",[]],
+
+[anyone|plyr, "desert_queen_progress_hub",[
+  (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
+  (ge, ":count", 1),
+],"She is with me — I brought her out of the Autoleles camp.",
+"desert_queen_has_darta",[]],
+
+[anyone|plyr, "desert_queen_progress_hub",[
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+  (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
+  (eq, ":count", 0),
+],"I had her — but my party was overrun. She escaped in the confusion.",
+"desert_queen_darta_lost",[]],
+
+[anyone, "desert_queen_quest_daughter_found_return_1",[
+],"She is alive? Tell me — is she well? What did she say to you?",
+"desert_queen_quest_daughter_found_return_2",[]],
+
+
+[anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
+],"She is alive and well. However she refused to come home. She has made her life with Garat and she will not leave him.",
+"desert_queen_quest_daughter_found_return_truth",[]],
+
+[anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
+],"She is alive. I have not yet been able to bring her back, but I know where she is. I will return for her.",
+"desert_queen_quest_daughter_found_return_lie",[]],
+
+[anyone, "desert_queen_quest_daughter_found_return_truth",[
+],"She... refused. My daughter looked you in the eye and refused to come home to me. I have wept for her every night since she was taken. I built a grave for her in my heart and still I would not let go. And she... chose to stay.",
+"desert_queen_quest_daughter_found_return_truth_2",[]],
+
+[anyone|plyr, "desert_queen_quest_daughter_found_return_truth_2",[
+],"She spoke of you. She was not without feeling. But she will not be brought back against her will - and I believe she means it.",
+"desert_queen_quest_daughter_found_return_truth_3",[]],
+
+[anyone|plyr, "desert_queen_quest_daughter_found_return_truth_2",[
+],"I am sorry. It was not easy to tell you.",
+"desert_queen_quest_daughter_found_return_truth_3",[\
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
+]],
+
+[anyone, "desert_queen_quest_daughter_found_return_truth_3",[
+],"Then she is lost to me in a way no grave ever was. A grave I can mourn. This - I do not know what to do with this. I do not know whether to hate Garat or thank whatever god kept her breathing. Go. There is no more I can ask of you. I will speak with my husband. Perhaps there is still something that can be done. I will not give up on her.",
+"desert_queen_pretalk",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} the truth - Darta is alive but refuses to return. ", 0),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 4),
+]],
+
+[anyone, "desert_queen_quest_daughter_found_return_lie",[
+],"You know where she is. She is alive and you know where she is. That is more than I have had in months. Please - do not wait. Every day she is with that man is a day too long.",
+"desert_queen_quest_daughter_found_return_lie_2",[]],
+
+[anyone|plyr, "desert_queen_quest_daughter_found_return_lie_2",[
+],"I will go back for her. You have my word.",
+"desert_queen_pretalk",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} that Darta is alive and that you will bring her back. You did not tell her that Darta refused to come. The queen is waiting.", 0),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 5),
+]],
+
+[anyone, "desert_queen_has_darta",[
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"She is here? {s20} is truly with you? Let me go to her — please, take me to her.",
+"desert_queen_has_darta_2",[]],
+
+[anyone|plyr, "desert_queen_has_darta_2",[
+],"She is yours. I have kept my word.",
+"desert_queen_has_darta_mother",[]],
+
+[anyone|plyr, "desert_queen_has_darta_2",[
+],"Her father sent me as well. I must bring her before him first.",
+"close_window",[]],
+
+[anyone, "desert_queen_has_darta_mother",[
+],"Then she is home. Whatever road brought her back — you have my gratitude. I have no treasury to match what you deserve, but you will always be welcome in my court.",
+"desert_queen_pretalk",[
+  (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
+  (remove_member_from_party, "trp_nurse_african", "p_main_party"),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 20),
+  (add_xp_as_reward, 1000),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+]],
+
+[anyone, "desert_queen_darta_lost",[
+],"You had her in your hands — and you lost her. I do not want to hear your reasons. Get out of my sight.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
+  (call_script, "script_fail_quest", "qst_blossom_in_the_desert"),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+]],
+
 [anyone, "start",[
-    (is_between, "$g_talk_troop", minor_queens_begin, minor_queens_end),
-    (eq, "$g_talk_troop_met", 0),
-    (try_begin),
-        (troop_slot_ge, "trp_player", slot_troop_renown, 500),
-        (str_store_string, s15, "@Ah you must be {playername}. Finally I have the chance to meet you."),
-    (else_try),
-        (str_store_string, s15, "@Do I know you?"),
-    (try_end),
-],
-  "{s15}", "desert_queen",
+  (is_between, "$g_talk_troop", minor_queens_begin, minor_queens_end),
+  (eq, "$g_talk_troop_met", 0),
+  (try_begin),
+      (troop_slot_ge, "trp_player", slot_troop_renown, 500),
+      (str_store_string, s15, "@Ah you must be {playername}. Finally I have the chance to meet you."),
+  (else_try),
+      (str_store_string, s15, "@Do I know you?"),
+  (try_end),
+],"{s15}",
+"desert_queen",
 []],
 
 [anyone, "start",[
-    (is_between, "$g_talk_troop", minor_queens_begin, minor_queens_end),
-    (try_begin),
-        (ge,"$g_talk_troop_relation",30),
-        (str_store_string, s15, "@Hallo, {playername}? It is always a pleasure to meet you."),
-    (else_try),
-        (ge,"$g_talk_troop_relation",0),
-        (str_store_string, s15, "@What brings you here today?"),
-    (else_try),
-        (ge,"$g_talk_troop_relation",-40),
-        (str_store_string, s15, "@Ah {playername}. I don't have much time for you ..."),
-    (else_try),
-        (str_store_string, s15, "@You again. I don't think I have the time to talk with you ..."),
-    (try_end),
-],
-  "{s15}", "desert_queen",
+  (is_between, "$g_talk_troop", minor_queens_begin, minor_queens_end),
+  (try_begin),
+      (ge,"$g_talk_troop_relation",30),
+      (str_store_string, s15, "@Hello, {playername}. It is always a pleasure to meet you."),
+  (else_try),
+      (ge,"$g_talk_troop_relation",0),
+      (str_store_string, s15, "@What brings you here today?"),
+  (else_try),
+      (ge,"$g_talk_troop_relation",-40),
+      (str_store_string, s15, "@Ah {playername}. I don't have much time for you ..."),
+  (else_try),
+      (str_store_string, s15, "@You again. I don't think I have the time to talk with you ..."),
+  (try_end),
+],"{s15}",
+"desert_queen",
 []],
 
-[anyone|plyr,"desert_queen",[(neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-							 (ge, "$g_encountered_party_relation", 0),
-			(store_item_kind_count, ":amber", "itm_amber", "trp_player"),
-			(store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
-			(store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
-      (store_item_kind_count, ":perfume_special", "itm_perfume_special", "trp_player"),
-      (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
-			(this_or_next|ge, ":amber", 1),
-      (this_or_next|ge, ":perfume_special", 1),
-      (this_or_next|ge, ":perfume", 1),
-			(this_or_next|ge, ":jewelry", 1),
-			(ge, ":ivory", 1),
- ],
-   "I have a present for you, my Lady.", "desert_queen_present",[]],
+[anyone|plyr,"desert_queen",[
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  (ge, "$g_encountered_party_relation", 0),
+  (store_item_kind_count, ":amber", "itm_amber", "trp_player"),
+  (store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
+  (store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
+  (store_item_kind_count, ":perfume_special", "itm_perfume_special", "trp_player"),
+  (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
+  (this_or_next|ge, ":amber", 1),
+  (this_or_next|ge, ":perfume_special", 1),
+  (this_or_next|ge, ":perfume", 1),
+  (this_or_next|ge, ":jewelry", 1),
+  (ge, ":ivory", 1),
+],"I have a present for you, my Lady.",
+"desert_queen_present",[]],
 
 [anyone,"desert_queen_present",[
   (try_begin),
@@ -91284,126 +91622,224 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (str_store_string, s20, "@Interesting. Hopefully it is something from faraway. I like such stuff."),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
-    (str_store_string, s20, "@I like people who make me presents. Well lets see what you have brought me."),
+    (str_store_string, s20, "@I like people who make me presents. Well, let's see what you have brought me."),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
-    (str_store_string, s20, "@Actually I do not think that it is good that you bring me son many presents. Well but I am nonetheless curious what you have brought."),
+    (str_store_string, s20, "@Actually I do not think that it is good that you bring me so many presents. Well but I am nonetheless curious what you have brought."),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_conventional),
-    (str_store_string, s20, "@A present? Sounds good. I like especially expansice stuff."),
+    (str_store_string, s20, "@A present? Sounds good. I like especially expensive stuff."),
   (else_try),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_otherworldly),
-    (str_store_string, s20, "@How nice from you. I think it is important that man show their affection for women with presents. Now lets see what it is."),
+    (str_store_string, s20, "@How nice of you. I think it is important that men show their affection for women with presents. Now, let's see what it is."),
   (else_try),
-    (str_store_string, s20, "@I like presents, especially expensive ones. Well lets see what you have brought me."),
+    (str_store_string, s20, "@I like presents, especially expensive ones. Well, let's see what you have brought me."),
   (try_end),
 ],"{s20}", "desert_queen_present2",[]],
 
 [anyone|plyr,"desert_queen_present2",[
-			(store_item_kind_count, ":amber", "itm_amber", "trp_player"),
-
-			(ge, ":amber", 1),
-
- ],
-   "This amber comes from faraway lands.", "desert_queen_present_response",[(assign, "$temp", "itm_amber")]],
-[anyone|plyr,"desert_queen_present2",[
-			(store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
-			(ge, ":jewelry", 1),
- ],
-   "Does jewelries will look beautiful on your neck.", "desert_queen_present_response",[(assign, "$temp", "itm_jewelry")]],
-[anyone|plyr,"desert_queen_present2",[
-
-			(store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
-			(ge, ":ivory", 1),
- ],
-   "This ivory is as mighty as you.", "desert_queen_present_response",[(assign, "$temp", "itm_ivory")]],
+  (store_item_kind_count, ":amber", "itm_amber", "trp_player"),
+  (ge, ":amber", 1),
+],"This amber comes from faraway lands.",
+"desert_queen_present_response",[
+  (assign, "$temp", "itm_amber")
+]],
 
 [anyone|plyr,"desert_queen_present2",[
-
-			(store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
-			(ge, ":perfume", 1),
- ],
-   "The sweet flowery smell of this perfume will fit perfectly to you.", "desert_queen_present_response",[(assign, "$temp", "itm_perfume")]],
+  (store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
+  (ge, ":jewelry", 1),
+],"This jewelry will look beautiful on your neck.",
+"desert_queen_present_response",[
+  (assign, "$temp", "itm_jewelry")
+]],
 
 [anyone|plyr,"desert_queen_present2",[
+  (store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
+  (ge, ":ivory", 1),
+],"This ivory is as mighty as you.",
+"desert_queen_present_response",[
+  (assign, "$temp", "itm_ivory")
+]],
 
-			(store_item_kind_count, ":perfume", "itm_perfume_special", "trp_player"),
-			(ge, ":perfume", 1),
-      (str_store_item_name, s1, "itm_perfume_special"),
- ],
-   "The exotic flowery fragrance of this perfume called '{s1}' will make you smell like a goddess.", "desert_queen_present_response",[(assign, "$temp", "itm_perfume_special")]],
+[anyone|plyr,"desert_queen_present2",[
+  (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
+  (ge, ":perfume", 1),
+],"The sweet flowery smell of this perfume will fit perfectly to you.",
+"desert_queen_present_response",[
+  (assign, "$temp", "itm_perfume")
+]],
+
+[anyone|plyr,"desert_queen_present2",[
+  (store_item_kind_count, ":perfume", "itm_perfume_special", "trp_player"),
+  (ge, ":perfume", 1),
+  (str_store_item_name, s1, "itm_perfume_special"),
+],"The exotic flowery fragrance of this perfume called '{s1}' will make you smell like a goddess.",
+"desert_queen_present_response",[
+  (assign, "$temp", "itm_perfume_special")
+]],
 
 [anyone,"desert_queen_present_response",[
    (store_random_in_range, ":mood", 0, 10),
    (try_begin),
-        (eq, "$temp", "itm_perfume_special"),
-        (assign, ":mood", 15),
+      (eq, "$temp", "itm_perfume_special"),
+      (assign, ":mood", 15),
    (try_end),
-
    (try_begin),
       (le, ":mood", 2),
       (str_store_item_name, s21, "$temp"),
-      (str_store_string, s20, "@I have so many {s21} seen in the last days. I can't see anything more. But well, I will take your present."),
+      (str_store_string, s20, "@I have seen so many {s21} in the last days. I can't see anything more. But well, I will take your present."),
       (troop_remove_item, "trp_player", "$temp"),
    (else_try),
       (le, ":mood", 8),
-      (str_store_string, s20, "@Thank you. It is always beautiful to see peoples appreciation. Although I had hopped it would be something more 'special'."),
+      (str_store_string, s20, "@Thank you. It is always beautiful to see people's appreciation. Although I had hoped it would be something more 'special'."),
       (troop_remove_item, "trp_player", "$temp"),
       (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", ":mood"),
    (else_try),
-      (str_store_string, s20, "@Oh Thank you. I am sure it was dangerous to get or at least very expensive. (She hugs you.)"),
+      (str_store_string, s20, "@Oh Thank you. I am sure it was dangerous to get or at least very expensive..."),
       (troop_remove_item, "trp_player", "$temp"),
       (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", ":mood"),
    (try_end),
    (display_message, "@Women are strange creatures."),
- ],
-   "{s20}", "desert_queen_pretalk",[]],
+],"{s20}", "desert_queen_pretalk",[]],
 
-[trp_nasamones_queen|plyr, "desert_queen",[
-  (neg|quest_slot_ge, "qst_blank_quest_20", slot_quest_temp_slot, 1),],
-  "You are not from here?", "desert_queen_ask_talk2",[]],
+[trp_baquates_princess|plyr, "desert_queen",[
+  # (neg|check_quest_active, "qst_blossom_in_the_desert"),
+  (neg|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
+],"You do not look like the wife of a thug. How did you end up here?",
+"desert_queen_ask_talk2",[]],
 
-[anyone, "desert_queen_ask_talk2",[ (str_store_troop_name, s32, "trp_nasamones_king"),],
-  "Yes. I am from the Gaetuli people, I am the daughter of Takfarin. Years ago my father arranged a marriage with a Roman noble. This was when I was 14. Usually Gaetuli women marry with 12.\
-  I was sent with an escort of 100 men to Carthago. But then we were ambushed by Garamantian raiders. The escort was slaughtered. They captured me and brought me to their king. Now I am his wife. The wife of {s32}.", "desert_queen_pretalk",
-[
-  (setup_quest_text,"qst_blank_quest_20"),
-  (str_store_troop_name, s30, "$g_talk_troop"),
-  (str_store_string, s2, "@{s30} told you she was kidnapped by the Garamantians. Visit the Gaetuli, maybe her father, the king of the Gaetulians, pays well for information about his lost daughter."),
-  (call_script, "script_start_quest", "qst_blank_quest_20", "trp_fortuna"),
-  (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 1),
-  ]],
+[anyone, "desert_queen_ask_talk2",[
+  (str_store_troop_name, s32, "trp_nasamones_king"),
+  (troop_get_slot, ":father", "$g_talk_troop", slot_troop_father),
+  (str_store_troop_name, s31, ":father"),
+  (store_faction_of_troop, ":fac", ":father"),
+  (str_store_faction_name, s33, ":fac"),
+],
+"Indeed. I am of the {s33} - daughter of king {s31}. Years ago, my father arranged my betrothal to a Roman noble. I was fourteen then. Among our people, girls are wed at twelve; I was already beyond the common age. I was sent to Carthago with an escort of a hundred men. But we were set upon by Autoleles raiders in the passes. The escort was put to the sword. They brought me before their leader. Now I am his wife. The wife of Garat.",
+"desert_queen_talk_darta_begin",[
+  (try_begin),
+    (neg|check_quest_active, "qst_blossom_in_the_desert"),
+    (setup_quest_text,"qst_blossom_in_the_desert"),
+    (str_store_troop_name, s30, "$g_talk_troop"),
+    (str_store_string, s2, "@{s30} told you her story. She is the daughter of the Baquates king - taken by Autoleles raiders on the road to Carthago, brought before their leader Garat, and made his wife. She has not been home since. Her family may not even know she lives. Seek out the Baquates and bring them word of their daughter."),
+    (call_script, "script_start_quest", "qst_blossom_in_the_desert", "trp_fortuna"),
+  (else_try),
+    (check_quest_active, "qst_blossom_in_the_desert"),
+    (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 2),
+  (try_end),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
+  (assign, "$temp1", 1),
+]],
 
-[anyone|plyr, "desert_queen",[(eq, "$g_talk_troop_met", 0),],"May I have the honor of knowing more about you, my lady?", "desert_queen_ask",[]],
-[anyone, "desert_queen_ask",[(assign, "$g_talk_troop_met", 1),
+[anyone|plyr, "desert_queen_talk_darta_begin",[
+  (this_or_next|quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 2),
+],"Your mother sent me. She has not forgotten you - and she would see you free of the Autoleles.",
+"desert_queen_rescue_begin",[
+]],
+
+[anyone, "desert_queen_rescue_begin",[
+],"My mother... so she has not forgotten. That is more than I expected. But tell her this - I am not coming home. Not in chains, not in a litter, not under any name she or my father give to it. He signed my life away to a man whose own household feared him. He did not ask. He did not warn me. He counted coins and called it duty. If my mother wished to spare me that fate, she had her chance. I will not be given again. Tell her I am well. Tell her I am alive. That will have to be enough.",
+"close_window",[
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+]],
+
+[anyone|plyr, "desert_queen_talk_darta_begin",[
+  (eq, "$temp1", 1),
+],"A Roman betrothal... your father traded you like a prize. Perhaps the Autoleles merely claimed what he had already sold.",
+"desert_queen_talk_darta_begin_2",[
+  (assign, "$temp1", 2),
+]],
+
+[anyone, "desert_queen_talk_darta_begin_2",[
+],"You speak plainly, stranger. My father is a king - he does what kings do. And the Roman he chose... I have heard stories of that man. Stories that do not end well for his wives. Garat took me by the sword. He has never once raised it against me. Draw what conclusions you will from that.",
+"desert_queen_talk_darta_begin",[
+]],
+
+[anyone|plyr, "desert_queen_talk_darta_begin",[
+],"Forgive me now - I must be on my way.",
+"desert_queen_leave",[]],
+
+[anyone|plyr, "desert_queen",[
+  (eq, "$g_talk_troop_met", 0),
+],"May I have the honor of knowing more about you, my lady?",
+"desert_queen_ask",[]],
+
+[anyone, "desert_queen_ask",[
+  (assign, "$g_talk_troop_met", 1),
   (str_store_faction_name, s32, "$g_talk_troop_faction"),
   (str_store_troop_name, s30, "$g_talk_troop"),
-	(try_begin),
-	  (eq, "$g_talk_troop", "trp_arabian_queen"),
-	  (str_store_troop_name, s31, "trp_arabian_king"),
-	  (str_store_string, s23, "@I am {s30}, the wife of {s31} and queen of the {s32}."),
-	(else_try),
-	  (eq, "$g_talk_troop", "trp_nasamones_queen"),
-	  (str_store_troop_name, s31, "trp_baquates_king"),
-	  (str_store_string, s23, "@I am {s30}, the daugther of {s31} and princess of the mighty Gaetulian people."),
-	(else_try),
-	  (eq, "$g_talk_troop", "trp_baquates_queen"),
-	  (str_store_troop_name, s31, "trp_baquates_king"),
-    (str_store_string, s23, "@I am {s30}, wife of {s31} and the queen of the {s32}."),
-	(try_end),
 
- ],"{s23}", "desert_queen_pretalk",[]],
+  (troop_get_slot, ":father", "$g_talk_troop", slot_troop_father),
+  (troop_get_slot, ":spouse", "$g_talk_troop", slot_troop_spouse),
 
-[anyone|plyr, "desert_queen",[],"Is there anything I can do for you, my Lady?", "desert_queen_ask_for_quest",[]],
-[anyone, "desert_queen_ask_for_quest",[(party_count_members_of_type, ":lady", "p_nasamones_town_1", "trp_nasamones_queen"),
-  (ge, ":lady", 1),
-  (eq, "$g_talk_troop", "trp_baquates_queen"),
- ],"Oh if you could bring me back my daughter, but you can't nobody can. She was probably slaughtered by bandits.", "desert_queen",[]],
-[anyone, "desert_queen_ask_for_quest",[],"Currently I am not in need of a hero.", "desert_queen",[]],
-[anyone|plyr, "desert_queen",[],"Ave atque vale.", "desert_queen_leave",[]],
-[anyone, "desert_queen_leave",[],"Farewell, {playername}.", "close_window",[]],
-[anyone, "desert_queen_pretalk",
-[(try_begin),
+  (str_store_string, s23, "@I am {s30} of the {s32}."),
+  (try_begin),
+    (gt, ":father", 0),
+    (str_store_troop_name, s31, ":father"),
+    (str_store_string, s23, "@{s23} My father is {s31}."),
+  (try_end),
+  (try_begin),
+    (gt, ":spouse", 0),
+    (str_store_troop_name, s31, ":spouse"),
+    (str_store_string, s23, "@{s23} My husband is {s31}."),
+  (try_end),
+],"{s23}", "desert_queen_pretalk",[]],
+
+[anyone|plyr, "desert_queen",[
+],"Is there anything I can do for you, my Lady?",
+"desert_queen_ask_for_quest",[]],
+
+[trp_baquates_queen, "desert_queen_ask_for_quest",[
+  (neg|check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
+],"My daughter ... I am so worried about her. She was kidnapped by the evil Garat of the Autololes. I don't know where she is and if she is still alive. If you find her and bring her back to me, I will reward you generously.",
+"desert_queen_darta_quest",[]],
+
+[anyone|plyr, "desert_queen_darta_quest",[
+],"I will find your daughter and bring her back to you, my Lady.",
+"desert_queen_darta_quest_agree",[]],
+
+[anyone, "desert_queen_darta_quest_agree",[
+],"I am so grateful. I hope you will find her. I am sure she is still alive, but I don't know where she is. Garat is a cruel man, but I hope you will find her and bring her back to me. The Autololes live in the desert, but I don't know where exactly. They are nomads and they move around a lot. But maybe you can find some clues in the desert - or follow one of their raider groups when they retreat to their lair. Do not waste too much time! Please find her and bring her back to me.",
+"desert_queen_darta_quest_agree_2",[
+    (setup_quest_text,"qst_blossom_in_the_desert"),
+    (str_store_troop_name, s30, "$g_talk_troop"),
+    (str_store_string, s2, "@{s30} ask you to find her lost daughter Darta, who was captured by Garat of the Autoleles. The Autoleles wander around the desert of Mauretania."),
+    (call_script, "script_start_quest", "qst_blossom_in_the_desert", "trp_fortuna"),
+    (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
+]],
+
+[anyone|plyr, "desert_queen_darta_quest_agree_2",[
+],"I will be swift as the wind.",
+"desert_queen_leave",[]],
+[anyone|plyr, "desert_queen_darta_quest_agree_2",[
+],"The gods will guard my path.",
+"desert_queen_leave",[]],
+
+[anyone|plyr, "desert_queen_darta_quest",[
+],"I don't have time for this quest right now.",
+"desert_queen_darta_quest_notime",[]],
+
+[anyone, "desert_queen_darta_quest_notime",[
+],"If only I had someone who could help me to find my daughter ...",
+"desert_queen_pretalk",[]],
+
+[anyone, "desert_queen_ask_for_quest",[
+],"Currently I am not in need of a hero.",
+"desert_queen",[]],
+
+[anyone|plyr, "desert_queen",[
+],"Ave atque vale.",
+"desert_queen_leave",[]],
+
+[anyone, "desert_queen_leave",[
+],"Farewell, {playername}.",
+"close_window",[]],
+
+[anyone, "desert_queen_pretalk",[
+  (try_begin),
 		(ge,"$g_talk_troop_relation",30),
 		(str_store_string, s23, "@Anything else, my hounorable {playername}?"),
 	(else_try),
@@ -91412,13 +91848,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	(else_try),
 		(str_store_string, s23, "@There are other things that I have to do, you may want to leave?"),
 	(try_end),
- ],
-  "{s23}", "desert_queen",
+],"{s23}",
+"desert_queen",
 []],
+##end desert queen
 
-  ##end desert queen
-[anyone, "start",
-[
+### minor kings
+[anyone, "start",[
   (eq, "$g_talk_troop_met", 0),
   (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
   (eq, "$talk_context",tc_siege_commander),
@@ -91434,13 +91870,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	(else_try),
 		(str_store_string, s23, "@You smelly jackal are the butcher of my people? What do you want?"),
 	(try_end),
+],"{s23}",
+"desert_king_talk",[]],
 
- ],
-  "{s23}", "desert_king_talk",
-[]],
-
-[anyone, "start",
-[
+[anyone, "start",[
   (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
   (eq, "$talk_context",tc_siege_commander),
 	(try_begin),
@@ -91455,18 +91888,18 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	(else_try),
 		(str_store_string, s23, "@I don't think there is much to talk about. But hopefully you surprise me."),
 	(try_end),
-
- ],
-  "{s23}", "desert_king_talk",
+],"{s23}",
+"desert_king_talk",
 []],
 
 ##desert king talk
-[anyone, "start",
-[(eq, "$g_talk_troop_met", 0),
+[anyone, "start",[
+  (eq, "$g_talk_troop_met", 0),
   (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
   (str_store_troop_name, s30, "$g_talk_troop"),
-  (str_store_faction_name, s31, "$g_talk_troop_faction"),],
-  "Welcome to my house stranger. I am {s30}, ruler of {s31}. Who are you and want brings you here?", "desert_king_player_intro",[]],
+  (str_store_faction_name, s31, "$g_talk_troop_faction"),
+],"Welcome to my house stranger. I am {s30}, ruler of {s31}. Who are you and want brings you here?",
+"desert_king_player_intro",[]],
 
 [anyone|plyr, "desert_king_player_intro",[],"I am {playername}. I travel through this lands.", "desert_king_intro2",[]],
 [anyone|plyr, "desert_king_player_intro",[],"I am {playername}, marke it down, you will hear from me. I travel through this lands searching for treasures.", "desert_king_intro2",[]],
@@ -91482,10 +91915,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
 		(str_store_string, s23, "@You are {playername}. I have heard from you, but I don't like what I heard."),
 	(else_try),
 		(str_store_string, s23, "@{playername}! I have heard from you. Have you come to bring us plagues?"),
-	(try_end),],"{s23}", "desert_king",[]],
+	(try_end),
+],"{s23}", "desert_king",[]],
 
 [anyone, "start",[
-    (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
+  (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
 	(try_begin),
 		(ge,"$g_talk_troop_relation",30),
 		(str_store_string, s23, "@It is always nice to meet you again, {playername}?"),
@@ -91516,10 +91950,19 @@ I will need 500 denarii.", "bardo_sing2",[]],
  ],
   "{s23}", "desert_king",
 []],
-[anyone|plyr, "desert_king",[(faction_slot_eq, "$g_talk_troop_faction", slot_faction_player_tributary, 1),],"I demand a special tribute.", "desert_king_tribute",[]],
-[anyone, "desert_king_tribute",[],"What? We have always paid the tribute! It would be a offense to our people to request additional tributes.", "desert_king_tribute2",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-3),]],
 
-[anyone|plyr, "desert_king_tribute2",[],"You heard right. I demand additional 1000 denarii.", "desert_king_tribute3",[]],
+[anyone|plyr, "desert_king",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_player_tributary, 1),
+],"I demand a special tribute.",
+"desert_king_tribute",[]],
+
+[anyone, "desert_king_tribute",[
+],"What? We have always paid the tribute! It would be a offense to our people to request additional tributes.",
+"desert_king_tribute2",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-3),
+]],
+
+[anyone|plyr, "desert_king_tribute2",[],"You heard right. I demand additional 1,000 denarii.", "desert_king_tribute3",[]],
 
 [anyone, "desert_king_tribute3",[
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
@@ -91594,43 +92037,271 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [trp_baquates_king|plyr, "desert_king",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_ge, "qst_blank_quest_20", slot_quest_current_state, 0),
-  (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 1),
-  (str_store_troop_name, s20, "trp_nasamones_queen"),
-],"I want to talk about your daughter {s20}.", "desert_king_quest_daughter_talk",[
-  (quest_set_slot, "qst_blank_quest_20", slot_quest_current_state, 1),
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"Your spouse asked to find {s20}. You may know where she was last seen?",
+"desert_king_quest_daughter_talk_spouse",[
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
 ]],
+[anyone, "desert_king_quest_daughter_talk_spouse",[
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"My wife sent you. Of course she did. She has never accepted it - not the silence, not the grave. {s20}... she was sent to Carthago. A hundred men with her. The escort never arrived. I sent riders. They found burnt wagons, dead horses, bodies in the sand. One of the bodies - we could not say with certainty. But we buried her. My wife refused to bury her. That is the difference between us.",
+"desert_king_quest_daughter_talk_spouse_2",[]],
 
-[anyone, "desert_king_quest_daughter_talk",[],"Who told you about her? Don't listen to the gossip of the guards. She didn't run away with a slave! She is dead, I am sure. We found her body one month ago in\
-  a bandit hideout.", "desert_king_quest_daughter_talk2",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk2",[],"She isn't dead. I spoke with her some days ago. She has been kidnapped by the garamantian king. Currently she is in Garama.", "desert_king_quest_daughter_talk3",[]],
+[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+],"Do you believe she might still be alive?",
+"desert_king_quest_daughter_talk_spouse_3",[]],
 
-[anyone, "desert_king_quest_daughter_talk3",[],"What are you talking? Are you mad? Are you a witcher? We found her body! She is dead. Bandits killed her on the way to Carthage.", "desert_king_quest_daughter_talk4",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk4",[],"No she is not dead! Some days ago I was in Garama. There I talked with the Garamantian Queen. She told me, she is a princess from the Gaetulian people and \
- you are her father. Furthermore she said, that, as she was on the way to Carthago to marry a Roman noble, Garamantian raiders attacked the escort and slaughtered everyone. Everyone except her. She has been brought before the king and he\
- decided to marry her.", "desert_king_quest_daughter_talk5",[]],
-[anyone, "desert_king_quest_daughter_talk5",[(ge,"$g_talk_troop_relation",10),],"I trust you.", "desert_king_quest_daughter_talk6",[]],
-[anyone, "desert_king_quest_daughter_talk5",[],"Why shall I trust you? But what if you are right? The Garamantians don't like us and we don't like them. I heard from a traveller the description of the new Garamantian queen. The description fits exactly my daughter.", "desert_king_quest_daughter_talk6",[]],
+[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+],"Who was responsible for the attack?",
+"desert_king_quest_daughter_talk_spouse_4",[]],
 
-[anyone, "desert_king_quest_daughter_talk6",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 20),],"But what shall I do know?", "desert_king_quest_daughter_talk7",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk7",[],"If you allow me to suggest an action?", "desert_king_quest_daughter_talk81",[]],
-[anyone, "desert_king_quest_daughter_talk81",[],"Of course, speak!", "desert_king_quest_daughter_talk_action",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk_action",[],"You could send an army to rescue her.", "desert_king_quest_daughter_talk_action2",[]],
-[anyone, "desert_king_quest_daughter_talk_action2",[],"That would be a bad idea my friend. A slaughter only for a girl? My men would not understand such an action.", "desert_king_quest_daughter_talk_action",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk_action",[],"I could try to rescue her.", "desert_king_quest_daughter_talk_action3",[]],
-[anyone, "desert_king_quest_daughter_talk_action3",[],"And what is your actual plan?", "desert_king_quest_daughter_talk_plan",[]],
-[anyone|plyr, "desert_king_quest_daughter_talk_plan",[],"I think I have several possibilities. I could try to kidnap her. Trust me, I will find a way.", "desert_king_quest_daughter_talk_plan2",[]],
-[anyone, "desert_king_quest_daughter_talk_plan2",[
-  (call_script, "script_recruit_troop_as_companion","trp_npc31"),
- ],"I will give you Ra Karak as companion. He is my best warrior and one of my guards. If you bring her back I will reward you with gold.", "desert_king_quest_daughter_talk_plan3",[]],
+[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+],"I am sorry. I will do what I can.",
+"desert_king_leave",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[],"I will be back with your daughter.", "desert_king_leave",[
+[anyone, "desert_king_quest_daughter_talk_spouse_3",[
+],"I ceased hoping. But I never saw her face among the dead. The riders said one body was unrecognisable - burned beyond naming. We assumed. Perhaps we assumed too quickly. If she still lives, there is only one place she could be. The Autoleles took the road that day. Their territory lies to the south, in the deep desert. Their leader, Garat, does not give back what he takes. Go. Look. If you find her - bring her back to her mother at least. A king must be certain before he grieves twice.",
+"desert_king_quest_daughter_talk_spouse_leave",[]],
+
+[anyone, "desert_king_quest_daughter_talk_spouse_4",[
+],"Autoleles raiders. Scavengers of the desert roads. They prey on caravans, on escorts, on anything that crosses their ground unguarded. I had thought a hundred men enough. I was wrong. If any of my daughter survived that road, Garat has her. He leads them. A fearless man, they say. I would call him something else.",
+"desert_king_quest_daughter_talk_spouse_leave",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_spouse_leave",[
+],"I will search for her. You have my word.",
+"desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@I have talked with {s20} about his daughter. I will rescue her and bring her back to {s20}. I am sure he will pay me well. Maybe I can persuade Gadarat to sell his wife to me? Or should I use violence?", 0),
-  (quest_set_slot, "qst_blank_quest_20", slot_quest_temp_slot, 2),
-  ]],
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 2, "@You spoke with {s20}, the father of Darta. He believes the Autoleles took her during the escort ambush on the road to Carthago. Their leader is a man named Garat. Seek out the Autoleles in the southern desert.", 0),
+]],
+
+[trp_baquates_king|plyr, "desert_king",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"I found valueable information about your daughter {s20}.",
+"desert_king_quest_daughter_found_return_1",[
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 2),
+]],
+
+[anyone, "desert_king_quest_daughter_found_return_1",[
+],"My wife sent you, I presume. She has never accepted the grave. Speak then. What did you find?",
+"desert_king_quest_daughter_found_return_2",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_2",[
+],"She is alive. I spoke with her myself. Garat of the Autoleles took her from the ambush and made her his wife. She lives in his camp in the deep desert.",
+"desert_king_quest_daughter_found_return_3",[]],
+
+[anyone, "desert_king_quest_daughter_found_return_3",[
+],"Alive. She is alive. I buried a name, not a child, and I told myself it was mercy. What did she say? Does she know we - does she know her mother is looking for her?",
+"desert_king_quest_daughter_found_return_4",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_4",[
+],"She knows. I told her. She refused to come home.",
+"desert_king_quest_daughter_found_return_5",[]],
+
+[anyone, "desert_king_quest_daughter_found_return_5",[
+],"She refused. My daughter - a king's daughter - looked a messenger in the eye and refused to come home. To her family. To her obligations. Because of a desert raider with a sword and a tent.",
+"desert_king_quest_daughter_found_return_6",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+],"She said she would not be sold again. Those were her words, not mine.",
+"desert_king_quest_daughter_found_return_7",[\
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
+]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+],"She seemed... content. Whatever her reasons, she made her choice clearly.",
+"desert_king_quest_daughter_found_return_7",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+],"She has built a life there. Whether you approve or not, she is not a prisoner any longer.",
+"desert_king_quest_daughter_found_return_7",[\
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+]],
+
+[anyone, "desert_king_quest_daughter_found_return_7",[
+],"She can tell herself whatever she wishes. A betrothal is a contract. An alliance is a contract. These things do not dissolve because a girl decides she prefers her captor to her father. I want her back. Will you bring her, or did you come here only to deliver bad news?",
+"desert_king_quest_daughter_found_return_8",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+],"Your gold is enough reason. I will find a way to bring her out, willing or not.",
+"desert_king_quest_daughter_found_return_accept",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+],"She refused once. I will try to persuade her. I make no promises.",
+"desert_king_quest_daughter_found_return_accept",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+],"I will not bring someone back against their will. Whatever she owes you, that debt is not mine to collect.",
+"desert_king_quest_daughter_found_return_refuse",[]],
+
+[anyone, "desert_king_quest_daughter_found_return_accept",[
+  (call_script, "script_recruit_troop_as_companion","trp_npc31"),
+],"Good. I will give you Ra Karak - my finest guard. He knows the desert roads and he knows how to be quiet about what he does there. Bring her back. There will be gold in it for you - considerable gold.",
+"desert_king_leave",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You informed {s20} that Darta is alive but refuses to return. He insists she be brought back. He gave you Ra Karak as a guide. Find a way to bring her out of the Autoleles camp.", 0),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
+]],
+
+[anyone, "desert_king_quest_daughter_found_return_refuse",[
+],"You refuse. You stand in my hall and tell me you will not do the one thing I ask. Then get out. And tell my wife - since she sent you - that her daughter has chosen a life in the sand over her family. See if that brings her comfort.",
+"desert_king_leave",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You refused to bring Darta back against her will. The king dismissed you. Darta remains with Garat and the Autoleles.", 0),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -15),
+  (call_script, "script_change_player_relation_with_faction", "fac_baquates", -10),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, -1),
+  (call_script, "script_fail_quest", "qst_blossom_in_the_desert"),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+]],
+
+[trp_baquates_king|plyr, "desert_king",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 0),
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"I want to talk about your daughter {s20}.", "desert_king_quest_daughter_talk",[
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 2),
+]],
+
+[anyone, "desert_king_quest_daughter_talk",[
+],"I buried her. I made the declaration, I held the rite, and I buried her. One of the bodies from the escort - we could not name it with certainty, but a king cannot leave that open. I had a wife who would not eat, a court that needed a conclusion, and a grave that needed a name. So I gave it one. What do you want with a dead girl?",
+"desert_king_quest_daughter_talk2",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk2",[
+],"She is not dead. I have spoken with her. Garat of the Autoleles took her from the ambush. She is his wife now, living in the deep desert.",
+"desert_king_quest_daughter_talk3",[]],
+
+[anyone, "desert_king_quest_daughter_talk3",[
+],"I know. I have always known it was likely. The Autoleles worked that road. A traveller came through months ago and described the new queen of their camp - that description was not a stranger's face. I chose not to hear it. Reopening a grave is harder than digging it. Say what you came to say.",
+"desert_king_quest_daughter_talk4",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk4",[
+],"I spoke with her at length. She confirmed everything - the ambush on the Carthago road, Garat taking her, all of it. She named you as her father. She spoke of the Baquates.",
+"desert_king_quest_daughter_talk5",[]],
+
+[anyone, "desert_king_quest_daughter_talk5",[
+  (ge,"$g_talk_troop_relation",10),
+],"You I trust. Then she lives. She lives and she is in that desert raider's tent while her father sits here with a false grave and a wife who will not stop weeping. This is not how a king's daughter ends.",
+"desert_king_quest_daughter_talk6",[]],
+
+[anyone, "desert_king_quest_daughter_talk5",[
+],"You could be lying. You could be anyone. But... a traveller passing through some weeks past described the new queen of the Autoleles. The description he gave could not have been a stranger. That hair. Those eyes. My wife has wept every night since. I buried a name, not a child.",
+"desert_king_quest_daughter_talk6",[]],
+
+[anyone, "desert_king_quest_daughter_talk6",[
+],"She must come home. She is my blood - I sat with a false grave for months, stranger, and my wife has not slept a single night without weeping. That is not nothing. But she also has obligations. Arrangements were made. There are men waiting on agreements, alliances that do not hold themselves together. She is my daughter and I need her back. Both things are true. What can be done?",
+"desert_king_quest_daughter_talk7",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk7",[
+],"So a king who cannot rescue his own daughter comes to me. Tell me - what exactly is it you are good for?",
+"desert_king_quest_daughter_talk81",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk7",[
+],"You are king. Why does this fall to a stranger?",
+"desert_king_quest_daughter_talk81",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk7",[
+],"I understand. A king cannot be seen to act in desperation. It would invite every enemy you have.",
+"desert_king_quest_daughter_talk81",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
+]],
+
+[anyone, "desert_king_quest_daughter_talk81",[
+],"Because I am a king, and kings do not lead raids into the desert over a woman - even their own blood. My warriors would ask why I did not mourn and move on. Weakness is remembered longer than grief. I need someone with no such reputation to lose. Someone like you. Speak. What would you do?",
+"desert_king_quest_daughter_talk_action",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+],"You could send an army. Ride south and take her back by force.",
+"desert_king_quest_daughter_talk_action2",[]],
+
+[anyone, "desert_king_quest_daughter_talk_action2",[
+],"And bury another hundred men in the sand? The Autoleles know their terrain better than my scouts know their own names. I would lose warriors and still not see her again. No. There must be another way.",
+"desert_king_quest_daughter_talk_action2b",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+],"Then it seems your army is as useless as your grief. Fine. I will go myself.",
+"desert_king_quest_daughter_talk_action3",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
+]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+],"Understood. Then someone needs to go in quietly.",
+"desert_king_quest_daughter_talk_action3",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+],"It was worth suggesting. What other options are there?",
+"desert_king_quest_daughter_talk_action",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+],"I could go to her. Find a way to bring her out.",
+"desert_king_quest_daughter_talk_action3",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+],"She told me herself she does not wish to leave. She refused to come. I think we should respect that.",
+"desert_king_quest_daughter_talk_refuse",[]],
+
+[anyone, "desert_king_quest_daughter_talk_refuse",[
+],"She said that. Yes. I imagine she did. She has been living as his wife for months - of course she speaks like a woman who has made peace with her situation. That is not a choice, that is survival wearing the face of a choice. A king's daughter does not decide to remain with the man who slaughtered her escort. Whatever she told you, whatever she believes she feels - the agreements made in her name are not hers to break. She will come home.",
+"desert_king_quest_daughter_talk_refuse2",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_refuse2",[
+],"Then I will not drag her back against her will. She made her choice. I would also note - the man you arranged for her had a particular reputation with his wives. Perhaps Garat is the lesser cruelty. I leave you to reflect on that. Better leave now or end up in my prison!",
+"desert_king_leave",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "@You refused to bring Darta back against her will. The king was furious. Darta remains with Garat and the Autoleles. The quest has been abandoned.", 0),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -15),
+  (call_script, "script_change_player_relation_with_faction", "fac_baquates", -10),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, -1),
+  (call_script, "script_fail_quest", "qst_blossom_in_the_desert"),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_refuse2",[
+],"I understand your position. I will think on it.",
+"desert_king_leave",[]],
+
+[anyone, "desert_king_quest_daughter_talk_action3",[
+],"By what means? I will not pay a ransom. That sets a price on every daughter of every chief from here to the Atlas.",
+"desert_king_quest_daughter_talk_plan",[]],
+
+[anyone|plyr, "desert_king_quest_daughter_talk_plan",[
+],"I will find a way in. Quietly. No ransom, no battle unless it comes to it. I will bring her out.",
+"desert_king_quest_daughter_talk_plan2",[]],
+
+[anyone, "desert_king_quest_daughter_talk_plan2",[
+],"Then go. I will give you Ra Karak - my finest guard. He knows the desert roads and he knows how to be quiet about what he does there. Bring her back alive. There will be gold in it for you - considerable gold. She is my daughter, and there are obligations on her name that do not wait for sentiment.",
+"desert_king_quest_daughter_talk_plan3",[
+  (call_script, "script_recruit_troop_as_companion","trp_npc31"),
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You have spoken with {s20}. Darta is held by Garat, leader of the Autoleles, somewhere in the deep desert. {s20} wants her back to honour the Roman betrothal. He gave you Ra Karak as a guide. Find a way to bring her out - quietly if possible.", 0),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
+]],
+[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+],"It will not be an easy task. I expect a high reward.",
+"desert_king_leave",[
+]],
+[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+],"Consider it done.",
+"desert_king_leave",[
+]],
+[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+],"I will bring her back.",
+"desert_king_leave",[
+]],
 
 #gifting the king
 [anyone|plyr, "desert_king",[
@@ -91684,209 +92355,251 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "minor_faction_king_gift_give",[],"We graciously accept your gift, {playername}.", "desert_king_pretalk",[]],
 
 [anyone|plyr, "desert_king",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 2),
-  (eq, "$g_talk_troop", "trp_nasamones_king"),
-  (str_store_troop_name, s20, "trp_nasamones_queen"),
- ],"I want to talk about your wife {s20}.", "desert_king_quest_gara_talk_daughter_22",[]],
-
-[anyone, "desert_king_quest_gara_talk_daughter_22",[
- (quest_slot_ge, "qst_blank_quest_20", slot_quest_current_state, 1),
- ],"What? You are too curious for my taste. Don't you think?", "desert_king_quest_gara_talk_daughter",[]],
-
-[anyone, "desert_king_quest_gara_talk_daughter_22",[
- ],"What is with my wife? She is beautiful, that's what you wanted to say, don't you?", "desert_king_quest_gara_talk_daughter",[]],
-
-[anyone|plyr, "desert_king_quest_gara_talk_daughter",[(store_troop_gold, ":gold", "trp_player"),
-  (ge, ":gold", 10000),],"I want to buy your wife for 10,000 denarii.", "desert_king_quest_gara_talk_daughter2",[]],
-[anyone, "desert_king_quest_gara_talk_daughter2",[],"You son of a whore! I will never sale my wife like a slave!", "desert_king_quest_gara_talk_daughter",[]],
-[anyone|plyr, "desert_king_quest_gara_talk_daughter",[],"I am here to bring your wife Darta back to her family.", "desert_king_quest_gara_talk_daughter3",[]],
-[anyone, "desert_king_quest_gara_talk_daughter3",[],"What are you talking? You jackal, I won't give you my wife. I should ...", "desert_king_quest_gara_talk_daughter4",[]],
-[anyone|plyr, "desert_king_quest_gara_talk_daughter4",[],"I know that you have kidnapped her!", "desert_king_quest_gara_talk_daughter5",[]],
-[anyone, "desert_king_quest_gara_talk_daughter5",[],"Well to bad for you. Guards, kill this scum!", "close_window",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
-  (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 4, "@I should look for an ally in the palace.", 0),
-  (display_message, "@Quest notes have been updated"),
-          (try_for_agents,":agent_no"),
-            (agent_is_alive,":agent_no"),
-            (agent_is_human,":agent_no"),
-            (agent_get_troop_id, ":troop_no", ":agent_no"),
-            (this_or_next|eq, ":troop_no", "trp_arab_village_walker"),
-            (this_or_next|eq, ":troop_no", "trp_arab_village_walker_female"),
-            (this_or_next|eq, ":troop_no", "trp_african_woman"),
-            (eq, ":troop_no", "trp_african_man"),
-			(agent_set_slot, ":agent_no",  slot_agent_is_running_away, 1),
-			(agent_clear_scripted_mode, ":agent_no"),
-          (try_end),
-
-  (call_script, "script_encounter_agent_draw_weapon"),
-	  (set_party_battle_mode),
-	  #(get_player_agent_no, ":player_agent"),
-	  #(agent_get_team, ":player_team", ":player_agent"),
-	(agent_set_team, "$g_talk_agent", 1),
-	(try_for_agents, ":cur_agent"),
-	    (agent_get_troop_id, ":troop_type", ":cur_agent"),
-	    (is_between, ":troop_type", bandits_begin, bandits_end), #dckplmc
-        (agent_set_team, ":cur_agent", 1),
-        #(team_give_order, 1, grc_everyone, mordr_charge), - for some reason, this freezes everyone if the player is not yet spawned
-		#(try_begin),
-		#	(eq, "$g_main_attacker_agent", 0),
-		#	(assign, "$g_main_attacker_agent", ":cur_agent"),
-		#(try_end),
-	# (else_try),
-		# (this_or_next|is_between, ":troop_type", walkers_begin, walkers_end),
-		# (is_between, ":troop_type", armor_merchants_begin, mayors_end),
-
-		# (agent_clear_scripted_mode, ":cur_agent"),
-		#(agent_set_team, ":cur_agent", 2), #dckplmc don't want town guards to massacre townsfolk
-	(try_end),
-
-  (team_give_order, 0, 8, mordr_charge), #Division 8 to avoid potential conflicts
-
-  (assign, "$g_main_attacker_agent", "$g_talk_agent"),
-
-  (assign, "$talk_context", tc_escape),
-  (mission_disable_talk),
-  (display_message, "@Fight your way out!"),
-	(try_begin),
-		(neq, "$players_kingdom", "fac_player_supporters_faction"),
-		(call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -100),
-	(try_end),
-
-  ]],
-
-[anyone|plyr, "desert_king",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 5),
+  (check_quest_active, "qst_blossom_in_the_desert"),
   (eq, "$g_talk_troop", "trp_baquates_king"),
-  (str_store_troop_name, s20, "trp_nasamones_queen"),
- ],"So my friend, we must talk about your daughter {s20}.", "desert_king_darta_1_talk",[]],
+  (this_or_next|quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 5),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+  (party_count_prisoners_of_type, ":darta_count", "p_main_party", "trp_baquates_princess"),
+  (eq, ":darta_count", 0),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"My lord — I must speak with you about your daughter {s20}.", "desert_king_darta_1_talk",[]],
 
-[anyone, "desert_king_darta_1_talk",[],"Ha, I hope you bring good news! Is she fine?", "desert_king_darta_1_talk1",[]],
-[anyone|plyr, "desert_king_darta_1_talk1",[],"There is a problem.", "desert_king_darta_1_talk2",[]],
-[anyone, "desert_king_darta_1_talk2",[],"A problem? What happened? Where is my daughter? What have you done?", "desert_king_darta_1_talk3",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
+[anyone, "desert_king_darta_1_talk",[],"Then speak. I trust the news is good.",
+"desert_king_darta_1_talk1",[]],
 
-[anyone|plyr, "desert_king_darta_1_talk3",[],"She has been bitten by a snake and is dead.", "desert_king_darta_1_talk_snake",[ (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-[anyone, "desert_king_darta_1_talk_snake",[],"A snake? Oh yes, that can happen if you don't be careful. Oh my poor daughter.", "desert_king_darta_1_player_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
+[anyone|plyr, "desert_king_darta_1_talk1",[],"It is not. Something went wrong.",
+"desert_king_darta_1_talk2",[]],
 
-[anyone|plyr, "desert_king_darta_1_talk3",[],"A lion attacked us and killed her.", "desert_king_darta_1_talk_lion",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-[anyone, "desert_king_darta_1_talk_lion",[],"A lion killed her? Lions never attack groups of men. How negligently can one be? You idiot.", "desert_king_darta_1_player_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-
-[anyone|plyr, "desert_king_darta_1_talk3",[],"Bandits attacked us and killed her.", "desert_king_darta_1_talk_bandit",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-[anyone, "desert_king_darta_1_talk_bandit",[],"Bandits? Really? How weak are you that you can't kill some smelly bandits.", "desert_king_darta_1_player_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-
-[anyone|plyr, "desert_king_darta_1_player_angry",[],"Bah you are a old fool. Your daughter doesn't like you. And she is still alive, happily married with Garat, king of the Garamantes. May the gods\
-  have mercy with your soul.", "desert_king_darta_angry",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-
-[anyone, "desert_king_darta_angry",[],"What did you say? You ... you jackal!! Why have I trusted you? Go away, jackal.", "close_window",[
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (add_xp_as_reward, 5000),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),]],
-
-[anyone|plyr, "desert_king",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 4),
-  (eq, "$g_talk_troop", "trp_baquates_king"),
-  (str_store_troop_name, s20, "trp_nasamones_queen"),
- ],"So my friend, I have your daughter {s20}.", "desert_king_darta_2_talk",[]],
-
-[anyone, "desert_king_darta_2_talk",[],"Well done {playername}. I must say that I had some doubt, but you have proven yourself as a reliable warrior.", "desert_king_darta_2_talk2",[]],
-[anyone|plyr, "desert_king_darta_2_talk2",[],"Now let's talk about my reward.", "desert_king_darta_2_talk3",[]],
-[anyone, "desert_king_darta_2_talk3",[],"Of course, but firstly, hand me over my daughter.", "desert_king_darta_2_talk4",[]],
-[anyone|plyr, "desert_king_darta_2_talk4",[],"Of course.", "desert_king_darta_2_talk_fuck",[
-  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
-  (remove_member_from_party, "trp_nurse_african", "p_main_party"),
-  ]],
-
-[anyone, "desert_king_darta_2_talk_fuck",[],"Now your reward. You get 500 denarii.", "desert_king_darta_2_talk_fuck2",[]],
-[anyone|plyr, "desert_king_darta_2_talk_fuck2",[],"Thank you.", "desert_king_darta_2_talk_fuck21",[(call_script, "script_troop_add_gold", "trp_player", 500),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
-  ]],
-[anyone, "desert_king_darta_2_talk_fuck21",[],"I will always be grateful towards you. Now farewell my friend", "close_window",[
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (add_xp_as_reward, 500),
-  ]],
-
-[anyone|plyr, "desert_king_darta_2_talk_fuck2",[],"That's a bit less.", "desert_king_darta_2_talk_fuck23",[]],
-[anyone, "desert_king_darta_2_talk_fuck23",[],"Less you say? I am a poor king. I don't have more.", "desert_king_darta_2_talk_fuck24",[]],
-
-[anyone|plyr, "desert_king_darta_2_talk_fuck24",[],"I understand.", "desert_king_darta_2_talk_fuck21",[(call_script, "script_troop_add_gold", "trp_player", 500),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
-  ]],
-[anyone|plyr, "desert_king_darta_2_talk_fuck24",[],"I demand more, Much more!.", "desert_king_darta_2_talk_fuck_more",[
-  ]],
-[anyone, "desert_king_darta_2_talk_fuck_more",[],"Haha, I don't care, now go away scum. You get nothing if you are so greedy.", "desert_king_darta_2_talk_fuck_last",[
-  ]],
-[anyone|plyr, "desert_king_darta_2_talk_fuck_last",[],"--Say nothing--", "close_window",[
-  (add_xp_as_reward, 2000),
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
+[anyone, "desert_king_darta_1_talk2",[],"Wrong? What do you mean? Where is she? Speak plainly — what has happened to my daughter?",
+"desert_king_darta_1_talk3",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
-  ]],
-[anyone|plyr, "desert_king_darta_2_talk_fuck_last",[],"I want a real reward, or I will ...", "desert_king_darta_2_talk_fuck_last2",[
-  (add_xp_as_reward, 3000),
-  ]],
-[anyone, "desert_king_darta_2_talk_fuck_last2",[],"Or What? You stupid son of a bitch! Go away.", "close_window",[
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-30),
-  ]],
+]],
 
-[anyone|plyr, "desert_king_darta_2_talk4",[],"No. I want my reward first.", "desert_king_darta_2_talk_reward",[]],
-[anyone, "desert_king_darta_2_talk_reward",[],"Your reward?", "desert_king_darta_2_talk_reward2",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward2",[],"Yes, if you want to see your daughter alive you must...", "desert_king_darta_2_talk_reward3",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward3",[],"... give me 100,000 denarii", "desert_king_darta_2_talk_reward_money",[]],
+[anyone|plyr, "desert_king_darta_1_talk3",[
+],"A serpent's bite took her. She died before we could find help.",
+"desert_king_darta_1_talk_snake",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
 
-[anyone, "desert_king_darta_2_talk_reward_money",[],"100,000 denarii? That's too much. I don't have so much money.", "desert_king_darta_2_talk_reward_money2",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward_money2",[],"I know that you want to sell your daughter to a rich Roman noble, Sextus Arthropoda. Sextus is rich, he can\
-  afford 100000 denarii easily.", "desert_king_darta_2_talk_reward_money3",[]],
-[anyone, "desert_king_darta_2_talk_reward_money3",[],"You jackal! Ah don't belive the stories of my little daughter. She won't be sold to anybody.", "desert_king_darta_2_talk_reward_money4",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward_money4",[],"You fool! Demand 200,000 denarii from Sextus, 100,000 are for me, the rest is for you.", "desert_king_darta_2_talk_reward_money5",[]],
-[anyone, "desert_king_darta_2_talk_reward_money5",[],"Arg, you are a good businessman. Good we have a deal.", "desert_king_darta_2_talk_reward_money6",[
-  (call_script, "script_troop_add_gold", "trp_player", 100000),]],
+[anyone, "desert_king_darta_1_talk_snake",[
+],"A serpent... she was afraid of them even as a child. By all the gods — did you at least bury her with honour?",
+"desert_king_darta_1_player_angry",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_money6",[],"Very well. Now I hand over your daughter.", "close_window",[
-  (add_xp_as_reward, 10000),
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
+[anyone|plyr, "desert_king_darta_1_talk3",[
+],"A lion fell upon us in the night. She did not survive.",
+"desert_king_darta_1_talk_lion",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone, "desert_king_darta_1_talk_lion",[
+],"A lion. In the night. You lead armed men — and you could not protect a single woman from a beast? You have shamed yourself before me.",
+"desert_king_darta_1_player_angry",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone|plyr, "desert_king_darta_1_talk3",[
+],"We were set upon by raiders on the road. She was killed before we could regroup.",
+"desert_king_darta_1_talk_bandit",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone, "desert_king_darta_1_talk_bandit",[
+],"You pulled her out of one raider's hands only to lose her to another? I should never have trusted this to a stranger.",
+"desert_king_darta_1_player_angry",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone|plyr, "desert_king_darta_1_player_angry",[
+],"Nevertheless I want at least a minor payment to cover my expenses.", "desert_king_darta_angry",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone|plyr, "desert_king_darta_1_player_angry",[
+],"The gods did not favor me, I am sorry.", "desert_king_darta_angry_noreward",[
+]],
+
+[anyone, "desert_king_darta_angry_noreward",[],"I see. Then get out of my court. Never return.",
+"close_window",[
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (add_xp_as_reward, 5000),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone, "desert_king_darta_angry",[],"What did you say? You... you jackal! You want a reward? For what?! Get out of my court. Never return.",
+"close_window",[
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (add_xp_as_reward, 5000),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+
+[anyone|plyr, "desert_king",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (party_count_prisoners_of_type, ":darta_count", "p_main_party", "trp_baquates_princess"),
+  (gt, ":darta_count", 0),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
+  (eq, "$g_talk_troop", "trp_baquates_king"),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"My lord — I bring her back to you. Your daughter {s20} is safe and rides with me.",
+"desert_king_darta_2_talk",[]],
+
+[anyone, "desert_king_darta_2_talk",[
+],"You have done well, {playername}. I confess I had my doubts, but you have proven yourself a man of your word.",
+"desert_king_darta_2_talk2",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk2",[],"Then let us speak of my reward.",
+"desert_king_darta_2_talk3",[]],
+
+[anyone, "desert_king_darta_2_talk3",[
+],"Of course. But first — let her stand before me.",
+"desert_king_darta_2_talk4",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk4",[
+],"As agreed.",
+"desert_king_darta_2_handover",[
+  (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
-  ]],
-[anyone|plyr, "desert_king_darta_2_talk_reward3",[],"... give me 50,000 denarii", "desert_king_darta_2_talk_reward_tribut",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward_tribut",[],"In know you want to sell her to Sextus Arthropoda, a Roman noble from Carthage.\
- He is quite rich, so 50,000 denarii as my reward sound reasonable to me.", "desert_king_darta_2_talk_reward_tribut2",[]],
-[anyone, "desert_king_darta_2_talk_reward_tribut2",[],"Arg, you cunning snake. We have a deal.", "desert_king_darta_2_talk_reward_tribut3",[]],
-[anyone|plyr, "desert_king_darta_2_talk_reward_tribut3",[],"Very good, I will hand over your daughter.", "close_window",[
+]],
+
+[anyone, "desert_king_darta_2_handover",[
+],"Your reward, as promised — five hundred denarii.",
+"desert_king_darta_2_reward_reply",[]],
+
+[anyone|plyr, "desert_king_darta_2_reward_reply",[
+],"It is enough. You have my thanks.",
+"desert_king_darta_2_reward_done",[
+  (call_script, "script_troop_add_gold", "trp_player", 500),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
+]],
+
+[anyone, "desert_king_darta_2_reward_done",[
+],"You have my enduring gratitude. Go well, friend.",
+"close_window",[
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (add_xp_as_reward, 500),
+]],
+
+[anyone|plyr, "desert_king_darta_2_reward_reply",[
+],"Five hundred? That is rather little for what I endured.",
+"desert_king_darta_2_reward_haggle",[]],
+
+[anyone, "desert_king_darta_2_reward_haggle",[
+],"Little, you say? I am a king without a treasury. It is all I can spare.",
+"desert_king_darta_2_reward_haggle_reply",[]],
+
+[anyone|plyr, "desert_king_darta_2_reward_haggle_reply",[
+],"Very well. I accept.",
+"desert_king_darta_2_reward_done",[
+  (call_script, "script_troop_add_gold", "trp_player", 500),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
+]],
+
+[anyone|plyr, "desert_king_darta_2_reward_haggle_reply",[
+],"I demand far more than this!", "desert_king_darta_2_reward_demand",[
+]],
+
+[anyone, "desert_king_darta_2_reward_demand",[
+],"Greed will be your undoing, mercenary. I owe you nothing now. Get out of my sight.",
+"desert_king_darta_2_reward_dismissed",[
+]],
+
+[anyone|plyr, "desert_king_darta_2_reward_dismissed",[
+],"--Leave without a word--",
+"close_window",[
+  (add_xp_as_reward, 2000),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
+]],
+[anyone|plyr, "desert_king_darta_2_reward_dismissed",[
+],"You will pay me properly — or you will regret it.",
+"desert_king_darta_2_reward_threat",[
+  (add_xp_as_reward, 3000),
+]],
+[anyone, "desert_king_darta_2_reward_threat",[
+],"You dare threaten a king in his own court? Get out of my sight before I have you thrown in irons.",
+"close_window",[
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-30),
+]],
+
+[anyone|plyr, "desert_king_darta_2_talk4",[
+],"Not yet. We settle payment before I release her.",
+"desert_king_darta_2_talk_reward",[]],
+
+[anyone, "desert_king_darta_2_talk_reward",[
+],"You dare make demands before she stands before me?",
+"desert_king_darta_2_talk_reward2",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward2",[
+],"If you wish to see her home safely, you will meet my price first.",
+"desert_king_darta_2_talk_reward3_1",[]],
+
+[anyone, "desert_king_darta_2_talk_reward3_1",[
+],"So what is it. How much?",
+"desert_king_darta_2_talk_reward3",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward3",[
+],"One hundred thousand denarii.",
+"desert_king_darta_2_talk_reward_money",[]],
+
+[anyone, "desert_king_darta_2_talk_reward_money",[
+],"A hundred thousand? You might as well demand the sun. I do not have that sum.",
+"desert_king_darta_2_talk_reward_money2",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward_money2",[
+],"You plan to sell her to a Roman — Sextus Arthropoda of Carthage. A man of considerable wealth. One hundred thousand is nothing to him.",
+"desert_king_darta_2_talk_reward_money3",[]],
+
+[anyone, "desert_king_darta_2_talk_reward_money3",[
+],"You jackal! Do not repeat the delusions my daughter fills her head with. She will not be sold to anyone.",
+"desert_king_darta_2_talk_reward_money4",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward_money4",[
+],"Then do not merely take her back — sell her to Sextus yourself. Demand two hundred thousand. Half is mine, the rest is yours.",
+"desert_king_darta_2_talk_reward_money5",[]],
+
+[anyone, "desert_king_darta_2_talk_reward_money5",[
+],"...You have a sharp mind for a man of the road. Very well — we have an agreement.", "desert_king_darta_2_talk_reward_money6",[
+  (call_script, "script_troop_add_gold", "trp_player", 100000),
+]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward_money6",[
+],"Then we are done. Here — take her.",
+"close_window",[
   (add_xp_as_reward, 10000),
-  (call_script, "script_end_quest", "qst_blank_quest_20"),
-  (remove_member_from_party, "trp_nasamones_queen", "p_main_party"),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
+  (remove_member_from_party, "trp_nurse_african", "p_main_party"),
+]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward3",[
+],"Fifty thousand denarii.", "desert_king_darta_2_talk_reward_tribut",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward_tribut",[
+],"You intend to sell her to Sextus Arthropoda, a Roman of considerable means. Fifty thousand from his coffers is a reasonable finder's fee.",
+"desert_king_darta_2_talk_reward_tribut2",[]],
+
+[anyone, "desert_king_darta_2_talk_reward_tribut2",[
+],"You cunning snake. Fine — we have a deal.",
+"desert_king_darta_2_talk_reward_tribut3",[]],
+
+[anyone|plyr, "desert_king_darta_2_talk_reward_tribut3",[
+],"Then we understand each other. She is yours.", "close_window",[
+  (add_xp_as_reward, 7500),
+  (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
+  (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   (finish_mission),
   ]],
 
 [anyone|plyr, "desert_king",[
-  (check_quest_active, "qst_blank_quest_20"),
-  (neg|quest_slot_ge, "qst_blank_quest_20", slot_quest_current_state, 1),
-  (quest_slot_eq, "qst_blank_quest_20", slot_quest_temp_slot, 1),
-  (eq, "$g_talk_troop", "trp_nasamones_king"),
-  (str_store_troop_name, s20, "trp_nasamones_queen"),
- ],"I want to talk about your wife {s20}.", "desert_king_quest_gara_talk",[]],
-
-[anyone, "desert_king_quest_gara_talk",[
-  (quest_set_slot, "qst_blank_quest_20", slot_quest_current_state, 1),
- ],"What is wrong with my wife? He?", "desert_king_quest_gara_talk2",[ (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-2),
-  (str_store_troop_name_link, s20, "$g_talk_troop"),
-  (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blank_quest_20", 3, "@I have talked with {s20} about his wife. It seems like he wants to hide something.", 0),
-  ]],
-[anyone|plyr, "desert_king_quest_gara_talk2",[],"Nothing. Forget it.", "desert_king_pretalk",[]],
-[anyone|plyr, "desert_king_quest_gara_talk2",[],"She isn't from here, right?", "desert_king_quest_gara_talk3",[]],
-[anyone, "desert_king_quest_gara_talk3",[],"What are you talking? What has she told you? She is a common garamantian noblewoman.\
- Sometimes she thinks she is a Gaetuli women. But that's not true. She is a little bit mad you must know.", "desert_king_pretalk",[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-2),]],
-
-[anyone|plyr, "desert_king",[
   (party_slot_eq, "p_castle_47", slot_town_lord, "trp_player"),
- ],"I want to make you a tributary.", "nabatea_subjugate",[]],
+],"I want to make you a tributary.",
+"nabatea_subjugate",[]],
 
-[anyone|plyr, "nabatea_subjugate",[],"I own Petra and I want to give it to you. In exchange you pay me a monthly tribute of 1000 denarii and I also may levy your troops.", "nabatea_subjugate2",[]],
+[anyone|plyr, "nabatea_subjugate",[
+],"I own Petra and I want to give it to you. In exchange you pay me a monthly tribute of 1000 denarii and I also may levy your troops.", "nabatea_subjugate2",[]],
 
 [anyone, "nabatea_subjugate2",[(gt, "$g_talk_troop_relation", -20)],"I accept your offer. Petra was one of our most important settlements before the Romans occupied it.", "nabatea_subjugate3",[]],
 
@@ -92106,53 +92819,49 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
   ]],
 
-[anyone, "desert_king_talk_peace_player_sup1",
-[
+[anyone, "desert_king_talk_peace_player_sup1",[
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
   (assign, ":enemy_strength", reg0),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
   (assign, ":player_strength", reg0),
   (gt, ":player_strength", ":enemy_strength"),
- ],
-  "I accept your offer. I will order my men to bring you the money.", "close_window",
-[(troop_add_gold, "trp_player", reg51),
+],"I accept your offer. I will order my men to bring you the money.",
+"close_window",[
+  (troop_add_gold, "trp_player", reg51),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -4),
   (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
-  ]],
-[anyone, "desert_king_talk_peace_player_sup1",
-[
- ],
-  "We won't pay you anything! Go away you jackal.", "close_window",
-[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
-  ]],
+]],
 
-[anyone, "desert_king_talk_peace2",
-[
+[anyone, "desert_king_talk_peace_player_sup1",[
+],"We won't pay you anything! Go away you jackal.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
+]],
+
+[anyone, "desert_king_talk_peace2",[
   (assign, ":peace", 0),
   (str_clear,s50),
   (store_faction_of_troop, ":fac", "$g_talk_troop"),
   (store_relation, ":faction_relation", ":fac", "fac_player_supporters_faction"),
   (store_add, ":success", "$g_talk_troop_relation", ":faction_relation"),
   (try_begin),
-	(eq, "$temp", 1200),
-	(assign, reg50, ":success"),
-	(val_abs, reg50),
-	(val_mul, reg50, 200),
-	(store_random_in_range, ":rand_money", 1500, 2000),
-	(val_add, reg50, ":rand_money"),
-	(assign, ":peace", 1),
+    (eq, "$temp", 1200),
+    (assign, reg50, ":success"),
+    (val_abs, reg50),
+    (val_mul, reg50, 200),
+    (store_random_in_range, ":rand_money", 1500, 2000),
+    (val_add, reg50, ":rand_money"),
+    (assign, ":peace", 1),
   (else_try),
-	(gt, ":success", -50),
-	(assign, reg50,":success"),
-	(val_abs, reg50),
-	(val_mul, reg50, 300),
-	(store_random_in_range, ":rand_money", 1500, 2000),
-	(val_add, reg50, ":rand_money"),
-	(assign, ":peace", 1),
+    (gt, ":success", -50),
+    (assign, reg50,":success"),
+    (val_abs, reg50),
+    (val_mul, reg50, 300),
+    (store_random_in_range, ":rand_money", 1500, 2000),
+    (val_add, reg50, ":rand_money"),
+    (assign, ":peace", 1),
   (try_end),
-
   (try_begin),
     (eq, ":peace", 1),
     (str_store_string, s50, "@I accept your proposal. But you must pay us {reg50} denarii, as a sign of your goodwill."),
@@ -92163,8 +92872,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (str_store_string, s50, "@We won't make peace with you jackal! Now go away. Hopefully the lions will kill."),
     (assign, "$temp", 0),
   (try_end),
- ],
-  "{s50}", "desert_king_talk_peace3",
+],"{s50}",
+"desert_king_talk_peace3",
 []],
 
 [anyone|plyr, "desert_king_talk_peace3",
@@ -92207,8 +92916,172 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
   ]],
 
-################# SPECIAL MERCHANTS, ROME, EASTERN
+### bandit / minor raider faction leaders
+[anyone, "start",[
+  (eq, "$g_talk_troop_met", 0),
+  (is_between, "$g_talk_troop", bandit_leaders_begin, bandit_leaders_end),
+  (try_begin),
+      (ge, "$player_honor", 50),
+      (str_store_string, s23, "@So you are {playername}. A man of honour comes to my camp. I have little use for such men. State your business."),
+  (else_try),
+      (ge, "$player_honor", 0),
+      (str_store_string, s23, "@A stranger enters my camp. You have courage, I will grant that. What do you want?"),
+  (else_try),
+      (ge, "$player_honor", -50),
+      (str_store_string, s23, "@I know of you, {playername}. Your deeds precede you. What do you want from me?"),
+  (else_try),
+      (str_store_string, s23, "@So you are {playername}. They speak your name in fear from Rome to the eastern sands. Perhaps we understand each other. What brings you here?"),
+  (try_end),
+],"{s23}",
+"bandit_leader_talk",[]],
 
+[anyone, "start",[
+  (neq, "$g_talk_troop_met", 0),
+  (is_between, "$g_talk_troop", bandit_leaders_begin, bandit_leaders_end),
+  (try_begin),
+      (ge, "$player_honor", 50),
+      (str_store_string, s23, "@You again. Still the righteous one, I see. What do you want now?"),
+  (else_try),
+      (ge, "$player_honor", 0),
+      (str_store_string, s23, "@Back again, {playername}. What is it this time?"),
+  (else_try),
+      (ge, "$player_honor", -50),
+      (str_store_string, s23, "@You return. I had a feeling you would. What do you want?"),
+  (else_try),
+      (str_store_string, s23, "@You come back. Good. Speak."),
+  (try_end),
+],"{s23}",
+"bandit_leader_talk",[]],
+
+[trp_bandit_autololes_leader|plyr, "bandit_leader_talk",[
+  (eq, "$g_talk_troop_met", 0),
+],"Who are you, and what are the Autololes?",
+"autololes_leader_who_are_you",[]],
+
+[anyone, "autololes_leader_who_are_you",[
+],"I am Garat, king of the Autololes. My people have roamed these sands since before Rome had a name. We follow no Augustus, no Caesar, bow to no governor, nor legate or praetor. The desert is our fortress and our law. You would do well to remember that.",
+"bandit_leader_pretalk",[]],
+
+
+[trp_bandit_autololes_leader|plyr, "bandit_leader_talk",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_object_state, 0),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"I have come to speak with you about your wife, {s20}.",
+"desert_king_quest_gara_talk_daughter_22",[
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
+]],
+
+[anyone, "desert_king_quest_gara_talk_daughter_22",[
+  (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+],"You dig where you have already been told there is nothing. You are beginning to try my patience, stranger.",
+"desert_king_quest_gara_talk_daughter",[]],
+
+[anyone, "desert_king_quest_gara_talk_daughter_22",[
+],"My wife? You come all this way to speak of her? Speak plainly then. I have little patience for men who dance around their words.",
+"desert_king_quest_gara_talk_daughter",[
+  (assign, "$temp", 0),
+]],
+
+[anyone|plyr, "desert_king_quest_gara_talk_daughter",[
+  (store_troop_gold, ":gold", "trp_player"),
+  (ge, ":gold", 10000),
+  (eq, "$temp", 0),
+],"I would pay ten thousand denarii to ransom her.",
+"desert_king_quest_gara_talk_daughter2",[
+  (assign, "$temp", 1),
+]],
+
+[anyone, "desert_king_quest_gara_talk_daughter2",[
+],"You dare offer coin for my wife as if she were a slave in a Roman market? Speak that word again and I will feed your tongue to the jackals.",
+"desert_king_quest_gara_talk_daughter",[]],
+
+[anyone|plyr, "desert_king_quest_gara_talk_daughter",[
+],"Her family has sent me. I have come to bring Darta back to them.",
+"desert_king_quest_gara_talk_daughter3",[]],
+
+[anyone, "desert_king_quest_gara_talk_daughter3",[
+],"Her family? I am her family. The desert is her home and my tent is her roof. Whoever sent you here has made a grave mistake, and so have you.",
+"desert_king_quest_gara_talk_daughter4",[]],
+
+[anyone|plyr, "desert_king_quest_gara_talk_daughter4",[
+],"She did not come willingly. You took her by force.",
+"desert_king_quest_gara_talk_daughter5",[]],
+
+[anyone, "desert_king_quest_gara_talk_daughter5",[
+],"Then you leave this camp in chains or as a corpse. The choice is yours. Men! Get that bastard!",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Confronting Garat directly was a mistake. He refused to hear reason and had his men attack. A direct approach will not work. You should seek out someone within the palace who has leverage over Garat or can help you get Darta out of the lair another way.", 0),
+  (try_for_agents,":agent_no"),
+    (agent_is_alive,":agent_no"),
+    (agent_is_human,":agent_no"),
+    (agent_get_troop_id, ":troop_no", ":agent_no"),
+    (this_or_next|is_between, ":troop_no", walkers_begin, walkers_end),
+    (is_between, ":troop_no", slave_traders_begin, slave_traders_end),
+    (agent_set_slot, ":agent_no",  slot_agent_is_running_away, 1),
+    (agent_clear_scripted_mode, ":agent_no"),
+  (try_end),
+  (call_script, "script_encounter_agent_draw_weapon"),
+  (set_party_battle_mode),
+	(agent_set_team, "$g_talk_agent", 1),
+  (party_get_template_id, ":template", "$g_encountered_party"),
+  (call_script, "script_get_bandit_lair_troop", ":template"),
+  (assign, ":bandit_troop", reg0),
+	(try_for_agents, ":cur_agent"),
+    (agent_get_troop_id, ":troop_type", ":cur_agent"),
+    (eq, ":troop_type", ":bandit_troop"),
+    (agent_set_team, ":cur_agent", 1),
+	(try_end),
+  (team_give_order, 0, 8, mordr_charge),
+  (assign, "$g_main_attacker_agent", "$g_talk_agent"),
+  (assign, "$talk_context", tc_escape),
+  (mission_disable_talk),
+  (display_message, "@Fight your way out!"),
+	(try_begin),
+		(neq, "$players_kingdom", "fac_player_supporters_faction"),
+		(call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", -100),
+	(try_end),
+]],
+
+[trp_bandit_autololes_leader|plyr, "bandit_leader_talk",[
+  (check_quest_active, "qst_blossom_in_the_desert"),
+  (neg|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+  (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
+  (str_store_troop_name, s20, "trp_baquates_princess"),
+],"I have spoken with your wife, {s20}. I want to ask you some questions about her.",
+"desert_king_quest_gara_talk",[]],
+
+[anyone, "desert_king_quest_gara_talk",[
+],"You spoke with her. And now you come to me. What is it you want?", "desert_king_quest_gara_talk2",[
+  (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (display_message, "str_quest_updated", message_alert),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You confronted {s20} about Darta. He listened and said little. Whatever he knows of her past, he guards it well.", 0),
+  (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+]],
+[anyone|plyr, "desert_king_quest_gara_talk2",[
+],"She is not Autoleles by birth, is she?",
+"desert_king_quest_gara_talk3",[]],
+
+[anyone|plyr, "desert_king_quest_gara_talk2",[
+],"Nothing. Forget it.",
+"bandit_leader_pretalk",[]],
+
+[anyone, "desert_king_quest_gara_talk3",[],"My wife is Autoleles. She rides with my people, she sleeps beneath my tent, she speaks our tongue. What a woman was before she came to the desert is sand. It blows away.", "bandit_leader_pretalk",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+]],
+
+[anyone, "bandit_leader_pretalk",[
+],"What else do you want?.",
+"bandit_leader_talk",[]],
+
+[anyone|plyr, "bandit_leader_talk",[
+],"Farewell.",
+"close_window",[]],
+
+################# SPECIAL MERCHANTS, ROME, EASTERN
 ##jerusalem merchants
 [anyone, "start",[
   (is_between, "$g_talk_troop", special_eastern_merchants_begin, special_eastern_merchants_end),
@@ -98694,7 +99567,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone|plyr,"solues_talk_7",[], "Hm... can one calculate the circumference?",
 "solues_talk_8",[]],
 
-[anyone,"solues_talk_8",[], "Eratosthenes did it centuries ago. It is a simple matter of a triangle. Two points on the surface of the Earth, and the third point is the Earth's very center. You measure the distance between two cities—say, Alexandria and Syene, which lie on the same meridian. At noon on the summer solstice, the sun is directly overhead in Syene. There are no shadows.",
+[anyone,"solues_talk_8",[], "Eratosthenes did it centuries ago. It is a simple matter of a triangle. Two points on the surface of the Earth, and the third point is the Earth's very center. You measure the distance between two cities-say, Alexandria and Syene, which lie on the same meridian. At noon on the summer solstice, the sun is directly overhead in Syene. There are no shadows.",
 "solues_talk_9",[]],
 
 [anyone,"solues_talk_9",[], "At that exact same moment, you measure the length of a shadow cast by a rod in Alexandria. The angle of that shadow is the angle at the center of the Earth between the two cities. Eratosthenes found that angle to be about one-fiftieth of a full circle. Therefore, the circumference of the Earth must be fifty times the distance between Alexandria and Syene. About 250,000 stadia. Simple geometry, applied to the world.",
@@ -98760,7 +99633,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone,"solues_talk_y",[], "I am Solus Monachus. My father was a freed slave; my mother, the daughter of a poor landowner. My name, 'Monachus,' means 'the lonely one.' A fitting irony, as I have been alone for most of my life, even when surrounded by the chaotic crowd of my family. We all lived together in a crumbling house on the outskirts of Alexandria. My father was a good man, but utterly useless. He let the house fall to ruin around us. My family was... loud, and grasping, and horrible. Perhaps that is why I retreated into the world of the mind.",
 "solues_talk_y_1",[]],
 
-[anyone,"solues_talk_y_1",[], "My parents did one thing right: they sent me to school. I learned my letters, my numbers. They even paid for a higher education. I became a scribe for the local administration—a mind-numbingly dull job that gave me ample time to haunt the halls of the Museion. I devoured the great thinkers, from Socrates to Euclid, searching for order in a chaotic world.",
+[anyone,"solues_talk_y_1",[], "My parents did one thing right: they sent me to school. I learned my letters, my numbers. They even paid for a higher education. I became a scribe for the local administration-a mind-numbingly dull job that gave me ample time to haunt the halls of the Museion. I devoured the great thinkers, from Socrates to Euclid, searching for order in a chaotic world.",
 "solues_talk_y_2",[]],
 
 [anyone,"solues_talk_y_2",[], "It was during this time that I fell in love. She was a Roman noblewoman. I tried to win her heart with poetry and philosophy. But I was just a distraction for her. I watched as the decadent rot of Roman society consumed her. Oh, how I despise the Romans! Their society turns men into arrogant brutes and women into drunken fools. She became addicted to wine and denied it to the very end. I finally gave up and walked away.",
@@ -98795,7 +99668,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone|plyr,"solues_talk_z2",[], "That's horrible. How can I help you?", "solues_talk_z3",[]],
 [anyone|plyr,"solues_talk_z2",[], "Maybe I can help you?", "solues_talk_z3",[]],
 
-[anyone,"solues_talk_z3",[], "You can. I have a proposal. I will teach you everything I know—my discoveries, my theories, my life's work. In exchange, you will bring me opium.",
+[anyone,"solues_talk_z3",[], "You can. I have a proposal. I will teach you everything I know-my discoveries, my theories, my life's work. In exchange, you will bring me opium.",
 "solues_talk_z4",[]],
 
 [anyone|plyr,"solues_talk_z4",[], "Why do you need opium? What is it?",
@@ -100657,7 +101530,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 +" When we were imprisoned, I shared not just our stories with Temur, but also the secrets of siege engines."
 +" Now he's using that knowledge in his war against the Seres."
 +" And now it's ruining our trade with the Seres! We had a large caravan en route, organized by Phamenus."
-+" I was involved, along with Hadrianus and Wlodowiecus—though we only had small shares. The bulk of the investment"
++" I was involved, along with Hadrianus and Wlodowiecus-though we only had small shares. The bulk of the investment"
 +" came from The Libyan and Lei Li. And the damn Xiongnu raided it. Only one survivor made it back, informing us about the horror of Temur.",
 "mancinellus_wlod_4_final_talk_1",[]],
 
@@ -100671,7 +101544,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "mancinellus_wlod_4_final_talk_3",[]],
 
 [anyone|plyr,"mancinellus_wlod_4_final_talk_3",[],
-"No problem. The others aren't mad at all—if anything, we're grateful. You literally saved our skins back there. Temur would've likely had us skinned alive if it wasn't for you.",
+"No problem. The others aren't mad at all-if anything, we're grateful. You literally saved our skins back there. Temur would've likely had us skinned alive if it wasn't for you.",
 "mancinellus_wlod_4_final_talk_4",[]],
 
 [anyone,"mancinellus_wlod_4_final_talk_4",[],
@@ -100895,7 +101768,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "The gods cursed us!",
 "phamanus_talk_wlod4_recap_2",[]],
 [anyone,"phamanus_talk_wlod4_recap_2",[],
-"At the moment, I'm not sending out any caravans. But when I do, I'll let you know. I'll keep my promise—you're welcome to join and visit those distant lands with me again, if you wish.",
+"At the moment, I'm not sending out any caravans. But when I do, I'll let you know. I'll keep my promise-you're welcome to join and visit those distant lands with me again, if you wish.",
 "phamanus_talk_wlod4_recap_3",[]],
 [anyone|plyr,"phamanus_talk_wlod4_recap_3",[],
 "I see...",
@@ -101343,7 +102216,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone|plyr,"thusnelda_talk_7",[], "What if I could make you look as old as you feel? There maight be a potion that could help.",
 "thusnelda_talk_8",[]],
 
-[anyone,"thusnelda_talk_8",[], "-- A flicker of something—hope? desperation?—crosses her face. --^^To look... old? To finally have peace? Agreed. Bring me this potion, and I will tell you the location of my husband's grave.",
+[anyone,"thusnelda_talk_8",[], "-- A flicker of something-hope? desperation?-crosses her face. --^^To look... old? To finally have peace? Agreed. Bring me this potion, and I will tell you the location of my husband's grave.",
 "close_window",[
   (add_quest_note_from_sreg, "qst_arminius_sword", 3, "@Bring Thusnelda a potion which makes her look older. Its the best to ask Hunna for such a postion.", 0),
   (display_message, "str_quest_updated", message_alert),
@@ -101717,7 +102590,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "roman_intro_1_old_man_talk_11",[]],
 
 [anyone,"roman_intro_1_old_man_talk_11",[],
-"I was not always this ragged philosopher. I was once one of the wealthiest men in Rome. But I had a weakness for beauty, and the most beautiful women are often the most expensive. Her name was Julia, an Egyptian girl who called herself 'Nefernefernefer'—'the most beautiful of the beautiful.' And she was. But a woman like that is a whirlpool of chaos and desire. She led me on a tour of every vice and folly imaginable, which is how we ended up in that brothel in Neapolis. In a moment of guilt-ridden clarity, I bought every soul in that place and set them free. Amokos and Claudia were among them. They found this new faith - they worhsip Chrestus now - and tried to save my soul in return. They failed. I lost everything.",
+"I was not always this ragged philosopher. I was once one of the wealthiest men in Rome. But I had a weakness for beauty, and the most beautiful women are often the most expensive. Her name was Julia, an Egyptian girl who called herself 'Nefernefernefer'-'the most beautiful of the beautiful.' And she was. But a woman like that is a whirlpool of chaos and desire. She led me on a tour of every vice and folly imaginable, which is how we ended up in that brothel in Neapolis. In a moment of guilt-ridden clarity, I bought every soul in that place and set them free. Amokos and Claudia were among them. They found this new faith - they worhsip Chrestus now - and tried to save my soul in return. They failed. I lost everything.",
 "roman_intro_1_old_man_talk_12",[]],
 
 [anyone|plyr,"roman_intro_1_old_man_talk_12",[],
@@ -102254,16 +103127,16 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone,"antonia_talk4_1",[
   (ge, "$g_rank", 1),
-],"A lot.^^-- She says, her tone teasing. --^^But I won't tell you just yet. We'll meet at a special location. First, because I have something to show you, and second, because no one else should hear what I'm about to say—not your stupid soldiers, nor your companions."
+],"A lot.^^-- She says, her tone teasing. --^^But I won't tell you just yet. We'll meet at a special location. First, because I have something to show you, and second, because no one else should hear what I'm about to say-not your stupid soldiers, nor your companions."
 +"^^--She pauses, her gaze sharp. --^^To be more precise, we'll meet at the ancient Etruscan necropolis near Tarquinii. I'll mark it on your map.",
 "antonia_talk4_2",[]],
 [anyone,"antonia_talk4_1",[
-],"A lot.^^-- She says, her tone teasing. --^^But I won't tell you just yet. We'll meet at a special location. First, because I have something to show you, and second, because no one else should hear what I'm about to say—not your stupid slaves, nor your companions."
+],"A lot.^^-- She says, her tone teasing. --^^But I won't tell you just yet. We'll meet at a special location. First, because I have something to show you, and second, because no one else should hear what I'm about to say-not your stupid slaves, nor your companions."
 +"^^--She pauses, her gaze sharp. --^^To be more precise, we'll meet at the ancient Etruscan necropolis near Tarquinii. I'll mark it on your map.",
 "antonia_talk4_2",[]],
 
 [anyone|plyr,"antonia_talk4_2",[
-],"It's wiser to discuss everything in private. However, we could also meet at a grove nearby — it would be faster.",
+],"It's wiser to discuss everything in private. However, we could also meet at a grove nearby - it would be faster.",
 "antonia_talk4_3",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
 ]],
@@ -102464,7 +103337,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone,"antonia_talk2_5",[
 ],
-"Listen. The story writes itself. Found in a boat on the Tiber, just like Romulus. You've walked in the underworld and returned. You were struck by lightning—a sign of Jupiter's favor. Nero claims that happened to him, but there were no witnesses. I saw you. I am your witness.",
+"Listen. The story writes itself. Found in a boat on the Tiber, just like Romulus. You've walked in the underworld and returned. You were struck by lightning-a sign of Jupiter's favor. Nero claims that happened to him, but there were no witnesses. I saw you. I am your witness.",
 "antonia_talk2_6",[]],
 
 [anyone|plyr,"antonia_talk2_6",[
@@ -102498,7 +103371,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 
 [anyone,"antonia_talk2_9",[
 ],
-"Come now. We both have nothing to lose. While I weave the myth and gather allies, you must build the man. You need power. In Rome, power comes from two things: the sword or the purse. Either enlist in a legion and climb the ranks—speak to any Praefectus Castrorum in a scriptorium—or become so obscenely wealthy that the nobles have no choice but to accept you. What other path do you have? Do you want to spend the rest of your life as a fugitive, or will you take a chance, however small, at becoming Caesar?",
+"Come now. We both have nothing to lose. While I weave the myth and gather allies, you must build the man. You need power. In Rome, power comes from two things: the sword or the purse. Either enlist in a legion and climb the ranks-speak to any Praefectus Castrorum in a scriptorium-or become so obscenely wealthy that the nobles have no choice but to accept you. What other path do you have? Do you want to spend the rest of your life as a fugitive, or will you take a chance, however small, at becoming Caesar?",
 "antonia_talk2_10",[]],
 
 [anyone|plyr,"antonia_talk2_10",[
@@ -103184,7 +104057,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 "pamphile_pretalk",[]],
 
 [anyone,"pamphile_rhodogune_story_1", [],
-"Few are! That's what makes her so fascinating! Picture this: the Queen is in her bath, attendants preparing to braid her magnificent hair. Suddenly, a messenger bursts in—a rebellion has erupted in Media!",
+"Few are! That's what makes her so fascinating! Picture this: the Queen is in her bath, attendants preparing to braid her magnificent hair. Suddenly, a messenger bursts in-a rebellion has erupted in Media!",
 "pamphile_rhodogune_story_2",[]],
 [anyone,"pamphile_rhodogune_story_2", [],
 "What does she do? She rises from the water, casts aside the oils and combs, and swears a solemn vow not to braid a single lock of her hair until the rebellion is crushed.",
@@ -103207,7 +104080,7 @@ WOOOH!!!!!", "event_3_pret_talk_7",[]],
 [anyone,"pamphile_rhodogune_quest_details", [
   (str_store_party_name, s10, "p_town_39"),
 ],
-"I do! My sources—fragmentary scrolls, whispers from traders on the Silk Road—point to a ruined temple complex in the Zagros mountains, near the old Median capital of {s10}. The spear was supposedly dedicated there.",
+"I do! My sources-fragmentary scrolls, whispers from traders on the Silk Road-point to a ruined temple complex in the Zagros mountains, near the old Median capital of {s10}. The spear was supposedly dedicated there.",
 "pamphile_rhodogune_quest_offer",[]],
 
 [anyone,"pamphile_rhodogune_quest_offer", [],

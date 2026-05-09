@@ -8218,6 +8218,9 @@ mission_templates = [
     (9,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (10,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
     (11,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (12,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (13,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
+    (14,mtef_visitor_source|mtef_team_0,af_override_horse,0,1,[]),
   ], p_wetter + storms +
   [
     (0, 0, ti_once,[
@@ -8227,13 +8230,18 @@ mission_templates = [
       (start_mission_conversation, "$temp_troop"),
     ]),
 
-    (ti_tab_pressed, 0, 0, [
-    ],[
-      (stop_all_sounds, 1),
-      (finish_mission, 3),
-      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
-      (mission_disable_talk),
-    ]),
+    (ti_tab_pressed, 0, 0,[
+      (try_begin),
+          (this_or_next|eq, "$talk_context", tc_escape),
+          (eq, "$talk_context", tc_prison_break),
+          (display_message, "str_cannot_leave_now"),
+      (else_try),
+          (stop_all_sounds, 1),
+          (finish_mission, 3),
+          (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+          (mission_disable_talk),
+      (try_end),
+    ],[]),
 
     can_spawn_commoners,
     improved_lightning,
@@ -8253,12 +8261,63 @@ mission_templates = [
 
     (2, 0, 0, [(call_script, "script_center_ambiance_sounds")],[]),
 
-    (0,8,0,[],[
+    (3, 0, 0,[
+      (eq, "$talk_context", tc_escape),
+      (neg|main_hero_fallen,0),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 10),
+      (all_enemies_defeated, 1), #1 is default enemy team for in-town battles
+    ],[
+      (jump_to_menu,"mnu_desert_victory"),
+
+      (finish_mission, 3),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+    ]),
+
+    (3, 0, 0,[
+      (eq, "$talk_context", tc_escape),
+      (main_hero_fallen,0),
+      (store_mission_timer_a, ":time"),
+      (ge, ":time", 10),
+    ],[
+      (assign, "$temp", 1),
+      (jump_to_menu,"mnu_death_waits"),
+      (finish_mission, 3),
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2000),
+    ]),
+
+    (3, 0, 0, [
+      (eq, "$talk_context", tc_escape),
+    ],[
+      (assign, ":sound_played", 0),
+      (try_for_agents, ":agent_no"),
+        (agent_is_active, ":agent_no"),
+        (agent_is_alive, ":agent_no"),
+        (agent_is_human, ":agent_no"),
+        (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
+        # (neg|agent_is_ally, ":agent_no"),
+        (store_random_in_range, ":rand", 32, 40),
+        (entry_point_get_position, pos2, ":rand"),
+        (agent_start_running_away, ":agent_no", pos2),
+        (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 125),	#make them run around
+        #sound:
+        (eq, ":sound_played", 0),
+        (assign, ":sound_played", 1),
+        (store_random_in_range, ":rand", 1, 4),
+        (eq, ":rand", 1),
+        (agent_play_sound, ":agent_no", "snd_panic_cry"),
+      (try_end),
+    ]),
+
+    (0,8,0,[
+      (neq, "$talk_context", tc_escape),
+    ],[
       (try_for_agents,":agent_no"),
         (agent_is_alive,":agent_no"),
         (agent_is_human,":agent_no"),
         (agent_get_troop_id, ":troop_no", ":agent_no"),
         (neg|troop_is_hero, ":troop_no"),
+        (neq, ":troop_no", "trp_nurse_african"),
 
         (assign, ":continue_walk", 0),
         (store_random_in_range, ":continue_walk", 1, 100),
@@ -13432,52 +13491,8 @@ mission_templates = [
       (val_add, "$bandits_spawned_extra", 1),
 
       (party_get_template_id, ":template", "$g_encountered_party"),
-
-      (try_begin),
-        (eq, ":template", "pt_black_sea_pirates_lair"),
-        (assign, ":bandit_troop", "trp_black_sea_pirate"),
-      (else_try),
-        (eq, ":template", "pt_sea_raider_lair"),
-        (assign, ":bandit_troop", "trp_sea_raider"),
-      (else_try),
-        (eq, ":template", "pt_forest_bandit_lair"),
-        (assign, ":bandit_troop", "trp_hispanic_rebell"),
-      (else_try),
-        (eq, ":template", "pt_baquates_bandit_lair"),
-        (assign, ":bandit_troop", "trp_gaetuli_horseman_merc"),
-      (else_try),
-        (eq, ":template", "pt_autololes_bandit_lair"),
-        (assign, ":bandit_troop", "trp_gaetuli_horseman_merc"),
-      (else_try),
-        (eq, ":template", "pt_nasamones_bandit_lair"),
-        (assign, ":bandit_troop", "trp_garamantian_horseman_merc"),
-      (else_try),
-        (eq, ":template", "pt_nubian_lair"),
-        (assign, ":bandit_troop", "trp_meroe_archers"),
-      (else_try),
-        (eq, ":template", "pt_desert_bandit_lair"),
-        (assign, ":bandit_troop", "trp_desert_bandit"),
-      (else_try),
-        (eq, ":template", "pt_nabatean_lair"),
-        (assign, ":bandit_troop", "trp_arab_noble_archers"),
-      (else_try),
-        (eq, ":template", "pt_mountain_bandit_lair"),
-        (assign, ":bandit_troop", "trp_judean_rebel"),
-      (else_try),
-        (eq, ":template", "pt_taiga_bandit_lair"),
-        (assign, ":bandit_troop", "trp_illyrian_rebell"),
-      (else_try),
-        (eq, ":template", "pt_steppe_bandit_lair"),
-        (assign, ":bandit_troop", "trp_alannic_raider"),
-      (else_try),
-        (eq, ":template", "pt_saka_camp"),
-        (assign, ":bandit_troop", "trp_saka_heavy_cavalry"),
-        (else_try),
-          (eq, ":template", "pt_egyptian_bandit_lair"),
-          (store_random_in_range, ":bandit_troop", "trp_egyptian_archers", "trp_arab_noble_archers"),
-      (else_try),
-        (assign, ":bandit_troop", "trp_looter"),
-      (try_end),
+      (call_script, "script_get_bandit_lair_reinforcement_troop", ":template"),
+      (assign, ":bandit_troop", reg0),
 
       (store_current_scene, ":cur_scene"),
       (modify_visitors_at_site, ":cur_scene"),
@@ -13578,52 +13593,8 @@ mission_templates = [
         (try_end),
 
         (party_get_template_id, ":template", "$g_encountered_party"),
-
-        (try_begin),
-          (eq, ":template", "pt_black_sea_pirates_lair"),
-          (assign, ":bandit_troop", "trp_black_sea_pirate"),
-        (else_try),
-          (eq, ":template", "pt_sea_raider_lair"),
-          (assign, ":bandit_troop", "trp_sea_raider"),
-        (else_try),
-          (eq, ":template", "pt_forest_bandit_lair"),
-          (assign, ":bandit_troop", "trp_hispanic_rebell"),
-        (else_try),
-          (eq, ":template", "pt_baquates_bandit_lair"),
-          (assign, ":bandit_troop", "trp_gaetuli_horseman_merc"),
-        (else_try),
-          (eq, ":template", "pt_nasamones_bandit_lair"),
-          (assign, ":bandit_troop", "trp_garamantian_horseman_merc"),
-        (else_try),
-          (eq, ":template", "pt_autololes_bandit_lair"),
-          (assign, ":bandit_troop", "trp_garamantian_horseman_merc"),
-        (else_try),
-          (eq, ":template", "pt_nubian_lair"),
-          (assign, ":bandit_troop", "trp_meroe_archers"),
-        (else_try),
-          (eq, ":template", "pt_desert_bandit_lair"),
-          (assign, ":bandit_troop", "trp_desert_bandit"),
-        (else_try),
-          (eq, ":template", "pt_nabatean_lair"),
-          (assign, ":bandit_troop", "trp_arab_noble_archers"),
-        (else_try),
-          (eq, ":template", "pt_mountain_bandit_lair"),
-          (assign, ":bandit_troop", "trp_judean_rebel"),
-        (else_try),
-          (eq, ":template", "pt_taiga_bandit_lair"),
-          (assign, ":bandit_troop", "trp_illyrian_rebell"),
-        (else_try),
-          (eq, ":template", "pt_steppe_bandit_lair"),
-          (assign, ":bandit_troop", "trp_alannic_raider"),
-        (else_try),
-          (eq, ":template", "pt_saka_camp"),
-          (assign, ":bandit_troop", "trp_saka_heavy_cavalry"),
-        (else_try),
-          (eq, ":template", "pt_egyptian_bandit_lair"),
-          (store_random_in_range, ":bandit_troop", "trp_egyptian_archers", "trp_arab_noble_archers"),
-        (else_try),
-          (assign, ":bandit_troop", "trp_looter"),
-        (try_end),
+        (call_script, "script_get_bandit_lair_reinforcement_troop", ":template"),
+        (assign, ":bandit_troop", reg0),
         (store_current_scene, ":cur_scene"),
         (modify_visitors_at_site, ":cur_scene"),
         (try_for_range, ":unused", 0, ":number_of_bandits_will_be_spawned_at_each_period"),
@@ -18839,31 +18810,6 @@ mission_templates = [
       (assign, "$g_main_attacker_agent", 0),
     ]),
     common_inventory_not_available,
-
-    (3, 0, 0,[
-      (eq, "$talk_context", tc_escape),
-      (neg|main_hero_fallen,0),
-      (store_mission_timer_a, ":time"),
-      (ge, ":time", 10),
-      (all_enemies_defeated, 1), #1 is default enemy team for in-town battles
-    ],[
-      (call_script, "script_deduct_casualties_from_garrison"),
-      (jump_to_menu,"mnu_desert_victory"),
-
-      (mission_enable_talk),
-      (finish_mission,0)
-    ]),
-    (3, 0, 0,[
-      (eq, "$talk_context", tc_escape),
-      (main_hero_fallen,0),
-      (store_mission_timer_a, ":time"),
-      (ge, ":time", 10),
-    ],[
-      (assign, "$temp", 1),
-      (jump_to_menu,"mnu_death_waits"),
-      (mission_enable_talk),
-      (finish_mission,0)
-    ]),
     (0,0,ti_once,[
       (try_for_agents, ":agent"),
         (agent_get_entry_no, ":entry", ":agent"),
@@ -18883,29 +18829,6 @@ mission_templates = [
         (try_end),
       (try_end),
     ],[]),
-
-    (3, 0, 0, [
-      (eq, "$talk_context", tc_escape),
-    ],[
-      (assign, ":sound_played", 0),
-      (try_for_agents, ":agent_no"),
-        (agent_is_active, ":agent_no"),
-        (agent_is_alive, ":agent_no"),
-        (agent_is_human, ":agent_no"),
-        (agent_slot_ge, ":agent_no",  slot_agent_is_running_away, 1),
-        # (neg|agent_is_ally, ":agent_no"),
-        (store_random_in_range, ":rand", 32, 40),
-        (entry_point_get_position, pos2, ":rand"),
-        (agent_start_running_away, ":agent_no", pos2),
-        (call_script, "script_advanced_agent_set_speed_modifier", ":agent_no", 125),	#make them run around
-        #sound:
-        (eq, ":sound_played", 0),
-        (assign, ":sound_played", 1),
-        (store_random_in_range, ":rand", 1, 4),
-        (eq, ":rand", 1),
-        (agent_play_sound, ":agent_no", "snd_panic_cry"),
-      (try_end),
-    ]),
 
     (0,8,0,[
       (neq, "$talk_context", tc_escape),
