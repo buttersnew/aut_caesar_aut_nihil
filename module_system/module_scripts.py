@@ -62819,6 +62819,7 @@ scripts = scripts_hardcoded + [
     (this_or_next | eq, ":party_no", "p_castle_11"),
     (this_or_next | eq, ":party_no", "p_castle_46"),
     (this_or_next | eq, ":party_no", "p_castle_35"),
+    (this_or_next | eq, ":party_no", "p_town_13"),
     (this_or_next | eq, ":party_no", "p_town_6"),
     (this_or_next | eq, ":party_no", "p_town_4"),
     (this_or_next | eq, ":party_no", "p_town_32"),
