@@ -90447,6 +90447,7 @@ scripts = scripts_hardcoded + [
     (else_try),
         # berber main culture
         (eq, ":main_culture_id", "fac_culture_berber"),
+        (this_or_next|eq, ":subculture_string_id", "str_subculture_african_mauretanian_tingitanian"),
         (this_or_next|eq, ":subculture_string_id", "str_subculture_african_mauretanian"),
         (eq, ":subculture_string_id", "str_subculture_african_proconsular"),
 
