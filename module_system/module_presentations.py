@@ -23489,8 +23489,7 @@ presentations = presentations_wse2 + [
 ]),
 
    ("upgrade_tree_11", 0, mesh_load_window, [
-    (ti_on_presentation_load,
-      [
+    (ti_on_presentation_load,[
         (presentation_set_duration, 999999),
         (set_fixed_point_multiplier, 1000),
 
@@ -23539,8 +23538,9 @@ presentations = presentations_wse2 + [
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 28, "trp_slavic_vetran", 60, 1510),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 29, "trp_slavic_skirmisher", 210, 1510),
 
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_alan_horse_archer", 560, 1510),
-        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_alan_heavy_horse_archer", 710, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 30, "trp_alannic_raider", 560, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 31, "trp_alan_horse_archer", 710, 1510),
+        (call_script, "script_prsnt_upgrade_tree_troop_and_name", 47, "trp_alan_heavy_horse_archer", 860, 1510),
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 24, "trp_indian_archer", 60, 1310),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 25, "trp_indian_spearman", 210, 1310),
@@ -23585,6 +23585,10 @@ presentations = presentations_wse2 + [
 
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 22, "trp_slinger_rhodos", 560, 110),
         (call_script, "script_prsnt_upgrade_tree_troop_and_name", 23, "trp_kreta_archer", 710, 110),
+
+        ##### - lines (Alan upgrade chain)
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 615, 1610),
+        (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 760, 1610),
 
         (set_container_overlay, -1),#end scroll
       ]),
@@ -23852,9 +23856,6 @@ presentations = presentations_wse2 + [
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 19, "trp_bandit", 210, 1210),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 18, "trp_looter", 60, 1210),
       (call_script, "script_prsnt_upgrade_tree_lines", 25, 4, 115, 1310),
-
-
-      (call_script, "script_prsnt_upgrade_tree_troop_and_name", 17, "trp_alannic_raider", 60, 1210),
 
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 16, "trp_illyrian_rebell", 60, 1010),
       (call_script, "script_prsnt_upgrade_tree_troop_and_name", 15, "trp_black_sea_pirate", 210, 1010),
