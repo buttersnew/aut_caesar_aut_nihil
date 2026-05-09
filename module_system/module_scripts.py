@@ -75272,8 +75272,10 @@ scripts = scripts_hardcoded + [
     (party_set_slot, "p_castle_8", slot_center_auxilia, "pt_cohors_tung"),
     (party_set_slot, "p_town_15", slot_center_auxilia, "pt_cohors_tung"),
     (party_set_slot, "p_castle_24", slot_center_auxilia, "pt_cohors_bata"),
+
     (party_set_slot, "p_castle_16", slot_center_has_barracks, "trp_kingdom_7_lord"),
     (party_set_slot, "p_castle_24", slot_center_has_barracks, "trp_kingdom_7_lord"),
+    (party_set_slot, "p_castle_73", slot_center_has_barracks, "trp_kingdom_7_lord"), # legion headquarter
 
     #legionsprovinz germania superior: p_castle_34
     (store_add, ":slot", slot_legion_home_begin, 1),#Primigenia
