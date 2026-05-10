@@ -32160,7 +32160,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc18", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc18", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc18", slot_troop_personalityclash_object, "trp_npc37"), #
-    (troop_set_slot, "trp_npc18", slot_troop_personalityclash2_object, "trp_npc11"), #
+    (troop_set_slot, "trp_npc18", slot_troop_personalityclash2_object, "trp_npc21"), # Drusus — Greens vs Blues chariot-team rivalry
     (troop_set_slot, "trp_npc18", slot_troop_personalitymatch_object, "trp_npc19"), #
     (troop_set_slot, "trp_npc18", slot_troop_home, "p_village_152"), #Rome
     (troop_set_slot, "trp_npc18", slot_troop_payment_request, 6000),
@@ -32175,7 +32175,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc19", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc19", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc19", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc19", slot_troop_personalityclash_object, "trp_npc16"), #
+    (troop_set_slot, "trp_npc19", slot_troop_personalityclash_object, "trp_npc21"), # Drusus — Greens fanatic Tertius cannot abide Blues supporter
     (troop_set_slot, "trp_npc19", slot_troop_personalityclash2_object, "trp_npc17"), # Anicetus — pirate vs disciplined soldier
     (troop_set_slot, "trp_npc19", slot_troop_personalitymatch_object, "trp_npc40"), #
     (troop_set_slot, "trp_npc19", slot_troop_home, "p_town_6"), #Rome
@@ -32191,7 +32191,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc20", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc20", slot_troop_personalityclash_object, "trp_npc16"), #
+    (troop_set_slot, "trp_npc20", slot_troop_personalityclash_object, "trp_npc26"), # Albinus Basilius — bankrupt merchant plays equestrian, bets on Blues
     (troop_set_slot, "trp_npc20", slot_troop_personalityclash2_object, "trp_npc23"), # Lucius Varrus Drusus — roguish vs pacifist
     (troop_set_slot, "trp_npc20", slot_troop_personalitymatch_object, "trp_npc42"), #
     (troop_set_slot, "trp_npc20", slot_troop_home, "p_town_10"), #Tarsus
@@ -32256,7 +32256,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc24", slot_troop_personalityclash_object, "trp_npc42"), #
-    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc11"), #
+    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc22"), # Libertus Tiro — aristocratic veteran vs freedman; status clash
     (troop_set_slot, "trp_npc24", slot_troop_personalitymatch_object, "trp_npc25"), #
     (troop_set_slot, "trp_npc24", slot_troop_home, "p_village_56"), #Brindisium
     (troop_set_slot, "trp_npc24", slot_troop_payment_request, 6000),
@@ -32401,7 +32401,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc33", slot_troop_personalityclash_object, "trp_npc32"), #
     (troop_set_slot, "trp_npc33", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc33", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc33", slot_troop_personalitymatch_object, "trp_npc27"), # Lucullus Caepio — fellow Blues fan, mutual bond
     (troop_set_slot, "trp_npc33", slot_troop_home, "p_town_33"), #Tarentum
     (troop_set_slot, "trp_npc33", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc33", slot_troop_kingsupport_argument, argument_benefit),
