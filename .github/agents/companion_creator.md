@@ -24,7 +24,7 @@ Always read `docs/companions.md` first. It is the authoritative overview of all 
 | Culture faction IDs (`fac_culture_*`) | `module_system/module_factions.py` |
 
 ## Troop ID Range
-`trp_npc1` (781) through `trp_npc42` (822), plus `trp_mathildiz` (819) and `trp_turakina` (821). New companions must use the next available `trp_npcN` slot or be explicitly assigned.
+Starting with `trp_npc1` through `trp_npc42`, plus `trp_mathildiz` and `trp_turakina`. New companions must use the next available `trp_npcN` slot or be explicitly assigned.
 
 ## Companion Data Checklist
 Every companion requires all of the following to be set in `initialize_npcs`:
