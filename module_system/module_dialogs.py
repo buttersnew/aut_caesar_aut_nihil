@@ -84406,13 +84406,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ##diplomacy end+
 
   #weapon fix begin
-[anyone|plyr,"town_merchant_talk",[(is_between,"$g_talk_troop",weapon_merchants_begin,weapon_merchants_end),
-      (neq, "$g_talk_troop", "trp_town_31_weaponsmith"),
-],
-    "I want to refine one of my weapons.", "smith_requested_repair_1",[]],
+[anyone|plyr,"town_merchant_talk",[
+  (is_between,"$g_talk_troop",weapon_merchants_begin,weapon_merchants_end),
+],"I want to refine one of my weapons.",
+"smith_requested_repair_1",[]],
 
 [anyone,"smith_requested_repair_1",[],
-    "Which one?", "smith_requested_repair_2",[(assign, "$temp3", "trp_player"),]],
+"Which one?", "smith_requested_repair_2",[
+  (assign, "$temp3", "trp_player"),
+]],
 
   # first outfit
 [anyone|plyr,"smith_requested_repair_2",
@@ -84558,9 +84560,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
   #weapon fix end
 
   # armor fix begin
-[anyone|plyr,"town_merchant_talk",[(is_between,"$g_talk_troop",armor_merchants_begin,armor_merchants_end),
-],
-    "I want to refine one of my armor parts.", "armorer_requested_repair_1",[]],
+[anyone|plyr,"town_merchant_talk",[
+  (is_between,"$g_talk_troop",armor_merchants_begin,armor_merchants_end),
+],"I want to refine one of my armor parts.",
+"armorer_requested_repair_1",[]],
 
 [anyone,"armorer_requested_repair_1",[],
     "Which one?", "armorer_requested_repair_2",[(assign, "$temp3", "trp_player"),]],
@@ -96690,8 +96693,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 ###############WEAPON ORDERING END###
 
 [trp_smith_master|plyr,"grape_talk",[
-],
-    "I want to refine one of my weapons.", "grape_talk_repair",[]],
+],"I want to refine one of my weapons.",
+"grape_talk_repair",[]],
 
 [anyone,"grape_talk_repair",[],
     "Which one?", "grape_talk_repair_2",[(assign, "$temp3", "trp_player"),]],
@@ -96845,8 +96848,8 @@ and that she would be dressed in the costume of a virgin, as a sort of reminder 
 
   # armor fix begin
 [trp_smith_master|plyr,"grape_talk",[
-],
-    "I want to refine one of my armor parts.", "lat_armorer_requested_repair_1",[]],
+],"I want to refine one of my armor parts.",
+"lat_armorer_requested_repair_1",[]],
 
 [anyone,"lat_armorer_requested_repair_1",[],
     "Which one?", "lat_armorer_requested_repair_2",[(assign, "$temp3", "trp_player"),]],
