@@ -10664,6 +10664,19 @@ strings = [
   ("faction_relation_detoriated_details_s13", "Your relation with {s1} has deteriorated from {reg1} to {reg2}, as they have {s13} relations with the {s2}."),
   ("good", "good"),
   ("bad", "bad"),
+
+  # Bandit leader greetings (first meeting)
+  ("bandit_leader_greet_first_honor_high",   "So you are {playername}. A man of honour comes to my camp. I have little use for such men. State your business."),
+  ("bandit_leader_greet_first_honor_mid",    "A stranger enters my camp. You have courage, I will grant that. What do you want?"),
+  ("bandit_leader_greet_first_honor_low",    "I know of you, {playername}. Your deeds precede you. What do you want from me?"),
+  ("bandit_leader_greet_first_honor_vlow",   "So you are {playername}. They speak your name in fear from Rome to the eastern sands. Perhaps we understand each other. What brings you here?"),
+
+  # Bandit leader greetings (subsequent meetings)
+  ("bandit_leader_greet_again_honor_high",   "You again. Still the righteous one, I see. What do you want now?"),
+  ("bandit_leader_greet_again_honor_mid",    "Back again, {playername}. What is it this time?"),
+  ("bandit_leader_greet_again_honor_low",    "You return. I had a feeling you would. What do you want?"),
+  ("bandit_leader_greet_again_honor_vlow",   "You come back. Good. Speak."),
+
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + berber_names + garamantian_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names

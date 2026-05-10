@@ -2975,7 +2975,7 @@ scripts_dplmc = [
             (try_begin),
                 (eq, ":faction_leader", "trp_player"),
                 ##nested diplomacy start+ "str_you" exists, so we might as well use it
-                #(str_store_string, s59, "@you"),
+                #(str_store_string, s59, "str_you"),
                 (str_store_string, s59, "str_you"),
                 ##diplomacy end+
             (else_try),

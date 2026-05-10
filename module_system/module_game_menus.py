@@ -27424,7 +27424,7 @@ game_menus = [
         (neq, "$g_edit_banner_troop", "trp_player"),
         (str_store_troop_name, s1, "$g_edit_banner_troop"),
     (else_try),
-        (str_store_string, s1, "@you"),
+        (str_store_string, s1, "str_you"),
     (try_end),
   ],
   [
@@ -42125,7 +42125,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ],[
   ("continue",[],"Establish a tributary state",[
     (str_store_troop_name, s40, "trp_player"),
-    (add_faction_note_from_sreg, "$g_encountered_party_faction", 3, "@They are a tributary of {s40}.", 0),
     (faction_get_slot, ":king", "$g_encountered_party_faction", slot_faction_leader),
     (call_script, "script_change_player_relation_with_troop", ":king", -20),
     (call_script, "script_set_player_relation_with_faction", "$g_encountered_party_faction", 0),

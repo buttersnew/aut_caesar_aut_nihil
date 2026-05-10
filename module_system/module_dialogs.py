@@ -22253,7 +22253,7 @@ dialogs =[
       (troop_get_slot, ":governor", "trp_province_array", ":province"),
       (try_begin),
           (eq, ":governor", "trp_player"),
-          (str_store_string, s0, "@you"),
+          (str_store_string, s0, "str_you"),
       (else_try),
           (gt, ":governor", "trp_player"),
           (str_store_troop_name, s0, ":governor"),
@@ -22325,7 +22325,7 @@ dialogs =[
       (troop_get_slot, ":governor", "trp_province_array", ":province"),
       (try_begin),
           (eq, ":governor", "trp_player"),
-          (str_store_string, s0, "@you"),
+          (str_store_string, s0, "str_you"),
       (else_try),
           (gt, ":governor", "trp_player"),
           (str_store_troop_name, s0, ":governor"),
@@ -74741,7 +74741,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (store_mul, reg5, "$temp", reg0),
   (try_begin),
     (eq, ":mercenary_amount", 1),
-    (str_store_string, s10, "@you"),
+    (str_store_string, s10, "str_you"),
   (else_try),
     (eq, ":mercenary_amount", 2),
     (str_store_string, s10, "@both of you"),
@@ -91472,7 +91472,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 ##END Darta talk for quest
 
-#desert queen generic talk
+#minor queen generic talk
 #
 [trp_baquates_princess, "start",[
   (check_quest_active, "qst_blossom_in_the_desert"),
@@ -91488,61 +91488,61 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"You return. Tell me — what news of {s20}?",
-"desert_queen_progress_hub",[]],
+"minor_queen_progress_hub",[]],
 
-[anyone|plyr, "desert_queen_progress_hub",[
+[anyone|plyr, "minor_queen_progress_hub",[
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
   (quest_slot_lt, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
 ],"I found her and spoke with her. She is alive.",
-"desert_queen_quest_daughter_found_return_1",[]],
+"minor_queen_quest_daughter_found_return_1",[]],
 
-[anyone|plyr, "desert_queen_progress_hub",[
+[anyone|plyr, "minor_queen_progress_hub",[
   (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
   (ge, ":count", 1),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"She is with me — I brought her out of the {s6} camp.",
-"desert_queen_has_darta",[]],
+"minor_queen_has_darta",[]],
 
-[anyone|plyr, "desert_queen_progress_hub",[
+[anyone|plyr, "minor_queen_progress_hub",[
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
   (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
   (eq, ":count", 0),
 ],"I had her — but my party was overrun. She escaped in the confusion.",
-"desert_queen_darta_lost",[]],
+"minor_queen_darta_lost",[]],
 
-[anyone, "desert_queen_quest_daughter_found_return_1",[
+[anyone, "minor_queen_quest_daughter_found_return_1",[
 ],"She is alive? Tell me — is she well? What did she say to you?",
-"desert_queen_quest_daughter_found_return_2",[]],
+"minor_queen_quest_daughter_found_return_2",[]],
 
 
-[anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
+[anyone|plyr, "minor_queen_quest_daughter_found_return_2",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
 ],"She is alive and well. However she refused to come home. She has made her life with {s5} and she will not leave him.",
-"desert_queen_quest_daughter_found_return_truth",[]],
+"minor_queen_quest_daughter_found_return_truth",[]],
 
-[anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
+[anyone|plyr, "minor_queen_quest_daughter_found_return_2",[
 ],"She is alive. I have not yet been able to bring her back, but I know where she is. I will return for her.",
-"desert_queen_quest_daughter_found_return_lie",[]],
+"minor_queen_quest_daughter_found_return_lie",[]],
 
-[anyone, "desert_queen_quest_daughter_found_return_truth",[
+[anyone, "minor_queen_quest_daughter_found_return_truth",[
 ],"She... refused. My daughter looked you in the eye and refused to come home to me. I have wept for her every night since she was taken. I built a grave for her in my heart and still I would not let go. And she... chose to stay.",
-"desert_queen_quest_daughter_found_return_truth_2",[]],
+"minor_queen_quest_daughter_found_return_truth_2",[]],
 
-[anyone|plyr, "desert_queen_quest_daughter_found_return_truth_2",[
+[anyone|plyr, "minor_queen_quest_daughter_found_return_truth_2",[
 ],"She spoke of you. She was not without feeling. But she will not be brought back against her will - and I believe she means it.",
-"desert_queen_quest_daughter_found_return_truth_3",[]],
+"minor_queen_quest_daughter_found_return_truth_3",[]],
 
-[anyone|plyr, "desert_queen_quest_daughter_found_return_truth_2",[
+[anyone|plyr, "minor_queen_quest_daughter_found_return_truth_2",[
 ],"I am sorry. It was not easy to tell you.",
-"desert_queen_quest_daughter_found_return_truth_3",[\
+"minor_queen_quest_daughter_found_return_truth_3",[\
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
 ]],
 
-[anyone, "desert_queen_quest_daughter_found_return_truth_3",[
+[anyone, "minor_queen_quest_daughter_found_return_truth_3",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
 ],"Then she is lost to me in a way no grave ever was. A grave I can mourn. This - I do not know what to do with this. I do not know whether to hate {s5} or thank whatever god kept her breathing. Go. There is no more I can ask of you. I will speak with my husband. Perhaps there is still something that can be done. I will not give up on her.",
-"desert_queen_pretalk",[
+"minor_queen_pretalk",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "str_quest_updated", message_alert),
   (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} the truth - {s4} is alive but refuses to return. ", 0),
@@ -91550,13 +91550,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 4),
 ]],
 
-[anyone, "desert_queen_quest_daughter_found_return_lie",[
+[anyone, "minor_queen_quest_daughter_found_return_lie",[
 ],"You know where she is. She is alive and you know where she is. That is more than I have had in months. Please - do not wait. Every day she is with that man is a day too long.",
-"desert_queen_quest_daughter_found_return_lie_2",[]],
+"minor_queen_quest_daughter_found_return_lie_2",[]],
 
-[anyone|plyr, "desert_queen_quest_daughter_found_return_lie_2",[
+[anyone|plyr, "minor_queen_quest_daughter_found_return_lie_2",[
 ],"I will go back for her. You have my word.",
-"desert_queen_pretalk",[
+"minor_queen_pretalk",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (display_message, "str_quest_updated", message_alert),
@@ -91565,22 +91565,22 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 5),
 ]],
 
-[anyone, "desert_queen_has_darta",[
+[anyone, "minor_queen_has_darta",[
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"She is here? {s20} is truly with you? Let me go to her — please, take me to her.",
-"desert_queen_has_darta_2",[]],
+"minor_queen_has_darta_2",[]],
 
-[anyone|plyr, "desert_queen_has_darta_2",[
+[anyone|plyr, "minor_queen_has_darta_2",[
 ],"She is yours. I have kept my word.",
-"desert_queen_has_darta_mother",[]],
+"minor_queen_has_darta_mother",[]],
 
-[anyone|plyr, "desert_queen_has_darta_2",[
+[anyone|plyr, "minor_queen_has_darta_2",[
 ],"Her father sent me as well. I must bring her before him first.",
 "close_window",[]],
 
-[anyone, "desert_queen_has_darta_mother",[
+[anyone, "minor_queen_has_darta_mother",[
 ],"Then she is home. Whatever road brought her back — you have my gratitude. I have no treasury to match what you deserve, but you will always be welcome in my court.",
-"desert_queen_pretalk",[
+"minor_queen_pretalk",[
   (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 20),
@@ -91588,7 +91588,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
 ]],
 
-[anyone, "desert_queen_darta_lost",[
+[anyone, "minor_queen_darta_lost",[
 ],"You had her in your hands — and you lost her. I do not want to hear your reasons. Get out of my sight.",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
@@ -91606,7 +91606,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
       (str_store_string, s15, "@Do I know you?"),
   (try_end),
 ],"{s15}",
-"desert_queen",
+"minor_queen",
 []],
 
 [anyone, "start",[
@@ -91624,10 +91624,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
       (str_store_string, s15, "@You again. I don't think I have the time to talk with you ..."),
   (try_end),
 ],"{s15}",
-"desert_queen",
+"minor_queen",
 []],
 
-[anyone|plyr,"desert_queen",[
+[anyone|plyr,"minor_queen",[
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   (ge, "$g_encountered_party_relation", 0),
   (store_item_kind_count, ":amber", "itm_amber", "trp_player"),
@@ -91641,9 +91641,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (this_or_next|ge, ":jewelry", 1),
   (ge, ":ivory", 1),
 ],"I have a present for you, my Lady.",
-"desert_queen_present",[]],
+"minor_queen_present",[]],
 
-[anyone,"desert_queen_present",[
+[anyone,"minor_queen_present",[
   (try_begin),
     (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_adventurous),
     (str_store_string, s20, "@Interesting. Hopefully it is something from faraway. I like such stuff."),
@@ -91662,50 +91662,50 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (else_try),
     (str_store_string, s20, "@I like presents, especially expensive ones. Well, let's see what you have brought me."),
   (try_end),
-],"{s20}", "desert_queen_present2",[]],
+],"{s20}", "minor_queen_present2",[]],
 
-[anyone|plyr,"desert_queen_present2",[
+[anyone|plyr,"minor_queen_present2",[
   (store_item_kind_count, ":amber", "itm_amber", "trp_player"),
   (ge, ":amber", 1),
 ],"This amber comes from faraway lands.",
-"desert_queen_present_response",[
+"minor_queen_present_response",[
   (assign, "$temp", "itm_amber")
 ]],
 
-[anyone|plyr,"desert_queen_present2",[
+[anyone|plyr,"minor_queen_present2",[
   (store_item_kind_count, ":jewelry", "itm_jewelry", "trp_player"),
   (ge, ":jewelry", 1),
 ],"This jewelry will look beautiful on your neck.",
-"desert_queen_present_response",[
+"minor_queen_present_response",[
   (assign, "$temp", "itm_jewelry")
 ]],
 
-[anyone|plyr,"desert_queen_present2",[
+[anyone|plyr,"minor_queen_present2",[
   (store_item_kind_count, ":ivory", "itm_ivory", "trp_player"),
   (ge, ":ivory", 1),
 ],"This ivory is as mighty as you.",
-"desert_queen_present_response",[
+"minor_queen_present_response",[
   (assign, "$temp", "itm_ivory")
 ]],
 
-[anyone|plyr,"desert_queen_present2",[
+[anyone|plyr,"minor_queen_present2",[
   (store_item_kind_count, ":perfume", "itm_perfume", "trp_player"),
   (ge, ":perfume", 1),
 ],"The sweet flowery smell of this perfume will fit perfectly to you.",
-"desert_queen_present_response",[
+"minor_queen_present_response",[
   (assign, "$temp", "itm_perfume")
 ]],
 
-[anyone|plyr,"desert_queen_present2",[
+[anyone|plyr,"minor_queen_present2",[
   (store_item_kind_count, ":perfume", "itm_perfume_special", "trp_player"),
   (ge, ":perfume", 1),
   (str_store_item_name, s1, "itm_perfume_special"),
 ],"The exotic flowery fragrance of this perfume called '{s1}' will make you smell like a goddess.",
-"desert_queen_present_response",[
+"minor_queen_present_response",[
   (assign, "$temp", "itm_perfume_special")
 ]],
 
-[anyone,"desert_queen_present_response",[
+[anyone,"minor_queen_present_response",[
    (store_random_in_range, ":mood", 0, 10),
    (try_begin),
       (eq, "$temp", "itm_perfume_special"),
@@ -91727,15 +91727,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
       (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", ":mood"),
    (try_end),
    (display_message, "@Women are strange creatures."),
-],"{s20}", "desert_queen_pretalk",[]],
+],"{s20}", "minor_queen_pretalk",[]],
 
-[trp_baquates_princess|plyr, "desert_queen",[
+[trp_baquates_princess|plyr, "minor_queen",[
   # (neg|check_quest_active, "qst_blossom_in_the_desert"),
   (neg|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
 ],"You do not look like the wife of a thug. How did you end up here?",
-"desert_queen_ask_talk2",[]],
+"minor_queen_ask_talk2",[]],
 
-[anyone, "desert_queen_ask_talk2",[
+[anyone, "minor_queen_ask_talk2",[
   (str_store_troop_name, s32, "trp_nasamones_king"),
   (troop_get_slot, ":father", "$g_talk_troop", slot_troop_father),
   (str_store_troop_name, s31, ":father"),
@@ -91745,7 +91745,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (str_store_faction_name, s6, "fac_autololes"),
 ],
 "Indeed. I am of the {s33} - daughter of king {s31}. Years ago, my father arranged my betrothal to a Roman noble. I was fourteen then. Among our people, girls are wed at twelve; I was already beyond the common age. I was sent to Carthago with an escort of a hundred men. But we were set upon by {s6} raiders in the passes. The escort was put to the sword. They brought me before their leader. Now I am his wife. The wife of {s5}.",
-"desert_queen_talk_darta_begin",[
+"minor_queen_talk_darta_begin",[
   (try_begin),
     (neg|check_quest_active, "qst_blossom_in_the_desert"),
     (setup_quest_text,"qst_blossom_in_the_desert"),
@@ -91761,44 +91761,44 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (assign, "$temp1", 1),
 ]],
 
-[anyone|plyr, "desert_queen_talk_darta_begin",[
+[anyone|plyr, "minor_queen_talk_darta_begin",[
   (this_or_next|quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 2),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"Your mother sent me. She has not forgotten you - and she would see you free of the {s6}.",
-"desert_queen_rescue_begin",[
+"minor_queen_rescue_begin",[
 ]],
 
-[anyone, "desert_queen_rescue_begin",[
+[anyone, "minor_queen_rescue_begin",[
 ],"My mother... so she has not forgotten. That is more than I expected. But tell her this - I am not coming home. Not in chains, not in a litter, not under any name she or my father give to it. He signed my life away to a man whose own household feared him. He did not ask. He did not warn me. He counted coins and called it duty. If my mother wished to spare me that fate, she had her chance. I will not be given again. Tell her I am well. Tell her I am alive. That will have to be enough.",
 "close_window",[
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
 ]],
 
-[anyone|plyr, "desert_queen_talk_darta_begin",[
+[anyone|plyr, "minor_queen_talk_darta_begin",[
   (eq, "$temp1", 1),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"A Roman betrothal... your father traded you like a prize. Perhaps the {s6} merely claimed what he had already sold.",
-"desert_queen_talk_darta_begin_2",[
+"minor_queen_talk_darta_begin_2",[
   (assign, "$temp1", 2),
 ]],
 
-[anyone, "desert_queen_talk_darta_begin_2",[
+[anyone, "minor_queen_talk_darta_begin_2",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
 ],"You speak plainly, stranger. My father is a king - he does what kings do. And the Roman he chose... I have heard stories of that man. Stories that do not end well for his wives. {s5} took me by the sword. He has never once raised it against me. Draw what conclusions you will from that.",
-"desert_queen_talk_darta_begin",[
+"minor_queen_talk_darta_begin",[
 ]],
 
-[anyone|plyr, "desert_queen_talk_darta_begin",[
+[anyone|plyr, "minor_queen_talk_darta_begin",[
 ],"Forgive me now - I must be on my way.",
-"desert_queen_leave",[]],
+"minor_queen_leave",[]],
 
-[anyone|plyr, "desert_queen",[
+[anyone|plyr, "minor_queen",[
   (eq, "$g_talk_troop_met", 0),
 ],"May I have the honor of knowing more about you, my lady?",
-"desert_queen_ask",[]],
+"minor_queen_ask",[]],
 
-[anyone, "desert_queen_ask",[
+[anyone, "minor_queen_ask",[
   (assign, "$g_talk_troop_met", 1),
   (str_store_faction_name, s32, "$g_talk_troop_faction"),
   (str_store_troop_name, s30, "$g_talk_troop"),
@@ -91817,13 +91817,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (str_store_troop_name, s31, ":spouse"),
     (str_store_string, s23, "@{s23} My husband is {s31}."),
   (try_end),
-],"{s23}", "desert_queen_pretalk",[]],
+],"{s23}", "minor_queen_pretalk",[]],
 
-[anyone|plyr, "desert_queen",[
+[anyone|plyr, "minor_queen",[
 ],"Is there anything I can do for you, my Lady?",
-"desert_queen_ask_for_quest",[]],
+"minor_queen_ask_for_quest",[]],
 
-[trp_baquates_queen, "desert_queen_ask_for_quest",[
+[trp_baquates_queen, "minor_queen_ask_for_quest",[
   (neg|check_quest_active, "qst_blossom_in_the_desert"),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
@@ -91831,17 +91831,17 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (str_store_faction_name, s6, "fac_autololes"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
 ],"My daughter ... I am so worried about her. She was kidnapped by the evil {s5} of the {s6}. I don't know where she is and if she is still alive. If you find her and bring her back to me, I will reward you generously.",
-"desert_queen_darta_quest",[]],
+"minor_queen_darta_quest",[]],
 
-[anyone|plyr, "desert_queen_darta_quest",[
+[anyone|plyr, "minor_queen_darta_quest",[
 ],"I will find your daughter and bring her back to you, my Lady.",
-"desert_queen_darta_quest_agree",[]],
+"minor_queen_darta_quest_agree",[]],
 
-[anyone, "desert_queen_darta_quest_agree",[
+[anyone, "minor_queen_darta_quest_agree",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"I am so grateful. I hope you will find her. I am sure she is still alive, but I don't know where she is. {s5} is a cruel man, but I hope you will find her and bring her back to me. The {s6} live in the desert, but I don't know where exactly. They are nomads and they move around a lot. But maybe you can find some clues in the desert - or follow one of their raider groups when they retreat to their lair. Do not waste too much time! Please find her and bring her back to me.",
-"desert_queen_darta_quest_agree_2",[
+"minor_queen_darta_quest_agree_2",[
     (setup_quest_text,"qst_blossom_in_the_desert"),
     (str_store_troop_name, s30, "$g_talk_troop"),
     (str_store_troop_name, s4, "trp_baquates_princess"),
@@ -91850,34 +91850,34 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
 ]],
 
-[anyone|plyr, "desert_queen_darta_quest_agree_2",[
+[anyone|plyr, "minor_queen_darta_quest_agree_2",[
 ],"I will be swift as the wind.",
-"desert_queen_leave",[]],
-[anyone|plyr, "desert_queen_darta_quest_agree_2",[
+"minor_queen_leave",[]],
+[anyone|plyr, "minor_queen_darta_quest_agree_2",[
 ],"The gods will guard my path.",
-"desert_queen_leave",[]],
+"minor_queen_leave",[]],
 
-[anyone|plyr, "desert_queen_darta_quest",[
+[anyone|plyr, "minor_queen_darta_quest",[
 ],"I don't have time for this quest right now.",
-"desert_queen_darta_quest_notime",[]],
+"minor_queen_darta_quest_notime",[]],
 
-[anyone, "desert_queen_darta_quest_notime",[
+[anyone, "minor_queen_darta_quest_notime",[
 ],"If only I had someone who could help me to find my daughter ...",
-"desert_queen_pretalk",[]],
+"minor_queen_pretalk",[]],
 
-[anyone, "desert_queen_ask_for_quest",[
+[anyone, "minor_queen_ask_for_quest",[
 ],"Currently I am not in need of a hero.",
-"desert_queen",[]],
+"minor_queen",[]],
 
-[anyone|plyr, "desert_queen",[
+[anyone|plyr, "minor_queen",[
 ],"Ave atque vale.",
-"desert_queen_leave",[]],
+"minor_queen_leave",[]],
 
-[anyone, "desert_queen_leave",[
+[anyone, "minor_queen_leave",[
 ],"Farewell, {playername}.",
 "close_window",[]],
 
-[anyone, "desert_queen_pretalk",[
+[anyone, "minor_queen_pretalk",[
   (try_begin),
 		(ge,"$g_talk_troop_relation",30),
 		(str_store_string, s23, "@Anything else, my hounorable {playername}?"),
@@ -91888,9 +91888,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 		(str_store_string, s23, "@There are other things that I have to do, you may want to leave?"),
 	(try_end),
 ],"{s23}",
-"desert_queen",
+"minor_queen",
 []],
-##end desert queen
+##end minor queen
 
 ### minor kings
 [anyone, "start",[
@@ -91910,7 +91910,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 		(str_store_string, s23, "@You smelly jackal are the butcher of my people? What do you want?"),
 	(try_end),
 ],"{s23}",
-"desert_king_talk",[]],
+"minor_fac_king_talk",[]],
 
 [anyone, "start",[
   (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
@@ -91928,7 +91928,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 		(str_store_string, s23, "@I don't think there is much to talk about. But hopefully you surprise me."),
 	(try_end),
 ],"{s23}",
-"desert_king_talk",
+"minor_fac_king_talk",
 []],
 
 ##desert king talk
@@ -91938,12 +91938,12 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (str_store_troop_name, s30, "$g_talk_troop"),
   (str_store_faction_name, s31, "$g_talk_troop_faction"),
 ],"Welcome to my house stranger. I am {s30}, ruler of {s31}. Who are you and want brings you here?",
-"desert_king_player_intro",[]],
+"minor_fac_king_player_intro",[]],
 
-[anyone|plyr, "desert_king_player_intro",[],"I am {playername}. I travel through this lands.", "desert_king_intro2",[]],
-[anyone|plyr, "desert_king_player_intro",[],"I am {playername}, marke it down, you will hear from me. I travel through this lands searching for treasures.", "desert_king_intro2",[]],
+[anyone|plyr, "minor_fac_king_player_intro",[],"I am {playername}. I travel through this lands.", "minor_fac_king_intro2",[]],
+[anyone|plyr, "minor_fac_king_player_intro",[],"I am {playername}, marke it down, you will hear from me. I travel through this lands searching for treasures.", "minor_fac_king_intro2",[]],
 
-[anyone, "desert_king_intro2",[(try_begin),
+[anyone, "minor_fac_king_intro2",[(try_begin),
 		(ge,"$g_talk_troop_relation",30),
 		(str_store_string, s23, "@Ah yes, {playername}, I have heard from you many good things."),
 	(else_try),
@@ -91955,7 +91955,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	(else_try),
 		(str_store_string, s23, "@{playername}! I have heard from you. Have you come to bring us plagues?"),
 	(try_end),
-],"{s23}", "desert_king",[]],
+],"{s23}", "minor_fac_king",[]],
 
 [anyone, "start",[
   (is_between, "$g_talk_troop", minor_kings_begin, minor_kings_end),
@@ -91971,9 +91971,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 	(else_try),
 		(str_store_string, s23, "@Have you come to bring a plague over my people?"),
 	(try_end),],
-  "{s23}", "desert_king",[]],
+  "{s23}", "minor_fac_king",[]],
 
-[anyone, "desert_king_pretalk",
+[anyone, "minor_fac_king_pretalk",
 [(try_begin),
 		(ge,"$g_talk_troop_relation",30),
 		(str_store_string, s23, "@Anything else, {playername}?"),
@@ -91987,68 +91987,95 @@ I will need 500 denarii.", "bardo_sing2",[]],
 		(str_store_string, s23, "@Anything else ..."),
 	(try_end),
  ],
-  "{s23}", "desert_king",
+  "{s23}", "minor_fac_king",
 []],
 
-[anyone|plyr, "desert_king",[
+[anyone|plyr, "minor_fac_king",[
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_player_tributary, 1),
-],"I demand a special tribute.",
-"desert_king_tribute",[]],
+],"Your regular tribute is no longer sufficient. I require an additional payment from you.",
+"minor_fac_king_tribute",[]],
 
-[anyone, "desert_king_tribute",[
-],"What? We have always paid the tribute! It would be a offense to our people to request additional tributes.",
-"desert_king_tribute2",[
+[anyone, "minor_fac_king_tribute",[
+],"An additional tribute? We have always honored our obligations without complaint. To demand yet more is an affront to our dignity and an insult to our people.",
+"minor_fac_king_tribute2",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-3),
 ]],
 
-[anyone|plyr, "desert_king_tribute2",[],"You heard right. I demand additional 1,000 denarii.", "desert_king_tribute3",[]],
+[anyone|plyr, "minor_fac_king_tribute2",[
+],"I require an additional 5,000 denarii — a modest price for the protection I afford you.",
+"minor_fac_king_tribute3",[
+  (assign, "$temp", 5000),
+]],
+[anyone|plyr, "minor_fac_king_tribute2",[
+],"I require an additional 10,000 denarii — think of it as surety for your people's continued safety.",
+"minor_fac_king_tribute3",[
+  (assign, "$temp", 10000),
+]],
+[anyone|plyr, "minor_fac_king_tribute2",[
+],"I require an additional 15,000 denarii — and I would advise you not to test my patience.",
+"minor_fac_king_tribute3",[
+  (assign, "$temp", 15000),
+]],
 
-[anyone, "desert_king_tribute3",[
+[anyone, "minor_fac_king_tribute3",[
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
   (assign, ":enemy_strength", reg0),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
   (assign, ":player_strength", reg0),
-  (val_mul, ":enemy_strength", 7),
-  (val_div, ":enemy_strength", 6),
+  # Resistance factor scales with the amount demanded: 5000->7, 10000->10, 15000->13
+  (store_div, ":demand_factor", "$temp", 5000),
+  (val_mul, ":demand_factor", 3),
+  (val_add, ":demand_factor", 4),
+  # Smooth relation modifier: high leader relation eases compliance, low/hostile stiffens it.
+  # rel_factor = (100 - relation/5), giving range 80..120 (i.e. +-20% over the -100..+100 relation range).
+  # Final threshold: enemy_strength * demand_factor * rel_factor / 600  (600 = 6 * 100)
+  # (troop_get_slot, ":relation", "$g_talk_troop", slot_troop_player_relation),
+  (store_div, ":rel_divisor", "$g_talk_troop_effective_relation", 5),
+  (store_sub, ":rel_factor", 100, ":rel_divisor"),
+  (val_mul, ":enemy_strength", ":demand_factor"),
+  (val_mul, ":enemy_strength", ":rel_factor"),
+  (val_div, ":enemy_strength", 600),
   (gt, ":player_strength", ":enemy_strength"),
-],"Bah, hear take 1,000 denarii. Now you should better leave.",
+],"You leave us no choice. Here — take your silver, and may the gods bear witness to this injustice. Now go, before what little patience we have left runs dry.",
 "close_window",[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10)
+  (troop_add_gold, "trp_player", "$temp"),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20)
 ]],
 
-[anyone, "desert_king_tribute3",[
-],"I will pay you nothing. You will never see coins from us anymore. I declare our independence. Now leave this place.",
+[anyone, "minor_fac_king_tribute3",[
+],"Enough! We will not be bled dry by your greed. From this day forth we are no longer bound to you — our people are free! Take your threats and leave before this ends in blood.",
 "close_window",[
   (faction_set_slot, "$g_talk_troop_faction", slot_faction_player_tributary, -1),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
-  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
-  (display_log_message, "@Your tributary has declared independence.", message_negative),
+  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", -10),
+  (display_log_message, "@Your tributary has declared independence!", message_negative),
   (str_clear, s40),
-  (add_faction_note_from_sreg, "$g_talk_troop_faction", 3, s40, 0),
 ]],
 
-[anyone|plyr, "desert_king_tribute2",[],"Forget it.", "desert_king_pretalk",[]],
+[anyone|plyr, "minor_fac_king_tribute2",[
+],"Forget I said anything. Let us speak of other matters.",
+"minor_fac_king_pretalk",[]],
 
-[trp_saka_king|plyr, "desert_king",[
+[trp_saka_king|plyr, "minor_fac_king",[
   (quest_slot_eq, "qst_zarinaia", slot_quest_current_state, 4),
-],"I am collecting information about queen Zarinaia, the golden one. I humbly ask if you could help me, my Lord.", "desert_king_zarinaia_talk_1",[]],
+],"I am collecting information about queen Zarinaia, the golden one. I humbly ask if you could help me, my Lord.", "minor_fac_king_zarinaia_talk_1",[]],
 
-[anyone, "desert_king_zarinaia_talk_1",[
+[anyone, "minor_fac_king_zarinaia_talk_1",[
   (store_relation, reg33, "fac_player_faction", "fac_dahae"),
   (lt, reg33, 50),
   (str_store_faction_name, s25, "fac_dahae"),
-],"Why should I? I don't trust you enough! First show respect to us, our people and our culture before I share such information with you.^^(Hint: You need at least 50 relation with the {s25} faction. Current relation: {reg33})", "desert_king_pretalk",[]],
+],"Why should I? I don't trust you enough! First show respect to us, our people and our culture before I share such information with you.^^(Hint: You need at least 50 relation with the {s25} faction. Current relation: {reg33})", "minor_fac_king_pretalk",[]],
 
-[anyone, "desert_king_zarinaia_talk_1",[
+[anyone, "minor_fac_king_zarinaia_talk_1",[
 ],
 "Very well. I will share my knowledge about our legendary queen Zarinaia with you, {playername}. She was the sister and wife of king Cydraeus. After he died she was crowned queen,"
 +" although being still young. She assemblied amries, among whom the women would fight alongside the men. And there are still tribes having women fighting, in particular if there is a shortage of men."
 +" ^However, Zarinaia was a strikingly beautiful woman whose beauty surpassed that of all other women. Her hair was golden as the sun, and her wisdom wide as the steppes."
 +" She crushed many enemy tribes and she reputedly founded multiple cities.",
-"desert_king_zarinaia_talk_2",[]],
+"minor_fac_king_zarinaia_talk_2",[]],
 
-[anyone, "desert_king_zarinaia_talk_2",[
+[anyone, "minor_fac_king_zarinaia_talk_2",[
 ],
 "She then married the Parthian king Marmares. He thought he could use our people as allies in his war against the Medes. By that time the Parthians were vassals of the Medes."
 +" At first, Zarinaia joined her husband. But during battle Stryngaeus, the son-in-law of the Median king Cyaxares, captured her. But he was struck by her beauty and thus let her go."
@@ -92056,17 +92083,17 @@ I will need 500 denarii.", "bardo_sing2",[]],
 +" Of cours,e Zarinaia was insulted and as she is a Saka, and not a worthless Parthian women, she just slain her husband with her sword. Then she made peace with the Medes and donated land to them."
 +" Stryngaeus also fell in love with Zarinaia, he just couldn't resist her beauty. But she refused as he was married and chastised him for his infidelity towards his own wife and concubines."
 +" Stryngaeus wrote a farewell letter to Zarinaia and decided to commit suicide.",
-"desert_king_zarinaia_talk_3",[]],
+"minor_fac_king_zarinaia_talk_3",[]],
 
-[anyone, "desert_king_zarinaia_talk_3",[
+[anyone, "minor_fac_king_zarinaia_talk_3",[
 ],
 "She was buried in a great burial mound. It lies east of here. I will mark it on your map.",
-"desert_king_zarinaia_talk_4",[]],
+"minor_fac_king_zarinaia_talk_4",[]],
 
-[anyone|plyr, "desert_king_zarinaia_talk_4",[
+[anyone|plyr, "minor_fac_king_zarinaia_talk_4",[
 
 ],"Thank you for the information, my Lord.",
-"desert_king_pretalk",[
+"minor_fac_king_pretalk",[
   (quest_set_slot, "qst_zarinaia", slot_quest_current_state, 5),
   (str_store_troop_name_link, s17, "trp_saka_king"),
   (str_store_faction_name_link, s18, "fac_dahae"),
@@ -92075,47 +92102,47 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_set_flags, "p_kurgan", pf_always_visible, 1),
 ]],
 
-[trp_baquates_king|plyr, "desert_king",[
+[trp_baquates_king|plyr, "minor_fac_king",[
   (check_quest_active, "qst_blossom_in_the_desert"),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"Your spouse asked to find {s20}. You may know where she was last seen?",
-"desert_king_quest_daughter_talk_spouse",[
+"minor_fac_king_quest_daughter_talk_spouse",[
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
 ]],
-[anyone, "desert_king_quest_daughter_talk_spouse",[
+[anyone, "minor_fac_king_quest_daughter_talk_spouse",[
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"My wife sent you. Of course she did. She has never accepted it - not the silence, not the grave. {s20}... she was sent to Carthago. A hundred men with her. The escort never arrived. I sent riders. They found burnt wagons, dead horses, bodies in the sand. One of the bodies - we could not say with certainty. But we buried her. My wife refused to bury her. That is the difference between us.",
-"desert_king_quest_daughter_talk_spouse_2",[]],
+"minor_fac_king_quest_daughter_talk_spouse_2",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_spouse_2",[
 ],"Do you believe she might still be alive?",
-"desert_king_quest_daughter_talk_spouse_3",[]],
+"minor_fac_king_quest_daughter_talk_spouse_3",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_spouse_2",[
 ],"Who was responsible for the attack?",
-"desert_king_quest_daughter_talk_spouse_4",[]],
+"minor_fac_king_quest_daughter_talk_spouse_4",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_spouse_2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_spouse_2",[
 ],"I am sorry. I will do what I can.",
-"desert_king_leave",[]],
+"minor_fac_king_leave",[]],
 
-[anyone, "desert_king_quest_daughter_talk_spouse_3",[
+[anyone, "minor_fac_king_quest_daughter_talk_spouse_3",[
   (str_store_faction_name, s6, "fac_autololes"),
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
 ],"I ceased hoping. But I never saw her face among the dead. The riders said one body was unrecognisable - burned beyond naming. We assumed. Perhaps we assumed too quickly. If she still lives, there is only one place she could be. The {s6} took the road that day. Their territory lies to the south, in the deep desert. Their leader, {s5}, does not give back what he takes. Go. Look. If you find her - bring her back to her mother at least. A king must be certain before he grieves twice.",
-"desert_king_quest_daughter_talk_spouse_leave",[]],
+"minor_fac_king_quest_daughter_talk_spouse_leave",[]],
 
-[anyone, "desert_king_quest_daughter_talk_spouse_4",[
+[anyone, "minor_fac_king_quest_daughter_talk_spouse_4",[
   (str_store_faction_name, s6, "fac_autololes"),
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
 ],"{s6} raiders. Scavengers of the desert roads. They prey on caravans, on escorts, on anything that crosses their ground unguarded. I had thought a hundred men enough. I was wrong. If any of my daughter survived that road, {s5} has her. He leads them. A fearless man, they say. I would call him something else.",
-"desert_king_quest_daughter_talk_spouse_leave",[]],
+"minor_fac_king_quest_daughter_talk_spouse_leave",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_spouse_leave",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_spouse_leave",[
 ],"I will search for her. You have my word.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
@@ -92124,75 +92151,75 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 2, "@You spoke with {s20}, the father of {s4}. He believes the {s6} took her during the escort ambush on the road to Carthago. Their leader is a man named {s5}. Seek out the {s6} in the southern desert.", 0),
 ]],
 
-[trp_baquates_king|plyr, "desert_king",[
+[trp_baquates_king|plyr, "minor_fac_king",[
   (check_quest_active, "qst_blossom_in_the_desert"),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"I found valueable information about your daughter {s20}.",
-"desert_king_quest_daughter_found_return_1",[
+"minor_fac_king_quest_daughter_found_return_1",[
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 2),
 ]],
 
-[anyone, "desert_king_quest_daughter_found_return_1",[
+[anyone, "minor_fac_king_quest_daughter_found_return_1",[
 ],"My wife sent you, I presume. She has never accepted the grave. Speak then. What did you find?",
-"desert_king_quest_daughter_found_return_2",[]],
+"minor_fac_king_quest_daughter_found_return_2",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_2",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"She is alive. I spoke with her myself. {s5} of the {s6} took her from the ambush and made her his wife. She lives in his camp in the deep desert.",
-"desert_king_quest_daughter_found_return_3",[]],
+"minor_fac_king_quest_daughter_found_return_3",[]],
 
-[anyone, "desert_king_quest_daughter_found_return_3",[
+[anyone, "minor_fac_king_quest_daughter_found_return_3",[
 ],"Alive. She is alive. I buried a name, not a child, and I told myself it was mercy. What did she say? Does she know we - does she know her mother is looking for her?",
-"desert_king_quest_daughter_found_return_4",[]],
+"minor_fac_king_quest_daughter_found_return_4",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_4",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_4",[
 ],"She knows. I told her. She refused to come home.",
-"desert_king_quest_daughter_found_return_5",[]],
+"minor_fac_king_quest_daughter_found_return_5",[]],
 
-[anyone, "desert_king_quest_daughter_found_return_5",[
+[anyone, "minor_fac_king_quest_daughter_found_return_5",[
 ],"She refused. My daughter - a king's daughter - looked a messenger in the eye and refused to come home. To her family. To her obligations. Because of a desert raider with a sword and a tent.",
-"desert_king_quest_daughter_found_return_6",[]],
+"minor_fac_king_quest_daughter_found_return_6",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_6",[
 ],"She said she would not be sold again. Those were her words, not mine.",
-"desert_king_quest_daughter_found_return_7",[\
+"minor_fac_king_quest_daughter_found_return_7",[\
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
 ]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_6",[
 ],"She seemed... content. Whatever her reasons, she made her choice clearly.",
-"desert_king_quest_daughter_found_return_7",[]],
+"minor_fac_king_quest_daughter_found_return_7",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_6",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_6",[
 ],"She has built a life there. Whether you approve or not, she is not a prisoner any longer.",
-"desert_king_quest_daughter_found_return_7",[\
+"minor_fac_king_quest_daughter_found_return_7",[\
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
 ]],
 
-[anyone, "desert_king_quest_daughter_found_return_7",[
+[anyone, "minor_fac_king_quest_daughter_found_return_7",[
 ],"She can tell herself whatever she wishes. A betrothal is a contract. An alliance is a contract. These things do not dissolve because a girl decides she prefers her captor to her father. I want her back. Will you bring her, or did you come here only to deliver bad news?",
-"desert_king_quest_daughter_found_return_8",[]],
+"minor_fac_king_quest_daughter_found_return_8",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_8",[
 ],"Your gold is enough reason. I will find a way to bring her out, willing or not.",
-"desert_king_quest_daughter_found_return_accept",[]],
+"minor_fac_king_quest_daughter_found_return_accept",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_8",[
 ],"She refused once. I will try to persuade her. I make no promises.",
-"desert_king_quest_daughter_found_return_accept",[]],
+"minor_fac_king_quest_daughter_found_return_accept",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_found_return_8",[
+[anyone|plyr, "minor_fac_king_quest_daughter_found_return_8",[
 ],"I will not bring someone back against their will. Whatever she owes you, that debt is not mine to collect.",
-"desert_king_quest_daughter_found_return_refuse",[]],
+"minor_fac_king_quest_daughter_found_return_refuse",[]],
 
-[anyone, "desert_king_quest_daughter_found_return_accept",[
+[anyone, "minor_fac_king_quest_daughter_found_return_accept",[
   (call_script, "script_recruit_troop_as_companion","trp_npc31"),
 ],"Good. I will give you Ra Karak - my finest guard. He knows the desert roads and he knows how to be quiet about what he does there. Bring her back. There will be gold in it for you - considerable gold.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (str_store_faction_name, s6, "fac_autololes"),
@@ -92201,9 +92228,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
 ]],
 
-[anyone, "desert_king_quest_daughter_found_return_refuse",[
+[anyone, "minor_fac_king_quest_daughter_found_return_refuse",[
 ],"You refuse. You stand in my hall and tell me you will not do the one thing I ask. Then get out. And tell my wife - since she sent you - that her daughter has chosen a life in the sand over her family. See if that brings her comfort.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
@@ -92217,112 +92244,112 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
 ]],
 
-[trp_baquates_king|plyr, "desert_king",[
+[trp_baquates_king|plyr, "minor_fac_king",[
   (check_quest_active, "qst_blossom_in_the_desert"),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 0),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"I want to talk about your daughter {s20}.", "desert_king_quest_daughter_talk",[
+],"I want to talk about your daughter {s20}.", "minor_fac_king_quest_daughter_talk",[
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 2),
 ]],
 
-[anyone, "desert_king_quest_daughter_talk",[
+[anyone, "minor_fac_king_quest_daughter_talk",[
 ],"I buried her. I made the declaration, I held the rite, and I buried her. One of the bodies from the escort - we could not name it with certainty, but a king cannot leave that open. I had a wife who would not eat, a court that needed a conclusion, and a grave that needed a name. So I gave it one. What do you want with a dead girl?",
-"desert_king_quest_daughter_talk2",[]],
+"minor_fac_king_quest_daughter_talk2",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk2",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"She is not dead. I have spoken with her. {s5} of the {s6} took her from the ambush. She is his wife now, living in the deep desert.",
-"desert_king_quest_daughter_talk3",[]],
+"minor_fac_king_quest_daughter_talk3",[]],
 
-[anyone, "desert_king_quest_daughter_talk3",[
+[anyone, "minor_fac_king_quest_daughter_talk3",[
   (str_store_faction_name, s6, "fac_autololes"),
 ],"I know. I have always known it was likely. The {s6} worked that road. A traveller came through months ago and described the new queen of their camp - that description was not a stranger's face. I chose not to hear it. Reopening a grave is harder than digging it. Say what you came to say.",
-"desert_king_quest_daughter_talk4",[]],
+"minor_fac_king_quest_daughter_talk4",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk4",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk4",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_faction_name, s7, "fac_baquates"),
 ],"I spoke with her at length. She confirmed everything - the ambush on the Carthago road, {s5} taking her, all of it. She named you as her father. She spoke of the {s7}.",
-"desert_king_quest_daughter_talk5",[]],
+"minor_fac_king_quest_daughter_talk5",[]],
 
-[anyone, "desert_king_quest_daughter_talk5",[
+[anyone, "minor_fac_king_quest_daughter_talk5",[
   (ge,"$g_talk_troop_relation",10),
 ],"You I trust. Then she lives. She lives and she is in that desert raider's tent while her father sits here with a false grave and a wife who will not stop weeping. This is not how a king's daughter ends.",
-"desert_king_quest_daughter_talk6",[]],
+"minor_fac_king_quest_daughter_talk6",[]],
 
-[anyone, "desert_king_quest_daughter_talk5",[
+[anyone, "minor_fac_king_quest_daughter_talk5",[
   (str_store_faction_name, s6, "fac_autololes"),
 ],"You could be lying. You could be anyone. But... a traveller passing through some weeks past described the new queen of the {s6}. The description he gave could not have been a stranger. That hair. Those eyes. My wife has wept every night since. I buried a name, not a child.",
-"desert_king_quest_daughter_talk6",[]],
+"minor_fac_king_quest_daughter_talk6",[]],
 
-[anyone, "desert_king_quest_daughter_talk6",[
+[anyone, "minor_fac_king_quest_daughter_talk6",[
 ],"She must come home. She is my blood - I sat with a false grave for months, stranger, and my wife has not slept a single night without weeping. That is not nothing. But she also has obligations. Arrangements were made. There are men waiting on agreements, alliances that do not hold themselves together. She is my daughter and I need her back. Both things are true. What can be done?",
-"desert_king_quest_daughter_talk7",[]],
+"minor_fac_king_quest_daughter_talk7",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk7",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk7",[
 ],"So a king who cannot rescue his own daughter comes to me. Tell me - what exactly is it you are good for?",
-"desert_king_quest_daughter_talk81",[
+"minor_fac_king_quest_daughter_talk81",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
 ]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk7",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk7",[
 ],"You are king. Why does this fall to a stranger?",
-"desert_king_quest_daughter_talk81",[]],
+"minor_fac_king_quest_daughter_talk81",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk7",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk7",[
 ],"I understand. A king cannot be seen to act in desperation. It would invite every enemy you have.",
-"desert_king_quest_daughter_talk81",[
+"minor_fac_king_quest_daughter_talk81",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
 ]],
 
-[anyone, "desert_king_quest_daughter_talk81",[
+[anyone, "minor_fac_king_quest_daughter_talk81",[
 ],"Because I am a king, and kings do not lead raids into the desert over a woman - even their own blood. My warriors would ask why I did not mourn and move on. Weakness is remembered longer than grief. I need someone with no such reputation to lose. Someone like you. Speak. What would you do?",
-"desert_king_quest_daughter_talk_action",[]],
+"minor_fac_king_quest_daughter_talk_action",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action",[
 ],"You could send an army. Ride south and take her back by force.",
-"desert_king_quest_daughter_talk_action2",[]],
+"minor_fac_king_quest_daughter_talk_action2",[]],
 
-[anyone, "desert_king_quest_daughter_talk_action2",[
+[anyone, "minor_fac_king_quest_daughter_talk_action2",[
   (str_store_faction_name, s6, "fac_autololes"),
 ],"And bury another hundred men in the sand? The {s6} know their terrain better than my scouts know their own names. I would lose warriors and still not see her again. No. There must be another way.",
-"desert_king_quest_daughter_talk_action2b",[]],
+"minor_fac_king_quest_daughter_talk_action2b",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action2b",[
 ],"Then it seems your army is as useless as your grief. Fine. I will go myself.",
-"desert_king_quest_daughter_talk_action3",[
+"minor_fac_king_quest_daughter_talk_action3",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
 ]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action2b",[
 ],"Understood. Then someone needs to go in quietly.",
-"desert_king_quest_daughter_talk_action3",[]],
+"minor_fac_king_quest_daughter_talk_action3",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action2b",[
 ],"It was worth suggesting. What other options are there?",
-"desert_king_quest_daughter_talk_action",[]],
+"minor_fac_king_quest_daughter_talk_action",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action",[
 ],"I could go to her. Find a way to bring her out.",
-"desert_king_quest_daughter_talk_action3",[]],
+"minor_fac_king_quest_daughter_talk_action3",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_action",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_action",[
 ],"She told me herself she does not wish to leave. She refused to come. I think we should respect that.",
-"desert_king_quest_daughter_talk_refuse",[]],
+"minor_fac_king_quest_daughter_talk_refuse",[]],
 
-[anyone, "desert_king_quest_daughter_talk_refuse",[
+[anyone, "minor_fac_king_quest_daughter_talk_refuse",[
 ],"She said that. Yes. I imagine she did. She has been living as his wife for months - of course she speaks like a woman who has made peace with her situation. That is not a choice, that is survival wearing the face of a choice. A king's daughter does not decide to remain with the man who slaughtered her escort. Whatever she told you, whatever she believes she feels - the agreements made in her name are not hers to break. She will come home.",
-"desert_king_quest_daughter_talk_refuse2",[]],
+"minor_fac_king_quest_daughter_talk_refuse2",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_refuse2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_refuse2",[
   (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (str_store_faction_name, s6, "fac_autololes"),
 ],"Then I will not drag her back against her will. She made her choice. I would also note - the man you arranged for her had a particular reputation with his wives. Perhaps {s5} is the lesser cruelty. I leave you to reflect on that. Better leave now or end up in my prison!",
-"desert_king_leave",[
+"minor_fac_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "@You refused to bring {s4} back against her will. The king was furious. {s4} remains with {s5} and the {s6}. The quest has been abandoned.", 0),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -15),
@@ -92332,21 +92359,21 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
 ]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_refuse2",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_refuse2",[
 ],"I understand your position. I will think on it.",
-"desert_king_leave",[]],
+"minor_fac_king_leave",[]],
 
-[anyone, "desert_king_quest_daughter_talk_action3",[
+[anyone, "minor_fac_king_quest_daughter_talk_action3",[
 ],"By what means? I will not pay a ransom. That sets a price on every daughter of every chief from here to the Atlas.",
-"desert_king_quest_daughter_talk_plan",[]],
+"minor_fac_king_quest_daughter_talk_plan",[]],
 
-[anyone|plyr, "desert_king_quest_daughter_talk_plan",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_plan",[
 ],"I will find a way in. Quietly. No ransom, no battle unless it comes to it. I will bring her out.",
-"desert_king_quest_daughter_talk_plan2",[]],
+"minor_fac_king_quest_daughter_talk_plan2",[]],
 
-[anyone, "desert_king_quest_daughter_talk_plan2",[
+[anyone, "minor_fac_king_quest_daughter_talk_plan2",[
 ],"Then go. I will give you Ra Karak - my finest guard. He knows the desert roads and he knows how to be quiet about what he does there. Bring her back alive. There will be gold in it for you - considerable gold. She is my daughter, and there are obligations on her name that do not wait for sentiment.",
-"desert_king_quest_daughter_talk_plan3",[
+"minor_fac_king_quest_daughter_talk_plan3",[
   (call_script, "script_recruit_troop_as_companion","trp_npc31"),
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
@@ -92356,21 +92383,21 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You have spoken with {s20}. {s4} is held by {s5}, leader of the {s6}, somewhere in the deep desert. {s20} wants her back to honour the Roman betrothal. He gave you Ra Karak as a guide. Find a way to bring her out - quietly if possible.", 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
 ]],
-[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_plan3",[
 ],"It will not be an easy task. I expect a high reward.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
 ]],
-[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_plan3",[
 ],"Consider it done.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
 ]],
-[anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
+[anyone|plyr, "minor_fac_king_quest_daughter_talk_plan3",[
 ],"I will bring her back.",
-"desert_king_leave",[
+"minor_fac_king_leave",[
 ]],
 
 #gifting the king
-[anyone|plyr, "desert_king",[
+[anyone|plyr, "minor_fac_king",[
 ],"I have come to bring you a gift.",
 "minor_faction_king_gift_1",[]],
 
@@ -92416,11 +92443,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_change_player_relation_with_faction", "$g_encountered_party_faction", 2),
   (troop_remove_items,"trp_player","itm_velvet", 1),
 ]], #velvet +5 relations
-[anyone|plyr, "minor_faction_king_gift_2",[],"Nevermind.", "desert_king_pretalk",[]],
+[anyone|plyr, "minor_faction_king_gift_2",[],"Nevermind.", "minor_fac_king_pretalk",[]],
 
-[anyone, "minor_faction_king_gift_give",[],"We graciously accept your gift, {playername}.", "desert_king_pretalk",[]],
+[anyone, "minor_faction_king_gift_give",[],"We graciously accept your gift, {playername}.", "minor_fac_king_pretalk",[]],
 
-[anyone|plyr, "desert_king",[
+[anyone|plyr, "minor_fac_king",[
   (check_quest_active, "qst_blossom_in_the_desert"),
   (eq, "$g_talk_troop", "trp_baquates_king"),
   (this_or_next|quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 5),
@@ -92428,79 +92455,79 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_count_prisoners_of_type, ":darta_count", "p_main_party", "trp_baquates_princess"),
   (eq, ":darta_count", 0),
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"My lord — I must speak with you about your daughter {s20}.", "desert_king_darta_1_talk",[]],
+],"My lord — I must speak with you about your daughter {s20}.", "minor_fac_king_darta_1_talk",[]],
 
-[anyone, "desert_king_darta_1_talk",[],"Then speak. I trust the news is good.",
-"desert_king_darta_1_talk1",[]],
+[anyone, "minor_fac_king_darta_1_talk",[],"Then speak. I trust the news is good.",
+"minor_fac_king_darta_1_talk1",[]],
 
-[anyone|plyr, "desert_king_darta_1_talk1",[],"It is not. Something went wrong.",
-"desert_king_darta_1_talk2",[]],
+[anyone|plyr, "minor_fac_king_darta_1_talk1",[],"It is not. Something went wrong.",
+"minor_fac_king_darta_1_talk2",[]],
 
-[anyone, "desert_king_darta_1_talk2",[],"Wrong? What do you mean? Where is she? Speak plainly — what has happened to my daughter?",
-"desert_king_darta_1_talk3",[
+[anyone, "minor_fac_king_darta_1_talk2",[],"Wrong? What do you mean? Where is she? Speak plainly — what has happened to my daughter?",
+"minor_fac_king_darta_1_talk3",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king_darta_1_talk3",[
+[anyone|plyr, "minor_fac_king_darta_1_talk3",[
 ],"A serpent's bite took her. She died before we could find help.",
-"desert_king_darta_1_talk_snake",[
+"minor_fac_king_darta_1_talk_snake",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone, "desert_king_darta_1_talk_snake",[
+[anyone, "minor_fac_king_darta_1_talk_snake",[
 ],"A serpent... she was afraid of them even as a child. By all the gods — did you at least bury her with honour?",
-"desert_king_darta_1_player_angry",[
+"minor_fac_king_darta_1_player_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king_darta_1_talk3",[
+[anyone|plyr, "minor_fac_king_darta_1_talk3",[
 ],"A lion fell upon us in the night. She did not survive.",
-"desert_king_darta_1_talk_lion",[
+"minor_fac_king_darta_1_talk_lion",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone, "desert_king_darta_1_talk_lion",[
+[anyone, "minor_fac_king_darta_1_talk_lion",[
 ],"A lion. In the night. You lead armed men — and you could not protect a single woman from a beast? You have shamed yourself before me.",
-"desert_king_darta_1_player_angry",[
+"minor_fac_king_darta_1_player_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king_darta_1_talk3",[
+[anyone|plyr, "minor_fac_king_darta_1_talk3",[
 ],"We were set upon by raiders on the road. She was killed before we could regroup.",
-"desert_king_darta_1_talk_bandit",[
+"minor_fac_king_darta_1_talk_bandit",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone, "desert_king_darta_1_talk_bandit",[
+[anyone, "minor_fac_king_darta_1_talk_bandit",[
 ],"You pulled her out of one raider's hands only to lose her to another? I should never have trusted this to a stranger.",
-"desert_king_darta_1_player_angry",[
+"minor_fac_king_darta_1_player_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king_darta_1_player_angry",[
-],"Nevertheless I want at least a minor payment to cover my expenses.", "desert_king_darta_angry",[
+[anyone|plyr, "minor_fac_king_darta_1_player_angry",[
+],"Nevertheless I want at least a minor payment to cover my expenses.", "minor_fac_king_darta_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king_darta_1_player_angry",[
-],"The gods did not favor me, I am sorry.", "desert_king_darta_angry_noreward",[
+[anyone|plyr, "minor_fac_king_darta_1_player_angry",[
+],"The gods did not favor me, I am sorry.", "minor_fac_king_darta_angry_noreward",[
 ]],
 
-[anyone, "desert_king_darta_angry_noreward",[],"I see. Then get out of my court. Never return.",
+[anyone, "minor_fac_king_darta_angry_noreward",[],"I see. Then get out of my court. Never return.",
 "close_window",[
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (add_xp_as_reward, 5000),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone, "desert_king_darta_angry",[],"What did you say? You... you jackal! You want a reward? For what?! Get out of my court. Never return.",
+[anyone, "minor_fac_king_darta_angry",[],"What did you say? You... you jackal! You want a reward? For what?! Get out of my court. Never return.",
 "close_window",[
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (add_xp_as_reward, 5000),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 
-[anyone|plyr, "desert_king",[
+[anyone|plyr, "minor_fac_king",[
   (check_quest_active, "qst_blossom_in_the_desert"),
   (party_count_prisoners_of_type, ":darta_count", "p_main_party", "trp_baquates_princess"),
   (gt, ":darta_count", 0),
@@ -92508,129 +92535,129 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (eq, "$g_talk_troop", "trp_baquates_king"),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"My lord — I bring her back to you. Your daughter {s20} is safe and rides with me.",
-"desert_king_darta_2_talk",[]],
+"minor_fac_king_darta_2_talk",[]],
 
-[anyone, "desert_king_darta_2_talk",[
+[anyone, "minor_fac_king_darta_2_talk",[
 ],"You have done well, {playername}. I confess I had my doubts, but you have proven yourself a man of your word.",
-"desert_king_darta_2_talk2",[]],
+"minor_fac_king_darta_2_talk2",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk2",[],"Then let us speak of my reward.",
-"desert_king_darta_2_talk3",[]],
+[anyone|plyr, "minor_fac_king_darta_2_talk2",[],"Then let us speak of my reward.",
+"minor_fac_king_darta_2_talk3",[]],
 
-[anyone, "desert_king_darta_2_talk3",[
+[anyone, "minor_fac_king_darta_2_talk3",[
 ],"Of course. But first — let her stand before me.",
-"desert_king_darta_2_talk4",[]],
+"minor_fac_king_darta_2_talk4",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk4",[
+[anyone|plyr, "minor_fac_king_darta_2_talk4",[
 ],"As agreed.",
-"desert_king_darta_2_handover",[
+"minor_fac_king_darta_2_handover",[
   (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
 ]],
 
-[anyone, "desert_king_darta_2_handover",[
+[anyone, "minor_fac_king_darta_2_handover",[
 ],"Your reward, as promised — five hundred denarii.",
-"desert_king_darta_2_reward_reply",[]],
+"minor_fac_king_darta_2_reward_reply",[]],
 
-[anyone|plyr, "desert_king_darta_2_reward_reply",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_reply",[
 ],"It is enough. You have my thanks.",
-"desert_king_darta_2_reward_done",[
+"minor_fac_king_darta_2_reward_done",[
   (call_script, "script_troop_add_gold", "trp_player", 500),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
 ]],
 
-[anyone, "desert_king_darta_2_reward_done",[
+[anyone, "minor_fac_king_darta_2_reward_done",[
 ],"You have my enduring gratitude. Go well, friend.",
 "close_window",[
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (add_xp_as_reward, 500),
 ]],
 
-[anyone|plyr, "desert_king_darta_2_reward_reply",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_reply",[
 ],"Five hundred? That is rather little for what I endured.",
-"desert_king_darta_2_reward_haggle",[]],
+"minor_fac_king_darta_2_reward_haggle",[]],
 
-[anyone, "desert_king_darta_2_reward_haggle",[
+[anyone, "minor_fac_king_darta_2_reward_haggle",[
 ],"Little, you say? I am a king without a treasury. It is all I can spare.",
-"desert_king_darta_2_reward_haggle_reply",[]],
+"minor_fac_king_darta_2_reward_haggle_reply",[]],
 
-[anyone|plyr, "desert_king_darta_2_reward_haggle_reply",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_haggle_reply",[
 ],"Very well. I accept.",
-"desert_king_darta_2_reward_done",[
+"minor_fac_king_darta_2_reward_done",[
   (call_script, "script_troop_add_gold", "trp_player", 500),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",30),
 ]],
 
-[anyone|plyr, "desert_king_darta_2_reward_haggle_reply",[
-],"I demand far more than this!", "desert_king_darta_2_reward_demand",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_haggle_reply",[
+],"I demand far more than this!", "minor_fac_king_darta_2_reward_demand",[
 ]],
 
-[anyone, "desert_king_darta_2_reward_demand",[
+[anyone, "minor_fac_king_darta_2_reward_demand",[
 ],"Greed will be your undoing, mercenary. I owe you nothing now. Get out of my sight.",
-"desert_king_darta_2_reward_dismissed",[
+"minor_fac_king_darta_2_reward_dismissed",[
 ]],
 
-[anyone|plyr, "desert_king_darta_2_reward_dismissed",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_dismissed",[
 ],"--Leave without a word--",
 "close_window",[
   (add_xp_as_reward, 2000),
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
-[anyone|plyr, "desert_king_darta_2_reward_dismissed",[
+[anyone|plyr, "minor_fac_king_darta_2_reward_dismissed",[
 ],"You will pay me properly — or you will regret it.",
-"desert_king_darta_2_reward_threat",[
+"minor_fac_king_darta_2_reward_threat",[
   (add_xp_as_reward, 3000),
 ]],
-[anyone, "desert_king_darta_2_reward_threat",[
+[anyone, "minor_fac_king_darta_2_reward_threat",[
 ],"You dare threaten a king in his own court? Get out of my sight before I have you thrown in irons.",
 "close_window",[
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-30),
 ]],
 
-[anyone|plyr, "desert_king_darta_2_talk4",[
+[anyone|plyr, "minor_fac_king_darta_2_talk4",[
 ],"Not yet. We settle payment before I release her.",
-"desert_king_darta_2_talk_reward",[]],
+"minor_fac_king_darta_2_talk_reward",[]],
 
-[anyone, "desert_king_darta_2_talk_reward",[
+[anyone, "minor_fac_king_darta_2_talk_reward",[
 ],"You dare make demands before she stands before me?",
-"desert_king_darta_2_talk_reward2",[]],
+"minor_fac_king_darta_2_talk_reward2",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward2",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward2",[
 ],"If you wish to see her home safely, you will meet my price first.",
-"desert_king_darta_2_talk_reward3_1",[]],
+"minor_fac_king_darta_2_talk_reward3_1",[]],
 
-[anyone, "desert_king_darta_2_talk_reward3_1",[
+[anyone, "minor_fac_king_darta_2_talk_reward3_1",[
 ],"So what is it. How much?",
-"desert_king_darta_2_talk_reward3",[]],
+"minor_fac_king_darta_2_talk_reward3",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward3",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward3",[
 ],"One hundred thousand denarii.",
-"desert_king_darta_2_talk_reward_money",[]],
+"minor_fac_king_darta_2_talk_reward_money",[]],
 
-[anyone, "desert_king_darta_2_talk_reward_money",[
+[anyone, "minor_fac_king_darta_2_talk_reward_money",[
 ],"A hundred thousand? You might as well demand the sun. I do not have that sum.",
-"desert_king_darta_2_talk_reward_money2",[]],
+"minor_fac_king_darta_2_talk_reward_money2",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_money2",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward_money2",[
 ],"You plan to sell her to a Roman — Sextus Arthropoda of Carthage. A man of considerable wealth. One hundred thousand is nothing to him.",
-"desert_king_darta_2_talk_reward_money3",[]],
+"minor_fac_king_darta_2_talk_reward_money3",[]],
 
-[anyone, "desert_king_darta_2_talk_reward_money3",[
+[anyone, "minor_fac_king_darta_2_talk_reward_money3",[
 ],"You jackal! Do not repeat the delusions my daughter fills her head with. She will not be sold to anyone.",
-"desert_king_darta_2_talk_reward_money4",[]],
+"minor_fac_king_darta_2_talk_reward_money4",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_money4",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward_money4",[
 ],"Then do not merely take her back — sell her to Sextus yourself. Demand two hundred thousand. Half is mine, the rest is yours.",
-"desert_king_darta_2_talk_reward_money5",[]],
+"minor_fac_king_darta_2_talk_reward_money5",[]],
 
-[anyone, "desert_king_darta_2_talk_reward_money5",[
-],"...You have a sharp mind for a man of the road. Very well — we have an agreement.", "desert_king_darta_2_talk_reward_money6",[
+[anyone, "minor_fac_king_darta_2_talk_reward_money5",[
+],"...You have a sharp mind for a man of the road. Very well — we have an agreement.", "minor_fac_king_darta_2_talk_reward_money6",[
   (call_script, "script_troop_add_gold", "trp_player", 100000),
 ]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_money6",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward_money6",[
 ],"Then we are done. Here — take her.",
 "close_window",[
   (add_xp_as_reward, 10000),
@@ -92639,62 +92666,53 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
 ]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward3",[
-],"Fifty thousand denarii.", "desert_king_darta_2_talk_reward_tribut",[]],
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward3",[
+],"Fifty thousand denarii.", "minor_fac_king_darta_2_talk_reward_tribut",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_tribut",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward_tribut",[
 ],"You intend to sell her to Sextus Arthropoda, a Roman of considerable means. Fifty thousand from his coffers is a reasonable finder's fee.",
-"desert_king_darta_2_talk_reward_tribut2",[]],
+"minor_fac_king_darta_2_talk_reward_tribut2",[]],
 
-[anyone, "desert_king_darta_2_talk_reward_tribut2",[
+[anyone, "minor_fac_king_darta_2_talk_reward_tribut2",[
 ],"You cunning snake. Fine — we have a deal.",
-"desert_king_darta_2_talk_reward_tribut3",[]],
+"minor_fac_king_darta_2_talk_reward_tribut3",[]],
 
-[anyone|plyr, "desert_king_darta_2_talk_reward_tribut3",[
+[anyone|plyr, "minor_fac_king_darta_2_talk_reward_tribut3",[
 ],"Then we understand each other. She is yours.", "close_window",[
   (add_xp_as_reward, 7500),
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
   (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
   (finish_mission),
-  ]],
+]],
 
-[anyone|plyr, "desert_king",[
-  (party_slot_eq, "p_castle_47", slot_town_lord, "trp_player"),
-],"I want to make you a tributary.",
-"nabatea_subjugate",[]],
 
-[anyone|plyr, "nabatea_subjugate",[
-],"I own Petra and I want to give it to you. In exchange you pay me a monthly tribute of 1000 denarii and I also may levy your troops.", "nabatea_subjugate2",[]],
+[trp_nubian_king|plyr, "minor_fac_king",[
+],"My lady, I would like to profess myself your most ardent admirer.",
+"nubian_queen_talk",[]],
 
-[anyone, "nabatea_subjugate2",[(gt, "$g_talk_troop_relation", -20)],"I accept your offer. Petra was one of our most important settlements before the Romans occupied it.", "nabatea_subjugate3",[]],
+[trp_nubian_king, "nubian_queen_talk",[
+],"I have enough suitors annoying me, I don't need more. "+
+  "Now better leave before I order my guards to capture you and throw you to the crocodiles!",
+"close_window",[]],
 
-[anyone, "nabatea_subjugate2",[],"Never! I will never be your tributary. Now leave me home.", "close_window",[]],
+[anyone|plyr, "minor_fac_king",[
+],"Do you have any tasks for me?",
+"minor_fac_king_ask_for_quest",[]],
 
-[anyone|plyr, "nabatea_subjugate3",[],"Good my friend.", "desert_king_pretalk",[
-  (call_script, "script_give_center_to_faction", "p_castle_47", "fac_nabataea"),
-  (party_clear, "p_castle_47"),
-  (party_add_template, "p_castle_47", "pt_nabatean"),
-  (party_add_template, "p_castle_47", "pt_nabatean"),
-  (party_add_template, "p_castle_47", "pt_nabatean"),
-  (party_add_template, "p_castle_47", "pt_nabatean"),
-  (party_add_template, "p_castle_47", "pt_nabatean"),
+[anyone|plyr, "minor_fac_king",[
+],"I have heard your people are strong warriors.",
+"minor_fac_king_hire_troops",[]],
 
-  (call_script, "script_change_player_relation_with_faction", "fac_nabataea", 400),
-  (faction_set_slot, "fac_nabataea", slot_faction_player_tributary, 1),
-  ]],
+[anyone, "minor_fac_king_hire_troops",[
+],"You have heard right. We are feared for our braveness in battle.",
+"minor_fac_king_hire_troops2",[]],
 
-[trp_nubian_king|plyr, "desert_king",[],"My lady, I would like to profess myself your most ardent admirer.", "nubian_queen_talk",[]],
+[anyone|plyr, "minor_fac_king_hire_troops2",[
+],"I want to hire a warband.",
+"minor_fac_king_hire_troops3",[]],
 
-[trp_nubian_king, "nubian_queen_talk",[],"I have enough suitors annoying me, I don't need more. "+
-  "Now better leave before I order my guards to capture you and throw you to the crocodiles!", "close_window",[]],
-
-[anyone|plyr, "desert_king",[],"Do you have any tasks for me?", "desert_king_ask_for_quest",[]],
-
-[anyone|plyr, "desert_king",[],"I have heard your people are strong warriors.", "desert_king_hire_troops",[]],
-[anyone, "desert_king_hire_troops",[],"You have heard right. We are feared for our braveness in battle.", "desert_king_hire_troops2",[]],
-[anyone|plyr, "desert_king_hire_troops2",[],"I want to hire a warband.", "desert_king_hire_troops3",[]],
-[anyone, "desert_king_hire_troops3",[
+[anyone, "minor_fac_king_hire_troops3",[
   (store_item_kind_count, ":gold", "itm_temple_gold", "trp_player"),
   (try_begin),
     (lt, ":gold", 1),
@@ -92704,320 +92722,472 @@ I will need 500 denarii.", "bardo_sing2",[]],
     (assign, "$temp", 1),
     (str_store_string, s33, "@I listen what you have to offer."),
   (try_end),
- ],"{s33}", "desert_king_hire_troops4",[]],
+ ],"{s33}",
+ "minor_fac_king_hire_troops4",[]],
 
-[anyone|plyr, "desert_king_hire_troops4",[
+[anyone|plyr, "minor_fac_king_hire_troops4",[
+],"Nevermind.",
+"minor_fac_king_pretalk",[]],
 
- ],"Nevermind.", "desert_king_pretalk",[]],
-
-[anyone|plyr, "desert_king_hire_troops4",[
+[anyone|plyr, "minor_fac_king_hire_troops4",[
 	(eq, "$temp", 1),
- ],"I will give you this treasure (one gold bar).", "desert_king_accept_hire",[]],
+],"I will give you this treasure [one gold bar].",
+"minor_fac_king_accept_hire",[]],
 
-[anyone, "desert_king_accept_hire",[
- ],"Very good. I have a very warlike tribe under my rule.\
- I am sure their fighters will enjoy to serve you. They consists of something like 300 warriors. I'll tell them to join your party.", "plyer_rsponse",[
-
-  ]],
+[anyone, "minor_fac_king_accept_hire",[
+],"Very good. I have a very warlike tribe under my rule. I am sure their fighters will enjoy to serve you. They consists of something like 300 warriors. I'll tell them to join your party.",
+"plyer_rsponse",[
+]],
 
 [anyone|plyr, "plyer_rsponse",[
   (troops_can_join, 300),
- ],"Very good.", "close_window",[
-
+],"Very good.",
+"close_window",[
   (troop_remove_item, "trp_player", "itm_temple_gold"),
   (faction_get_slot, ":troop", "$g_talk_troop_faction", slot_faction_tier_2_troop),
   (faction_get_slot, ":troop2", "$g_talk_troop_faction", slot_faction_tier_3_troop),
   (party_force_add_members, "p_main_party", ":troop", 250),
   (party_force_add_members, "p_main_party", ":troop2", 50),
+]],
 
-  ]],
+[anyone|plyr, "plyer_rsponse",[
+  (neg|troops_can_join, 300),
+],"I have not enough space in my party.",
+"minor_fac_king_pretalk",[
+]],
 
-[anyone|plyr, "plyer_rsponse",[],"I must think about it.", "desert_king_pretalk",[]],
+[anyone|plyr, "plyer_rsponse",[
+],"I must think about it.",
+"minor_fac_king_pretalk",[
+]],
 
-[anyone|plyr, "desert_king_hire_troops2",[],"Nevermind.", "desert_king_pretalk",[]],
+[anyone|plyr, "minor_fac_king_hire_troops2",[
+],"Nevermind.",
+"minor_fac_king_pretalk",[
+]],
 
-[anyone, "desert_king_ask_for_quest",[
-    (quest_slot_eq, "qst_elephant_hunt", slot_quest_dont_give_again_remaining_days, 0),
-    (neg|check_quest_active, "qst_elephant_hunt"),
- ], "Yes, there is something you could help us. I need more volunteers for a hunt.\
- We have not enough capable men for this taks. Would you like to join our hunting party?", "desert_king_elephant_hunt",[]],
+[anyone, "minor_fac_king_ask_for_quest",[
+  (quest_slot_eq, "qst_elephant_hunt", slot_quest_dont_give_again_remaining_days, 0),
+  (neg|check_quest_active, "qst_elephant_hunt"),
+], "Yes, there is something you could help us. I need more volunteers for a hunt. We have not enough capable men for this taks. Would you like to join our hunting party?",
+"minor_fac_king_elephant_hunt",[
+]],
 
-[anyone|plyr, "desert_king_elephant_hunt",[], "Aye, sounds like a real adventure!", "desert_king_elephant_hunt_2",[]],
+[anyone|plyr, "minor_fac_king_elephant_hunt",[
+], "Aye, sounds like a real adventure!",
+"minor_fac_king_elephant_hunt_2",[
+]],
 
-[anyone, "desert_king_elephant_hunt_2",[], "Very well. Our hunting party will march on soon. Let us know when you are ready.", "close_window",[
- (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
- (str_store_party_name, s1, "$current_town"),
- (str_store_string, s2, "@Meet the hunting party in {s1}."),
- (quest_set_slot, "qst_elephant_hunt", slot_quest_expiration_days, 32),
- (quest_set_slot, "qst_elephant_hunt", slot_quest_dont_give_again_remaining_days, 1),
+[anyone, "minor_fac_king_elephant_hunt_2",[
+], "Very well. Our hunting party will march on soon. Let us know when you are ready.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+  (str_store_party_name, s1, "$current_town"),
+  (str_store_string, s2, "@Meet the hunting party in {s1}."),
+  (quest_set_slot, "qst_elephant_hunt", slot_quest_expiration_days, 32),
+  (quest_set_slot, "qst_elephant_hunt", slot_quest_dont_give_again_remaining_days, 1),
 
- (options_get_combat_ai, ":difficulty"),#good 0, average 1, easy 2
- (store_sub, ":herd_size", 3, ":difficulty"), #3 if good, 2 if normal, 1 if average
- (try_begin),
+  (options_get_combat_ai, ":difficulty"),#good 0, average 1, easy 2
+  (store_sub, ":herd_size", 3, ":difficulty"), #3 if good, 2 if normal, 1 if average
+  (try_begin),
     (this_or_next|eq, "$current_town", "p_nubian_town_1"),
     (this_or_next|eq, "$current_town", "p_baquates_town_1"),
     (eq, "$current_town","p_nasamones_town_1"),
     (store_random_in_range, ":animal", "trp_elephant", "trp_wolf"),
     (quest_set_slot, "qst_elephant_hunt", slot_quest_target_faction, ":herd_size"),
- (else_try),
+  (else_try),
     (eq, "$current_town","p_arabian_town_1"),
     (store_random_in_range, ":animal", "trp_wild_cat", "trp_wolf"),
     (val_mul, ":herd_size", 3),
     (val_div, ":herd_size", 2),
     (quest_set_slot, "qst_elephant_hunt", slot_quest_target_faction, ":herd_size"),
- (else_try),
+  (else_try),
     (store_random_in_range, ":animal", "trp_wolf", "trp_argentarius"),
     (val_mul, ":herd_size", 3),
     (quest_set_slot, "qst_elephant_hunt", slot_quest_target_faction, ":herd_size"),
- (try_end),
+  (try_end),
 
- (quest_set_slot, "qst_elephant_hunt", slot_quest_target_troop, ":animal"),
- (call_script, "script_start_quest", "qst_elephant_hunt", "$g_talk_troop"),
- # (jump_to_menu, "mnu_desert_hunt_1"),
- # (finish_mission),
- ]],
+  (quest_set_slot, "qst_elephant_hunt", slot_quest_target_troop, ":animal"),
+  (call_script, "script_start_quest", "qst_elephant_hunt", "$g_talk_troop"),
+  # (jump_to_menu, "mnu_desert_hunt_1"),
+  # (finish_mission),
+]],
 
-[anyone|plyr, "desert_king_elephant_hunt",[], "Currently, I have no time for such a task.", "desert_king_pretalk",[]],
+[anyone|plyr, "minor_fac_king_elephant_hunt",[
+], "Currently, I have no time for such a task.",
+"minor_fac_king_pretalk",[
+]],
 
-[anyone, "desert_king_ask_for_quest",[], "I don't have any jobs right now.", "desert_king_pretalk",[]],
+[anyone, "minor_fac_king_ask_for_quest",[
+], "I don't have any jobs right now.",
+"minor_fac_king_pretalk",[
+]],
 
-[anyone|plyr, "desert_king",[
+[anyone|plyr, "minor_fac_king",[
   (quest_get_slot, ":giver", "qst_elephant_hunt", slot_quest_giver_troop),
   (eq, "$g_talk_troop", ":giver"),
   (check_quest_active, "qst_elephant_hunt"),
+],"I am ready for the hunt.",
+"minor_fac_king_elephant_hunt_ready",[
+]],
 
- ],"I am ready for the hunt.", "desert_king_elephant_hunt_ready",[]],
-[anyone, "desert_king_elephant_hunt_ready",[],"Very well.", "close_window",[
+[anyone, "minor_fac_king_elephant_hunt_ready",[
+],"Very well.",
+"close_window",[
   (jump_to_menu, "mnu_desert_hunt_1"),
   (finish_mission),
-  ]],
+]],
 
-[anyone|plyr, "desert_king",[],"Ave atque vale.", "desert_king_leave",[]],
+[anyone|plyr, "minor_fac_king",[
+],"Ave atque vale.",
+"minor_fac_king_leave",[
+]],
 
-[anyone, "desert_king_leave",[],"We meet again, {playername}.", "close_window",[]],
+[anyone, "minor_fac_king_leave",[
+],"We meet again, {playername}.",
+"close_window",[
+]],
 
-###desert town walk
-[anyone|plyr, "desert_king_talk",
-[(store_faction_of_troop, ":fac", "$g_talk_troop"),
-  (str_store_faction_name, s50, ":fac"),
- ],
-  "I want to make peace with the {s50}.", "desert_king_talk_peace",
-[]],
-[anyone|plyr, "desert_king_talk",
-[
- ],
-  "I only wanted to take a look at my enemy.", "close_window",
-[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),]],
-
-[anyone|plyr, "desert_king_talk_peace",
-[
-  (store_party_size_wo_prisoners, ":size", "p_main_party"),
-  (store_party_size_wo_prisoners, ":size_enemy", "$g_encountered_party"),
-
-  (lt, ":size", ":size_enemy"),
-
+[anyone|plyr, "minor_fac_king_talk",[
   (store_faction_of_troop, ":fac", "$g_talk_troop"),
   (str_store_faction_name, s50, ":fac"),
-  (str_clear,s51),
+],"I want to make peace with the {s50}.",
+"minor_fac_king_talk_peace",[]],
+
+[anyone|plyr, "minor_fac_king_talk",[
+],"I only wanted to take a look at my enemy.",
+"close_window",[
+]],
+
+# ─── NPC: acknowledge peace request, store player gold for later balance checks
+[anyone, "minor_fac_king_talk_peace", [],
+"Speak then. State your terms.",
+"minor_fac_peace_gift_select",[
   (store_troop_gold, "$temp2", "trp_player"),
   (assign, "$temp", 0),
-  (try_begin),
-    (ge, "$temp2", 2000),
-    (str_store_string, s51,"@I have proud you a gift as a sign of my goodwill."),
-    (assign, "$temp", 1200),
-    (troop_remove_gold, "trp_player", "$temp"),
-  (try_end),
- ],
-  "There was enough bloodshed in the past. We should settle our differences and make peace. {s51}", "desert_king_talk_peace2",
-[]],
+]],
 
-[anyone|plyr, "desert_king_talk_peace",
-[
- ],
-  "There was enough bloodshed. Now it is time to collect the spoils of war. I demand from you a tribute, or I will continue my attacks.", "desert_king_talk_peace_player_sup33",
-[]],
-[anyone|plyr, "desert_king_talk_peace_player_sup33",
-[
+# ─── Step 1: Player selects a gift (or none)
+[anyone|plyr, "minor_fac_peace_gift_select", [
+  (ge, "$temp2", 1000),
+],"I present a gift of 1,000 denarii as a token of my goodwill.",
+"minor_fac_peace_gift_ack",[
+  (troop_remove_gold, "trp_player", 1000),
+  (val_sub, "$temp2", 1000),
+  (assign, "$temp", 1000),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 3),
+]],
+
+[anyone|plyr, "minor_fac_peace_gift_select", [
+  (ge, "$temp2", 750),
+],"I present a gift of 750 denarii as a token of my goodwill.",
+"minor_fac_peace_gift_ack",[
+  (troop_remove_gold, "trp_player", 750),
+  (val_sub, "$temp2", 750),
+  (assign, "$temp", 750),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 2),
+]],
+
+[anyone|plyr, "minor_fac_peace_gift_select", [
+  (ge, "$temp2", 500),
+],"I present a gift of 500 denarii as a token of my goodwill.",
+"minor_fac_peace_gift_ack",[
+  (troop_remove_gold, "trp_player", 500),
+  (val_sub, "$temp2", 500),
+  (assign, "$temp", 500),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
+]],
+
+[anyone|plyr, "minor_fac_peace_gift_select", [],
+"I come with sincere intentions.",
+"minor_fac_peace_demands",[
+]],
+
+[anyone, "minor_fac_peace_gift_ack", [],
+"A generous gesture. You may speak your terms.",
+"minor_fac_peace_demands",[
+]],
+
+[anyone|plyr, "minor_fac_peace_demands", [
+],"I ask only for an end to this bloodshed. Let our peoples live in peace.",
+"minor_fac_peace_npc_peace",[
+]],
+
+[anyone|plyr, "minor_fac_peace_demands", [
+],"I seek peace, but I require a one-time payment as reparation for my losses.",
+"minor_fac_peace_npc_tribute",[
+]],
+
+[anyone|plyr, "minor_fac_peace_demands", [
+],"You will submit to me as a tributary state and pay a monthly tribute.",
+"minor_fac_peace_npc_tributary",[
+]],
+
+[anyone|plyr, "minor_fac_peace_demands", [],
+"Forget it. The fighting will continue.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
+]],
+
+# ─── Simple peace: NPC response ───────────────────────────────────────────────────────────────────
+# Free peace: only if player overwhelmingly outmatches the enemy party.
+# Threshold = enemy_strength * (300 - effective_relation) / 100
+#   effective_relation +100 -> 2x enemy required
+#   effective_relation    0 -> 3x enemy required
+#   effective_relation -100 -> 4x enemy required
+[anyone, "minor_fac_peace_npc_peace", [
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
   (assign, ":enemy_strength", reg0),
-  (val_mul, ":enemy_strength", 2),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
   (assign, ":player_strength", reg0),
-  (store_sub, ":money", ":player_strength", ":enemy_strength"),
-  (val_abs, ":money"),
-  (val_add, ":money", 100),
-  (val_mul, ":money", 5),
-  (val_min, ":money", 90000),
-  (assign, reg51, ":money"),
- ],
-  "{reg51} denarii should be enough.", "desert_king_talk_peace_player_sup1",
-[]],
-[anyone|plyr, "desert_king_talk_peace_player_sup33",
-[
- ],
-  "I want to make you a tributary.", "desert_king_talk_peace_player_tributary",
-[]],
+  (store_sub, ":threshold_factor", 300, "$g_talk_troop_effective_relation"),
+  (store_mul, ":threshold", ":enemy_strength", ":threshold_factor"),
+  (val_div, ":threshold", 100),
+  (gt, ":player_strength", ":threshold"),
+  (str_store_faction_name, s50, "$g_talk_troop_faction"),
+],"Your strength is undeniable, {playername}, and this war serves neither of us. The {s50} accept peace.",
+"peace_agreement",[
+]],
 
-[anyone, "desert_king_talk_peace_player_tributary",
-[
+# Free peace (eager): player is strong enough that the NPC would accept a tribute demand.
+# They have no leverage to demand payment, so they accept without reparation.
+# Same threshold as minor_fac_peace_npc_tribute acceptance: enemy_strength * rel_factor / 100.
+[anyone, "minor_fac_peace_npc_peace", [
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
   (assign, ":enemy_strength", reg0),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
   (assign, ":player_strength", reg0),
-  (val_mul, ":enemy_strength", 2),
+  (store_div, ":rel_divisor", "$g_talk_troop_relation", 5),
+  (store_sub, ":rel_factor", 100, ":rel_divisor"),
+  (store_mul, ":threshold", ":enemy_strength", ":rel_factor"),
+  (val_div, ":threshold", 100),
+  (gt, ":player_strength", ":threshold"),
+  (str_store_faction_name, s50, "$g_talk_troop_faction"),
+],
+  "We have no wish to prolong this war. The {s50} accept your offer of peace — no payment is required.",
+  "peace_agreement",
+  [],
+],
+
+# Paid peace: player is stronger but does not overwhelm the enemy.
+# Price = (100 - effective_relation) * (enemy_strength * 100 / player_strength) * 4 / 10
+# Reflects both relation hostility and how close the enemy is to matching the player.
+# Clamped to 5000-35000 denarii, no randomness.
+[anyone, "minor_fac_peace_npc_peace", [
+  (party_get_current_terrain, ":terrain_code", "p_main_party"),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
+  (assign, ":enemy_strength", reg0),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
+  (assign, ":player_strength", reg0),
   (gt, ":player_strength", ":enemy_strength"),
- ],
-  "I accept your offer. We will pay a monthly tribute of 1000 denarii and you can levy our troops.", "close_window",
-[
-  (str_store_troop_name, s40, "trp_player"),
-  (add_faction_note_from_sreg, "$g_talk_troop_faction", 3, "@They are a tributary of {s40}.", 1),
+  # Ratio of enemy to player strength expressed as a percentage (0-100 since player is stronger).
+  (store_mul, ":strength_ratio", ":enemy_strength", 100),
+  (val_div, ":strength_ratio", ":player_strength"),
+  # Relation factor: neutral (0) = 100, hostile (-100) = 200, friendly (+100) = 0 (floored by clamp).
+  (store_sub, ":rel_factor", 100, "$g_talk_troop_effective_relation"),
+  (val_max, ":rel_factor", 20),  # floor: even very friendly leaders demand at least a token
+  (store_mul, reg50, ":rel_factor", ":strength_ratio"),
+  (val_mul, reg50, 4),
+  (val_div, reg50, 10),
+  (val_clamp, reg50, 5000, 50000),
+  (assign, "$temp3", reg50),
+],"Peace is possible — but our blood was shed for nothing if there is no reparation. I will accept your proposal in exchange for {reg50} denarii.",
+"minor_fac_peace_pay",[
+]],
+
+# Refuse: player is not stronger than the enemy.
+[anyone, "minor_fac_peace_npc_peace", [],
+"Peace? You come before me without the strength to enforce it. Come back when your army is worthy of such demands.",
+"minor_fac_peace_refused",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3)
+]],
+
+# ─── Peace payment confirmation
+[anyone|plyr,"minor_fac_peace_pay", [
+  (ge, "$temp2", "$temp3"),
+],"Agreed. Here is your payment.",
+"peace_agreement",[
+  (troop_remove_gold, "trp_player", "$temp3")
+]],
+[anyone|plyr, "minor_fac_peace_pay", [
+  (lt, "$temp2", "$temp3"),
+],"I do not carry that much coin with me.",
+"peace_not_enough_money",[
+]],
+[anyone|plyr, "minor_fac_peace_pay", [],
+"I have reconsidered. Forget it.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1)
+]],
+[anyone|plyr, "minor_fac_peace_refused", [],
+"Then the fighting will continue.",
+"close_window",[
+]],
+
+# ─── One-time tribute: NPC response ──────────────────────────────────────────────────────────────
+# Tribute amount is proportional to the strength gap.
+# Acceptance threshold scales with leader relation: hostile leader demands more overwhelming force.
+# rel_factor = (100 - relation/5), range 80..120 over relation -100..+100.
+[anyone, "minor_fac_peace_npc_tribute", [
+  (party_get_current_terrain, ":terrain_code", "p_main_party"),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
+  (assign, ":enemy_strength", reg0),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
+  (assign, ":player_strength", reg0),
+  # Tribute amount: proportional to strength gap, clamped to 1000-50000.
+  (store_sub, ":diff", ":player_strength", ":enemy_strength"),
+  (val_abs, ":diff"),
+  (val_add, ":diff", 100),
+  (val_mul, ":diff", 5),
+  (val_clamp, ":diff", 1000, 50000),
+  (assign, reg51, ":diff"),
+  # Acceptance threshold: enemy_strength * rel_factor / 100
+  (store_div, ":rel_divisor", "$g_talk_troop_relation", 5),
+  (store_sub, ":rel_factor", 100, ":rel_divisor"),
+  (store_mul, ":threshold", ":enemy_strength", ":rel_factor"),
+  (val_div, ":threshold", 100),
+  (gt, ":player_strength", ":threshold"),
+],"You have the strength to back your demands. Here — {reg51} denarii. Now leave us in peace.",
+"minor_fac_tribute_accept_or_refuse",[
+]],
+
+[anyone, "minor_fac_peace_npc_tribute", [],
+"You lack the strength to enforce such a demand. Come back when your army is worthy of it.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
+]],
+
+[anyone|plyr, "minor_fac_tribute_accept_or_refuse", [],
+"Very well. I accept.",
+"close_window",[
+  (troop_add_gold, "trp_player", reg51),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
+  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
+]],
+
+[anyone|plyr, "minor_fac_tribute_accept_or_refuse", [],
+"That is not nearly enough. I demand twice that amount.",
+"minor_fac_tribute_demand_more",[
+  (store_mul, reg52, reg51, 2),
+  # (val_min, reg52, 50000),
+]],
+
+[anyone|plyr, "minor_fac_tribute_accept_or_refuse", [],
+"Keep your coin. I ask only for peace between our peoples.",
+"peace_agreement",[
+]],
+
+# Demand more: player insists on twice reg51 (stored in reg52).
+# Acceptance threshold is tighter — player must be at least 3x enemy, scaled by relation.
+[anyone, "minor_fac_tribute_demand_more", [
+  (party_get_current_terrain, ":terrain_code", "p_main_party"),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
+  (assign, ":enemy_strength", reg0),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
+  (assign, ":player_strength", reg0),
+  # Threshold: 3 * enemy * rel_factor / 100
+  (store_div, ":rel_divisor", "$g_talk_troop_relation", 5),
+  (store_sub, ":rel_factor", 100, ":rel_divisor"),
+  (store_mul, ":threshold", ":enemy_strength", 300),
+  (val_mul, ":threshold", ":rel_factor"),
+  (val_div, ":threshold", 10000),
+  (gt, ":player_strength", ":threshold"),
+],"You are truly merciless. Very well — take your {reg52} denarii and be gone from our sight.",
+"close_window",[
+  (troop_add_gold, "trp_player", reg52),
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -8),
+  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
+]],
+
+[anyone, "minor_fac_tribute_demand_more", [],
+"Enough of your greed! We offered what we could. The offer is withdrawn — now leave before this turns to bloodshed.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
+
+# ─── Tributary: NPC response ──────────────────────────────────────────────────────────────────────
+# Requires player to be roughly 2x stronger, adjusted by leader relation (same rel_factor formula).
+[anyone, "minor_fac_peace_npc_tributary", [
+  (party_get_current_terrain, ":terrain_code", "p_main_party"),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
+  (assign, ":enemy_strength", reg0),
+  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
+  (assign, ":player_strength", reg0),
+  # Threshold: 2 * enemy * rel_factor / 100
+  (store_div, ":rel_divisor", "$g_talk_troop_relation", 5),
+  (store_sub, ":rel_factor", 100, ":rel_divisor"),
+  (store_mul, ":threshold", ":enemy_strength", 2),
+  (val_mul, ":threshold", ":rel_factor"),
+  (val_div, ":threshold", 100),
+  (gt, ":player_strength", ":threshold"),
+],"You leave us no choice. We submit. Our people will pay 1,000 denarii each month, and you may levy our warriors when the need arises.",
+"close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -20),
   (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
   (faction_set_slot, "$g_talk_troop_faction", slot_faction_player_tributary, 1),
-  ]],
-[anyone, "desert_king_talk_peace_player_tributary",
-[
- ],
-  "We won't be your tributary. Now away with you wild beggar!", "close_window",
-[
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
-  ]],
-
-[anyone, "desert_king_talk_peace_player_sup1",[
-  (party_get_current_terrain, ":terrain_code", "p_main_party"),
-  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
-  (assign, ":enemy_strength", reg0),
-  (call_script, "script_dplmc_party_calculate_strength_in_terrain", "p_main_party", ":terrain_code", 0, 1),
-  (assign, ":player_strength", reg0),
-  (gt, ":player_strength", ":enemy_strength"),
-],"I accept your offer. I will order my men to bring you the money.",
-"close_window",[
-  (troop_add_gold, "trp_player", reg51),
-  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -4),
-  (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
 ]],
 
-[anyone, "desert_king_talk_peace_player_sup1",[
-],"We won't pay you anything! Go away you jackal.",
+[anyone, "minor_fac_peace_npc_tributary", [],
+"Tributary? We would sooner fall in battle than bend the knee to you. Take your demands and go.",
+"close_window",[
+  (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
+]],
+
+# ─── Shared terminal states ───────────────────────────────────────────────────────────────────────
+
+[anyone, "peace_not_enough_money", [],
+"Then we shall meet again on the battlefield. Go.",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),
 ]],
 
-[anyone, "desert_king_talk_peace2",[
-  (assign, ":peace", 0),
-  (str_clear,s50),
-  (store_faction_of_troop, ":fac", "$g_talk_troop"),
-  (store_relation, ":faction_relation", ":fac", "fac_player_supporters_faction"),
-  (store_add, ":success", "$g_talk_troop_relation", ":faction_relation"),
-  (try_begin),
-    (eq, "$temp", 1200),
-    (assign, reg50, ":success"),
-    (val_abs, reg50),
-    (val_mul, reg50, 200),
-    (store_random_in_range, ":rand_money", 1500, 2000),
-    (val_add, reg50, ":rand_money"),
-    (assign, ":peace", 1),
-  (else_try),
-    (gt, ":success", -50),
-    (assign, reg50,":success"),
-    (val_abs, reg50),
-    (val_mul, reg50, 300),
-    (store_random_in_range, ":rand_money", 1500, 2000),
-    (val_add, reg50, ":rand_money"),
-    (assign, ":peace", 1),
-  (try_end),
-  (try_begin),
-    (eq, ":peace", 1),
-    (str_store_string, s50, "@I accept your proposal. But you must pay us {reg50} denarii, as a sign of your goodwill."),
-    (assign, "$temp3", reg50),
-    (assign, "$temp", 1),
-  (else_try),
-    (eq, ":peace", 0),
-    (str_store_string, s50, "@We won't make peace with you jackal! Now go away. Hopefully the lions will kill."),
-    (assign, "$temp", 0),
-  (try_end),
-],"{s50}",
-"desert_king_talk_peace3",
-[]],
-
-[anyone|plyr, "desert_king_talk_peace3",
-[(eq, "$temp",0),
- ],
-  "Then the fighting will continue.", "close_window",
-[]],
-[anyone|plyr, "desert_king_talk_peace3",
-[(eq, "$temp",1),
-	(lt, "$temp2", "$temp3"),
- ],
-  "I don't have that much coins with me.", "peace_not_enough_money",
-[]],
-[anyone, "peace_not_enough_money",
-[
- ],
-  "Then we will see us on the battlefield.", "close_window",
-[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),]],
-[anyone|plyr, "desert_king_talk_peace3",
-[(eq, "$temp",1),
-  (ge, "$temp2", "$temp3"),
-
- ],
-  "We have an agreement.", "peace_agreement",
-[ (troop_remove_gold, "trp_player", "$temp3"),]],
-
-[anyone|plyr, "desert_king_talk_peace3",
-[
-
- ],
-  "Forget it.", "close_window",
-[(call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -3),]],
-
-[anyone, "peace_agreement",
-[
- ],
-  "Aye. Our people will honor the truce. Hopefully you too.", "close_window",
-[
+[anyone, "peace_agreement", [],
+"So be it. Our people will honor this truce. May you do the same.",
+"close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
   (call_script, "script_set_player_relation_with_faction", "$g_talk_troop_faction", 0),
-  ]],
+]],
 
 ### bandit / minor raider faction leaders
 [anyone, "start",[
   (eq, "$g_talk_troop_met", 0),
   (is_between, "$g_talk_troop", bandit_leaders_begin, bandit_leaders_end),
   (try_begin),
-      (ge, "$player_honor", 50),
-      (str_store_string, s23, "@So you are {playername}. A man of honour comes to my camp. I have little use for such men. State your business."),
+    (ge, "$player_honor", 50),
+    (str_store_string, s23, "str_bandit_leader_greet_first_honor_high"),
   (else_try),
-      (ge, "$player_honor", 0),
-      (str_store_string, s23, "@A stranger enters my camp. You have courage, I will grant that. What do you want?"),
+    (ge, "$player_honor", 0),
+    (str_store_string, s23, "str_bandit_leader_greet_first_honor_mid"),
   (else_try),
-      (ge, "$player_honor", -50),
-      (str_store_string, s23, "@I know of you, {playername}. Your deeds precede you. What do you want from me?"),
+    (ge, "$player_honor", -50),
+    (str_store_string, s23, "str_bandit_leader_greet_first_honor_low"),
   (else_try),
-      (str_store_string, s23, "@So you are {playername}. They speak your name in fear from Rome to the eastern sands. Perhaps we understand each other. What brings you here?"),
+    (str_store_string, s23, "str_bandit_leader_greet_first_honor_vlow"),
   (try_end),
 ],"{s23}",
-"bandit_leader_talk",[]],
+"bandit_leader_talk",[
+]],
 
 [anyone, "start",[
   (neq, "$g_talk_troop_met", 0),
   (is_between, "$g_talk_troop", bandit_leaders_begin, bandit_leaders_end),
   (try_begin),
-      (ge, "$player_honor", 50),
-      (str_store_string, s23, "@You again. Still the righteous one, I see. What do you want now?"),
+    (ge, "$player_honor", 50),
+    (str_store_string, s23, "str_bandit_leader_greet_again_honor_high"),
   (else_try),
-      (ge, "$player_honor", 0),
-      (str_store_string, s23, "@Back again, {playername}. What is it this time?"),
+    (ge, "$player_honor", 0),
+    (str_store_string, s23, "str_bandit_leader_greet_again_honor_mid"),
   (else_try),
-      (ge, "$player_honor", -50),
-      (str_store_string, s23, "@You return. I had a feeling you would. What do you want?"),
+    (ge, "$player_honor", -50),
+    (str_store_string, s23, "str_bandit_leader_greet_again_honor_low"),
   (else_try),
-      (str_store_string, s23, "@You come back. Good. Speak."),
+    (str_store_string, s23, "str_bandit_leader_greet_again_honor_vlow"),
   (try_end),
 ],"{s23}",
-"bandit_leader_talk",[]],
+"bandit_leader_talk",[
+]],
 
 [trp_bandit_autololes_leader|plyr, "bandit_leader_talk",[
   (eq, "$g_talk_troop_met", 0),
@@ -93037,48 +93207,48 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_object_state, 0),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"I have come to speak with you about your wife, {s20}.",
-"desert_king_quest_gara_talk_daughter_22",[
+"minor_fac_king_quest_gara_talk_daughter_22",[
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
 ]],
 
-[anyone, "desert_king_quest_gara_talk_daughter_22",[
+[anyone, "minor_fac_king_quest_gara_talk_daughter_22",[
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
 ],"You dig where you have already been told there is nothing. You are beginning to try my patience, stranger.",
-"desert_king_quest_gara_talk_daughter",[]],
+"minor_fac_king_quest_gara_talk_daughter",[]],
 
-[anyone, "desert_king_quest_gara_talk_daughter_22",[
+[anyone, "minor_fac_king_quest_gara_talk_daughter_22",[
 ],"My wife? You come all this way to speak of her? Speak plainly then. I have little patience for men who dance around their words.",
-"desert_king_quest_gara_talk_daughter",[
+"minor_fac_king_quest_gara_talk_daughter",[
   (assign, "$temp", 0),
 ]],
 
-[anyone|plyr, "desert_king_quest_gara_talk_daughter",[
+[anyone|plyr, "minor_fac_king_quest_gara_talk_daughter",[
   (store_troop_gold, ":gold", "trp_player"),
   (ge, ":gold", 10000),
   (eq, "$temp", 0),
 ],"I would pay ten thousand denarii to ransom her.",
-"desert_king_quest_gara_talk_daughter2",[
+"minor_fac_king_quest_gara_talk_daughter2",[
   (assign, "$temp", 1),
 ]],
 
-[anyone, "desert_king_quest_gara_talk_daughter2",[
+[anyone, "minor_fac_king_quest_gara_talk_daughter2",[
 ],"You dare offer coin for my wife as if she were a slave in a Roman market? Speak that word again and I will feed your tongue to the jackals.",
-"desert_king_quest_gara_talk_daughter",[]],
+"minor_fac_king_quest_gara_talk_daughter",[]],
 
-[anyone|plyr, "desert_king_quest_gara_talk_daughter",[
+[anyone|plyr, "minor_fac_king_quest_gara_talk_daughter",[
   (str_store_troop_name, s4, "trp_baquates_princess"),
 ],"Her family has sent me. I have come to bring {s4} back to them.",
-"desert_king_quest_gara_talk_daughter3",[]],
+"minor_fac_king_quest_gara_talk_daughter3",[]],
 
-[anyone, "desert_king_quest_gara_talk_daughter3",[
+[anyone, "minor_fac_king_quest_gara_talk_daughter3",[
 ],"Her family? I am her family. The desert is her home and my tent is her roof. Whoever sent you here has made a grave mistake, and so have you.",
-"desert_king_quest_gara_talk_daughter4",[]],
+"minor_fac_king_quest_gara_talk_daughter4",[]],
 
-[anyone|plyr, "desert_king_quest_gara_talk_daughter4",[
+[anyone|plyr, "minor_fac_king_quest_gara_talk_daughter4",[
 ],"She did not come willingly. You took her by force.",
-"desert_king_quest_gara_talk_daughter5",[]],
+"minor_fac_king_quest_gara_talk_daughter5",[]],
 
-[anyone, "desert_king_quest_gara_talk_daughter5",[
+[anyone, "minor_fac_king_quest_gara_talk_daughter5",[
 ],"Then you leave this camp in chains or as a corpse. The choice is yours. Men! Get that bastard!",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
@@ -93123,26 +93293,26 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 1),
   (str_store_troop_name, s20, "trp_baquates_princess"),
 ],"I have spoken with your wife, {s20}. I want to ask you some questions about her.",
-"desert_king_quest_gara_talk",[]],
+"minor_fac_king_quest_gara_talk",[]],
 
-[anyone, "desert_king_quest_gara_talk",[
-],"You spoke with her. And now you come to me. What is it you want?", "desert_king_quest_gara_talk2",[
+[anyone, "minor_fac_king_quest_gara_talk",[
+],"You spoke with her. And now you come to me. What is it you want?", "minor_fac_king_quest_gara_talk2",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (str_store_troop_name, s4, "trp_baquates_princess"),
   (display_message, "str_quest_updated", message_alert),
   (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You confronted {s20} about {s4}. He listened and said little. Whatever he knows of her past, he guards it well.", 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
 ]],
-[anyone|plyr, "desert_king_quest_gara_talk2",[
+[anyone|plyr, "minor_fac_king_quest_gara_talk2",[
   (str_store_faction_name, s6, "fac_autololes"),
 ],"She is not {s6} by birth, is she?",
-"desert_king_quest_gara_talk3",[]],
+"minor_fac_king_quest_gara_talk3",[]],
 
-[anyone|plyr, "desert_king_quest_gara_talk2",[
+[anyone|plyr, "minor_fac_king_quest_gara_talk2",[
 ],"Nothing. Forget it.",
 "bandit_leader_pretalk",[]],
 
-[anyone, "desert_king_quest_gara_talk3",[
+[anyone, "minor_fac_king_quest_gara_talk3",[
   (str_store_faction_name, s6, "fac_autololes"),
 ],"My wife is {s6}. She rides with my people, she sleeps beneath my tent, she speaks our tongue. What a woman was before she came to the desert is sand. It blows away.", "bandit_leader_pretalk",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
