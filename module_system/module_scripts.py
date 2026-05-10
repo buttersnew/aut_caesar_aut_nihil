@@ -31875,7 +31875,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc20", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc20", slot_troop_personalityclash2_object, "trp_npc31"), # Secundus Minor dislikes Ra Karak (unreliable barbarian chief)
+    (troop_set_slot, "trp_npc20", slot_troop_personalityclash2_object, "trp_npc4"), # Secundus Minor dislikes Abadutiker (Tarsus scholar wary of Germanic raiders after Eastern service)
     (troop_set_slot, "trp_npc20", slot_troop_personalitymatch_object, "trp_npc42"), #
     (troop_set_slot, "trp_npc20", slot_troop_home, "p_town_10"), #Tarsus
     (troop_set_slot, "trp_npc20", slot_troop_payment_request, 6000),
@@ -31891,7 +31891,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc21", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc31"), # Drusus dislikes Ra Karak (barbarian can't be trusted as a comrade)
+    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc40"), # Drusus dislikes Kara Boga (ex-gladiator wary of scheming Egyptian's flexible loyalty)
     (troop_set_slot, "trp_npc21", slot_troop_personalitymatch_object, "trp_npc22"), #
     (troop_set_slot, "trp_npc21", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc21", slot_troop_payment_request, 6000),
@@ -31939,7 +31939,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc24", slot_troop_personalityclash_object, "trp_npc42"), #
-    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc37"), # Sidonius Apollinaris dislikes Josephus (religious judgmentalism)
+    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc5"), # Sidonius Apollinaris dislikes Satibarzanes (Parthian - enemy from Eastern service near Thebae)
     (troop_set_slot, "trp_npc24", slot_troop_personalitymatch_object, "trp_npc25"), #
     (troop_set_slot, "trp_npc24", slot_troop_home, "p_village_56"), #Brindisium
     (troop_set_slot, "trp_npc24", slot_troop_payment_request, 6000),
@@ -31955,7 +31955,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc25", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc37"), # Sollius Modestus dislikes Josephus (instinct from Hispania experience)
+    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc13"), # Sollius Modestus dislikes Chanakya (Sarmatian wanderer's unfamiliar customs unsettle this Carthage veteran)
     (troop_set_slot, "trp_npc25", slot_troop_personalitymatch_object, "trp_npc26"), #
     (troop_set_slot, "trp_npc25", slot_troop_home, "p_town_28"), #Carthago
     (troop_set_slot, "trp_npc25", slot_troop_payment_request, 6000),
@@ -31971,7 +31971,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc26", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc31"), # Albinus Basilius dislikes Ra Karak (tribal chieftain type, Bosporan court experience)
+    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc29"), # Albinus Basilius quarrels with Fabianus (Roman-Roman: chariot race rivalry, Blues vs Greens)
     (troop_set_slot, "trp_npc26", slot_troop_personalitymatch_object, "trp_npc27"), #
     (troop_set_slot, "trp_npc26", slot_troop_home, "p_castle_21"), #Taurica
     (troop_set_slot, "trp_npc26", slot_troop_payment_request, 6000),
@@ -32019,7 +32019,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc29", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc29", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc29", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc29", slot_troop_personalityclash2_object, "trp_npc17"), # Fabianus dislikes Anicetus (sailor vs. pirate admiral rivalry)
+    (troop_set_slot, "trp_npc29", slot_troop_personalityclash2_object, "trp_npc26"), # Fabianus quarrels with Albinus Basilius (Roman-Roman: chariot race rivalry, mutual Blues vs Greens feud)
     (troop_set_slot, "trp_npc29", slot_troop_personalitymatch_object, "trp_npc3"), # Fabianus is infatuated with Pulchra (sailor who can't stop staring)
     (troop_set_slot, "trp_npc29", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc29", slot_troop_payment_request, 6000),
@@ -32030,12 +32030,12 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc29", slot_troop_culture, "fac_culture_roman"),
     (troop_set_slot, "trp_npc29", slot_troop_age, 47),
 
-    (troop_set_slot, "trp_npc30", slot_troop_morality_type, tmt_pious), # Rombus is a fanatic of Iupiter Dolichenus
+    (troop_set_slot, "trp_npc30", slot_troop_morality_type, tmt_aristocratic), # Rombus is a proud Roman veteran; his piety expressed in dialogue
     (troop_set_slot, "trp_npc30", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc30", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc30", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc30", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc30", slot_troop_personalityclash2_object, "trp_npc23"), # Rombus despises deserter Lucius Varrus Drusus (pious veteran vs. murderer of his own commander)
+    (troop_set_slot, "trp_npc30", slot_troop_personalityclash2_object, "trp_npc19"), # Rombus quarrels with Tertius Maior (Roman-Roman: Tertius mocks Rombus' devotional wall paintings as bad luck)
     (troop_set_slot, "trp_npc30", slot_troop_personalitymatch_object, "trp_npc28"), # Rombus likes Anicius (found a dependable Roman soldier)
     (troop_set_slot, "trp_npc30", slot_troop_home, "p_village_38"), #Itius Portus
     (troop_set_slot, "trp_npc30", slot_troop_payment_request, 6000),
