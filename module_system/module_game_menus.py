@@ -7500,18 +7500,46 @@ game_menus = [
     (call_script, "script_get_heroes_attached_to_center_aux", "$g_encountered_party", "p_temp_party"),#recursive call
     (party_get_num_companion_stacks, "$num_castle_meeting_troops", "p_temp_party"),
     (assign, "$talk_context", tc_castle_gate), #SB : move this up here
+
+    (faction_get_slot, "$temp1", "$g_encountered_party_faction", slot_faction_leader),
   ],[
+    ("guard_meet_faction_leader",[
+      (is_between, "$temp1", active_npcs_begin, kingdom_ladies_end),
+      (this_or_next|troop_slot_eq, "$temp1", slot_troop_occupation, slto_kingdom_hero),
+      (troop_slot_eq, "$temp1", slot_troop_occupation, slto_kingdom_lady),
+
+      # either party is in the castle or if its a lady she is in the town
+      (assign, ":c", 0),
+      (try_begin),
+        (troop_slot_eq, "$temp1", slot_troop_cur_center, "$g_encountered_party"),
+        (troop_slot_eq, "$temp1", slot_troop_occupation, slto_kingdom_lady),
+        (assign, ":c", 1),
+      (else_try),
+        (troop_slot_eq, "$temp1", slot_troop_occupation, slto_kingdom_hero),
+        (party_count_members_of_type, ":c", "p_temp_party", "$temp1"),
+      (try_end),
+      (ge, ":c", 1),
+      (str_store_troop_name, s5, "$temp1")
+    ], "Their leader {s5}",[
+      (assign, "$castle_meeting_selected_troop", "$temp1"),
+      (jump_to_menu,"mnu_castle_meeting_selected"),
+    ]),
+  ]+[
     ("guard_meet_"+str(x),[
       (gt, "$num_castle_meeting_troops", x),#test this out
       (party_stack_get_troop_id, ":troop_no", "p_temp_party", x),
+      (neg|faction_slot_eq, "$g_encountered_party_faction", slot_faction_leader, ":troop_no"), #do not show lord
       (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
       (str_store_troop_name, s5, ":troop_no")],
-      "{s5}.",[(party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
+      "{s5}.",[
+        (party_stack_get_troop_id, "$castle_meeting_selected_troop", "p_temp_party", x),
       # (party_stack_get_troop_dna, "$temp_2", "p_temp_party", x),
-      (jump_to_menu,"mnu_castle_meeting_selected")])
+        (jump_to_menu,"mnu_castle_meeting_selected")])
       for x in range(0, 8)
-    ]
-    +[("forget_it",[], "Forget it.", [(jump_to_menu,"mnu_castle_guard")]),
+  ]+[
+      ("forget_it",[], "Forget it.", [
+        (jump_to_menu,"mnu_castle_guard")
+      ]),
 ]),
 ("talk_with_commanders",mnf_scale_picture,
   "With whom do you want to talk?",
