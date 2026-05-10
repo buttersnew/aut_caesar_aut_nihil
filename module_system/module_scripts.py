@@ -32208,7 +32208,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc21", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc37"), # Josephus — aristocratic Roman vs Eastern scribe
+    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius Maior — Blue vs Greens zealot, mutual circus hatred
     (troop_set_slot, "trp_npc21", slot_troop_personalitymatch_object, "trp_npc22"), #
     (troop_set_slot, "trp_npc21", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc21", slot_troop_payment_request, 6000),
@@ -32272,7 +32272,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc25", slot_troop_personalityclash_object, "trp_npc37"), # Josephus — scribes in camp unnerve him
-    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc40"), # Kara Boga — loud and crude
+    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc30"), # Rombus — crude drunk who disturbs camp life
     (troop_set_slot, "trp_npc25", slot_troop_personalitymatch_object, "trp_npc24"), # Sidonius Apollinaris — mutual deep bond
     (troop_set_slot, "trp_npc25", slot_troop_home, "p_town_28"), #Carthago
     (troop_set_slot, "trp_npc25", slot_troop_payment_request, 6000),
@@ -32288,7 +32288,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc26", slot_troop_personalityclash_object, "trp_npc17"), # Anicetus — bankrupt merchant has no love for pirates
-    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc23"), # Lucius Varrus Drusus — refuses to fight, useless to a desperate man
+    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius — fanatic paints obscenities on walls
     (troop_set_slot, "trp_npc26", slot_troop_personalitymatch_object, "trp_npc27"), #
     (troop_set_slot, "trp_npc26", slot_troop_home, "p_castle_21"), #Taurica
     (troop_set_slot, "trp_npc26", slot_troop_payment_request, 6000),
@@ -32304,7 +32304,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc27", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc27", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc27", slot_troop_personalityclash_object, "trp_npc31"), #
-    (troop_set_slot, "trp_npc27", slot_troop_personalityclash2_object, "trp_npc37"), #
+    (troop_set_slot, "trp_npc27", slot_troop_personalityclash2_object, "trp_npc18"), # Arminius Octavianus — insufferable Greens partisan
     (troop_set_slot, "trp_npc27", slot_troop_personalitymatch_object, "trp_npc33"), #
     (troop_set_slot, "trp_npc27", slot_troop_home, "p_town_31"), #Augusta Emerita
     (troop_set_slot, "trp_npc27", slot_troop_payment_request, 6000),
