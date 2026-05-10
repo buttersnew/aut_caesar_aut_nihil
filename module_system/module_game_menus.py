@@ -41626,8 +41626,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("desert_victory",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "You cut your way free before Garat's men could close the ring around you. The desert swallows you whole, and no pursuit follows.^Yet you ride with nothing to show for it. Darta remains in the Autoleles camp, and Garat knows your face now. A blade was never going to free her - the next move must be a subtler one.",
+  "You cut your way free before {s5}'s men could close the ring around you. The desert swallows you whole, and no pursuit follows.^Yet you ride with nothing to show for it. {s4} remains in the {s6} camp, and {s5} knows your face now. A blade was never going to free her - the next move must be a subtler one.",
   "none",[
+    (str_store_troop_name, s4, "trp_baquates_princess"),
+    (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+    (str_store_faction_name, s6, "fac_autololes"),
     (set_background_mesh, "mesh_pic_desert"),
   ],[
   ("leave",[],"Continue.",[
@@ -41636,8 +41639,9 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("desert_wait",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "The desert sun is merciless as you make your way south. After some time, you spot the cluster of three palms rising from the sand - just as the nurse described. You water your horse, settle in the shade, and wait.^ The hours stretch on in silence, broken only by wind and the distant cry of birds. Then, as the light begins to soften, two figures appear through the heat haze - the nurse, moving quickly, with Darta close beside her.",
+  "The desert sun is merciless as you make your way south. After some time, you spot the cluster of three palms rising from the sand - just as the nurse described. You water your horse, settle in the shade, and wait.^ The hours stretch on in silence, broken only by wind and the distant cry of birds. Then, as the light begins to soften, two figures appear through the heat haze - the nurse, moving quickly, with {s4} close beside her.",
   "none",[
+    (str_store_troop_name, s4, "trp_baquates_princess"),
     (set_background_mesh, "mesh_pic_desert"),
     (try_begin),
 		  (eq, "$temp", 1),
