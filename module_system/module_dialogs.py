@@ -53435,39 +53435,36 @@ Perhaps one day I will be able to repay you.", "lord_deliver_message_prisoner_2"
 ], "Do you indeed, {playername}? Then go and trip on your sword. Give us all peace.",
 "lord_pretalk",[]],
 
-[anyone,"lord_ask_pardon",
-[
-(faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
-(assign, ":has_center", 0),
-(try_for_range, ":cur_center", centers_begin, centers_end),
- (store_faction_of_party, ":cur_center_faction", ":cur_center"),
- (eq, ":cur_center_faction", "fac_player_supporters_faction"),
- (assign, ":has_center", 1),
-(try_end),
-(eq, ":has_center", 1),
-(lt, "$player_right_to_rule", 10),
+[anyone,"lord_ask_pardon",[
+  (faction_slot_eq, "fac_player_supporters_faction", slot_faction_leader, "trp_player"),
+  (assign, ":has_center", 0),
+  (try_for_range, ":cur_center", centers_begin, centers_end),
+    (store_faction_of_party, ":cur_center_faction", ":cur_center"),
+    (eq, ":cur_center_faction", "fac_player_supporters_faction"),
+    (assign, ":has_center", 1),
+  (try_end),
+  (eq, ":has_center", 1),
+  (lt, "$player_right_to_rule", 10),
+], "{playername}, you are a {lord/lady} without a master, holding lands in your name, with only the barest scrap of a claim to legitimacy. No king in this world would accept a lasting peace with you.",
+"lord_pretalk",[]],
 
-], "{playername}, you are a {lord/lady} without a master, holding lands in your name, with only the barest scrap of a claim to legitimacy. No king in this world would accept a lasting peace with you.", "lord_pretalk",[]],
-
-[anyone,"lord_ask_pardon",
-[
-(assign, ":has_center", 0),
-(try_for_range, ":cur_center", centers_begin, centers_end),
- (store_faction_of_party, ":cur_center_faction", ":cur_center"),
- (eq, ":cur_center_faction", "fac_player_supporters_faction"),
- (assign, ":has_center", 1),
-(try_end),
-##diplomacy start+
-(this_or_next|eq, "$temp_2", 0x434F52),#is co-ruler
-##diplomacy end+
-(eq, ":has_center", 1),
-(encountered_party_is_attacker),
-
-], "Make peace when I have you at an advantage? I think not.", "lord_pretalk",[]],
+[anyone,"lord_ask_pardon",[
+  (assign, ":has_center", 0),
+  (try_for_range, ":cur_center", centers_begin, centers_end),
+    (store_faction_of_party, ":cur_center_faction", ":cur_center"),
+    (eq, ":cur_center_faction", "fac_player_supporters_faction"),
+    (assign, ":has_center", 1),
+  (try_end),
+  ##diplomacy start+
+  (this_or_next|eq, "$temp_2", 0x434F52),#is co-ruler
+  ##diplomacy end+
+  (eq, ":has_center", 1),
+  (encountered_party_is_attacker),
+], "Make peace when I have you at an advantage? I think not.",
+"lord_pretalk",[]],
 
 #If the player faction is active
-[anyone,"lord_ask_pardon",
-[
+[anyone,"lord_ask_pardon",[
 (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 
 (assign, ":has_center", 0),
@@ -53492,183 +53489,193 @@ Perhaps one day I will be able to repay you.", "lord_deliver_message_prisoner_2"
 ##diplomacy end+
 
 ##diplomacy start+ offer the player terms (similar to through a minister)
-[anyone,"lord_ask_pardon",
-[
-(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-(assign, ":check_peace_war", "$temp"),
-(lt, ":check_peace_war", 1),#Normally should only be -2, -1, or 0
+[anyone,"lord_ask_pardon",[
 
-(assign, ":has_center", 0),
-(try_for_range, ":cur_center", centers_begin, centers_end),
- (store_faction_of_party, ":cur_center_faction", ":cur_center"),
- (eq, ":cur_center_faction", "fac_player_supporters_faction"),
- (assign, ":has_center", 1),
-(try_end),
-##diplomacy start+
-(try_begin),
-	(eq, "$temp_2", 0x434F52),#is co-ruler
-	(assign, ":is_coruler", 1),
-(else_try),
-	(assign, ":is_coruler", 0),
-(try_end),
-(this_or_next|eq, ":is_coruler", 1),
-##diplomacy end+
-(eq, ":has_center", 1),
+  (troop_get_slot, ":spouse", "$g_talk_troop", slot_troop_spouse),
 
-(call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", "$g_talk_troop_faction", ":check_peace_war"),
-(assign, ":money_alone", reg0),
-(assign, ":money_and_fief", reg1),
+  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, ":spouse"),
 
-(assign, "$temp", ":money_alone"),
-(assign, "$temp_2", ":money_and_fief"),
 
-#Check if there is a valid demanded fief
-(assign, reg0, -1),
-(try_begin),
-	(is_between, "$g_concession_demanded", centers_begin, centers_end),
-	(store_faction_of_party, ":concession_faction", "$g_concession_demanded"),
-	##diplomacy start+
-	(assign, ":alt_faction", "fac_player_supporters_faction"),
-	(try_begin),
-		(eq, ":is_coruler", 1),
-		(assign, ":alt_faction", "$players_kingdom"),
-	(try_end),
-	(this_or_next|eq, ":concession_faction", ":alt_faction"),
-	##diplomacy end+
-	(eq, ":concession_faction", "fac_player_supporters_faction"),
-	(assign, reg0, 1),
-(try_end),
+  (assign, ":check_peace_war", "$temp"),
+  (lt, ":check_peace_war", 1),#Normally should only be -2, -1, or 0
 
-#Either demanding a positive amount of money, or demanding a fief the player has
-(this_or_next|ge, ":money_alone", 1),
-(eq, reg0, 1),
+  (assign, ":has_center", 0),
+  (try_for_range, ":cur_center", centers_begin, centers_end),
+    (store_faction_of_party, ":cur_center_faction", ":cur_center"),
+    (eq, ":cur_center_faction", "fac_player_supporters_faction"),
+    (assign, ":has_center", 1),
+  (try_end),
+  ##diplomacy start+
+  (try_begin),
+    (eq, "$temp_2", 0x434F52),#is co-ruler
+    (assign, ":is_coruler", 1),
+  (else_try),
+    (assign, ":is_coruler", 0),
+  (try_end),
+  (this_or_next|eq, ":is_coruler", 1),
+  ##diplomacy end+
+  (eq, ":has_center", 1),
 
-#Store demand string to s0
-(try_begin),
-	#Just denarii
-	(neq, reg0, 1),
-	(assign, reg1, ":money_alone"),
-	(str_store_string, s0, "str_reg1_denars"),
-(else_try),
-	#A fief and denarii
-	(ge, ":money_and_fief", 1),
-	(str_store_party_name, s0, "$g_concession_demanded"),
-	(assign, reg1, ":money_and_fief"),
-	(str_store_string, s1, "str_reg1_denars"),
-	(str_store_string, s0, "str_dplmc_s0_and_s1"),
-(else_try),
-	#Just a fief
-	(str_store_party_name, s0, "$g_concession_demanded"),
-(try_end),
+  (call_script, "script_dplmc_get_truce_pay_amount", "fac_player_supporters_faction", "$g_talk_troop_faction", ":check_peace_war"),
+  (assign, ":money_alone", reg0),
+  (assign, ":money_and_fief", reg1),
 
+  (assign, "$temp", ":money_alone"),
+  (assign, "$temp_2", ":money_and_fief"),
+
+  #Check if there is a valid demanded fief
+  (assign, reg0, -1),
+  (try_begin),
+    (is_between, "$g_concession_demanded", centers_begin, centers_end),
+    (store_faction_of_party, ":concession_faction", "$g_concession_demanded"),
+    ##diplomacy start+
+    (assign, ":alt_faction", "fac_player_supporters_faction"),
+    (try_begin),
+      (eq, ":is_coruler", 1),
+      (assign, ":alt_faction", "$players_kingdom"),
+    (try_end),
+    (this_or_next|eq, ":concession_faction", ":alt_faction"),
+    ##diplomacy end+
+    (eq, ":concession_faction", "fac_player_supporters_faction"),
+    (assign, reg0, 1),
+  (try_end),
+
+  #Either demanding a positive amount of money, or demanding a fief the player has
+  (this_or_next|ge, ":money_alone", 1),
+  (eq, reg0, 1),
+
+  #Store demand string to s0
+  (try_begin),
+    #Just denarii
+    (neq, reg0, 1),
+    (assign, reg1, ":money_alone"),
+    (str_store_string, s0, "str_reg1_denars"),
+  (else_try),
+    #A fief and denarii
+    (ge, ":money_and_fief", 1),
+    (str_store_party_name, s0, "$g_concession_demanded"),
+    (assign, reg1, ":money_and_fief"),
+    (str_store_string, s1, "str_reg1_denars"),
+    (str_store_string, s0, "str_dplmc_s0_and_s1"),
+  (else_try),
+    #Just a fief
+    (str_store_party_name, s0, "$g_concession_demanded"),
+  (try_end),
 ], "As things stand I do not see it as being in my current interest to make peace, but if you were to hand over {s0} I would be willing to agree to a truce of twenty days.",
 "dplmc_lord_ask_pardon_ruler_1",[]],
 
-[anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",
-[
-(assign, ":valid_demand", 0),
-(assign, ":money_alone", "$temp"),
-(assign, ":money_and_fief", "$temp_2"),
-(assign, ":needed_gold", 0),
+[anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",[
+  (assign, ":valid_demand", 0),
+  (assign, ":money_alone", "$temp"),
+  (assign, ":money_and_fief", "$temp_2"),
+  (assign, ":needed_gold", 0),
 
-#Store demand string to s0
-(try_begin),
-	#A fief and denarii
-	(ge, ":money_and_fief", 1),
-	(ge, "$g_concession_demanded", 1),
-	(str_store_party_name, s0, "$g_concession_demanded"),
-	(assign, reg1, ":money_and_fief"),
-	(str_store_string, s1, "str_reg1_denars"),
-	(str_store_string, s0, "str_dplmc_s0_and_s1"),
-	(assign, ":needed_gold", ":money_and_fief"),
-	(assign, ":valid_demand", 1),
-(else_try),
-	#Just a fief
-	(ge, "$g_concession_demanded", 1),
-	(str_store_party_name, s0, "$g_concession_demanded"),
-	(assign, ":needed_gold", 0),
-	(assign, ":valid_demand", 1),
-(else_try),
-	#Just denarii
-	(neq, reg0, 1),
-	(assign, reg1, ":money_alone"),
-	(str_store_string, s0, "str_reg1_denars"),
-	(assign, ":valid_demand", 1),
-	(assign, ":needed_gold", ":money_alone"),
-(try_end),
+  #Store demand string to s0
+  (try_begin),
+    #A fief and denarii
+    (ge, ":money_and_fief", 1),
+    (ge, "$g_concession_demanded", 1),
+    (str_store_party_name, s0, "$g_concession_demanded"),
+    (assign, reg1, ":money_and_fief"),
+    (str_store_string, s1, "str_reg1_denars"),
+    (str_store_string, s0, "str_dplmc_s0_and_s1"),
+    (assign, ":needed_gold", ":money_and_fief"),
+    (assign, ":valid_demand", 1),
+  (else_try),
+    #Just a fief
+    (ge, "$g_concession_demanded", 1),
+    (str_store_party_name, s0, "$g_concession_demanded"),
+    (assign, ":needed_gold", 0),
+    (assign, ":valid_demand", 1),
+  (else_try),
+    #Just denarii
+    (neq, reg0, 1),
+    (assign, reg1, ":money_alone"),
+    (str_store_string, s0, "str_reg1_denars"),
+    (assign, ":valid_demand", 1),
+    (assign, ":needed_gold", ":money_alone"),
+  (try_end),
 
-(assign, "$temp", ":valid_demand"),
-(assign, "$temp_2", ":needed_gold"),
+  (assign, "$temp", ":valid_demand"),
+  (assign, "$temp_2", ":needed_gold"),
 
-(eq, ":valid_demand", 1),
-(store_troop_gold, ":player_gold", "trp_player"),
-(ge, ":player_gold", ":needed_gold"),
+  (eq, ":valid_demand", 1),
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (ge, ":player_gold", ":needed_gold"),
 ],
-"I accept.  I will give you {s0}, and let there be peace.","close_window",[
-    (assign, ":gold", "$temp_2"),
+"I accept.  I will give you {s0}, and let there be peace.",
+"close_window",[
+  (assign, ":gold", "$temp_2"),
 
-    (troop_remove_gold, "trp_player", ":gold"),
-    (call_script, "script_dplmc_faction_leader_splits_gold", "$g_talk_troop_faction", ":gold"),
+  (troop_remove_gold, "trp_player", ":gold"),
+  (call_script, "script_dplmc_faction_leader_splits_gold", "$g_talk_troop_faction", ":gold"),
 
-    (try_begin),
-      (ge, "$g_concession_demanded", 1),
-      (call_script, "script_give_center_to_faction", "$g_concession_demanded", "$g_talk_troop_faction"),
-    (try_end),
-    (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
-    ##zerilius changes begin
-    (eq,"$talk_context",tc_party_encounter),
-    (assign, "$g_leave_encounter", 1),
-    ##zerilius changes end
+  (try_begin),
+    (ge, "$g_concession_demanded", 1),
+    (call_script, "script_give_center_to_faction", "$g_concession_demanded", "$g_talk_troop_faction"),
+  (try_end),
+  (call_script, "script_diplomacy_start_peace_between_kingdoms", "$g_talk_troop_faction", "$players_kingdom", 1),
+  ##zerilius changes begin
+  (eq,"$talk_context",tc_party_encounter),
+  (assign, "$g_leave_encounter", 1),
+  ##zerilius changes end
 ]],
 
-[anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",
-[
-(assign, ":valid_demand", "$temp"),
-(assign, ":needed_gold", "$temp_2"),
-(eq, ":valid_demand", 1),
+[anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",[
+  (assign, ":valid_demand", "$temp"),
+  (assign, ":needed_gold", "$temp_2"),
+  (eq, ":valid_demand", 1),
 
-(store_troop_gold, ":player_gold", "trp_player"),
-(lt, ":player_gold", ":needed_gold"),
-#SB : use script call to s1
-(call_script, "script_game_get_money_text", ":needed_gold"),
-# (assign, reg1, ":needed_gold"),
-# (str_store_string, s0, "str_reg1_denars"),
+  (store_troop_gold, ":player_gold", "trp_player"),
+  (lt, ":player_gold", ":needed_gold"),
+  #SB : use script call to s1
+  (call_script, "script_game_get_money_text", ":needed_gold"),
+  # (assign, reg1, ":needed_gold"),
+  # (str_store_string, s0, "str_reg1_denars"),
 ], "I don't have {s1} with me.", "dplmc_lord_ask_pardon_ruler_2a",
 []],
 
 [anyone, "dplmc_lord_ask_pardon_ruler_2a",[],
-    "In that case, the war will continue.", "lord_pretalk",[]],
+"In that case, the war will continue.",
+"lord_pretalk",[]],
 
 [anyone|plyr,"dplmc_lord_ask_pardon_ruler_1",
-[], "On second thought, such an accord would not be in my interests.", "lord_pretalk",[]],
+[], "On second thought, such an accord would not be in my interests.",
+"lord_pretalk",[]],
 
 ##diplomacy end+
 
-[anyone,"lord_ask_pardon",
-[
-(faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-(assign, ":has_center", 0),
-(try_for_range, ":cur_center", centers_begin, centers_end),
- (store_faction_of_party, ":cur_center_faction", ":cur_center"),
- (eq, ":cur_center_faction", "fac_player_supporters_faction"),
- (assign, ":has_center", 1),
-(try_end),
-##diplomacy start+ Handle when the player is co-ruler of an NPC kingdom
-(assign, ":is_coruler", 0),
-(try_begin),
-   (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
-   (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
-   (ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
-   (assign, ":is_coruler", 1),
-   (assign, "$temp_2", 0x434F52),#is co-ruler
-(else_try),
-   (assign, "$temp_2", 0),
-(try_end),
-(this_or_next|eq, ":is_coruler", 1),
-##diplomacy end+
-(eq, ":has_center", 1),
-##diplomacy begin
-], "Yes... I am weary of fighting you. I could offer you a truce of twenty days. If you keep your word and do not molest my lands and subjects, we may talk again...", "lord_truce_offer",[]],
+[anyone,"lord_ask_pardon",[
+  (troop_get_slot, ":spouse", "$g_talk_troop", slot_troop_spouse),
+
+  (this_or_next|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, ":spouse"),
+
+  (assign, ":has_center", 0),
+  (try_for_range, ":cur_center", centers_begin, centers_end),
+  (store_faction_of_party, ":cur_center_faction", ":cur_center"),
+  (eq, ":cur_center_faction", "fac_player_supporters_faction"),
+  (assign, ":has_center", 1),
+  (try_end),
+  ##diplomacy start+ Handle when the player is co-ruler of an NPC kingdom
+  (assign, ":is_coruler", 0),
+  (try_begin),
+    (is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+    (call_script, "script_dplmc_get_troop_standing_in_faction", "trp_player", "$players_kingdom"),
+    (ge, reg0, DPLMC_FACTION_STANDING_LEADER_SPOUSE),
+    (assign, ":is_coruler", 1),
+    (assign, "$temp_2", 0x434F52),#is co-ruler
+  (else_try),
+    (assign, "$temp_2", 0),
+  (try_end),
+  (this_or_next|eq, ":is_coruler", 1),
+  ##diplomacy end+
+  (eq, ":has_center", 1),
+  ##diplomacy begin
+], "Yes... I am weary of fighting you. I could offer you a truce of twenty days. If you keep your word and do not molest my lands and subjects, we may talk again...",
+"lord_truce_offer",[]],
+
 ##diplomacy end
 
 [anyone|plyr,"lord_truce_offer",
