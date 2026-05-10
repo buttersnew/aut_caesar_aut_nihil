@@ -68,6 +68,8 @@ data = """
      -) Hates <trp=700>Artimenus</>
      -) Hates <trp=686>Pravare Ytarim</>
 <trp=702>Anicetus</> (Roman): Likely in <p=34>Phasis</> (Tavern).
+     +) Likes <trp=705>Secundus Minor</>
+     -) Hates <trp=708>Lucius Varrus Drusus</>
 <trp=703>Arminius Octavianus</> (Roman): Likely in <p=67>Palmyra</> (Streets).
      +) Likes <trp=704>Tertius Maior</>
      -) Hates <trp=722>Josephus</>
@@ -75,32 +77,34 @@ data = """
 <trp=704>Tertius Maior</> (Roman): Likely in <p=67>Palmyra</> (Tavern).
      +) Likes <trp=725>Kara Boga</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=722>Josephus</>
 <trp=705>Secundus Minor</> (Roman): Likely in <p=60>Dura Europos</> (Streets).
      +) Likes <trp=727>Chaditox</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=689>Abadutiker</>
 <trp=706>Drusus</> (Roman): Likely in <p=56>Dyrrachium</> (Tavern).
      +) Likes <trp=707>Libertus Tiro</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=725>Kara Boga</>
 <trp=707>Libertus Tiro</> (Roman): Likely in <p=52>Tarraco</> (Tavern).
      +) Likes <trp=701>Titocuna</>
      -) Hates <trp=708>Lucius Varrus Drusus</>
      -) Hates <trp=712>Lucullus Caepio</>
 <trp=708>Lucius Varrus Drusus</> (Roman): Likely in <p=51>Augusta Emerita</> (Streets).
+     +) Likes <trp=710>Sollius Modestus</>
+     -) Hates <trp=707>Libertus Tiro</>
 <trp=709>Sidonius Apollinaris</> (Roman): Likely in <p=39>Hierosolyma</> (Tavern).
      +) Likes <trp=710>Sollius Modestus</>
      -) Hates <trp=727>Chaditox</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=690>Satibarzanes</>
 <trp=710>Sollius Modestus</> (Roman): Likely in <p=68>Thebae</> (Streets).
      +) Likes <trp=711>Albinus Basilius</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=698>Chanakya</>
 <trp=711>Albinus Basilius</> (Roman): Likely in <p=70>Mtskheta</> (Tavern).
      +) Likes <trp=712>Lucullus Caepio</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=714>Fabianus</>
 <trp=712>Lucullus Caepio</> (Roman): Likely in <p=55>Thessalonica</> (Tavern).
      +) Likes <trp=718>Lucius Modius minor</>
      -) Hates <trp=716>Ra Karak</>
@@ -108,17 +112,18 @@ data = """
 <trp=713>Anicius</> (Roman): Likely in <p=24>Massilia</> (Tavern).
      +) Likes <trp=714>Fabianus</>
      -) Hates <trp=725>Kara Boga</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=707>Libertus Tiro</>
 <trp=714>Fabianus</> (Roman): Likely in <p=23>Augusta</> (Tavern).
      +) Likes <trp=715>Rombus</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=711>Albinus Basilius</>
 <trp=715>Rombus</> (Roman): Likely in <p=28>Ancyra</> (Streets).
-     +) Likes <trp=688>Pulchra</>
+     +) Likes <trp=713>Anicius</>
      -) Hates <trp=701>Titocuna</>
-     -) Hates <trp=696>Dionysia</>
+     -) Hates <trp=704>Tertius Maior</>
 <trp=716>Ra Karak</> (Berber): Joins during quest.
 <trp=717>Gaius Lemonius</> (Roman): Likely in <p=54>Neapolis</> (Streets).
+     +) Likes <trp=688>Pulchra</>
      -) Hates <trp=718>Lucius Modius minor</>
 <trp=718>Lucius Modius minor</> (Roman): Likely in <p=53>Tarentum</> (Streets).
      -) Hates <trp=717>Gaius Lemonius</>
@@ -223,4 +228,4 @@ for line in lines:
 # Settings
 net.barnes_hut(gravity=-3000, central_gravity=0.3, spring_length=200, spring_strength=0.05, damping=0.09)
 # net.show_buttons(filter_=['physics'])
-net.show('website\content\companion_graph.html', notebook=False)
+net.show('website/content/companion_graph.html', notebook=False)
