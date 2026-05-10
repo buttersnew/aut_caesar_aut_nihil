@@ -32142,9 +32142,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc17", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc17", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc17", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc17", slot_troop_personalityclash_object, -1), #
+    (troop_set_slot, "trp_npc17", slot_troop_personalityclash_object, "trp_npc18"), # Arminius Octavianus — aristocratic martinet
     (troop_set_slot, "trp_npc17", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc17", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc17", slot_troop_personalitymatch_object, "trp_npc20"), # Secundus Minor — fellow rogue
     (troop_set_slot, "trp_npc17", slot_troop_home, "p_castle_27"), #Rome
     (troop_set_slot, "trp_npc17", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc17", slot_troop_kingsupport_argument, argument_benefit),
@@ -32239,9 +32239,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc23", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, -1), #
+    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, "trp_npc30"), # Rombus — casual about violence
     (troop_set_slot, "trp_npc23", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, "trp_npc29"), # Fabianus — gentle, good-natured
     (troop_set_slot, "trp_npc23", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc23", slot_troop_payment_request, 6000),
     (troop_set_slot, "trp_npc23", slot_troop_kingsupport_argument, argument_claim),
@@ -32379,13 +32379,13 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc31", slot_troop_age, 36),
     (troop_set_slot, "trp_npc31", slot_troop_culture, "fac_culture_berber"),
 
-    (troop_set_slot, "trp_npc32", slot_troop_morality_type, 0),
+    (troop_set_slot, "trp_npc32", slot_troop_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc32", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc32", slot_troop_personalityclash_object, "trp_npc33"), #
     (troop_set_slot, "trp_npc32", slot_troop_personalityclash2_object, "trp_npc43"), # Sabalus the Berber rebel
-    (troop_set_slot, "trp_npc32", slot_troop_personalitymatch_object, -1), #
+    (troop_set_slot, "trp_npc32", slot_troop_personalitymatch_object, "trp_npc3"), # Pulchra — shy crush
     (troop_set_slot, "trp_npc32", slot_troop_home, "p_town_6"), #Rome
     (troop_set_slot, "trp_npc32", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc32", slot_troop_kingsupport_argument, argument_benefit),
@@ -32395,7 +32395,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc32", slot_troop_age, 28),
     (troop_set_slot, "trp_npc32", slot_troop_culture, "fac_culture_roman"),
 
-    (troop_set_slot, "trp_npc33", slot_troop_morality_type, 0),
+    (troop_set_slot, "trp_npc33", slot_troop_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc33", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_value, 0),
