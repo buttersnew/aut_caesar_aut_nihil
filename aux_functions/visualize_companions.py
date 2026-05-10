@@ -61,4 +61,5 @@ for name, hated_list in conflicts.items():
 # Settings
 net.barnes_hut(gravity=-3000, central_gravity=0.3, spring_length=200, spring_strength=0.05, damping=0.09)
 # net.show_buttons(filter_=['physics'])
-net.show('website\content\companion_graph.html', notebook=False)
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'website', 'content', 'companion_graph.html')
+net.show(output_path, notebook=False)
