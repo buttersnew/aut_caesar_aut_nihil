@@ -32379,7 +32379,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc31", slot_troop_age, 36),
     (troop_set_slot, "trp_npc31", slot_troop_culture, "fac_culture_berber"),
 
-    (troop_set_slot, "trp_npc32", slot_troop_morality_type, 0), # is unused
+    (troop_set_slot, "trp_npc32", slot_troop_morality_type, 0),
     (troop_set_slot, "trp_npc32", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_value, 0),
@@ -32395,7 +32395,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc32", slot_troop_age, 28),
     (troop_set_slot, "trp_npc32", slot_troop_culture, "fac_culture_roman"),
 
-    (troop_set_slot, "trp_npc33", slot_troop_morality_type, 0), # is unused
+    (troop_set_slot, "trp_npc33", slot_troop_morality_type, 0),
     (troop_set_slot, "trp_npc33", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_value, 0),
@@ -32411,7 +32411,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc33", slot_troop_age, 28),
     (troop_set_slot, "trp_npc33", slot_troop_culture, "fac_culture_roman"),
 
-    (troop_set_slot, "trp_npc34", slot_troop_morality_type, tmt_humanitarian), # is unused
+    (troop_set_slot, "trp_npc34", slot_troop_morality_type, tmt_humanitarian),
     (troop_set_slot, "trp_npc34", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc34", slot_troop_2ary_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc34", slot_troop_2ary_morality_value, -1),
@@ -32427,7 +32427,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc34", slot_troop_age, 17),
     (troop_set_slot, "trp_npc34", slot_troop_culture, "fac_culture_germanic"),#germanic
 
-    (troop_set_slot, "trp_npc35", slot_troop_morality_type, 0), # is unused
+    (troop_set_slot, "trp_npc35", slot_troop_morality_type, 0),
     (troop_set_slot, "trp_npc35", slot_troop_morality_value, 0),
     (troop_set_slot, "trp_npc35", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc35", slot_troop_2ary_morality_value, 0),
@@ -32443,7 +32443,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc35", slot_troop_age, 24),
     (troop_set_slot, "trp_npc35", slot_troop_culture, "fac_culture_germanic"),#germanic
 
-    (troop_set_slot, "trp_npc36", slot_troop_morality_type, tmt_humanitarian), # is unused
+    (troop_set_slot, "trp_npc36", slot_troop_morality_type, tmt_humanitarian),
     (troop_set_slot, "trp_npc36", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc36", slot_troop_2ary_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc36", slot_troop_2ary_morality_value, -1),
@@ -32460,7 +32460,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc36", slot_troop_culture, "fac_culture_roman"),#Roman
     (troop_set_slot, "trp_npc36", slot_troop_renown, 150),
 
-    (troop_set_slot, "trp_npc37", slot_troop_morality_type, tmt_aristocratic), # is unused
+    (troop_set_slot, "trp_npc37", slot_troop_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc37", slot_troop_morality_value, -1),
     (troop_set_slot, "trp_npc37", slot_troop_2ary_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc37", slot_troop_2ary_morality_value, -1),
@@ -32477,7 +32477,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc37", slot_troop_culture, "fac_culture_judean"),#judean
     (troop_set_slot, "trp_npc37", slot_troop_renown, 50),
 
-    (troop_set_slot, "trp_npc38", slot_troop_morality_type, tmt_egalitarian), # is unused
+    (troop_set_slot, "trp_npc38", slot_troop_morality_type, tmt_egalitarian),
     (troop_set_slot, "trp_npc38", slot_troop_morality_value, -1),
     (troop_set_slot, "trp_npc38", slot_troop_2ary_morality_type, tmt_aristocratic),
     (troop_set_slot, "trp_npc38", slot_troop_2ary_morality_value, 1),
