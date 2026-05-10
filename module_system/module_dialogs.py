@@ -23319,7 +23319,8 @@ dialogs =[
 "nurse_talk_question", []],
 
 [anyone, "nurse_talk_question",[
-], "I am the nurse of Darta, lady of this house. Now unless you have business here, move along.",
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+], "I am the nurse of {s4}, lady of this house. Now unless you have business here, move along.",
 "nurse_talk", []],
 
 [anyone|plyr, "nurse_talk",[
@@ -23364,7 +23365,8 @@ dialogs =[
 "nurse_talk1_help2", []],
 
 [anyone|plyr, "nurse_talk1_help2",[
-], "I want to take Darta out of this camp. You have access to her. You could help me.",
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+], "I want to take {s4} out of this camp. You have access to her. You could help me.",
 "nurse_talk1_help3", []],
 
 [anyone, "nurse_talk1_help3",[
@@ -23424,7 +23426,8 @@ dialogs =[
 "nurse_talk_angry23", []],
 
 [anyone, "nurse_talk_angry23",[
-], "Then perhaps I should call the guards instead. Garat would pay handsomely to know a stranger was asking questions about his wife.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "Then perhaps I should call the guards instead. {s5} would pay handsomely to know a stranger was asking questions about his wife.",
 "nurse_talk_angry24", []],
 
 [anyone|plyr, "nurse_talk_angry24",[
@@ -23439,7 +23442,8 @@ dialogs =[
 [anyone|plyr, "nurse_talk_angry24",[
     (store_troop_gold, ":gold", "trp_player"),
     (ge, ":gold", 8000),
-], "Wait. Do not tell Garat. I will bring you the eight thousand denarii.",
+    (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "Wait. Do not tell {s5}. I will bring you the eight thousand denarii.",
 "nurse_talk_angry22", [
   (assign, "$temp", 8000),
 ]],
@@ -23467,8 +23471,10 @@ dialogs =[
 "nurse_deal", []],
 
 [anyone, "nurse_deal",[
-], "I will bring Darta to you. An hour's ride from here there is an oasis - three palms rising from the sand, you cannot miss it. "
-+ "Wait for us there. I will give Garat a sleeping draught and when he is under, I will bring the girl out to you. "
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "I will bring {s4} to you. An hour's ride from here there is an oasis - three palms rising from the sand, you cannot miss it. "
++ "Wait for us there. I will give {s5} a sleeping draught and when he is under, I will bring the girl out to you. "
 + "Now give me my coin and go. We have said enough.",
 "nurse_deal2", []],
 
@@ -91262,10 +91268,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (check_quest_active, "qst_blossom_in_the_desert"),
   (eq, "$talk_context", tc_escape),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_clear, s13),
   (try_begin),
     (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
-    (str_store_string, s13, "@ Then you went to Garat and started a fight."),
+    (str_store_string, s13, "@ Then you went to {s5} and started a fight."),
   (try_end),
 ],
 "You. ^-- She is very still. --^ You told me my mother sent you.{s13} Now you are here, with the nurse gone. ^-- Quietly, almost to herself: --^ She was in on it from the start.", "darta_talky",
@@ -91275,13 +91282,14 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (check_quest_active, "qst_blossom_in_the_desert"),
   (eq, "$talk_context", tc_escape),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
   (str_clear, s13),
   (try_begin),
     (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_object_state, 1),
     (str_store_string, s13, "@ - who accused him, started a fight and fled"),
   (try_end),
 ],
-"You! ^-- Her eyes go wide. --^ Garat spoke of a stranger who came to the camp asking questions{s13}. That was you. ^-- She glances back toward the palms. --^ Where is the nurse? What is this?", "darta_talky",
+"You! ^-- Her eyes go wide. --^ {s5} spoke of a stranger who came to the camp asking questions{s13}. That was you. ^-- She glances back toward the palms. --^ Where is the nurse? What is this?", "darta_talky",
 []],
 
 
@@ -91299,7 +91307,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "darta_talky2",[
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
-], "My mother's errand. ^-- Her voice is flat, not angry. --^ You told me she sent you. Then you went to Garat, failed, and fell back on coin and deception. ^-- She looks past you at the empty palms. --^ I wonder if she knows the methods you use in her name.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "My mother's errand. ^-- Her voice is flat, not angry. --^ You told me she sent you. Then you went to {s5}, failed, and fell back on coin and deception. ^-- She looks past you at the empty palms. --^ I wonder if she knows the methods you use in her name.",
 "darta_talky3", []],
 
 [anyone, "darta_talky2",[
@@ -91331,12 +91340,16 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "darta_talky33", []],
 
 [anyone|plyr, "darta_talky32",
-[], "I am {playername}. Your father sent me. He wants you returned - returned to the life that was arranged before Garat took you into the desert.",
+[
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "I am {playername}. Your father sent me. He wants you returned - returned to the life that was arranged before {s5} took you into the desert.",
 "darta_talky33", []],
 
 
 [anyone, "darta_talky33",
-[], "My father. ^-- Her tears stop. Something behind her eyes hardens. --^ Do you know what life my father arranged for me? Garat did not take me. I went with him. I chose the desert over what waited for me in Carthago.",
+[
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "My father. ^-- Her tears stop. Something behind her eyes hardens. --^ Do you know what life my father arranged for me? {s5} did not take me. I went with him. I chose the desert over what waited for me in Carthago.",
 "darta_talky4", []],
 
 [anyone|plyr, "darta_talky4",
@@ -91360,13 +91373,17 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 # --- branch B: curious, she reveals the truth about Sextus ---
 [anyone, "darta_talky4b",
-[], "His name is Sextus Arthropoda. He came down from Rome into Africa collecting curiosities - rare animals, strange stones, foreign women. When he first laid eyes on me he looked me over the way a merchant inspects grain. He spoke of keeping me close. He did not mean as a wife. ^-- She holds your gaze. --^ Garat treats me as a person. Sextus would keep me as a possession, as a slave! My father knows this and does not care. That is what I was running from.",
+[
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "His name is Sextus Arthropoda. He came down from Rome into Africa collecting curiosities - rare animals, strange stones, foreign women. When he first laid eyes on me he looked me over the way a merchant inspects grain. He spoke of keeping me close. He did not mean as a wife. ^-- She holds your gaze. --^ {s5} treats me as a person. Sextus would keep me as a possession, as a slave! My father knows this and does not care. That is what I was running from.",
 "darta_talky43", [
 ]],
 
 # --- branch C: pragmatic, she rejects the idea of safety under her father ---
 [anyone, "darta_talky4c",
-[], "Safe. ^-- A quiet, humourless sound. --^ I would live behind walls, handed from my father's house to a Roman's bed, and you would call that safety. Garat asks nothing of me that I have not given freely. I had rather starve in the desert as a free woman than eat well as a man's property.",
+[
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "Safe. ^-- A quiet, humourless sound. --^ I would live behind walls, handed from my father's house to a Roman's bed, and you would call that safety. {s5} asks nothing of me that I have not given freely. I had rather starve in the desert as a free woman than eat well as a man's property.",
 "darta_talky43", []],
 
 [anyone|plyr, "darta_talky43",
@@ -91416,7 +91433,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (remove_member_from_party, "trp_baquates_princess", "p_nasamones_town_1"),
   (rest_for_hours, 4, 2, 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta is bound and in my custody. She came unwillingly. Her father will have her back - what I demand in return is another matter.", 0),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@{s4} is bound and in my custody. She came unwillingly. Her father will have her back - what I demand in return is another matter.", 0),
   (display_message, "str_quest_updated", message_alert),
 ]],
 
@@ -91430,20 +91448,24 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [], "-- The afternoon passes in shade and silence and sand. When you come to your senses, she is gone - nothing left but the cooling desert air and the sound of the wind through the palms. --",
 "close_window", [
   (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta slipped away while you were distracted. She is gone and you have no way to recover her. You must decide what to tell her father.", 0),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@{s4} slipped away while you were distracted. She is gone and you have no way to recover her. You must decide what to tell her father.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
 ]],
 
 [anyone|plyr, "darta_talky43",
-[], "I see. Stay with Garat. I will not drag you back against your will.",
+[
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+], "I see. Stay with {s5}. I will not drag you back against your will.",
 "darta_leave", []],
 
 [anyone, "darta_leave",
 [], "You are a better man than I thought, {playername}. Whatever brought you here, you leave with your honour intact. ^-- She takes your hand briefly, then steps back. --",
 "close_window", [
   (assign, "$temp", 1),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Darta told you the truth about her betrothal to Sextus. You chose not to force her back. She is free, but her father will expect an answer. You must decide how to face him.", 0),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@{s4} told you the truth about her betrothal to Sextus. You chose not to force her back. She is free, but her father will expect an answer. You must decide how to face him.", 0),
   (display_message, "str_quest_updated", message_alert),
   (call_script, "script_change_player_honor", 5),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 80),
@@ -91477,7 +91499,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_queen_progress_hub",[
   (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
   (ge, ":count", 1),
-],"She is with me — I brought her out of the Autoleles camp.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"She is with me — I brought her out of the {s6} camp.",
 "desert_queen_has_darta",[]],
 
 [anyone|plyr, "desert_queen_progress_hub",[
@@ -91493,7 +91516,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 
 [anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
-],"She is alive and well. However she refused to come home. She has made her life with Garat and she will not leave him.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+],"She is alive and well. However she refused to come home. She has made her life with {s5} and she will not leave him.",
 "desert_queen_quest_daughter_found_return_truth",[]],
 
 [anyone|plyr, "desert_queen_quest_daughter_found_return_2",[
@@ -91515,11 +91539,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "desert_queen_quest_daughter_found_return_truth_3",[
-],"Then she is lost to me in a way no grave ever was. A grave I can mourn. This - I do not know what to do with this. I do not know whether to hate Garat or thank whatever god kept her breathing. Go. There is no more I can ask of you. I will speak with my husband. Perhaps there is still something that can be done. I will not give up on her.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+],"Then she is lost to me in a way no grave ever was. A grave I can mourn. This - I do not know what to do with this. I do not know whether to hate {s5} or thank whatever god kept her breathing. Go. There is no more I can ask of you. I will speak with my husband. Perhaps there is still something that can be done. I will not give up on her.",
 "desert_queen_pretalk",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} the truth - Darta is alive but refuses to return. ", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} the truth - {s4} is alive but refuses to return. ", 0),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 10),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 4),
 ]],
@@ -91532,8 +91558,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"I will go back for her. You have my word.",
 "desert_queen_pretalk",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} that Darta is alive and that you will bring her back. You did not tell her that Darta refused to come. The queen is waiting.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@You told {s20} that {s4} is alive and that you will bring her back. You did not tell her that {s4} refused to come. The queen is waiting.", 0),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 5),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 5),
 ]],
@@ -91714,14 +91741,17 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (str_store_troop_name, s31, ":father"),
   (store_faction_of_troop, ":fac", ":father"),
   (str_store_faction_name, s33, ":fac"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
 ],
-"Indeed. I am of the {s33} - daughter of king {s31}. Years ago, my father arranged my betrothal to a Roman noble. I was fourteen then. Among our people, girls are wed at twelve; I was already beyond the common age. I was sent to Carthago with an escort of a hundred men. But we were set upon by Autoleles raiders in the passes. The escort was put to the sword. They brought me before their leader. Now I am his wife. The wife of Garat.",
+"Indeed. I am of the {s33} - daughter of king {s31}. Years ago, my father arranged my betrothal to a Roman noble. I was fourteen then. Among our people, girls are wed at twelve; I was already beyond the common age. I was sent to Carthago with an escort of a hundred men. But we were set upon by {s6} raiders in the passes. The escort was put to the sword. They brought me before their leader. Now I am his wife. The wife of {s5}.",
 "desert_queen_talk_darta_begin",[
   (try_begin),
     (neg|check_quest_active, "qst_blossom_in_the_desert"),
     (setup_quest_text,"qst_blossom_in_the_desert"),
     (str_store_troop_name, s30, "$g_talk_troop"),
-    (str_store_string, s2, "@{s30} told you her story. She is the daughter of the Baquates king - taken by Autoleles raiders on the road to Carthago, brought before their leader Garat, and made his wife. She has not been home since. Her family may not even know she lives. Seek out the Baquates and bring them word of their daughter."),
+    (str_store_faction_name, s7, "fac_baquates"),
+    (str_store_string, s2, "@{s30} told you her story. She is the daughter of the {s7} king - taken by {s6} raiders on the road to Carthago, brought before their leader {s5}, and made his wife. She has not been home since. Her family may not even know she lives. Seek out the {s7} and bring them word of their daughter."),
     (call_script, "script_start_quest", "qst_blossom_in_the_desert", "trp_fortuna"),
   (else_try),
     (check_quest_active, "qst_blossom_in_the_desert"),
@@ -91734,7 +91764,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "desert_queen_talk_darta_begin",[
   (this_or_next|quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 2),
-],"Your mother sent me. She has not forgotten you - and she would see you free of the Autoleles.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"Your mother sent me. She has not forgotten you - and she would see you free of the {s6}.",
 "desert_queen_rescue_begin",[
 ]],
 
@@ -91746,13 +91777,15 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone|plyr, "desert_queen_talk_darta_begin",[
   (eq, "$temp1", 1),
-],"A Roman betrothal... your father traded you like a prize. Perhaps the Autoleles merely claimed what he had already sold.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"A Roman betrothal... your father traded you like a prize. Perhaps the {s6} merely claimed what he had already sold.",
 "desert_queen_talk_darta_begin_2",[
   (assign, "$temp1", 2),
 ]],
 
 [anyone, "desert_queen_talk_darta_begin_2",[
-],"You speak plainly, stranger. My father is a king - he does what kings do. And the Roman he chose... I have heard stories of that man. Stories that do not end well for his wives. Garat took me by the sword. He has never once raised it against me. Draw what conclusions you will from that.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+],"You speak plainly, stranger. My father is a king - he does what kings do. And the Roman he chose... I have heard stories of that man. Stories that do not end well for his wives. {s5} took me by the sword. He has never once raised it against me. Draw what conclusions you will from that.",
 "desert_queen_talk_darta_begin",[
 ]],
 
@@ -91794,7 +91827,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (neg|check_quest_active, "qst_blossom_in_the_desert"),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_current_state, 0),
-],"My daughter ... I am so worried about her. She was kidnapped by the evil Garat of the Autololes. I don't know where she is and if she is still alive. If you find her and bring her back to me, I will reward you generously.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+],"My daughter ... I am so worried about her. She was kidnapped by the evil {s5} of the {s6}. I don't know where she is and if she is still alive. If you find her and bring her back to me, I will reward you generously.",
 "desert_queen_darta_quest",[]],
 
 [anyone|plyr, "desert_queen_darta_quest",[
@@ -91802,11 +91838,14 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_queen_darta_quest_agree",[]],
 
 [anyone, "desert_queen_darta_quest_agree",[
-],"I am so grateful. I hope you will find her. I am sure she is still alive, but I don't know where she is. Garat is a cruel man, but I hope you will find her and bring her back to me. The Autololes live in the desert, but I don't know where exactly. They are nomads and they move around a lot. But maybe you can find some clues in the desert - or follow one of their raider groups when they retreat to their lair. Do not waste too much time! Please find her and bring her back to me.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
+],"I am so grateful. I hope you will find her. I am sure she is still alive, but I don't know where she is. {s5} is a cruel man, but I hope you will find her and bring her back to me. The {s6} live in the desert, but I don't know where exactly. They are nomads and they move around a lot. But maybe you can find some clues in the desert - or follow one of their raider groups when they retreat to their lair. Do not waste too much time! Please find her and bring her back to me.",
 "desert_queen_darta_quest_agree_2",[
     (setup_quest_text,"qst_blossom_in_the_desert"),
     (str_store_troop_name, s30, "$g_talk_troop"),
-    (str_store_string, s2, "@{s30} ask you to find her lost daughter Darta, who was captured by Garat of the Autoleles. The Autoleles wander around the desert of Mauretania."),
+    (str_store_troop_name, s4, "trp_baquates_princess"),
+    (str_store_string, s2, "@{s30} ask you to find her lost daughter {s4}, who was captured by {s5} of the {s6}. The {s6} wander around the desert of Mauretania."),
     (call_script, "script_start_quest", "qst_blossom_in_the_desert", "trp_fortuna"),
     (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_target_dna, 1),
 ]],
@@ -92063,19 +92102,26 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_leave",[]],
 
 [anyone, "desert_king_quest_daughter_talk_spouse_3",[
-],"I ceased hoping. But I never saw her face among the dead. The riders said one body was unrecognisable - burned beyond naming. We assumed. Perhaps we assumed too quickly. If she still lives, there is only one place she could be. The Autoleles took the road that day. Their territory lies to the south, in the deep desert. Their leader, Garat, does not give back what he takes. Go. Look. If you find her - bring her back to her mother at least. A king must be certain before he grieves twice.",
+  (str_store_faction_name, s6, "fac_autololes"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+],"I ceased hoping. But I never saw her face among the dead. The riders said one body was unrecognisable - burned beyond naming. We assumed. Perhaps we assumed too quickly. If she still lives, there is only one place she could be. The {s6} took the road that day. Their territory lies to the south, in the deep desert. Their leader, {s5}, does not give back what he takes. Go. Look. If you find her - bring her back to her mother at least. A king must be certain before he grieves twice.",
 "desert_king_quest_daughter_talk_spouse_leave",[]],
 
 [anyone, "desert_king_quest_daughter_talk_spouse_4",[
-],"Autoleles raiders. Scavengers of the desert roads. They prey on caravans, on escorts, on anything that crosses their ground unguarded. I had thought a hundred men enough. I was wrong. If any of my daughter survived that road, Garat has her. He leads them. A fearless man, they say. I would call him something else.",
+  (str_store_faction_name, s6, "fac_autololes"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+],"{s6} raiders. Scavengers of the desert roads. They prey on caravans, on escorts, on anything that crosses their ground unguarded. I had thought a hundred men enough. I was wrong. If any of my daughter survived that road, {s5} has her. He leads them. A fearless man, they say. I would call him something else.",
 "desert_king_quest_daughter_talk_spouse_leave",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_talk_spouse_leave",[
 ],"I will search for her. You have my word.",
 "desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 2, "@You spoke with {s20}, the father of Darta. He believes the Autoleles took her during the escort ambush on the road to Carthago. Their leader is a man named Garat. Seek out the Autoleles in the southern desert.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 2, "@You spoke with {s20}, the father of {s4}. He believes the {s6} took her during the escort ambush on the road to Carthago. Their leader is a man named {s5}. Seek out the {s6} in the southern desert.", 0),
 ]],
 
 [trp_baquates_king|plyr, "desert_king",[
@@ -92094,7 +92140,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_found_return_2",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_found_return_2",[
-],"She is alive. I spoke with her myself. Garat of the Autoleles took her from the ambush and made her his wife. She lives in his camp in the deep desert.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
+],"She is alive. I spoke with her myself. {s5} of the {s6} took her from the ambush and made her his wife. She lives in his camp in the deep desert.",
 "desert_king_quest_daughter_found_return_3",[]],
 
 [anyone, "desert_king_quest_daughter_found_return_3",[
@@ -92146,8 +92194,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"Good. I will give you Ra Karak - my finest guard. He knows the desert roads and he knows how to be quiet about what he does there. Bring her back. There will be gold in it for you - considerable gold.",
 "desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_faction_name, s6, "fac_autololes"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You informed {s20} that Darta is alive but refuses to return. He insists she be brought back. He gave you Ra Karak as a guide. Find a way to bring her out of the Autoleles camp.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You informed {s20} that {s4} is alive but refuses to return. He insists she be brought back. He gave you Ra Karak as a guide. Find a way to bring her out of the {s6} camp.", 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
 ]],
 
@@ -92155,8 +92205,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"You refuse. You stand in my hall and tell me you will not do the one thing I ask. Then get out. And tell my wife - since she sent you - that her daughter has chosen a life in the sand over her family. See if that brings her comfort.",
 "desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You refused to bring Darta back against her will. The king dismissed you. Darta remains with Garat and the Autoleles.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You refused to bring {s4} back against her will. The king dismissed you. {s4} remains with {s5} and the {s6}.", 0),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -15),
   (call_script, "script_change_player_relation_with_faction", "fac_baquates", -10),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, -1),
@@ -92179,15 +92232,20 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_talk2",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_talk2",[
-],"She is not dead. I have spoken with her. Garat of the Autoleles took her from the ambush. She is his wife now, living in the deep desert.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
+],"She is not dead. I have spoken with her. {s5} of the {s6} took her from the ambush. She is his wife now, living in the deep desert.",
 "desert_king_quest_daughter_talk3",[]],
 
 [anyone, "desert_king_quest_daughter_talk3",[
-],"I know. I have always known it was likely. The Autoleles worked that road. A traveller came through months ago and described the new queen of their camp - that description was not a stranger's face. I chose not to hear it. Reopening a grave is harder than digging it. Say what you came to say.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"I know. I have always known it was likely. The {s6} worked that road. A traveller came through months ago and described the new queen of their camp - that description was not a stranger's face. I chose not to hear it. Reopening a grave is harder than digging it. Say what you came to say.",
 "desert_king_quest_daughter_talk4",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_talk4",[
-],"I spoke with her at length. She confirmed everything - the ambush on the Carthago road, Garat taking her, all of it. She named you as her father. She spoke of the Baquates.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s7, "fac_baquates"),
+],"I spoke with her at length. She confirmed everything - the ambush on the Carthago road, {s5} taking her, all of it. She named you as her father. She spoke of the {s7}.",
 "desert_king_quest_daughter_talk5",[]],
 
 [anyone, "desert_king_quest_daughter_talk5",[
@@ -92196,7 +92254,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_talk6",[]],
 
 [anyone, "desert_king_quest_daughter_talk5",[
-],"You could be lying. You could be anyone. But... a traveller passing through some weeks past described the new queen of the Autoleles. The description he gave could not have been a stranger. That hair. Those eyes. My wife has wept every night since. I buried a name, not a child.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"You could be lying. You could be anyone. But... a traveller passing through some weeks past described the new queen of the {s6}. The description he gave could not have been a stranger. That hair. Those eyes. My wife has wept every night since. I buried a name, not a child.",
 "desert_king_quest_daughter_talk6",[]],
 
 [anyone, "desert_king_quest_daughter_talk6",[
@@ -92228,7 +92287,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_talk_action2",[]],
 
 [anyone, "desert_king_quest_daughter_talk_action2",[
-],"And bury another hundred men in the sand? The Autoleles know their terrain better than my scouts know their own names. I would lose warriors and still not see her again. No. There must be another way.",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"And bury another hundred men in the sand? The {s6} know their terrain better than my scouts know their own names. I would lose warriors and still not see her again. No. There must be another way.",
 "desert_king_quest_daughter_talk_action2b",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_talk_action2b",[
@@ -92258,10 +92318,13 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_talk_refuse2",[]],
 
 [anyone|plyr, "desert_king_quest_daughter_talk_refuse2",[
-],"Then I will not drag her back against her will. She made her choice. I would also note - the man you arranged for her had a particular reputation with his wives. Perhaps Garat is the lesser cruelty. I leave you to reflect on that. Better leave now or end up in my prison!",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_faction_name, s6, "fac_autololes"),
+],"Then I will not drag her back against her will. She made her choice. I would also note - the man you arranged for her had a particular reputation with his wives. Perhaps {s5} is the lesser cruelty. I leave you to reflect on that. Better leave now or end up in my prison!",
 "desert_king_leave",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
-  (display_message, "@You refused to bring Darta back against her will. The king was furious. Darta remains with Garat and the Autoleles. The quest has been abandoned.", 0),
+  (display_message, "@You refused to bring {s4} back against her will. The king was furious. {s4} remains with {s5} and the {s6}. The quest has been abandoned.", 0),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -15),
   (call_script, "script_change_player_relation_with_faction", "fac_baquates", -10),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, -1),
@@ -92286,8 +92349,11 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_daughter_talk_plan3",[
   (call_script, "script_recruit_troop_as_companion","trp_npc31"),
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You have spoken with {s20}. Darta is held by Garat, leader of the Autoleles, somewhere in the deep desert. {s20} wants her back to honour the Roman betrothal. He gave you Ra Karak as a guide. Find a way to bring her out - quietly if possible.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You have spoken with {s20}. {s4} is held by {s5}, leader of the {s6}, somewhere in the deep desert. {s20} wants her back to honour the Roman betrothal. He gave you Ra Karak as a guide. Find a way to bring her out - quietly if possible.", 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_temp_slot, 2),
 ]],
 [anyone|plyr, "desert_king_quest_daughter_talk_plan3",[
@@ -92959,7 +93025,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "autololes_leader_who_are_you",[]],
 
 [anyone, "autololes_leader_who_are_you",[
-],"I am Garat, king of the Autololes. My people have roamed these sands since before Rome had a name. We follow no Augustus, no Caesar, bow to no governor, nor legate or praetor. The desert is our fortress and our law. You would do well to remember that.",
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_faction_name, s6, "fac_autololes"),
+],"I am {s5}, king of the {s6}. My people have roamed these sands since before Rome had a name. We follow no Augustus, no Caesar, bow to no governor, nor legate or praetor. The desert is our fortress and our law. You would do well to remember that.",
 "bandit_leader_pretalk",[]],
 
 
@@ -92998,7 +93066,8 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "desert_king_quest_gara_talk_daughter",[]],
 
 [anyone|plyr, "desert_king_quest_gara_talk_daughter",[
-],"Her family has sent me. I have come to bring Darta back to them.",
+  (str_store_troop_name, s4, "trp_baquates_princess"),
+],"Her family has sent me. I have come to bring {s4} back to them.",
 "desert_king_quest_gara_talk_daughter3",[]],
 
 [anyone, "desert_king_quest_gara_talk_daughter3",[
@@ -93013,8 +93082,10 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"Then you leave this camp in chains or as a corpse. The choice is yours. Men! Get that bastard!",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
+  (str_store_troop_name, s5, "trp_bandit_autololes_leader"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Confronting Garat directly was a mistake. He refused to hear reason and had his men attack. A direct approach will not work. You should seek out someone within the palace who has leverage over Garat or can help you get Darta out of the lair another way.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 4, "@Confronting {s5} directly was a mistake. He refused to hear reason and had his men attack. A direct approach will not work. You should seek out someone within the palace who has leverage over {s5} or can help you get {s4} out of the lair another way.", 0),
   (try_for_agents,":agent_no"),
     (agent_is_alive,":agent_no"),
     (agent_is_human,":agent_no"),
@@ -93057,19 +93128,23 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone, "desert_king_quest_gara_talk",[
 ],"You spoke with her. And now you come to me. What is it you want?", "desert_king_quest_gara_talk2",[
   (str_store_troop_name_link, s20, "$g_talk_troop"),
+  (str_store_troop_name, s4, "trp_baquates_princess"),
   (display_message, "str_quest_updated", message_alert),
-  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You confronted {s20} about Darta. He listened and said little. Whatever he knows of her past, he guards it well.", 0),
+  (add_quest_note_from_sreg, "qst_blossom_in_the_desert", 3, "@You confronted {s20} about {s4}. He listened and said little. Whatever he knows of her past, he guards it well.", 0),
   (quest_set_slot, "qst_blossom_in_the_desert", slot_quest_current_state, 1),
 ]],
 [anyone|plyr, "desert_king_quest_gara_talk2",[
-],"She is not Autoleles by birth, is she?",
+  (str_store_faction_name, s6, "fac_autololes"),
+],"She is not {s6} by birth, is she?",
 "desert_king_quest_gara_talk3",[]],
 
 [anyone|plyr, "desert_king_quest_gara_talk2",[
 ],"Nothing. Forget it.",
 "bandit_leader_pretalk",[]],
 
-[anyone, "desert_king_quest_gara_talk3",[],"My wife is Autoleles. She rides with my people, she sleeps beneath my tent, she speaks our tongue. What a woman was before she came to the desert is sand. It blows away.", "bandit_leader_pretalk",[
+[anyone, "desert_king_quest_gara_talk3",[
+  (str_store_faction_name, s6, "fac_autololes"),
+],"My wife is {s6}. She rides with my people, she sleeps beneath my tent, she speaks our tongue. What a woman was before she came to the desert is sand. It blows away.", "bandit_leader_pretalk",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -2),
 ]],
 
