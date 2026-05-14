@@ -5491,8 +5491,8 @@ presentations = presentations_wse2 + [
         (try_end),
         ##Nero Change
         (val_mul, ":offer_value", 5),##
-        (val_div, ":offer_value", 2),##
-        (val_add, ":offer_value", 500),##the base payment are 500 denarii
+        (val_div, ":offer_value", 3),##
+        (val_add, ":offer_value", 250),##the base payment are 250 denarii
         (call_script, "script_round_value", ":offer_value"),
         (assign, ":offer_value", reg0),
         (try_begin),
