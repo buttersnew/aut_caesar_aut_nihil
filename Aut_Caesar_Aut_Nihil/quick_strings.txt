@@ -1,4 +1,4 @@
-6019
+6028
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6018,3 +6018,12 @@ qstr_[DBG]_after_*modifie [DBG]_after_*modifier_=_{reg0}
 qstr_[DBG]_after_/100_=_{ [DBG]_after_/100_=_{reg0}
 qstr_[DBG]_final_corrupti [DBG]_final_corruption_loss_(neg,_clamped)_=_{reg0}
 qstr_With_renown_{reg10}_y With_renown_{reg10}_you_can_have_{reg11}_household_slaves_and_{reg12}_cooks!
+qstr_At_the_party_The_Li At_the_party,_The_Libyan_told_you_about_his_desire_to_establish_trade_relations_with_silk_merchants_from_China,_as_he_loves_working_with_silk._He_presented_to_the_group_a_new_member_to_join,_an_Arab_caravan_guard_named_Ali,_who_will_also_serve_as_guide_on_your_way_to_Bactria._Travell_to_{s22}_and_meet_one_of_The_Lybian's_associates_in_a_local_tavern.
+qstr_Now_you_have_Darta._ Now_you_have_Darta._You_should_ask_for_a_huge_reward.
+qstr_You_don_t_have_Darta You_don't_have_Darta._You_will_tell_that_she_was_killed_by_a_snake_or_something_like_that.
+qstr_You_have_talked_with_{ You_have_talked_with_{s20}_about_his_daughter._You_will_rescue_her_and_bring_her_back_to_{s20}._You_are_sure_he_will_pay_you_well._Maybe_you_can_persuade_Gadarat_to_sell_his_wife_to_you?_Or_should_you_use_violence?
+qstr_You_should_look_for_ You_should_look_for_an_ally_in_the_palace.
+qstr_You_have_talked_with_{s You_have_talked_with_{s20}_about_his_wife._It_seems_like_he_wants_to_hide_something.
+qstr_Debug_{s1} Debug_{s1}
+qstr_Change_Governor_[Inf Change_Governor_[Influence]
+qstr_{s13}_Governor_[sena {s13}_Governor_[senate_support]
