@@ -86,7 +86,7 @@ qst_blank_quest_16 Generic_Quest:_Bring_{reg25}_{reg1?pieces:piece}_of_{s17}_to_
 qst_blank_quest_17 Generic_Quest:_Bring_foodstuffs_to_{s11} 2 {s11}_asked_you_to_bring_her_two_pieces_of_cheese_and_{reg25}_{reg1?bottles:bottle}_of_wine. 
 qst_blank_quest_18 Generic_Quest:_Deliver_message_to_{s3} 2 {s11}_asked_you_to_take_a_message_to_her_lover_{s3}. 
 qst_blank_quest_19 Main_Story:_Aut_Caesar_Aut_Nihil 2 {!}placeholder 
-qst_blank_quest_20 Special_Quest:_Blossom_in_the_Desert 2 {!}placeholder 
+qst_blossom_in_the_desert Special_Quest:_Blossom_in_the_Desert 2 {!}placeholder 
 qst_blank_quest_21 Generic_Quest:_Corruption 2 {!}placeholder 
 qst_blank_quest_22 Special_Quest:_Conquest_of_Germania 2 {!}placeholder 
 qst_blank_quest_23 Special_Quest:_Conquest_of_Mesopotamia 2 {!}placeholder 
