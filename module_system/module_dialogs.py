@@ -91497,7 +91497,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (this_or_next|quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_target_dna, 3),
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"You return. Tell me — what news of {s20}?",
+],"You return. Tell me - what news of {s20}?",
 "minor_queen_progress_hub",[]],
 
 [anyone|plyr, "minor_queen_progress_hub",[
@@ -91510,18 +91510,18 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
   (ge, ":count", 1),
   (str_store_faction_name, s6, "fac_autololes"),
-],"She is with me — I brought her out of the {s6} camp.",
+],"She is with me - I brought her out of the {s6} camp.",
 "minor_queen_has_darta",[]],
 
 [anyone|plyr, "minor_queen_progress_hub",[
   (quest_slot_ge, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
   (party_count_prisoners_of_type, ":count", "p_main_party", "trp_baquates_princess"),
   (eq, ":count", 0),
-],"I had her — but my party was overrun. She escaped in the confusion.",
+],"I had her - but my party was overrun. She escaped in the confusion.",
 "minor_queen_darta_lost",[]],
 
 [anyone, "minor_queen_quest_daughter_found_return_1",[
-],"She is alive? Tell me — is she well? What did she say to you?",
+],"She is alive? Tell me - is she well? What did she say to you?",
 "minor_queen_quest_daughter_found_return_2",[]],
 
 
@@ -91577,7 +91577,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 
 [anyone, "minor_queen_has_darta",[
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"She is here? {s20} is truly with you? Let me go to her — please, take me to her.",
+],"She is here? {s20} is truly with you? Let me go to her - please, take me to her.",
 "minor_queen_has_darta_2",[]],
 
 [anyone|plyr, "minor_queen_has_darta_2",[
@@ -91589,7 +91589,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "close_window",[]],
 
 [anyone, "minor_queen_has_darta_mother",[
-],"Then she is home. Whatever road brought her back — you have my gratitude. I have no treasury to match what you deserve, but you will always be welcome in my court.",
+],"Then she is home. Whatever road brought her back - you have my gratitude. I have no treasury to match what you deserve, but you will always be welcome in my court.",
 "minor_queen_pretalk",[
   (remove_member_from_party, "trp_baquates_princess", "p_main_party"),
   (remove_member_from_party, "trp_nurse_african", "p_main_party"),
@@ -91599,7 +91599,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "minor_queen_darta_lost",[
-],"You had her in your hands — and you lost her. I do not want to hear your reasons. Get out of my sight.",
+],"You had her in your hands - and you lost her. I do not want to hear your reasons. Get out of my sight.",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
   (call_script, "script_fail_quest", "qst_blossom_in_the_desert"),
@@ -92012,17 +92012,17 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone|plyr, "minor_fac_king_tribute2",[
-],"I require an additional 5,000 denarii — a modest price for the protection I afford you.",
+],"I require an additional 5,000 denarii - a modest price for the protection I afford you.",
 "minor_fac_king_tribute3",[
   (assign, "$temp", 5000),
 ]],
 [anyone|plyr, "minor_fac_king_tribute2",[
-],"I require an additional 10,000 denarii — think of it as surety for your people's continued safety.",
+],"I require an additional 10,000 denarii - think of it as surety for your people's continued safety.",
 "minor_fac_king_tribute3",[
   (assign, "$temp", 10000),
 ]],
 [anyone|plyr, "minor_fac_king_tribute2",[
-],"I require an additional 15,000 denarii — and I would advise you not to test my patience.",
+],"I require an additional 15,000 denarii - and I would advise you not to test my patience.",
 "minor_fac_king_tribute3",[
   (assign, "$temp", 15000),
 ]],
@@ -92047,14 +92047,14 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (val_mul, ":enemy_strength", ":rel_factor"),
   (val_div, ":enemy_strength", 600),
   (gt, ":player_strength", ":enemy_strength"),
-],"You leave us no choice. Here — take your silver, and may the gods bear witness to this injustice. Now go, before what little patience we have left runs dry.",
+],"You leave us no choice. Here - take your silver, and may the gods bear witness to this injustice. Now go, before what little patience we have left runs dry.",
 "close_window",[
   (troop_add_gold, "trp_player", "$temp"),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20)
 ]],
 
 [anyone, "minor_fac_king_tribute3",[
-],"Enough! We will not be bled dry by your greed. From this day forth we are no longer bound to you — our people are free! Take your threats and leave before this ends in blood.",
+],"Enough! We will not be bled dry by your greed. From this day forth we are no longer bound to you - our people are free! Take your threats and leave before this ends in blood.",
 "close_window",[
   (faction_set_slot, "$g_talk_troop_faction", slot_faction_player_tributary, -1),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-20),
@@ -92465,7 +92465,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_count_prisoners_of_type, ":darta_count", "p_main_party", "trp_baquates_princess"),
   (eq, ":darta_count", 0),
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"My lord — I must speak with you about your daughter {s20}.", "minor_fac_king_darta_1_talk",[]],
+],"My lord - I must speak with you about your daughter {s20}.", "minor_fac_king_darta_1_talk",[]],
 
 [anyone, "minor_fac_king_darta_1_talk",[],"Then speak. I trust the news is good.",
 "minor_fac_king_darta_1_talk1",[]],
@@ -92473,7 +92473,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 [anyone|plyr, "minor_fac_king_darta_1_talk1",[],"It is not. Something went wrong.",
 "minor_fac_king_darta_1_talk2",[]],
 
-[anyone, "minor_fac_king_darta_1_talk2",[],"Wrong? What do you mean? Where is she? Speak plainly — what has happened to my daughter?",
+[anyone, "minor_fac_king_darta_1_talk2",[],"Wrong? What do you mean? Where is she? Speak plainly - what has happened to my daughter?",
 "minor_fac_king_darta_1_talk3",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
@@ -92485,7 +92485,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "minor_fac_king_darta_1_talk_snake",[
-],"A serpent... she was afraid of them even as a child. By all the gods — did you at least bury her with honour?",
+],"A serpent... she was afraid of them even as a child. By all the gods - did you at least bury her with honour?",
 "minor_fac_king_darta_1_player_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
@@ -92497,7 +92497,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "minor_fac_king_darta_1_talk_lion",[
-],"A lion. In the night. You lead armed men — and you could not protect a single woman from a beast? You have shamed yourself before me.",
+],"A lion. In the night. You lead armed men - and you could not protect a single woman from a beast? You have shamed yourself before me.",
 "minor_fac_king_darta_1_player_angry",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
@@ -92544,7 +92544,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (quest_slot_eq, "qst_blossom_in_the_desert", slot_quest_temp_slot, 4),
   (eq, "$g_talk_troop", "trp_baquates_king"),
   (str_store_troop_name, s20, "trp_baquates_princess"),
-],"My lord — I bring her back to you. Your daughter {s20} is safe and rides with me.",
+],"My lord - I bring her back to you. Your daughter {s20} is safe and rides with me.",
 "minor_fac_king_darta_2_talk",[]],
 
 [anyone, "minor_fac_king_darta_2_talk",[
@@ -92555,7 +92555,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "minor_fac_king_darta_2_talk3",[]],
 
 [anyone, "minor_fac_king_darta_2_talk3",[
-],"Of course. But first — let her stand before me.",
+],"Of course. But first - let her stand before me.",
 "minor_fac_king_darta_2_talk4",[]],
 
 [anyone|plyr, "minor_fac_king_darta_2_talk4",[
@@ -92566,7 +92566,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "minor_fac_king_darta_2_handover",[
-],"Your reward, as promised — five hundred denarii.",
+],"Your reward, as promised - five hundred denarii.",
 "minor_fac_king_darta_2_reward_reply",[]],
 
 [anyone|plyr, "minor_fac_king_darta_2_reward_reply",[
@@ -92615,7 +92615,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop",-10),
 ]],
 [anyone|plyr, "minor_fac_king_darta_2_reward_dismissed",[
-],"You will pay me properly — or you will regret it.",
+],"You will pay me properly - or you will regret it.",
 "minor_fac_king_darta_2_reward_threat",[
   (add_xp_as_reward, 3000),
 ]],
@@ -92651,7 +92651,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "minor_fac_king_darta_2_talk_reward_money2",[]],
 
 [anyone|plyr, "minor_fac_king_darta_2_talk_reward_money2",[
-],"You plan to sell her to a Roman — Sextus Arthropoda of Carthage. A man of considerable wealth. One hundred thousand is nothing to him.",
+],"You plan to sell her to a Roman - Sextus Arthropoda of Carthage. A man of considerable wealth. One hundred thousand is nothing to him.",
 "minor_fac_king_darta_2_talk_reward_money3",[]],
 
 [anyone, "minor_fac_king_darta_2_talk_reward_money3",[
@@ -92659,16 +92659,16 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "minor_fac_king_darta_2_talk_reward_money4",[]],
 
 [anyone|plyr, "minor_fac_king_darta_2_talk_reward_money4",[
-],"Then do not merely take her back — sell her to Sextus yourself. Demand two hundred thousand. Half is mine, the rest is yours.",
+],"Then do not merely take her back - sell her to Sextus yourself. Demand two hundred thousand. Half is mine, the rest is yours.",
 "minor_fac_king_darta_2_talk_reward_money5",[]],
 
 [anyone, "minor_fac_king_darta_2_talk_reward_money5",[
-],"...You have a sharp mind for a man of the road. Very well — we have an agreement.", "minor_fac_king_darta_2_talk_reward_money6",[
+],"...You have a sharp mind for a man of the road. Very well - we have an agreement.", "minor_fac_king_darta_2_talk_reward_money6",[
   (call_script, "script_troop_add_gold", "trp_player", 100000),
 ]],
 
 [anyone|plyr, "minor_fac_king_darta_2_talk_reward_money6",[
-],"Then we are done. Here — take her.",
+],"Then we are done. Here - take her.",
 "close_window",[
   (add_xp_as_reward, 10000),
   (call_script, "script_end_quest", "qst_blossom_in_the_desert"),
@@ -92684,7 +92684,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 "minor_fac_king_darta_2_talk_reward_tribut2",[]],
 
 [anyone, "minor_fac_king_darta_2_talk_reward_tribut2",[
-],"You cunning snake. Fine — we have a deal.",
+],"You cunning snake. Fine - we have a deal.",
 "minor_fac_king_darta_2_talk_reward_tribut3",[]],
 
 [anyone|plyr, "minor_fac_king_darta_2_talk_reward_tribut3",[
@@ -92976,7 +92976,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (gt, ":player_strength", ":threshold"),
   (str_store_faction_name, s50, "$g_talk_troop_faction"),
 ],
-  "We have no wish to prolong this war. The {s50} accept your offer of peace — no payment is required.",
+  "We have no wish to prolong this war. The {s50} accept your offer of peace - no payment is required.",
   "peace_agreement",
   [],
 ],
@@ -93003,7 +93003,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (val_div, reg50, 10),
   (val_clamp, reg50, 5000, 50000),
   (assign, "$temp3", reg50),
-],"Peace is possible — but our blood was shed for nothing if there is no reparation. I will accept your proposal in exchange for {reg50} denarii.",
+],"Peace is possible - but our blood was shed for nothing if there is no reparation. I will accept your proposal in exchange for {reg50} denarii.",
 "minor_fac_peace_pay",[
 ]],
 
@@ -93059,7 +93059,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (store_mul, ":threshold", ":enemy_strength", ":rel_factor"),
   (val_div, ":threshold", 100),
   (gt, ":player_strength", ":threshold"),
-],"You have the strength to back your demands. Here — {reg51} denarii. Now leave us in peace.",
+],"You have the strength to back your demands. Here - {reg51} denarii. Now leave us in peace.",
 "minor_fac_tribute_accept_or_refuse",[
 ]],
 
@@ -93090,7 +93090,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 # Demand more: player insists on twice reg51 (stored in reg52).
-# Acceptance threshold is tighter — player must be at least 3x enemy, scaled by relation.
+# Acceptance threshold is tighter - player must be at least 3x enemy, scaled by relation.
 [anyone, "minor_fac_tribute_demand_more", [
   (party_get_current_terrain, ":terrain_code", "p_main_party"),
   (call_script, "script_dplmc_party_calculate_strength_in_terrain", "$g_encountered_party", ":terrain_code", 0, 1),
@@ -93104,7 +93104,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (val_mul, ":threshold", ":rel_factor"),
   (val_div, ":threshold", 10000),
   (gt, ":player_strength", ":threshold"),
-],"You are truly merciless. Very well — take your {reg52} denarii and be gone from our sight.",
+],"You are truly merciless. Very well - take your {reg52} denarii and be gone from our sight.",
 "close_window",[
   (troop_add_gold, "trp_player", reg52),
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -8),
@@ -93112,7 +93112,7 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ]],
 
 [anyone, "minor_fac_tribute_demand_more", [],
-"Enough of your greed! We offered what we could. The offer is withdrawn — now leave before this turns to bloodshed.",
+"Enough of your greed! We offered what we could. The offer is withdrawn - now leave before this turns to bloodshed.",
 "close_window",[
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -5),
 ]],

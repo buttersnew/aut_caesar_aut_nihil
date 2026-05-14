@@ -32042,7 +32042,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc11", slot_troop_personalityclash2_object, "trp_npc5"), #katrin - beheshtur
     (troop_set_slot, "trp_npc11", slot_troop_personalitymatch_object, "trp_npc10"), #katrin likes bunduk
     (troop_set_slot, "trp_npc11", slot_troop_home, "p_town_35"), #Praven
-    (troop_set_slot, "trp_npc11", slot_troop_payment_request, 10000),
+    (troop_set_slot, "trp_npc11", slot_troop_payment_request, 1000),
     (troop_set_slot, "trp_npc11", slot_troop_kingsupport_argument, argument_claim),
     (troop_set_slot, "trp_npc11", slot_troop_kingsupport_opponent, "trp_npc15"), #borcha
     (troop_set_slot, "trp_npc11", slot_troop_town_with_contacts, "p_town_35"), #praven
@@ -32142,9 +32142,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc17", slot_troop_morality_value, 2),
     (troop_set_slot, "trp_npc17", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc17", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc17", slot_troop_personalityclash_object, "trp_npc18"), # Arminius Octavianus — aristocratic martinet
+    (troop_set_slot, "trp_npc17", slot_troop_personalityclash_object, "trp_npc18"), # Arminius Octavianus - aristocratic martinet
     (troop_set_slot, "trp_npc17", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc17", slot_troop_personalitymatch_object, "trp_npc20"), # Secundus Minor — fellow rogue
+    (troop_set_slot, "trp_npc17", slot_troop_personalitymatch_object, "trp_npc20"), # Secundus Minor - fellow rogue
     (troop_set_slot, "trp_npc17", slot_troop_home, "p_castle_27"), #Rome
     (troop_set_slot, "trp_npc17", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc17", slot_troop_kingsupport_argument, argument_benefit),
@@ -32160,7 +32160,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc18", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc18", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc18", slot_troop_personalityclash_object, "trp_npc37"), #
-    (troop_set_slot, "trp_npc18", slot_troop_personalityclash2_object, "trp_npc21"), # Drusus — Greens vs Blues chariot-team rivalry
+    (troop_set_slot, "trp_npc18", slot_troop_personalityclash2_object, "trp_npc21"), # Drusus - Greens vs Blues chariot-team rivalry
     (troop_set_slot, "trp_npc18", slot_troop_personalitymatch_object, "trp_npc19"), #
     (troop_set_slot, "trp_npc18", slot_troop_home, "p_village_152"), #Rome
     (troop_set_slot, "trp_npc18", slot_troop_payment_request, 6000),
@@ -32175,8 +32175,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc19", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc19", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc19", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc19", slot_troop_personalityclash_object, "trp_npc21"), # Drusus — Greens fanatic Tertius cannot abide Blues supporter
-    (troop_set_slot, "trp_npc19", slot_troop_personalityclash2_object, "trp_npc17"), # Anicetus — pirate vs disciplined soldier
+    (troop_set_slot, "trp_npc19", slot_troop_personalityclash_object, "trp_npc21"), # Drusus - Greens fanatic Tertius cannot abide Blues supporter
+    (troop_set_slot, "trp_npc19", slot_troop_personalityclash2_object, "trp_npc17"), # Anicetus - pirate vs disciplined soldier
     (troop_set_slot, "trp_npc19", slot_troop_personalitymatch_object, "trp_npc40"), #
     (troop_set_slot, "trp_npc19", slot_troop_home, "p_town_6"), #Rome
     (troop_set_slot, "trp_npc19", slot_troop_payment_request, 6000),
@@ -32191,8 +32191,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc20", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc20", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc20", slot_troop_personalityclash_object, "trp_npc26"), # Albinus Basilius — bankrupt merchant plays equestrian, bets on Blues
-    (troop_set_slot, "trp_npc20", slot_troop_personalityclash2_object, "trp_npc23"), # Lucius Varrus Drusus — roguish vs pacifist
+    (troop_set_slot, "trp_npc20", slot_troop_personalityclash_object, "trp_npc26"), # Albinus Basilius - bankrupt merchant plays equestrian, bets on Blues
+    (troop_set_slot, "trp_npc20", slot_troop_personalityclash2_object, "trp_npc23"), # Lucius Varrus Drusus - roguish vs pacifist
     (troop_set_slot, "trp_npc20", slot_troop_personalitymatch_object, "trp_npc42"), #
     (troop_set_slot, "trp_npc20", slot_troop_home, "p_town_10"), #Tarsus
     (troop_set_slot, "trp_npc20", slot_troop_payment_request, 6000),
@@ -32208,7 +32208,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc21", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc21", slot_troop_personalityclash_object, "trp_npc16"), #
-    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius Maior — Blue vs Greens zealot, mutual circus hatred
+    (troop_set_slot, "trp_npc21", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius Maior - Blue vs Greens zealot, mutual circus hatred
     (troop_set_slot, "trp_npc21", slot_troop_personalitymatch_object, "trp_npc22"), #
     (troop_set_slot, "trp_npc21", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc21", slot_troop_payment_request, 6000),
@@ -32239,9 +32239,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc23", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc23", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, "trp_npc30"), # Rombus — casual about violence
+    (troop_set_slot, "trp_npc23", slot_troop_personalityclash_object, "trp_npc30"), # Rombus - casual about violence
     (troop_set_slot, "trp_npc23", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, "trp_npc29"), # Fabianus — gentle, good-natured
+    (troop_set_slot, "trp_npc23", slot_troop_personalitymatch_object, "trp_npc29"), # Fabianus - gentle, good-natured
     (troop_set_slot, "trp_npc23", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc23", slot_troop_payment_request, 6000),
     (troop_set_slot, "trp_npc23", slot_troop_kingsupport_argument, argument_claim),
@@ -32256,7 +32256,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc24", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc24", slot_troop_personalityclash_object, "trp_npc42"), #
-    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc22"), # Libertus Tiro — aristocratic veteran vs freedman; status clash
+    (troop_set_slot, "trp_npc24", slot_troop_personalityclash2_object, "trp_npc22"), # Libertus Tiro - aristocratic veteran vs freedman; status clash
     (troop_set_slot, "trp_npc24", slot_troop_personalitymatch_object, "trp_npc25"), #
     (troop_set_slot, "trp_npc24", slot_troop_home, "p_village_56"), #Brindisium
     (troop_set_slot, "trp_npc24", slot_troop_payment_request, 6000),
@@ -32271,9 +32271,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc25", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc25", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc25", slot_troop_personalityclash_object, "trp_npc37"), # Josephus — scribes in camp unnerve him
-    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc30"), # Rombus — crude drunk who disturbs camp life
-    (troop_set_slot, "trp_npc25", slot_troop_personalitymatch_object, "trp_npc24"), # Sidonius Apollinaris — mutual deep bond
+    (troop_set_slot, "trp_npc25", slot_troop_personalityclash_object, "trp_npc37"), # Josephus - scribes in camp unnerve him
+    (troop_set_slot, "trp_npc25", slot_troop_personalityclash2_object, "trp_npc30"), # Rombus - crude drunk who disturbs camp life
+    (troop_set_slot, "trp_npc25", slot_troop_personalitymatch_object, "trp_npc24"), # Sidonius Apollinaris - mutual deep bond
     (troop_set_slot, "trp_npc25", slot_troop_home, "p_town_28"), #Carthago
     (troop_set_slot, "trp_npc25", slot_troop_payment_request, 6000),
     (troop_set_slot, "trp_npc25", slot_troop_kingsupport_argument, argument_claim),
@@ -32287,8 +32287,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc26", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc26", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc26", slot_troop_personalityclash_object, "trp_npc17"), # Anicetus — bankrupt merchant has no love for pirates
-    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius — fanatic paints obscenities on walls
+    (troop_set_slot, "trp_npc26", slot_troop_personalityclash_object, "trp_npc17"), # Anicetus - bankrupt merchant has no love for pirates
+    (troop_set_slot, "trp_npc26", slot_troop_personalityclash2_object, "trp_npc19"), # Tertius - fanatic paints obscenities on walls
     (troop_set_slot, "trp_npc26", slot_troop_personalitymatch_object, "trp_npc27"), #
     (troop_set_slot, "trp_npc26", slot_troop_home, "p_castle_21"), #Taurica
     (troop_set_slot, "trp_npc26", slot_troop_payment_request, 6000),
@@ -32304,7 +32304,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc27", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc27", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc27", slot_troop_personalityclash_object, "trp_npc31"), #
-    (troop_set_slot, "trp_npc27", slot_troop_personalityclash2_object, "trp_npc18"), # Arminius Octavianus — insufferable Greens partisan
+    (troop_set_slot, "trp_npc27", slot_troop_personalityclash2_object, "trp_npc18"), # Arminius Octavianus - insufferable Greens partisan
     (troop_set_slot, "trp_npc27", slot_troop_personalitymatch_object, "trp_npc33"), #
     (troop_set_slot, "trp_npc27", slot_troop_home, "p_town_31"), #Augusta Emerita
     (troop_set_slot, "trp_npc27", slot_troop_payment_request, 6000),
@@ -32320,7 +32320,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc28", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc28", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc28", slot_troop_personalityclash_object, "trp_npc40"), #
-    (troop_set_slot, "trp_npc28", slot_troop_personalityclash2_object, "trp_npc37"), # Josephus — note-taker in camp; Anicius fears scribes after career ruin
+    (troop_set_slot, "trp_npc28", slot_troop_personalityclash2_object, "trp_npc37"), # Josephus - note-taker in camp; Anicius fears scribes after career ruin
     (troop_set_slot, "trp_npc28", slot_troop_personalitymatch_object, "trp_npc29"), #
     (troop_set_slot, "trp_npc28", slot_troop_home, "p_town_3"), #Augusta
     (troop_set_slot, "trp_npc28", slot_troop_payment_request, 6000),
@@ -32335,8 +32335,8 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc29", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc29", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc29", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc29", slot_troop_personalityclash_object, "trp_npc42"), # Chaditox — breaks formation discipline
-    (troop_set_slot, "trp_npc29", slot_troop_personalityclash2_object, "trp_npc17"), # Anicetus — pirate in ranks troubles the honourable veteran
+    (troop_set_slot, "trp_npc29", slot_troop_personalityclash_object, "trp_npc42"), # Chaditox - breaks formation discipline
+    (troop_set_slot, "trp_npc29", slot_troop_personalityclash2_object, "trp_npc17"), # Anicetus - pirate in ranks troubles the honourable veteran
     (troop_set_slot, "trp_npc29", slot_troop_personalitymatch_object, "trp_npc30"), #
     (troop_set_slot, "trp_npc29", slot_troop_home, "p_town_34"), #Neapolis
     (troop_set_slot, "trp_npc29", slot_troop_payment_request, 6000),
@@ -32351,9 +32351,9 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc30", slot_troop_morality_value, 3),
     (troop_set_slot, "trp_npc30", slot_troop_2ary_morality_type, -1),
     (troop_set_slot, "trp_npc30", slot_troop_2ary_morality_value, 0),
-    (troop_set_slot, "trp_npc30", slot_troop_personalityclash_object, "trp_npc23"), # Lucius Varrus Drusus — pacifist frustrates the blunt sailor
-    (troop_set_slot, "trp_npc30", slot_troop_personalityclash2_object, "trp_npc11"), # Dionysia — she told him to stop pestering Pulchra
-    (troop_set_slot, "trp_npc30", slot_troop_personalitymatch_object, "trp_npc29"), # Fabianus — drinking buddy
+    (troop_set_slot, "trp_npc30", slot_troop_personalityclash_object, "trp_npc23"), # Lucius Varrus Drusus - pacifist frustrates the blunt sailor
+    (troop_set_slot, "trp_npc30", slot_troop_personalityclash2_object, "trp_npc11"), # Dionysia - she told him to stop pestering Pulchra
+    (troop_set_slot, "trp_npc30", slot_troop_personalitymatch_object, "trp_npc29"), # Fabianus - drinking buddy
     (troop_set_slot, "trp_npc30", slot_troop_home, "p_village_38"), #Itius Portus
     (troop_set_slot, "trp_npc30", slot_troop_payment_request, 6000),
     (troop_set_slot, "trp_npc30", slot_troop_kingsupport_argument, argument_claim),
@@ -32385,7 +32385,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc32", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc32", slot_troop_personalityclash_object, "trp_npc33"), #
     (troop_set_slot, "trp_npc32", slot_troop_personalityclash2_object, "trp_npc43"), # Sabalus the Berber rebel
-    (troop_set_slot, "trp_npc32", slot_troop_personalitymatch_object, "trp_npc3"), # Pulchra — shy crush
+    (troop_set_slot, "trp_npc32", slot_troop_personalitymatch_object, "trp_npc3"), # Pulchra - shy crush
     (troop_set_slot, "trp_npc32", slot_troop_home, "p_town_6"), #Rome
     (troop_set_slot, "trp_npc32", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc32", slot_troop_kingsupport_argument, argument_benefit),
@@ -32401,7 +32401,7 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc33", slot_troop_2ary_morality_value, 0),
     (troop_set_slot, "trp_npc33", slot_troop_personalityclash_object, "trp_npc32"), #
     (troop_set_slot, "trp_npc33", slot_troop_personalityclash2_object, -1), #
-    (troop_set_slot, "trp_npc33", slot_troop_personalitymatch_object, "trp_npc27"), # Lucullus Caepio — fellow Blues fan, mutual bond
+    (troop_set_slot, "trp_npc33", slot_troop_personalitymatch_object, "trp_npc27"), # Lucullus Caepio - fellow Blues fan, mutual bond
     (troop_set_slot, "trp_npc33", slot_troop_home, "p_town_33"), #Tarentum
     (troop_set_slot, "trp_npc33", slot_troop_payment_request, 0),
     (troop_set_slot, "trp_npc33", slot_troop_kingsupport_argument, argument_benefit),
@@ -74530,7 +74530,7 @@ scripts = scripts_hardcoded + [
             (try_end),
         (else_try),
             (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -1),
-            (str_store_string, s68, "@I've heard of this legendary armor before. Forgive me, but I can't help thinking you paid a blacksmith to forge it for you—how else could you have acquired it?"),
+            (str_store_string, s68, "@I've heard of this legendary armor before. Forgive me, but I can't help thinking you paid a blacksmith to forge it for you-how else could you have acquired it?"),
         (try_end),
 
         (item_set_slot, ":body", ":slot", 1),
@@ -74862,9 +74862,9 @@ scripts = scripts_hardcoded + [
             (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
             (try_begin),
                 (call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
-                (str_store_string, s69, "@{playername}, I must admit, your devotion is impressive. To be so deeply loved by the gods is no small feat. I'm curious—does such favor come naturally, or is it something you work tirelessly to maintain?"),
+                (str_store_string, s69, "@{playername}, I must admit, your devotion is impressive. To be so deeply loved by the gods is no small feat. I'm curious-does such favor come naturally, or is it something you work tirelessly to maintain?"),
             (else_try),
-                (str_store_string, s69, "@Impressive, {playername}. Your devotion has clearly earned you the gods' highest favor. A wise choice, I must admit—having the heavens on your side is always a strong advantage in both peace and war."),
+                (str_store_string, s69, "@Impressive, {playername}. Your devotion has clearly earned you the gods' highest favor. A wise choice, I must admit-having the heavens on your side is always a strong advantage in both peace and war."),
             (try_end),
         (try_end),
     (else_try),
@@ -74886,7 +74886,7 @@ scripts = scripts_hardcoded + [
                 (call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
                 (str_store_string, s69, "@{playername}, your pietas is commendable. The gods clearly look favorably upon you, though I wonder if you find their favor as rewarding as it seems."),
             (else_try),
-                (str_store_string, s69, "@{playername}, I see the gods favor you—perhaps more than most. Such favor is no small thing, though I hope you'll use it wisely to strengthen your position."),
+                (str_store_string, s69, "@{playername}, I see the gods favor you-perhaps more than most. Such favor is no small thing, though I hope you'll use it wisely to strengthen your position."),
             (try_end),
         (try_end),
     (try_end),

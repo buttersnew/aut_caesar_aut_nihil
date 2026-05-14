@@ -45171,7 +45171,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("grain_protests",0,
-  "Grain protests!^^The streets of Rome are in turmoil. Your recent decision to revoke the Lex Frumentaria et Agraria - the law that guaranteed subsidized grain to the urban poor—has sparked widespread outrage. Thousands of plebs, now facing hunger and insecurity, have taken to the streets in protest.",
+  "Grain protests!^^The streets of Rome are in turmoil. Your recent decision to revoke the Lex Frumentaria et Agraria - the law that guaranteed subsidized grain to the urban poor-has sparked widespread outrage. Thousands of plebs, now facing hunger and insecurity, have taken to the streets in protest.",
   "none",[
     (set_background_mesh, "mesh_pic_townriot"),
   ],[
@@ -45542,7 +45542,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("lucia_slaves_killed",0,
-  "Your word is all the Vigiles need. In these tense times, the testimony of a trusted figure like yourself is enough to seal anyone's fate—especially that of a slave. The entire household is rounded up. Their pleas and protestations are ignored. By evening, a dozen crucifixions serve as a gruesome spectacle for travelers outside the city. The affair is concluded, your name never mentioned in the official reports. You gave the order, and the machine of Roman justice carried it out without a second thought.",
+  "Your word is all the Vigiles need. In these tense times, the testimony of a trusted figure like yourself is enough to seal anyone's fate-especially that of a slave. The entire household is rounded up. Their pleas and protestations are ignored. By evening, a dozen crucifixions serve as a gruesome spectacle for travelers outside the city. The affair is concluded, your name never mentioned in the official reports. You gave the order, and the machine of Roman justice carried it out without a second thought.",
   "none",[
     (set_background_mesh, "mesh_pic_kreuzigung"),
   ],[ #qst_town_trade
@@ -45599,7 +45599,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   ]),
 ]),
 ("grove_2",0,
-  "The deeper you go, the darker and more primal the forest becomes. The trees press in, their gnarled branches reaching down like skeletal fingers, adorned with moss and strange, pagan fetishes—bundles of bone, feathers, and strips of cloth that twist in the faint breeze. ",
+  "The deeper you go, the darker and more primal the forest becomes. The trees press in, their gnarled branches reaching down like skeletal fingers, adorned with moss and strange, pagan fetishes-bundles of bone, feathers, and strips of cloth that twist in the faint breeze. ",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
@@ -45636,7 +45636,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("won_witch",0,
-  "The great beast is vanquished, its lifeblood staining the earth. Though a faint spark of life remains, its power is broken. To fulfill the prophecy—and your contract—you must claim its head. You raise your sword high. It is not a blow of anger, but of finality. The blade falls in a single, heavy arc, shearing through flesh and bone with a sound like thunder. You lift the monstrous head from its shoulders, silencing the legend forever.",
+  "The great beast is vanquished, its lifeblood staining the earth. Though a faint spark of life remains, its power is broken. To fulfill the prophecy-and your contract-you must claim its head. You raise your sword high. It is not a blow of anger, but of finality. The blade falls in a single, heavy arc, shearing through flesh and bone with a sound like thunder. You lift the monstrous head from its shoulders, silencing the legend forever.",
   "none",[
     (set_background_mesh, "mesh_pic_deserters"),
   ],[
@@ -45648,7 +45648,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("lucillus",0,
-  "The slave leads you through the maze-like streets of the Subura, finally stopping before an imposing warehouse. 'Lucillus's,' he says with a short, cruel laugh. 'He's expecting you.' He then vanishes, leaving you in the sudden silence.^^There's no time for confusion. The main door hangs slightly ajar—a clear invitation. As you slip inside, the trap springs. The cavernous interior is not filled with goods, but with armed men stepping out from behind crates.^^'Lucillus sends his regards,' their leader sneers, drawing his sword. 'You won't be leaving.'",
+  "The slave leads you through the maze-like streets of the Subura, finally stopping before an imposing warehouse. 'Lucillus's,' he says with a short, cruel laugh. 'He's expecting you.' He then vanishes, leaving you in the sudden silence.^^There's no time for confusion. The main door hangs slightly ajar-a clear invitation. As you slip inside, the trap springs. The cavernous interior is not filled with goods, but with armed men stepping out from behind crates.^^'Lucillus sends his regards,' their leader sneers, drawing his sword. 'You won't be leaving.'",
   "none",[
     (set_background_mesh, "mesh_pic_roma"),
   ],[
@@ -45749,7 +45749,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
 ]),
 
 ("luc_vic_2",0,
-  "Lucillus lies dead at your feet. You waste no time, turning the villa upside down in a frantic search for his riches. Your efforts pay off when you uncover a hidden strongbox, stuffed with gold denarii and fine Etruscan jewelry—worth a small fortune, at least 10,000 denarii. With the deed done and your pockets heavy, it's time to collect the rest of your payment.",
+  "Lucillus lies dead at your feet. You waste no time, turning the villa upside down in a frantic search for his riches. Your efforts pay off when you uncover a hidden strongbox, stuffed with gold denarii and fine Etruscan jewelry-worth a small fortune, at least 10,000 denarii. With the deed done and your pockets heavy, it's time to collect the rest of your payment.",
   "none",[
     (set_background_mesh, "mesh_pic_victory"),
   ],[
@@ -51054,7 +51054,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (quest_slot_eq, "qst_freelancing", slot_quest_freelancer_treatment, 1),
       (str_store_string, s11, "@You strive to remember each soldier's name and to act with fairness in every decision."
       + " Your dedication has borne fruit: the soldiers hold you in higher regard than any other officer."
-      + " When a soldier meets you, he bows—not out of obligation to your rank, but"
+      + " When a soldier meets you, he bows-not out of obligation to your rank, but"
       + " out of genuine respect for you. As you walk past, the soldiers greet you warmly."
       + " They call you fair and a true Roman."),
       (call_script, "script_change_troop_renown", "trp_player", 10),
@@ -57187,7 +57187,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_1",mnf_scale_picture,
-  "You are led to the Lupanar, a sagging, decrepit building tucked away in a filthy side alley. The moment the door groans open, a wall of stench hits you—a foul cocktail of stale wine, sweat, cheap perfume, and something unpleasantly human. A sober man would have recoiled, but in your drunken haze, the smell is just a distant, unimportant fact.^^You and the soldiers collapse onto a sticky bench as a few weary-looking dancers emerge from the shadows, their painted smiles doing little to hide the exhaustion in their eyes.",
+  "You are led to the Lupanar, a sagging, decrepit building tucked away in a filthy side alley. The moment the door groans open, a wall of stench hits you-a foul cocktail of stale wine, sweat, cheap perfume, and something unpleasantly human. A sober man would have recoiled, but in your drunken haze, the smell is just a distant, unimportant fact.^^You and the soldiers collapse onto a sticky bench as a few weary-looking dancers emerge from the shadows, their painted smiles doing little to hide the exhaustion in their eyes.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57231,7 +57231,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_1_end",mnf_scale_picture,
-  "The evening melts away in a warm river of wine and easy conversation. Your host, laughing, leads a dancer away for some 'private entertainment,' leaving you in the company of another. She approaches, her hips swaying to the music, her dark eyes locked on yours.^^She closes the distance, her body pressing against yours. Her scent is intoxicating—a mix of sweat, perfume, and spilled wine. Her fingers trace patterns on your arm, then slide to your coin purse with such practiced subtlety that you barely notice. One moment she's whispering a promise in your ear, the next she has vanished back into the crowd like a phantom.^^Before the realization of your empty purse fully dawns, a hulking figure looms over you. Gaius. He gives you a look of pure contempt, then seizes you and throws you from the lupanar like a bag of trash. You stagger back to the tavern, the ghost of her perfume still on your tunic, and pass out.",
+  "The evening melts away in a warm river of wine and easy conversation. Your host, laughing, leads a dancer away for some 'private entertainment,' leaving you in the company of another. She approaches, her hips swaying to the music, her dark eyes locked on yours.^^She closes the distance, her body pressing against yours. Her scent is intoxicating-a mix of sweat, perfume, and spilled wine. Her fingers trace patterns on your arm, then slide to your coin purse with such practiced subtlety that you barely notice. One moment she's whispering a promise in your ear, the next she has vanished back into the crowd like a phantom.^^Before the realization of your empty purse fully dawns, a hulking figure looms over you. Gaius. He gives you a look of pure contempt, then seizes you and throws you from the lupanar like a bag of trash. You stagger back to the tavern, the ghost of her perfume still on your tunic, and pass out.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57244,7 +57244,7 @@ It is said, that she lives now together with the goat.",
 
 
 ("flavor_event_3",mnf_scale_picture,
-  "You follow the two Sarmatians to the hut of Wlodarnoxarthos, a large, well-appointed dwelling decorated with rich carpets and captured Roman silks. His wife, a strong, handsome woman with eyes as clear as the steppe sky, greets you warmly.^^You sit on plush cushions, passing the ornate bong between you as the air grows thick with sweet, heavy smoke. His daughters, quiet and graceful, move like spirits, washing the dust of the road from your hands and feet before serving the meal. The feast is a testament to their wealth: roasted mutton, cured meats, and strange, savory cheeses, all served on gleaming silver plates looted from some long-forgotten raid.^^As the meal ends, the children are dismissed, but the wife remains, reclining by her husband's side. The bong is passed again. Kentaskros soon slumps over, lost in a deep, opium-fueled sleep. Wlodarnoxarthos, murmuring to his wife, pulls her close.^^It is then that the eldest daughter returns with a bowl of figs and more smokeleaf. As she sets it down, she 'accidentally' spills the fruit, her hand brushing against yours as she kneels to gather it. Her touch lingers. She glances at her parents, now lost in their own passionate embrace, then her eyes meet yours—a clear, unspoken invitation. She leans in, and her kiss is a silent promise of the pleasure to come...^^^^You awaken the next morning wrapped in furs and the soft, warm arms of Wlodarnoxarthos's daughter. Across the hut, her parents and Kentaskros are still sound asleep. In the center of the room, catching the first rays of dawn, the golden bong stands like a silent monument to the night's indulgence.",
+  "You follow the two Sarmatians to the hut of Wlodarnoxarthos, a large, well-appointed dwelling decorated with rich carpets and captured Roman silks. His wife, a strong, handsome woman with eyes as clear as the steppe sky, greets you warmly.^^You sit on plush cushions, passing the ornate bong between you as the air grows thick with sweet, heavy smoke. His daughters, quiet and graceful, move like spirits, washing the dust of the road from your hands and feet before serving the meal. The feast is a testament to their wealth: roasted mutton, cured meats, and strange, savory cheeses, all served on gleaming silver plates looted from some long-forgotten raid.^^As the meal ends, the children are dismissed, but the wife remains, reclining by her husband's side. The bong is passed again. Kentaskros soon slumps over, lost in a deep, opium-fueled sleep. Wlodarnoxarthos, murmuring to his wife, pulls her close.^^It is then that the eldest daughter returns with a bowl of figs and more smokeleaf. As she sets it down, she 'accidentally' spills the fruit, her hand brushing against yours as she kneels to gather it. Her touch lingers. She glances at her parents, now lost in their own passionate embrace, then her eyes meet yours-a clear, unspoken invitation. She leans in, and her kiss is a silent promise of the pleasure to come...^^^^You awaken the next morning wrapped in furs and the soft, warm arms of Wlodarnoxarthos's daughter. Across the hut, her parents and Kentaskros are still sound asleep. In the center of the room, catching the first rays of dawn, the golden bong stands like a silent monument to the night's indulgence.",
   "none", [
     (set_background_mesh, "mesh_pic_hexe_party"),
   ],[
@@ -57272,7 +57272,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("flavor_event_5",mnf_scale_picture,
-  "The tavern keeper, his patience finally shattered, threatens to call the Vigiles to settle Kashamir's massive debt. Panicked, Kashamir shoves past you and makes a desperate bolt for the door. He collides headfirst with a mountain of a man who was just entering—a figure with the physique of Herakles.^^The giant turns, his expression unreadable. Without a word, he grabs the sputtering artist by the throat and hurls him to the floor. What follows is not a fight, but a savage, brutal beating. The man's fists fall like hammers, again and again, long after Kashamir has stopped moving. You and the other patrons rush to intervene, but it's too late. By the time you pull the giant away, Kashamir is a broken, bloody mess on the floorboards, his last poem silenced forever.^^The killer shoves his way back out the door and vanishes into the crowded street just as the first whistles of the approaching guard can be heard.",
+  "The tavern keeper, his patience finally shattered, threatens to call the Vigiles to settle Kashamir's massive debt. Panicked, Kashamir shoves past you and makes a desperate bolt for the door. He collides headfirst with a mountain of a man who was just entering-a figure with the physique of Herakles.^^The giant turns, his expression unreadable. Without a word, he grabs the sputtering artist by the throat and hurls him to the floor. What follows is not a fight, but a savage, brutal beating. The man's fists fall like hammers, again and again, long after Kashamir has stopped moving. You and the other patrons rush to intervene, but it's too late. By the time you pull the giant away, Kashamir is a broken, bloody mess on the floorboards, his last poem silenced forever.^^The killer shoves his way back out the door and vanishes into the crowded street just as the first whistles of the approaching guard can be heard.",
   "none", [
     (set_background_mesh, "mesh_pic_roma"),
   ],[
@@ -57605,10 +57605,10 @@ It is said, that she lives now together with the goat.",
     ]),
 ]),
 ("wlodowiecus_adventure_1_4_fight_1_die",mnf_scale_picture,
-  "The battle is lost. The realization hits you like a cold blade—raiders swarm, chaos echoes, and the steppe feels endless, empty. Bodies—your comrades—lie strewn,"
+  "The battle is lost. The realization hits you like a cold blade-raiders swarm, chaos echoes, and the steppe feels endless, empty. Bodies-your comrades-lie strewn,"
   +" faces you know turned to lifeless masks. Mancilleus falls clutching the golden bracelet he never claimed, the Old Man's sword drops, his strength gone."
-  +" Wlodowiecus's shouts fade to silence, Ali's mocking grin is no more. And Hadrianus—his eyes, once burning, now stare blankly at the sky."
-  +"^^You're alone. The weight of it all settles—defeat, death, and the emptiness of the steppe swallowing everything.",
+  +" Wlodowiecus's shouts fade to silence, Ali's mocking grin is no more. And Hadrianus-his eyes, once burning, now stare blankly at the sky."
+  +"^^You're alone. The weight of it all settles-defeat, death, and the emptiness of the steppe swallowing everything.",
   "none", [
     (set_background_mesh, "mesh_pic_defeat"),
   ],[
@@ -57622,7 +57622,7 @@ It is said, that she lives now together with the goat.",
   +" You spot Mancilleus looting a fallen chieftain, prying a golden bracelet from his arm, while the Old Man wipes sweat from his brow, finishing off one of the raiders with grim efficiency."
   +" Wlodowiecus, distraught and furious, is shouting like a madman, while Ali, sauntering arrogantly across the battlefield, makes snarky remarks about the fallen enemies."
   +" Curiously, there is a dark, grim expression in Hadrianus's eyes as he seems to struggle with suppressed anger."
-  +"^^Taking a moment to catch your breath, you join in the looting, pocketing some golden jewelry from the dead—valuables worth a hefty sum of denarii."
+  +"^^Taking a moment to catch your breath, you join in the looting, pocketing some golden jewelry from the dead-valuables worth a hefty sum of denarii."
   +" Once the spoils are gathered, Wlodowiecus, in a commanding voice, orders everyone to regroup and set up camp. You instruct the others to tend to the wounded and bury the dead,"
   +" and Hadrianus, eager to keep himself occupied, volunteers for the task.",
   "none", [
@@ -57697,7 +57697,7 @@ It is said, that she lives now together with the goat.",
   "You arrive at the nearest Sogdian town and secure lodging at a tavern, allowing you and your companions a much-needed rest."
   +" However, the next morning, chaos erupts as panic spreads throughout the city. Word quickly reaches you: a horde, said to be the distant Xiongnu - though"
   +" the locals aren't certain - has encircled the town, led by an unknown chieftain. The city's inhabitants, including their own king, plead for your assistance,"
-  +" fearing that without your aid, everyone within the walls—yourselves included—will be slaughtered. Without hesitation, you rally your men to the town walls,"
+  +" fearing that without your aid, everyone within the walls-yourselves included-will be slaughtered. Without hesitation, you rally your men to the town walls,"
   +" preparing to defend against the oncoming assault.",
   "none", [
     (set_background_mesh, "mesh_pic_khergit"),
@@ -57748,12 +57748,12 @@ It is said, that she lives now together with the goat.",
     ]),
 ]),
 ("wlodowiecus_adventure_1_4_journey_sogdia_end",mnf_scale_picture,
-  "You finally lead your group to what you hope is safety. Ensuring everyone—Mancilleus, Hadrianus, the Old Mercenary, Ali, Wlodowiecus, and any others who joined you—has made it inside,"
+  "You finally lead your group to what you hope is safety. Ensuring everyone-Mancilleus, Hadrianus, the Old Mercenary, Ali, Wlodowiecus, and any others who joined you-has made it inside,"
   +" you push forward through a dim cellar where the Sogdians once stored salt and meat. The air is thick with fear, and the scent of it is palpable as you hurry,"
-  +" panting with each step. Above, the sounds of slaughter echo—agonized screams, the clash of steel, and the triumphant shouts and cruel laughter of the Xiongnu warriors."
+  +" panting with each step. Above, the sounds of slaughter echo-agonized screams, the clash of steel, and the triumphant shouts and cruel laughter of the Xiongnu warriors."
   +"^^Pressing onward, you discover a small door that opens into what appears to be a cave system, moonlight filtering faintly through an opening ahead."
-  +" You barricade the cellar door behind you, and then follow Wlodowiecus into the narrow passage. The cave leads deeper until Wlodo spots an exit—a sizable hole"
-  +" that opens to the outside of the city. You gather your strength and climb out, relief flooding you for a brief moment—until you see the spears and arrows aimed directly at you."
+  +" You barricade the cellar door behind you, and then follow Wlodowiecus into the narrow passage. The cave leads deeper until Wlodo spots an exit-a sizable hole"
+  +" that opens to the outside of the city. You gather your strength and climb out, relief flooding you for a brief moment-until you see the spears and arrows aimed directly at you."
   +" Fear grips you, and your stomach knots as realization sets in: the Xiongnu knew about the cave entrance all along. They had been waiting for you to emerge.",
   "none", [
     (set_background_mesh, "mesh_pic_prisoner_man"),
@@ -57765,7 +57765,7 @@ It is said, that she lives now together with the goat.",
 ]),
 ("wlodowiecus_adventure_1_4_journey_xongnu_prisoner",mnf_scale_picture,
   "You are herded into a holding pen, destined either for slavery or some other grim fate at the hands of the horde."
-  +" Just as hope begins to slip away, you notice a figure who appears to be the leader—the Khan of the horde."
+  +" Just as hope begins to slip away, you notice a figure who appears to be the leader-the Khan of the horde."
   +" You watch as Mancilleus steps forward, attempting to speak with him. To your surprise, the Khan, looking amused, engages him in conversation.",
   "none", [
     (set_background_mesh, "mesh_pic_khergit"),
@@ -57833,7 +57833,7 @@ It is said, that she lives now together with the goat.",
 ]),
 ("wlodowiecus_adventure_1_4_journey_great_wall_1",mnf_scale_picture,
   "You and the rest of the caravan are freed from your bindings and invited to stay in a yurt prepared for you."
-  +" A few hours later, several of your men who had been trapped inside the city are dragged out—some did not survive, but the remaining ones are allowed to join you."
+  +" A few hours later, several of your men who had been trapped inside the city are dragged out-some did not survive, but the remaining ones are allowed to join you."
   +" The Sogdian citizens and warriors, on the other hand, are enslaved. That night, a grand feast is held to celebrate the victory, and the Tuqi King requests Mancinellus's presence."
   +" He is escorted away while you are ordered to remain inside the yurt for the night."
   +"^^As you sit alone, memories of India flood back. Why does he always manage to impress leaders? He causes trouble for everyone, yet somehow manages to save the group every time."
@@ -58111,7 +58111,7 @@ It is said, that she lives now together with the goat.",
   +" Once properly dressed, they inform you that a meal will be served in the villa's garden."
   +"^^Upon entering the garden, you find a lavish banquet laid out, the air fragrant with the scent of freshly prepared dishes."
   +" Pharmanus, the old mercenary, Ali, Hadrianus, Wlodowiecus, Lei Li, and Eamane are all gathered around the table, waiting for you to join them."
-  +" After you take your seat, the meal begins—a feast accompanied by quiet conversation and the occasional clink of cups."
+  +" After you take your seat, the meal begins-a feast accompanied by quiet conversation and the occasional clink of cups."
   +"^^As the meal comes to an end, the air grows quieter, and the anticipation for what comes next lingers in the garden's evening stillness. It is agreed to take a leisurely stroll through the garden.",
   "none", [
     (set_background_mesh, "mesh_pic_villa"),
@@ -58153,7 +58153,7 @@ It is said, that she lives now together with the goat.",
   "The evening concludes with wine and music, though it remains far more subdued than the last chaotic orgy with Biggus Dickus."
   +"^^With a sense of satisfaction, you leave The Libyan's villa, expressing your thanks for his hospitality."
   +" Hadrianus, Lei Li, and Phamanus set off for Rome, eager to establish their shops and organize the caravan guild."
-  +" Meanwhile, you are left to pursue your own path, carrying with you a hefty reward—The Libyan's generous token of gratitude.",
+  +" Meanwhile, you are left to pursue your own path, carrying with you a hefty reward-The Libyan's generous token of gratitude.",
   "none", [
     (set_background_mesh, "mesh_pic_villa"),
   ],[
@@ -58172,7 +58172,7 @@ It is said, that she lives now together with the goat.",
 
 ("wlodowiecus_adventure_1_4_lybicus_feast",mnf_scale_picture,
   "As you step through the grand entrance of the villa you are given fine toga, which you are supposed to wear. Then you enter the garden and you are wonderstruck by the opulence of The Lybian's residence."
-  +" Rich tapestries line the walls, and the air is filled with the scent of exotic spices. The chatter of influential guests fills the halls—merchants, scholars, and nobles alike."
+  +" Rich tapestries line the walls, and the air is filled with the scent of exotic spices. The chatter of influential guests fills the halls-merchants, scholars, and nobles alike."
   +" Hadrianus, ever poised, exchanges words with Wlodowiecus, whose stoic demeanor reveals little."
   +" Mancinellus gestures animatedly by a marble column, deep in debate with Old Briton, who listens with a knowing smirk."
   +" All eyes occasionally flicker toward The Lybian, the host of the evening, whose reputation precedes him.",
@@ -58322,7 +58322,7 @@ It is said, that she lives now together with the goat.",
 
 ("wlodowiecus_adventure_1_4_lybicus_feast_2",mnf_scale_picture,
   "Servants glide through the crowd, offering golden, bejeweled cups brimming with rich, spiced wine. The air fills with the aroma of roasted meats, honeyed fruits,"
-  +" and exotic spices as dishes are presented on gleaming silver platters. Plates shimmer under the warm glow of lanterns, piled high with delicacies—stuffed quails, figs drizzled with honey,"
+  +" and exotic spices as dishes are presented on gleaming silver platters. Plates shimmer under the warm glow of lanterns, piled high with delicacies-stuffed quails, figs drizzled with honey,"
   +" and fragrant cheeses. One by one, the guests indulge, their laughter growing louder and movements looser. Faces flush, and conversations grow more fervent as the intoxicating effects of the wine and"
   +" the decadent feast begin to take hold, drawing everyone into a haze of pleasure and indulgence.",
   "none", [
@@ -60985,7 +60985,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("lose_of_the_gral",0,
-  "Lose of the grail^^The stench of the Tiber hangs thick in the sweltering air, a foul miasma of sewage and decay. The relentless sun beats down, and the oppressive crush of the crowd makes your head spin. Disgusted, you find a moment's respite in the shade of a plane tree.^^A woman offers you a jug of wine. You hold out the simple cup Joseph gave you. She fills it. You drink, expecting relief, but the taste is flat—nothing but common water. A cheap trick, or just cheap wine?^^Before you can decide, a nearby man points at your cup, his eyes wide. 'The fish...' he whispers. Another voice gasps, 'Chrestos!' The words spread like fire through dry grass. 'The cup! The Master's cup!' A crowd swells around you, their faces a mixture of awe and desperate hunger.^^Then, the fervor breaks. A woman shrieks and collapses, speaking in a strange, guttural tongue. Men raise their arms to the sky, chanting the name of their Lord. The scene explodes into a religious mania. Hands grab at you, desperate to touch the relic. The cup is knocked from your grasp, its contents splashing across you like a cold shock. You are thrown to the ground, the roar of the mob and the sudden, sharp blast of Vigiles horns the last things you hear before the riot swallows everything.^^When you finally pull yourself from the bloody chaos hours later, bruised and battered, you check your pockets. The cup is gone.",
+  "Lose of the grail^^The stench of the Tiber hangs thick in the sweltering air, a foul miasma of sewage and decay. The relentless sun beats down, and the oppressive crush of the crowd makes your head spin. Disgusted, you find a moment's respite in the shade of a plane tree.^^A woman offers you a jug of wine. You hold out the simple cup Joseph gave you. She fills it. You drink, expecting relief, but the taste is flat-nothing but common water. A cheap trick, or just cheap wine?^^Before you can decide, a nearby man points at your cup, his eyes wide. 'The fish...' he whispers. Another voice gasps, 'Chrestos!' The words spread like fire through dry grass. 'The cup! The Master's cup!' A crowd swells around you, their faces a mixture of awe and desperate hunger.^^Then, the fervor breaks. A woman shrieks and collapses, speaking in a strange, guttural tongue. Men raise their arms to the sky, chanting the name of their Lord. The scene explodes into a religious mania. Hands grab at you, desperate to touch the relic. The cup is knocked from your grasp, its contents splashing across you like a cold shock. You are thrown to the ground, the roar of the mob and the sudden, sharp blast of Vigiles horns the last things you hear before the riot swallows everything.^^When you finally pull yourself from the bloody chaos hours later, bruised and battered, you check your pockets. The cup is gone.",
   "none", [
     (set_background_mesh, "mesh_pic_orgie"),
   ],[
@@ -61021,7 +61021,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("staying_at_antonias_villa",0,
-  "Sleep is a distant country you cannot reach. The fire in your leg denies it, a constant, throbbing agony that consumes every thought. In desperation, you find a bottle of wine and drink, not for pleasure, but for oblivion. You drink until the edges of the pain blur and the world finally dissolves into blackness.^^You dream of the underworld—a cold, grey realm of whispering shades. Then, a moment of impossible peace: you see your parents standing beneath a birch tree, just as you remember them. You open your mouth to call out, but they crumble like ash on the wind, disintegrating into the darkness that rushes in to swallow everything.^^You awake to a spear of sunlight stabbing you in the eye. Your head feels like a cracked pot, and your mouth tastes of stale wine and regret. Across the room, Claudia Antonia is moving with the pained slowness of the profoundly hungover, preparing a simple meal. 'Gods, my head...' she groans, noticing you're awake. She brings a plate of bread and cheese and sits opposite you, the silence filled only by her loud, miserable chewing.",
+  "Sleep is a distant country you cannot reach. The fire in your leg denies it, a constant, throbbing agony that consumes every thought. In desperation, you find a bottle of wine and drink, not for pleasure, but for oblivion. You drink until the edges of the pain blur and the world finally dissolves into blackness.^^You dream of the underworld-a cold, grey realm of whispering shades. Then, a moment of impossible peace: you see your parents standing beneath a birch tree, just as you remember them. You open your mouth to call out, but they crumble like ash on the wind, disintegrating into the darkness that rushes in to swallow everything.^^You awake to a spear of sunlight stabbing you in the eye. Your head feels like a cracked pot, and your mouth tastes of stale wine and regret. Across the room, Claudia Antonia is moving with the pained slowness of the profoundly hungover, preparing a simple meal. 'Gods, my head...' she groans, noticing you're awake. She brings a plate of bread and cheese and sits opposite you, the silence filled only by her loud, miserable chewing.",
   "none", [
     (set_background_mesh, "mesh_pic_villa"),
   ],[
@@ -61803,7 +61803,7 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("prophecy_final",menu_text_color(0xFF000000)|mnf_disable_all_keys,
-  "As you stand there, inhaling the sweet, intoxicating scent of the underwear, something begins to change in the air. At first, it's subtle—a warm, almost pleasant sensation creeping over your skin. But as the minutes pass, the smell grows stronger, more overpowering, filling your lungs with each breath you take."
+  "As you stand there, inhaling the sweet, intoxicating scent of the underwear, something begins to change in the air. At first, it's subtle-a warm, almost pleasant sensation creeping over your skin. But as the minutes pass, the smell grows stronger, more overpowering, filling your lungs with each breath you take."
   +"^^Bassus, too, seems entranced by the aroma. His eyes are wide, pupils dilated, as he waves his hands in front of his face, trying to push the scent away, but it's no use. He seems almost... lost in it now, his expression slack, his movements erratic. He calls for the slaves, urging them to come closer, but as they step forward, the haze of the fragrance deepens around them."
   +"^^The slaves, too, begin to falter. At first, they stumble toward the smell with curiosity, but soon their faces grow pale, their bodies swaying, as if the air itself is clouding their minds. You can hear them muttering, almost incoherently, as the scent begins to drown out everything else.",
   "none",[
