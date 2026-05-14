@@ -54702,20 +54702,21 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 "{s66}, I have come to offer you my sword as a Commander!", "lord_ask_enter_service",[]],
 
 [anyone|plyr,"lord_talk",[
-    (le,"$talk_context", tc_party_encounter),
-    (ge, "$g_talk_troop_faction_relation", 0),
-    #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
-    (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
-    # (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
-    (troop_slot_eq, "trp_global_variables", g_global_player_office, 0),
-    (eq, "$players_kingdom", "fac_kingdom_7"),
-    (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
-    (store_partner_quest, ":lords_quest"),
-    (neq, ":lords_quest", "qst_join_faction"),
-    #   (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
-    (eq, "$enlisted_party", -1),#freelancer
-    (eq, "$g_rank", 0),
-],"I want to join the army of Rome as officer.",
+  (le,"$talk_context", tc_party_encounter),
+  (ge, "$g_talk_troop_faction_relation", 0),
+  #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
+  (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
+  # (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (troop_slot_eq, "trp_global_variables", g_global_player_office, 0),
+  (eq, "$players_kingdom", "fac_kingdom_7"),
+  (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+  (neq, "$player_has_homage", 0), # not mercenary
+  (store_partner_quest, ":lords_quest"),
+  (neq, ":lords_quest", "qst_join_faction"),
+  #   (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
+  (eq, "$enlisted_party", -1),#freelancer
+  (eq, "$g_rank", 0),
+],"I want to join the legions of Rome as officer.",
 "join_army",[]],
 
 [trp_kingdom_7_lord|plyr,"lord_talk",[
@@ -56520,11 +56521,16 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 [anyone|plyr,"lord_talk_ask_something_2",[
   (eq, "$players_kingdom", 0),
   (ge, "$g_talk_troop_faction_relation", 0),
-  (ge, "$g_talk_troop_relation", 0),
+  # (ge, "$g_talk_troop_relation", 0),
   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
   (eq, "$enlisted_party", -1),#freelancer
   (neq, "$g_campaign_type", g_campaign_story_rome), # not main story
 ],"Perhaps you have work for a mercenary?", "lord_propose_mercenary_prequel",[]],
+
+[anyone,"lord_propose_mercenary_prequel",[
+  (lt, "$g_talk_troop_relation", 0),
+],"Why would anyone need a someone like you as mercenary?^^[Hint: Improve relation.]",
+"lord_pretalk",[]],
 
 [anyone|auto_proceed,"lord_propose_mercenary_prequel",[
   (troop_slot_ge, "trp_player", slot_troop_renown, 30),
