@@ -18782,7 +18782,9 @@ presentations = presentations_wse2 + [
       (store_sub, "$g_dplmc_terrain_advantage", ":value", 1),
     (else_try), ## LORDS RETURNING FROM EXILE
       (troop_slot_eq, "trp_temp_array_b", 4, ":object"),
-      (store_sub, "$g_dplmc_lord_recycling", ":value", 1),
+      (troop_slot_eq, "trp_temp_array_b", 4, ":object"),
+
+      (assign, "$g_dplmc_lord_recycling", ":value"),
     # (else_try), #AI
     #   (troop_slot_eq, "trp_temp_array_b", 6, ":object"),
     #   (store_sub, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_HIGH, ":value"),
