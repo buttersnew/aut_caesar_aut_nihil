@@ -5935,6 +5935,8 @@ game_menus = [
       (assign,"$g_ally_party","$g_encountered_party_2"),
       ## WINDYPLAINS+ ## - Join any side - relation changes
       (try_begin),
+        (troop_slot_eq, "trp_global_variables", g_apply_relation_effects_on_battle_join, 0),
+
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
         (ge, ":relation", -10),
@@ -5959,6 +5961,8 @@ game_menus = [
         # Reduce relation with enemy faction.
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
+
+        (troop_set_slot, "trp_global_variables", g_apply_relation_effects_on_battle_join, 1),
       (try_end),
       ## WINDYPLAINS- ##
       (jump_to_menu,"mnu_join_battle")
@@ -5974,6 +5978,7 @@ game_menus = [
 
       ## WINDYPLAINS+ ## - Join any side - relation changes
       (try_begin),
+        (troop_slot_eq, "trp_global_variables", g_apply_relation_effects_on_battle_join, 0),
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
         (ge, ":relation", -10),
@@ -5998,6 +6003,8 @@ game_menus = [
         # Reduce relation with enemy faction.
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (call_script, "script_change_player_relation_with_faction", ":faction_no", -2),
+
+        (troop_set_slot, "trp_global_variables", g_apply_relation_effects_on_battle_join, 1),
       (try_end),
       ## WINDYPLAINS- ##
       (jump_to_menu,"mnu_join_battle"),
