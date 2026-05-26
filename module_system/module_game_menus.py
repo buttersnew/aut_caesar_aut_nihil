@@ -5915,7 +5915,9 @@ game_menus = [
 
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-        (ge, ":relation", -10),
+        (lt, ":relation", 25),
+        (gt, ":relation", -10),
+
         (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
         (try_for_range, ":stack_no", 0, ":stack_count"),
           (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
@@ -5955,9 +5957,12 @@ game_menus = [
       ## WINDYPLAINS+ ## - Join any side - relation changes
       (try_begin),
         (troop_slot_eq, "trp_global_variables", g_apply_relation_effects_on_battle_join, 0),
+
         (store_faction_of_party, ":faction_no", "$g_enemy_party"),
         (store_relation, ":relation", ":faction_no", "fac_player_supporters_faction"),
-        (ge, ":relation", -10),
+        (lt, ":relation", 25),
+        (gt, ":relation", -10),
+
         (party_get_num_companion_stacks, ":stack_count", "$g_ally_party"),
         (try_for_range, ":stack_no", 0, ":stack_count"),
           (party_stack_get_troop_id, ":troop_no", "$g_ally_party", ":stack_no"),
