@@ -3459,9 +3459,9 @@ phrygian_head_price,phrygian_head,imodbits_cloth, [],[fac_culture_saka]],
 
 ["saka_helmet_1", "Red Saka Helmet", [("saka_helmet_1",0)],itp_merchandise|itp_type_head_armor,0,
 medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
-["saka_helmet_2", "Blue Saka Helmet", [("saka_helmet_2",0)],itp_merchandise|itp_type_head_armor,0,
+["saka_helmet_2", "Yellow Saka Helmet", [("saka_helmet_2",0)],itp_merchandise|itp_type_head_armor,0,
 medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
-["saka_helmet_3", "Yellow Saka Helmet", [("saka_helmet_3",0)],itp_merchandise|itp_type_head_armor,0,
+["saka_helmet_3", "Blue Saka Helmet", [("saka_helmet_3",0)],itp_merchandise|itp_type_head_armor,0,
 medium_head_price,medium_head,imodbits_cloth, [],[fac_culture_saka]],
 
 ["sarmatian_cap_1", "Sarmatian Cap", [("sarmatian_cap_1",0)],itp_merchandise|itp_type_head_armor,0,
