@@ -96017,6 +96017,8 @@ scripts = scripts_hardcoded + [
     (else_try),
         (eq, ":template", "pt_steppe_bandit_lair"),
         (assign, reg0, "trp_alannic_raider"),
+    (else_try),
+        (assign, reg0, "trp_looter"),
     (try_end),
 ]),
 
