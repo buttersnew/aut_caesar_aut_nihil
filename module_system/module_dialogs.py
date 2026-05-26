@@ -69102,7 +69102,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 ],"Perhaps you know where to find someone...", "seneschal_ask_location",[]],
 
 [anyone|plyr,"seneschal_talk",[
-  (neq, "$g_talk_troop", "trp_town_28_seneschal"),
+  # (neq, "$g_talk_troop", "trp_town_28_seneschal"),
 
   (store_relation, ":cur_rel", "fac_player_supporters_faction", "$g_encountered_party_faction"),
   (ge, ":cur_rel", 0),
