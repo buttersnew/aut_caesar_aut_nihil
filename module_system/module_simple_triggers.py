@@ -4042,6 +4042,11 @@ simple_triggers = [
 #Update how good a target player is for bandits
 (12,[
     (call_script, "script_execude_debug_message", 73),
+
+    # piggybacking on this script to reset this slot, which is used to prevent relation effects from applying when player joins a battle
+    # to prevent exploits of joining a battle, then leaving to reset relations and joining again
+    (troop_set_slot, "trp_global_variables", g_apply_relation_effects_on_battle_join, 0),
+
     (store_troop_gold, ":total_value", "trp_player"),
     (troop_get_inventory_capacity, ":inv_size", "trp_player"),
     (try_for_range, ":i_slot", 0, ":inv_size"),
