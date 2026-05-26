@@ -69112,7 +69112,7 @@ But the peope here are either drunk or busy with other things, you know. Tell me
   (eq, "$g_rank", 0),#no rank
   (neq, "$g_is_emperor", 1),#not emperor
   (eq, "$players_kingdom", 0),#not already in a faction
-  (ge, "$g_talk_troop_faction_relation", 0),#not at war
+  # (ge, "$g_talk_troop_faction_relation", 0),#not at war
   (troop_slot_eq, "trp_player", slot_troop_culture, "fac_culture_roman"), # only roman
 ],"I would like to enlist service in one of the Roman legions.",
 "entlist_service",[]],
