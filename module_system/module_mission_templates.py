@@ -5775,7 +5775,7 @@ dplmc_death_came_triggers = [
   dplmc_death_camera
 ]
 
-adjust_equipment = (1,0,2,[],[
+adjust_equipment = (1,0,0,[],[
   (try_for_agents, ":agent_no"),
       (agent_is_active, ":agent_no"),
       (agent_is_human, ":agent_no"),
@@ -5784,6 +5784,8 @@ adjust_equipment = (1,0,2,[],[
       (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
       (gt, ":wielded_item", 0),
       (try_begin),#remove kontos for dismounted units
+          # (item_get_weapon_length, ":length", ":wielded_item"),
+          # (this_or_next|gt, ":length", 150),
           (is_between, ":wielded_item", kontos_begin, kontos_end),
           (agent_get_horse, ":horse", ":agent_no"),
           (le, ":horse", 0),
@@ -6682,28 +6684,7 @@ tournament_triggers = [
   miracle_arena_trigger,
   common_arena_init_banner,
 
-  (1,0,2,[],[
-    (try_for_agents, ":agent_no"),
-      (agent_is_active, ":agent_no"),
-      (agent_is_human, ":agent_no"),
-      (agent_is_alive, ":agent_no"),
-      (agent_is_non_player, ":agent_no"),
-      (agent_get_troop_id, ":troop", ":agent_no"),
-      (troop_is_guarantee_horse, ":troop"),
-      (agent_get_horse, ":horse", ":agent_no"),
-      (le, ":horse", 0),
-      (agent_get_wielded_item, ":wielded_item", ":agent_no", 0),
-      (gt, ":wielded_item", 0),
-      (is_between, ":wielded_item", kontos_begin, kontos_end),
-      (agent_unequip_item, ":agent_no", ":wielded_item"),
-      (call_script, "script_equip_best_melee_weapon", ":agent_no", 0, 0, 1),
-      (try_begin),
-        (eq, "$cheat_mode", 1),
-        (str_store_troop_name, s33, ":troop"),
-        (display_message, "@{s33} changes weapons"),
-      (try_end),
-    (try_end),
-  ]),
+  adjust_equipment,
 
   (0, 0, 3,[
     (key_clicked, key_t),
