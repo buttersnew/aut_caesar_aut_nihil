@@ -32380,6 +32380,48 @@ mission_templates = [
     ambient_scene_play_loop,
     ambient_scene_play_random_sound,
 ]),
+("explore_secret_place_interior", 0, -1,
+  "Test.",[
+    (0,mtef_scene_source,af_override_horse,0,1,[]),
+    (1,mtef_visitor_source,af_override_horse,0,1,[]),
+    (2,mtef_visitor_source,af_override_horse,0,1,[]),
+    (3,mtef_visitor_source,af_override_horse,0,1,[]),
+    (4,mtef_visitor_source,af_override_horse,0,1,[]),
+    (5,mtef_visitor_source,af_override_horse,0,1,[]),
+  ], p_wetter +
+  [
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (agent_is_active, ":dead_agent_no"),
+      (neg|agent_is_non_player, ":dead_agent_no"),#player
+      (display_message, "@You lost some money...", color_terrible_news),
+      (troop_remove_gold, "trp_player", 250),
+    ]),
+    (ti_on_agent_killed_or_wounded, 0, 0, [],[
+      (store_trigger_param_1, ":dead_agent_no"),
+      (agent_is_active, ":dead_agent_no"),
+      (agent_get_troop_id, ":troop_id", ":dead_agent_no"),#player
+      (eq, ":troop_id", "trp_dj_pence"),
+      (set_trigger_result, 1),# force kill
+    ]),
+    cannot_spawn_commoners,
+    (0, 0, ti_once, [],[
+      (mission_cam_set_screen_color, 0xFF000000),
+      (mission_cam_animate_to_screen_color, 0x00000000, 2000),
+    ]),
+
+    (ti_tab_pressed, 0, 0,[],[
+      (mission_cam_animate_to_screen_color, 0xFF000000, 2500),
+      (finish_mission, 3),
+    ]),
+    # improved_lightning,
+    common_inventory_not_available,
+    ambient_set_agents_for_sounds,
+    ambient_agent_play_sound,
+    # ambient_scene_play_loop,
+    # ambient_scene_play_random_sound,
+]),
+
 ("explore_secret_place", 0, -1,
   "Test.",[
     (0,mtef_scene_source,0,0,1,[]),
