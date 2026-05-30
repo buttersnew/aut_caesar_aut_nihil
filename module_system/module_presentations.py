@@ -24967,9 +24967,8 @@ presentations = presentations_wse2 + [
 ##fief management END
 
 ###new legion management ####################
- ("select_auxiliar_cohort", 0, 0, [
-    (ti_on_presentation_load,
-      [
+("select_auxiliar_cohort", 0, 0, [
+  (ti_on_presentation_load,[
     (presentation_set_duration, 999999),
     (set_fixed_point_multiplier, 1000),
 
@@ -24998,7 +24997,7 @@ presentations = presentations_wse2 + [
     (position_set_y, pos1, 1500),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Hint: Select the cohort which you will command.", tf_center_justify),
+    (create_text_overlay, reg1, "@Hint: Select the cohort which you will command. It must belong to your faction.", tf_center_justify),
     (overlay_set_color, reg1, color_information),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 645), # Higher, means more toward the top
@@ -25102,8 +25101,30 @@ presentations = presentations_wse2 + [
         # (position_set_y, pos3, ":y_name_line"),
         # (overlay_set_position, reg1, pos3),
 
+        (store_sub, ":slot_commander", ":slot", "pt_cohors_aux"),
+        (val_add, ":slot_commander", slot_aux_commander_begin),
+        (troop_get_slot, ":commannder", "trp_province_array", ":slot_commander"),
+        (str_store_string, s6, "str_none"),
+        (assign, ":com_fac", -1),
+        (try_begin),
+          (gt, ":commannder", -1),
+          (store_faction_of_troop, ":com_fac", ":commannder"),
+          (try_begin),
+            (eq, ":com_fac", "$players_kingdom"),
+            (str_store_string, s6, "@Your faction"),
+          (else_try),
+            (str_store_string, s6, "@Other faction"),
+          (try_end),
+        (try_end),
+
         (call_script, "script_get_cohort_name_to_s5", ":slot"),
-        (create_text_overlay, reg0, "@{s5}", tf_left_align),
+        (create_text_overlay, reg0, "@{s5} ({s6})", tf_left_align),
+
+        # color overlay if it's the same faction as the player, so you can easily see which cohorts you can choose
+        (try_begin),
+            (eq, ":com_fac", "$players_kingdom"),
+            (overlay_set_color, reg0, color_good_news),
+        (try_end),
 
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_name"),
@@ -25200,6 +25221,18 @@ presentations = presentations_wse2 + [
             (store_sub, ":slot", "$temp1", "pt_cohors_aux"),
             (val_add, ":slot", slot_aux_commander_begin),
             (troop_get_slot, ":oldcommannder", "trp_province_array", ":slot"),
+            # block legions of other factions
+            (assign, ":block", 0),
+            (try_begin),
+                (gt, ":oldcommannder", -1),
+                (store_troop_faction, ":commander_faction", ":oldcommannder"),
+                (neq, ":commander_faction", "$players_kingdom"),
+                (str_store_faction_name, s10, ":commander_faction"),
+                (display_log_message, "@You cannot select this legion because its commander belongs to {s10}!", message_alert),
+                (assign, ":block", 1),
+            (try_end),
+            (eq, ":block", 0),
+
             (try_begin),
                 (gt, ":oldcommannder", -1),
                 (call_script, "script_troop_set_rank", ":oldcommannder", slot_troop_aux, -1),
@@ -25327,7 +25360,7 @@ presentations = presentations_wse2 + [
     (position_set_y, pos1, 1500),
     (overlay_set_size, reg1, pos1),
 
-    (create_text_overlay, reg1, "@Hint: Select the legion you will command.", tf_center_justify),
+    (create_text_overlay, reg1, "@Hint: Select the legion you will command. You can only select legions of your faction.", tf_center_justify),
     (overlay_set_color, reg1, color_information),
     (position_set_x, pos1, 500), # Higher, means more toward the right
     (position_set_y, pos1, 645), # Higher, means more toward the top
@@ -25432,7 +25465,28 @@ presentations = presentations_wse2 + [
         (val_add, ":string", ":legion"),
         (str_store_string, s20, ":string"),
 
-        (create_text_overlay, reg0, "@{s20}", tf_left_align),
+        (store_add, ":slot", slot_legion_commanders_begin, ":legion"),
+        (troop_get_slot, ":commannder", "trp_province_array", ":slot"),
+        (str_store_string, s21, "str_none"),
+        (assign, ":com_fac", -1),
+        (try_begin),
+          (gt, ":commannder", -1),
+          (store_faction_of_troop, ":com_fac", ":commannder"),
+          (try_begin),
+            (eq, ":com_fac", "$players_kingdom"),
+            (str_store_string, s21, "@Your faction"),
+          (else_try),
+            (str_store_string, s21, "@Other faction"),
+          (try_end),
+        (try_end),
+
+        (create_text_overlay, reg0, "@{s20} ({s21})", tf_left_align),
+        # color overlay if it's the same faction as the player, so you can easily see which cohorts you can choose
+        (try_begin),
+            (eq, ":com_fac", "$players_kingdom"),
+            (overlay_set_color, reg0, color_good_news),
+        (try_end),
+
         (position_set_x, pos1, ":x_name"),
         (position_set_y, pos1, ":y_name"),
         (overlay_set_position, reg0, pos1),
@@ -25469,16 +25523,28 @@ presentations = presentations_wse2 + [
         (try_begin),
             (is_between, "$temp1", 1, 12),
 
-            (troop_get_slot, ":auxiliar", "trp_player", slot_troop_aux),
+            (store_add, ":slot", slot_legion_commanders_begin, "$temp1"),
+            (troop_get_slot, ":oldcommannder", "trp_province_array", ":slot"),
 
+            # block legions of other factions
+            (assign, ":block", 0),
+            (try_begin),
+                (gt, ":oldcommannder", -1),
+                (store_troop_faction, ":commander_faction", ":oldcommannder"),
+                (neq, ":commander_faction", "$players_kingdom"),
+                (str_store_faction_name, s10, ":commander_faction"),
+                (display_log_message, "@You cannot select this legion because its commander belongs to {s10}!", message_alert),
+                (assign, ":block", 1),
+            (try_end),
+            (eq, ":block", 0),
+
+            (troop_get_slot, ":auxiliar", "trp_player", slot_troop_aux),
             (try_begin),
                 (gt, ":auxiliar", -1),
                 (call_script, "script_troop_set_rank", "trp_player", slot_troop_aux, -1),
                 (call_script, "script_find_new_commander_for_aux", ":auxiliar", "$players_kingdom"),
             (try_end),
 
-            (store_add, ":slot", slot_legion_commanders_begin, "$temp1"),
-            (troop_get_slot, ":oldcommannder", "trp_province_array", ":slot"),
             (try_begin),
                 (gt, ":oldcommannder", -1),
                 (call_script, "script_troop_set_rank", ":oldcommannder", slot_troop_legion, -1),

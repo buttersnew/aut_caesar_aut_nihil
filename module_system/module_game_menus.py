@@ -48753,6 +48753,11 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
   ],[
     ("options",[
+    ],"Set rank 2.",[
+      (assign, "$g_rank", 2),
+    ]),
+
+    ("options",[
       (ge, "$cheat_mode", 1),
     ],"Add 50,000 denarii.",[
       (troop_add_gold, "trp_player", 50000),
@@ -60776,7 +60781,12 @@ It is said, that she lives now together with the goat.",
     (quest_get_slot, ":giver", "qst_collect_requested_money", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -2),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -2),
+    (try_end),
     (display_message, "@Your little intrigue generated minor rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -10),
     (call_script, "script_change_player_honor", -1),
@@ -60802,7 +60812,13 @@ It is said, that she lives now together with the goat.",
     (quest_get_slot, ":giver", "qst_collect_requested_senate", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -2),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -2),
+    (try_end),
+
     (display_message, "@Your little intrigue generated minor rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -10),
     (call_script, "script_change_player_honor", -1),
@@ -60827,7 +60843,13 @@ It is said, that she lives now together with the goat.",
     (quest_get_slot, ":giver", "qst_collect_requested_influence", slot_quest_giver_troop),
     (str_store_troop_name, s22, ":giver"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -2),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -2),
+    (try_end),
+
     (display_message, "@Your little intrigue generated minor rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -10),
     (call_script, "script_change_player_honor", -1),
@@ -61313,7 +61335,7 @@ It is said, that she lives now together with the goat.",
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Remain neutral.",[
+    ],"Remain neutral (will lose all offices).",[
       (call_script, "script_start_year_of_four", -1),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),

@@ -8500,12 +8500,15 @@ simple_triggers = [
         (neg|troop_slot_eq, "trp_global_variables", g_corruption_check, ACAN_CORRUPT_SAVE_CHECK),
         (jump_to_menu, "mnu_save_file_corrupted"),
     (try_end),
-    (try_begin),
-        (neq, "$players_kingdom", "fac_kingdom_7"),
-        (ge, "$g_rank", 1),
-        (assign, "$g_rank", 0),#player is part of Roman faction as Lord
-        (display_log_message, "@You are no longer part of Rome and lost your rank."),
-    (try_end),
+
+    # unnecessary and causes bugs
+    # (try_begin),
+    #     (neq, "$players_kingdom", "fac_kingdom_7"),
+    #     (ge, "$g_rank", 1),
+    #     (assign, "$g_rank", 0),#player is part of Roman faction as Lord
+    #     (display_log_message, "@You are no longer part of Rome and lost your rank."),
+    # (try_end),
+
     #(faction_set_note_available, "fac_neutral", 0),##some bug which I don't know why it happens
     (stop_all_sounds, 0), #to fix looping sounds not stopping
     ##seasonal shader START
