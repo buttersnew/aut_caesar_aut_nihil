@@ -7014,7 +7014,7 @@ scripts_hardcoded = [
                     (str_store_string, s0, "@You have gathered all the necessary provisions for the feast. You should return to Nero in {s1} and inform him of your success. You have {reg5} {reg5?day:days} ({reg7} {reg6?hour:hours}) left."),
                 (else_try),
                     # If not all items are collected, build a list of what is still needed.
-                    (str_store_string, s0, "@You have been tasked with gathering provisions for Nero's victory feast. You still need to find:"),
+                    (str_store_string, s0, "@You have been tasked with gathering provisions for Nero's victory feast.^[Hint: Talk with goods merchants directly, those requested items are NOT buyable in the normal market.]^You still need to find:"),
 
                     # Check for Wine (flag 1)
                     (store_and, ":has_wine", ":item_flags", 1),
