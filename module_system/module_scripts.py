@@ -56187,6 +56187,9 @@ scripts = scripts_hardcoded + [
                 (try_end),
                 (gt, ":weapon", itm_no_item),
                 (agent_set_wielded_item, ":agent", ":weapon"),
+                # (str_store_item_name, s1, ":weapon"),
+                # (str_store_agent_name, s2, ":agent"),
+                # (display_message, "@Equipping {s1} for troop {s2}"),
             (try_end),
         (try_end),
     (try_end),
@@ -61770,12 +61773,12 @@ scripts = scripts_hardcoded + [
     (set_fixed_point_multiplier, 100),
     (agent_set_horse_speed_factor, ":agent", ":speed_modifier"),
 
-    (try_begin),
-        (ge, "$cheat_mode", 1),
-        (str_store_agent_name, s1, ":agent"),
-        (assign, reg1, ":speed_modifier"),
-        (display_message, "@{s1}: {reg1} speed modifier"),
-    (try_end),
+    # (try_begin),
+    #     (ge, "$cheat_mode", 1),
+    #     (str_store_agent_name, s1, ":agent"),
+    #     (assign, reg1, ":speed_modifier"),
+    #     (display_message, "@{s1}: {reg1} speed modifier"),
+    # (try_end),
 ]),
 ####
 
