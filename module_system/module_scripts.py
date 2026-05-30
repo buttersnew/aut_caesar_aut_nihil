@@ -96084,7 +96084,7 @@ scripts = scripts_hardcoded + [
             (assign, reg0, -1),
         (try_end),
     (try_end),
-])
+]),
 # script_count_number_military_units
 # counts number of legions or aux units per faction
 # 1 for legion, 2 for aux, excludes praetorians in both cases
