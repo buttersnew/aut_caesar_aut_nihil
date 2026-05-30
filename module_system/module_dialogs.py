@@ -54300,18 +54300,23 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
 ]],
 
-[trp_kingdom_7_lord|plyr,"lord_talk",[
+[anyone|plyr,"lord_talk",[
+
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
+
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   (ge, "$g_talk_troop_faction_relation", 0),
 
   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "trp_player"),
   (neg|troop_slot_eq, "trp_player", slot_troop_spouse, "$g_talk_troop"),
+
   (is_between, "$g_rank", 1,3),#has rank
   (gt, "$player_has_homage", 0),#not mercenary
 ],
-"Divinity, I would humbly ask for a promotion.", "nero_ask_promotion",[]],
+"Divinity, I would humbly ask for a promotion.", "emperor_ask_promotion",[]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[
+[anyone,"emperor_ask_promotion",[
   (eq, "$g_rank", 1),#has rank
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),
   (store_character_level, reg24, "trp_player"),
@@ -54326,7 +54331,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (finish_mission),
 ]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[
+[anyone,"emperor_ask_promotion",[
   (eq, "$g_rank", 2),#has rank
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),
   (store_character_level, reg24, "trp_player"),
@@ -54341,7 +54346,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (finish_mission),
 ]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[],
+[anyone,"emperor_ask_promotion",[],
 "I don't think you deserve it yet. Go fight the enemies of Rome to prove yourself worthy.^^{s26}", "close_window",[
   (str_clear, s26),
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),

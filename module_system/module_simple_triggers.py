@@ -11048,6 +11048,7 @@ simple_triggers = [
     (neq, "$g_player_is_captive", 1),##not captive
     (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial), # is imperial government
     (faction_get_slot, ":emperor", "$players_kingdom", slot_faction_leader),
+    (troop_slot_eq, ":emperor", slot_troop_occupation, slto_kingdom_hero), #is the emperor alive
     (try_begin),
         (eq, "$g_rank", 1),
         (troop_slot_ge, "trp_player", slot_troop_renown, 300),
