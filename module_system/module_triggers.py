@@ -145,6 +145,8 @@ triggers = [
     (check_quest_active, "qst_gain_renown"),
     (neg|faction_slot_eq, "fac_player_supporters_faction",slot_faction_state, sfs_active),
 
+    (faction_slot_eq, "fac_kingdom_7", slot_faction_state, sfs_active),
+
     ##block for main story
     (assign, ":block", 0),
     (try_begin),

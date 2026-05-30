@@ -50694,7 +50694,13 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
     (val_add, ":intrigue_time", 100),
     (call_script, "script_change_troop_intrigue_impatience", "$g_talk_troop", ":intrigue_time"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -5),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -5),
+    (try_end),
+
     (display_message, "@Your little intrigue generated major rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -25),
     (call_script, "script_change_player_honor", -2),
@@ -50775,7 +50781,13 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
     (val_add, ":intrigue_time", 100),
     (call_script, "script_change_troop_intrigue_impatience", "$g_talk_troop", ":intrigue_time"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -5),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -5),
+    (try_end),
+
     (display_message, "@Your little intrigue generated major rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -25),
     (call_script, "script_change_player_honor", -2),
@@ -50916,7 +50928,13 @@ I want you to go to {s13}, {s14} and {s15} and report back whatever you find.", 
     (val_add, ":intrigue_time", 100),
     (call_script, "script_change_troop_intrigue_impatience", "$g_talk_troop", ":intrigue_time"),
 
-    (call_script, "script_troop_change_relation_with_troop", "trp_kingdom_7_lord", "trp_player", -5),
+    (try_begin),
+      (faction_get_slot, ":faction_leader", "$players_kingdom", slot_faction_leader),
+      (gt, ":faction_leader", 0),
+      (troop_slot_eq, ":faction_leader", slot_troop_occupation, slto_kingdom_hero),
+      (call_script, "script_troop_change_relation_with_troop", ":faction_leader", "trp_player", -5),
+    (try_end),
+
     (display_message, "@Your little intrigue generated major rumours.", color_bad_news),
     (call_script, "script_change_troop_renown", "trp_player", -25),
     (call_script, "script_change_player_honor", -2),
@@ -54199,7 +54217,10 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -10),
 ]],
 
-[trp_kingdom_7_lord|plyr,"lord_talk",[
+[anyone|plyr,"lord_talk",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   (ge, "$g_talk_troop_faction_relation", 0),
 
@@ -54208,9 +54229,25 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (is_between, "$g_rank", 1,3),#has rank
   (gt, "$player_has_homage", 0),#not mercenary
 ],
-"Divinity, I would humbly ask for a promotion.", "nero_ask_promotion",[]],
+"Divinity, I would humbly ask for a promotion.", "emperor_ask_promotion",[]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[
+[anyone,"emperor_ask_promotion",[
+  (assign, ":num", 0),
+  (try_begin),
+      (eq, "$g_rank", 1),#has rank
+      (call_script, "script_count_number_military_units", 2, "$g_talk_troop_faction"),
+      (assign, ":num", reg0),
+  (else_try),
+      (eq, "$g_rank", 2),#has rank
+      (call_script, "script_count_number_military_units", 1, "$g_talk_troop_faction"),
+      (assign, ":num", reg0),
+  (try_end),
+  (eq, ":num", 0),
+],
+"Unfortunately I have no military unit I could assign to you...", "lord_pretalk",[
+]],
+
+[anyone,"emperor_ask_promotion",[
   (eq, "$g_rank", 1),#has rank
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),
   (store_character_level, reg24, "trp_player"),
@@ -54225,7 +54262,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (finish_mission),
 ]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[
+[anyone,"emperor_ask_promotion",[
   (eq, "$g_rank", 2),#has rank
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),
   (store_character_level, reg24, "trp_player"),
@@ -54240,7 +54277,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (finish_mission),
 ]],
 
-[trp_kingdom_7_lord,"nero_ask_promotion",[],
+[anyone,"emperor_ask_promotion",[],
 "I don't think you deserve it yet. Go fight the enemies of Rome to prove yourself worthy.^^{s26}", "close_window",[
   (str_clear, s26),
   (troop_get_slot, reg25, "trp_player", slot_troop_renown),
@@ -54607,8 +54644,15 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   # (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
   (troop_slot_eq, "trp_global_variables", g_global_player_office, 0),
-  (eq, "$players_kingdom", "fac_kingdom_7"),
-  (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+
+  (this_or_next|eq, "$players_kingdom", "$g_talk_troop_faction"),
+  (neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+
+  # (eq, "$players_kingdom", "fac_kingdom_7"),
+  # (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
+
   (neq, "$player_has_homage", 0), # not mercenary
   (store_partner_quest, ":lords_quest"),
   (neq, ":lords_quest", "qst_join_faction"),
@@ -54618,14 +54662,21 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ],"I want to join the legions of Rome as officer.",
 "join_army",[]],
 
-[trp_kingdom_7_lord|plyr,"lord_talk",[
+[anyone|plyr,"lord_talk",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
   (le,"$talk_context", tc_party_encounter),
   (ge, "$g_talk_troop_faction_relation", 0),
   #(troop_slot_eq, "$g_talk_troop", slot_troop_is_prisoner, 0),
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   # (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
   (troop_slot_ge, "trp_global_variables", g_global_player_office, 1),
-  (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+
+  (this_or_next|eq, "$players_kingdom", "$g_talk_troop_faction"),
+  (neg|is_between, "$players_kingdom", npc_kingdoms_begin, npc_kingdoms_end),
+
+  # (eq, "$g_talk_troop_faction", "fac_kingdom_7"),
+
   (store_partner_quest, ":lords_quest"),
   (neq, ":lords_quest", "qst_join_faction"),
   #   (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
@@ -54646,6 +54697,24 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ],
 "I want to rejoin the army of Rome as {s43}.",
 "join_army_2",[]],
+
+[anyone,"join_army_2",[
+  (assign, ":num", 0),
+  (try_begin),
+      (this_or_next|troop_slot_eq, "trp_global_variables", g_global_player_office, 1),
+      (troop_slot_eq, "trp_global_variables", g_global_player_office, 2),
+      (call_script, "script_count_number_military_units", 2, "$g_talk_troop_faction"),
+      (assign, ":num", reg0),
+  (else_try),
+      (troop_slot_eq, "trp_global_variables", g_global_player_office, 3),
+      (call_script, "script_count_number_military_units", 1, "$g_talk_troop_faction"),
+      (assign, ":num", reg0),
+  (try_end),
+  (eq, ":num", 0),
+],
+"I don't have any military units suitable for you under my command...",
+"lord_pretalk",[
+]],
 
 [anyone,"join_army_2",[
   (troop_slot_ge, "trp_player", slot_troop_govern, 1),
@@ -54819,7 +54888,10 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ],
 "{s66}, I wish to be released from my oath to you.", "lord_ask_leave_service",[]],
 
-[trp_kingdom_7_lord|plyr,"lord_talk",[
+[anyone|plyr,"lord_talk",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+
   (le,"$talk_context", tc_party_encounter),
   (ge, "$g_talk_troop_faction_relation", 0),
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
@@ -58495,12 +58567,12 @@ And to think I would offer you a place among my nobles. Begone, beggar, before I
 [
   ##diplomacy start+ Clear an erroneous value for $g_invite_offered_center (perhaps set somewhere else)
   (try_begin),
-     (gt, "$g_invite_offered_center", 1),
-	 (store_faction_of_party, ":center_faction", "$g_invite_offered_center"),
-	 (neq, ":center_faction", "$g_talk_troop_faction"),
-	 (assign, reg1, "$g_invite_offered_center"),
-	 (display_message, "@{!}ERROR: Tried to offer {reg1} as a fief to the player, but it is not owned by the leader's faction."),
-	 (assign, "$g_invite_offered_center", -1),
+    (gt, "$g_invite_offered_center", 1),
+    (store_faction_of_party, ":center_faction", "$g_invite_offered_center"),
+    (neq, ":center_faction", "$g_talk_troop_faction"),
+    (assign, reg1, "$g_invite_offered_center"),
+    (display_message, "@{!}ERROR: Tried to offer {reg1} as a fief to the player, but it is not owned by the leader's faction."),
+    (assign, "$g_invite_offered_center", -1),
   (try_end),
   ##diplomacy end+
     # (try_begin),
@@ -58518,19 +58590,16 @@ And to think I would offer you a place among my nobles. Begone, beggar, before I
     (str_store_party_name, s1, "$g_invite_offered_center"),
   (try_end),
   (try_begin),
-	(eq, "$g_talk_troop", "trp_kingdom_7_lord"),
-	(str_store_string, s32, "@ Now you have the rank of a tribunus militaris.\
- I give you my protection and grant you the right to bear arms, levy troops and \
- guarantee you that the law of the Roman Empire protects you.{reg1? Furthermore I appoint you as governor of {s1}. Guard it and maintain public order.:}"),
-	(assign, "$g_rank", 1),
+    # (eq, "$g_talk_troop", "trp_kingdom_7_lord"),
+    (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
+    (str_store_string, s32, "@ Now you have the rank of a tribunus militaris. I give you my protection and grant you the right to bear arms, levy troops and guarantee you that the law of the Roman Empire protects you.{reg1? Furthermore I appoint you as governor of {s1}. Guard it and maintain public order.:}"),
+    (assign, "$g_rank", 1),
   (else_try),
-    (str_store_string, s32, "@Let it be known that from this day forward, you are my sworn {man/follower} and a commander of my realm.\
- I give you my protection and grant you the right to bear arms in my name, and I pledge that I shall not deprive you of your life, \
- liberty or properties except by the lawful judgment of your peers or by the law and custom of the land.{reg1? Furthermore I give you the fief of {s1} with all its rents and revenues.:} "),
+    (str_store_string, s32, "@Let it be known that from this day forward, you are my sworn {man/follower} and a commander of my realm. I give you my protection and grant you the right to bear arms in my name, and I pledge that I shall not deprive you of your life, liberty or properties except by the lawful judgment of your peers or by the law and custom of the land.{reg1? Furthermore I give you the fief of {s1} with all its rents and revenues.:} "),
   (try_end),
-
- ],
-"{s32}", "lord_give_oath_go_on_3",[]],
+],
+"{s32}",
+"lord_give_oath_go_on_3",[]],
 
 [anyone,"lord_give_oath_go_on_3",
 [
@@ -58700,7 +58769,7 @@ I know you shall prove yourself worthy of the trust I have placed in you.", "clo
   (assign, "$g_leave_encounter",1)
 ]],
 
-[trp_kingdom_7_lord,"lord_ask_leave_service_nero",[
+[anyone,"lord_ask_leave_service_nero",[
 ], "Was the fighting on the frontier too much for you? Have you become a coward? Well if that's the case you can leave service if you want."
 +"^^Hint: Your party size will be dramatically reduced! Add your cohorts to the garrisons of a town or fortress or disband them and only keep a small retinue for yourself.",
 "lord_ask_leave_service_verify2",[
