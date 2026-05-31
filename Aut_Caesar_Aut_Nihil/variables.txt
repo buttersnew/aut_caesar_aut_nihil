@@ -1173,3 +1173,5 @@ g_activate_chariot_cam
 g_player_chariot_agent
 g_feast_outcome
 g_player_dunkenness
+players_faction
+g_talk_faction

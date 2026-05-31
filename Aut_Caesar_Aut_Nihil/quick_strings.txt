@@ -1,4 +1,4 @@
-6028
+6055
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6027,3 +6027,30 @@ qstr_You_have_talked_with_{s You_have_talked_with_{s20}_about_his_wife._It_seems
 qstr_Debug_{s1} Debug_{s1}
 qstr_Change_Governor_[Inf Change_Governor_[Influence]
 qstr_{s13}_Governor_[sena {s13}_Governor_[senate_support]
+qstr_Checking_for_promoti Checking_for_promotion_1...
+qstr_Checking_for_promotio Checking_for_promotion_2...
+qstr_Current_rank:_{reg1} Current_rank:_{reg1},_Emperor:_{s1},_Kingdom:_{s2}
+qstr__Now_you_have_the_ran _Now_you_have_the_rank_of_a_tribunus_militaris._I_give_you_my_protection_and_grant_you_the_right_to_bear_arms,_levy_troops_and_guarantee_you_that_the_law_of_the_Roman_Empire_protects_you.{reg1?_Furthermore_I_appoint_you_as_governor_of_{s1}._Guard_it_and_maintain_public_order.:}
+qstr_Let_it_be_known_that_ Let_it_be_known_that_from_this_day_forward,_you_are_my_sworn_{man/follower}_and_a_commander_of_my_realm._I_give_you_my_protection_and_grant_you_the_right_to_bear_arms_in_my_name,_and_I_pledge_that_I_shall_not_deprive_you_of_your_life,_liberty_or_properties_except_by_the_lawful_judgment_of_your_peers_or_by_the_law_and_custom_of_the_land.{reg1?_Furthermore_I_give_you_the_fief_of_{s1}_with_all_its_rents_and_revenues.:}_
+qstr_Hint:_Select_the_coho Hint:_Select_the_cohort_which_you_will_command._It_must_belong_to_your_faction.
+qstr_You_cannot_select_th You_cannot_select_this_legion_because_its_commander_belongs_to_{s10}!
+qstr_Hint:_Select_the_legi Hint:_Select_the_legion_you_will_command._You_can_only_select_legions_of_your_faction.
+qstr_Due_to_the_chaos_of_ Due_to_the_chaos_of_civil_war_you_lost_your_offices!!
+qstr_{s5}__{s6}_ {s5}_({s6})
+qstr_Your_faction Your_faction
+qstr_Other_faction Other_faction
+qstr_{s20}__s21_ {s20}_(s21)
+qstr_Number_of_{reg0}_{s1 Number_of_{reg0}_{s1}_units
+qstr_DEBUG:_Number_of_uni DEBUG:_Number_of_units:_{reg0}.
+qstr_DEBUG:_Count_{s13}_a DEBUG:_Count_{s13}_as_legion.
+qstr_DEBUG:_Count_{s13}_as DEBUG:_Count_{s13}_as_aux.
+qstr_You_lost_some_money. You_lost_some_money...
+qstr_You_have_been_tasked_w You_have_been_tasked_with_gathering_provisions_for_Nero's_victory_feast.^[Hint:_Talk_with_goods_merchants_directly,_those_requested_items_are_NOT_buyable_in_the_normal_market.]^You_still_need_to_find:
+qstr_one_of_your_opponent one_of_your_opponents_in_the_civil_war
+qstr_several_of_your_oppo several_of_your_opponents_in_the_civil_war
+qstr_{s22}_of_{s23}_defat {s22}_of_{s23}_defated_{s24}_of_{s25}.
+qstr_DEBUG_3 DEBUG_3
+qstr_DBUEG_{s1} DBUEG_{s1}
+qstr_{s1}_has_been_captur {s1}_has_been_captured_by_{s2}_in_{s3}.
+qstr_DEBUG_{s1}_has_been_ DEBUG_{s1}_has_been_captured_by_{s2}_in_{s3}.
+qstr_DEBUG_SPECIAL_{s1}_h DEBUG_SPECIAL_{s1}_has_been_captured_by_{s2}_in_{s3}.

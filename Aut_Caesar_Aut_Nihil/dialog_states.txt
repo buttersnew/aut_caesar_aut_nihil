@@ -3642,7 +3642,8 @@ nero_persuade_1
 nero_persuade_2
 nero_persuade_3
 nero_convince_persuade
-nero_ask_promotion
+end_civil_war_captured_enemies
+emperor_ask_promotion
 nero_ask_title
 nero_ask_title2
 dplmc_lord_declare_war
