@@ -3926,24 +3926,13 @@ scripts_hardcoded = [
                     (display_log_message, "str_hero_taken_prisoner", ":color"),
 
                     (try_begin),
-                        (call_script, "script_cf_prisoner_offered_parole", ":cur_troop_id"),
-
-                        (try_begin),
-                            (eq, "$cheat_mode", 1),
-                            (display_message, "@{!}DEBUG : Prisoner granted parole"),
-                        (try_end),
-
-                        (call_script, "script_troop_change_relation_with_troop", ":leader_troop_id", ":cur_troop_id", 3),
-                        (val_add, "$total_battle_enemy_changes", 3),
-                    (else_try),
-                        (try_begin),
-                            (eq, "$cheat_mode", 1),
-                            (display_message, "@{!}DEBUG : Prisoner not offered parole"),
-                        (try_end),
-
-                        (call_script, "script_troop_change_relation_with_troop", ":leader_troop_id", ":cur_troop_id", -5),
-                        (val_add, "$total_battle_enemy_changes", -5),
+                        (eq, "$cheat_mode", 1),
+                        (display_message, "@{!}DEBUG : Prisoner not offered parole"),
                     (try_end),
+
+                    (call_script, "script_troop_change_relation_with_troop", ":leader_troop_id", ":cur_troop_id", -5),
+                    (val_add, "$total_battle_enemy_changes", -5),
+
                     (store_faction_of_party, ":capturer_faction", ":nonempty_winner_party"),
                     (call_script, "script_update_troop_location_notes_prisoned", ":cur_troop_id", ":capturer_faction"),
                 (else_try),
@@ -4200,6 +4189,10 @@ scripts_hardcoded = [
                     (else_try),
                         (assign, ":erobern", 0),
                     (try_end),
+                (else_try),
+                    (faction_slot_eq, ":winner_faction", slot_faction_culture, "fac_culture_roman"),
+                    (faction_slot_eq, ":defeated_faction", slot_faction_culture, "fac_culture_roman"),
+                    (assign, ":erobern", 1),
                 (else_try),
                     (party_slot_eq, ":root_defeated_party", slot_center_original_faction, ":winner_faction"),
                     (assign, ":erobern", 1),

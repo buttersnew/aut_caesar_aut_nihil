@@ -36283,45 +36283,55 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 [], "Never mind.", "lord_pretalk",
 []],
 ##select war target
-[anyone|plyr|repeat_for_factions, "dplmc_lord_declare_peace_kingdoms_select",
-[
-(store_repeat_object, ":faction_no"),
-(is_between, ":faction_no", kingdoms_begin, kingdoms_end),
-##diplomacy start+
-(neq, ":faction_no", "fac_player_supporters_faction"),
-(neq, ":faction_no", "$g_talk_troop_faction"),
-##diplomacy end+
-(neq, ":faction_no", "$players_kingdom"),
-(call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$players_kingdom", ":faction_no"),
-(eq, reg0, -2), #at war
-(faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
-(faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
-(str_store_troop_name, s10, ":leader_no"),
-(str_store_faction_name, s11, ":faction_no"),
-],
-"{s10} of the {s11}", "dplmc_lord_declare_pax_why",
-[
-(store_repeat_object, "$g_faction_selected"),
+[anyone|plyr|repeat_for_factions, "dplmc_lord_declare_peace_kingdoms_select",[
+  (store_repeat_object, ":faction_no"),
+  (is_between, ":faction_no", kingdoms_begin, kingdoms_end),
+  ##diplomacy start+
+  (neq, ":faction_no", "fac_player_supporters_faction"),
+  (neq, ":faction_no", "$g_talk_troop_faction"),
+  ##diplomacy end+
+  (neq, ":faction_no", "$players_kingdom"),
+  (call_script, "script_diplomacy_faction_get_diplomatic_status_with_faction", "$players_kingdom", ":faction_no"),
+  (eq, reg0, -2), #at war
+  (faction_slot_eq, ":faction_no", slot_faction_state, sfs_active),
+  (faction_get_slot, ":leader_no", ":faction_no", slot_faction_leader),
+  (str_store_troop_name, s10, ":leader_no"),
+  (str_store_faction_name, s11, ":faction_no"),
+],"{s10} of the {s11}",
+"dplmc_lord_declare_pax_why",[
+  (store_repeat_object, "$g_faction_selected"),
 
-(call_script, "script_get_influence_cost_for_decision", "trp_player", decision_peace, "$g_faction_selected"),
-(assign, "$diplomacy_var", reg0),
-(try_begin), #debug
-    (eq, "$cheat_mode", 1),
-    (assign, reg0, "$diplomacy_var"),
-    (display_message, "@{!}DEBUG : diplomacy_var: {reg0}"),
-(try_end),
-
+  (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_peace, "$g_faction_selected"),
+  (assign, "$diplomacy_var", reg0),
+  (try_begin), #debug
+      (eq, "$cheat_mode", 1),
+      (assign, reg0, "$diplomacy_var"),
+      (display_message, "@{!}DEBUG : diplomacy_var: {reg0}"),
+  (try_end),
 ]],
 
-[anyone, "dplmc_lord_declare_pax_why",
-[
-], "Can you explain your proposal a little bit more? Why should I do that?", "dplmc_lord_declare_pax_why1",
+# civil war answere
+[anyone, "dplmc_lord_declare_pax_why",[
+  (troop_slot_eq, "trp_global_variables", g_civil_war_timer, -1),
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_culture, "fac_culture_roman"),
+  (faction_slot_eq, "$g_faction_selected", slot_faction_culture, "fac_culture_roman"),
+
+  (str_store_faction_name, s11, "$g_faction_selected"),
+], "We cannot accept peace with {s11}. They are fellow Romans locked in a civil war for the throne. Until that conflict is resolved, no lasting treaty can be made! I will be Caesar Augustus!",
+"lord_pretalk",
 []],
 
-[anyone|plyr, "dplmc_lord_declare_pax_why1",
-[(str_store_faction_name, s11, "$g_faction_selected"),
-(assign, reg50, "$diplomacy_var"),
-], "Let me explain the reasons why we should stop fighting {s11}. (Costs {reg50} influence)", "dplmc_lord_declare_pax_decision",
+[anyone, "dplmc_lord_declare_pax_why",[
+], "Can you explain your proposal a little bit more? Why should I do that?",
+"dplmc_lord_declare_pax_why1",
+[]],
+
+[anyone|plyr, "dplmc_lord_declare_pax_why1",[
+  (str_store_faction_name, s11, "$g_faction_selected"),
+  (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_peace, "$g_faction_selected"),
+  (assign, reg50, reg0),
+], "Let me explain the reasons why we should stop fighting {s11}. (Costs {reg50} influence)",
+"dplmc_lord_declare_pax_decision",
 []],
 
 [anyone|plyr, "dplmc_lord_declare_pax_why1",
@@ -43775,13 +43785,6 @@ Maybe her soul? Or the demon who was in her? Anyway, now you feel better. --", "
 (try_for_range, ":other_prisoner", active_npcs_begin, ":end"),
   (troop_slot_eq, ":other_prisoner", slot_troop_prisoner_of_party, "$g_encountered_party"),
   (neq, ":other_prisoner", "$g_talk_troop"),
-
-  (assign, ":granted_parole", 0),
-  (try_begin),
-    (call_script, "script_cf_prisoner_offered_parole", ":other_prisoner"),
-    (assign, ":granted_parole", 1),
-  (try_end),
-  (eq, ":granted_parole", 0),
 
   (troop_slot_eq, ":other_prisoner", slot_troop_mission_participation, 0),
 
@@ -54322,6 +54325,55 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
 
+  (eq, "$g_talk_troop_faction", "$players_kingdom"),
+  (ge, "$g_civil_war", 1),
+
+  # (call_script, ""),#search_troop_prisoner_of_party
+  (is_between, "$players_kingdom", fac_kingdom_24, fac_kingdom_27+1),
+  (assign, ":count", 0),
+  (try_for_range, ":fac", fac_kingdom_24, fac_kingdom_27+1),
+    (faction_get_slot, ":leader", ":fac", slot_faction_leader),
+    (is_between, ":leader", active_npcs_begin, active_npcs_end),
+    (neg|troop_slot_eq, ":leader", slot_troop_occupation, dplmc_slto_dead),
+    (neq, ":leader", "$g_talk_troop"),
+
+    (party_count_prisoners_of_type, ":num", "p_main_party", ":leader"),
+    (val_add, ":count", ":num"),
+  (try_end),
+
+
+  (ge, ":count", 1),
+  (try_begin),
+    (eq, ":count", 1),
+    (str_store_string, s13, "@one of your opponents in the civil war"),
+  (else_try),
+    (str_store_string, s13, "@several of your opponents in the civil war"),
+  (try_end),
+],
+"{s66}, I captured {s13}!",
+"end_civil_war_captured_enemies",[]],
+
+[anyone,"end_civil_war_captured_enemies",[
+],
+"Excellent work, {playername}! They will answer for their treason; I will see they are punished and never threaten the Rome again.^^You will get a high reward for your efforts!",
+"lord_pretalk",[
+  (try_for_range, ":fac", fac_kingdom_24, fac_kingdom_27+1),
+    (faction_get_slot, ":leader", ":fac", slot_faction_leader),
+    (neq, ":leader", "$g_talk_troop"),
+    (party_count_prisoners_of_type, ":num", "p_main_party", ":leader"),
+    (ge, ":num", 1),
+    (call_script, "script_cf_annex_faction", "$g_talk_troop_faction", ":fac"),
+    (call_script, "script_troop_change_triumph_points", "trp_player", 250),
+    (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 15),
+    (call_script, "script_change_troop_renown", "trp_player", 75),
+    (troop_add_gold, "trp_player", 100000),
+  (try_end),
+]],
+
+[anyone|plyr,"lord_talk",[
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial), # is imperial
+  (faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"),
+
   (neg|troop_slot_ge, "$g_talk_troop", slot_troop_prisoner_of_party, 0),
   (ge, "$g_talk_troop_faction_relation", 0),
 
@@ -54331,7 +54383,7 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (is_between, "$g_rank", 1,3),#has rank
   (gt, "$player_has_homage", 0),#not mercenary
 ],
-"Divinity, I would humbly ask for a promotion.", "emperor_ask_promotion",[]],
+"{s66}, I would humbly ask for a promotion.", "emperor_ask_promotion",[]],
 
 [anyone,"emperor_ask_promotion",[
   (assign, ":num", 0),
@@ -54469,11 +54521,12 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 "{s66}, you should declare a truce to the fighting.", "dplmc_lord_declare_peace",[]],
 
 [anyone|plyr,"nero_ask_title2",[
-    (faction_slot_ge, "$g_talk_troop_faction", slot_faction_has_nor_titles, 1),
-    (neg|troop_slot_ge, "trp_player", slot_troop_honorary_title, ht_censor),#not already censor
-    (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_honorary_title, 0),
-    (assign, reg22, reg0)],
-"I should recieve a honorary title. (cost: {reg22} influence)", "nero_ask_title_title",[]],
+  (faction_slot_ge, "$g_talk_troop_faction", slot_faction_has_nor_titles, 1),
+  (neg|troop_slot_ge, "trp_player", slot_troop_honorary_title, ht_censor),#not already censor
+  (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_honorary_title, 0),
+  (assign, reg22, reg0),
+],"I should recieve a honorary title. (cost: {reg22} influence)",
+"nero_ask_title_title",[]],
 
 [anyone,"nero_ask_title_title",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_honorary_title, 0),
@@ -54493,7 +54546,8 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (val_add, ":title", "str_title_begin"),
   (str_store_string, s40, ":title"),
 ],
-"Very well. You shall be a {s40} from now on!", "lord_pretalk",[
+"Very well. You shall be a {s40} from now on!",
+"lord_pretalk",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_honorary_title, 0),
   (val_mul, reg0, -1),
   (call_script, "script_change_influence", "trp_player", reg0),
@@ -54505,20 +54559,24 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 
 [anyone,"nero_ask_title_title",[
 ],
-"Hm. I don't think you deserve this honor. I am sorry {playername}.^^(Your influence is too low)", "lord_pretalk",[
-(display_message, "str_not_enough_influence", color_bad_news),
+"Hm. I don't think you deserve this honor. I am sorry {playername}.^^(Your influence is too low)",
+"lord_pretalk",[
+  (display_message, "str_not_enough_influence", color_bad_news),
 ]],
 
 [anyone|plyr,"nero_ask_title2",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_reward, 50000),
   (assign, reg22, reg0),
 ],
-"I need some gold and it would be also beneficial for you. (costs {reg22} influence)", "nero_ask_title_gold",[]],
+"I need some gold and it would be also beneficial for you. (costs {reg22} influence)",
+"nero_ask_title_gold",[]],
+
 [anyone,"nero_ask_title_gold",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_reward, 50000),
   (troop_slot_ge, "trp_player", slot_troop_influence, reg0),
 ],
-"You shall have gold worth 10,000 denarii!", "lord_pretalk",[
+"You shall have gold worth 10,000 denarii!",
+"lord_pretalk",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_reward, 50000),
   (val_mul, reg0, -1),
   (call_script, "script_change_influence", "trp_player", reg0),
@@ -54527,8 +54585,10 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (val_add, ":day", 2),
   (troop_set_slot, "$g_talk_troop", slot_troop_bachus, ":day"),
 ]],
+
 [anyone,"nero_ask_title_gold",[],
-"Hm, I will think about it.^^(Your influence is too low)", "lord_pretalk",[
+"Hm, I will think about it.^^(Your influence is too low)",
+"lord_pretalk",[
 (display_message, "str_not_enough_influence", color_bad_news),
 ]],
 
@@ -54537,7 +54597,8 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
   (assign, reg22, reg0),
   (neg|troop_slot_eq, "$g_talk_troop", slot_troop_stance_on_faction_issue, "trp_player"),
 ],
-"I should be appointed as marshal. (costs {reg22} influence)", "nero_ask_marshal",[]],
+"I should be appointed as marshal. (costs {reg22} influence)",
+"nero_ask_marshal",[]],
 
 [anyone,"nero_ask_marshal",[
   (neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type),
@@ -54550,7 +54611,8 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
     (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_marshall, 0),
     (troop_slot_ge, "trp_player", slot_troop_influence, reg0),
 ],
-"Be it! I am sure you will lead our army to victory.", "lord_pretalk",[
+"Be it! I am sure you will lead our army to victory.",
+"lord_pretalk",[
   (call_script, "script_get_influence_cost_for_decision", "trp_player", decision_reward, 10000),
   (val_mul, reg0, -1),
   (call_script, "script_change_influence", "trp_player", reg0),
@@ -54574,21 +54636,24 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 ]],
 
 [anyone,"nero_ask_marshal",[],
-"Hm, I don't think you would be capable leading our army.^^(Your influence is too low)", "lord_pretalk",[
-(display_message, "str_not_enough_influence", color_bad_news),
+"Hm, I don't think you would be capable leading our army.^^(Your influence is too low)",
+"lord_pretalk",[
+  (display_message, "str_not_enough_influence", color_bad_news),
 ]],
 
 [anyone|plyr,"nero_ask_title2",[
   (faction_slot_eq, "$g_talk_troop_faction", slot_faction_government_type, gov_imperial),
 ],
-"I think one of your governors is a bad choice, you better appoint someone else.", "nero_ask_province",[]],
+"I think one of your governors is a bad choice, you better appoint someone else.",
+"nero_ask_province",[]],
 
 [anyone,"nero_ask_province",[
 ],
-"Really? Whom do you have in mind?", "close_window",
-[
-(show_object_details_overlay, 0),
-(start_presentation, "prsnt_influence_nero"),]],
+"Really? Whom do you have in mind?",
+"close_window",[
+  (show_object_details_overlay, 0),
+  (start_presentation, "prsnt_influence_nero"),
+]],
 #[anyone|plyr|repeat_for_troops,"nero_ask_province_select",[(store_repeat_object, ":troop_no"),
     # (is_between, ":troop_no", active_npcs_begin, active_npcs_end),
     # (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
@@ -70134,24 +70199,18 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 [anyone|plyr,"dplmc_prison_guard_exchange_prisoner_confirm",[],
    "No, I changed my mind.", "close_window",[]],
 ##diplomacy end
-[anyone,"prison_guard_ask_prisoners",[],"Currently, {s50} {reg1?are:is} imprisoned here.{s49}","prison_guard_talk",[
+[anyone,"prison_guard_ask_prisoners",[
+],"Currently, {s50} {reg1?are:is} imprisoned here.","prison_guard_talk",[
     (party_clear, "p_temp_party"),
     (party_clear, "p_temp_party_2"),
     (assign, ":num_heroes_in_dungeon", 0),
-    (assign, ":num_heroes_given_parole", 0),
 
     (party_get_num_prisoner_stacks, ":num_stacks","$g_encountered_party"),
     (try_for_range, ":i_stack", 0, ":num_stacks"),
       (party_prisoner_stack_get_troop_id, ":stack_troop","$g_encountered_party",":i_stack"),
       (troop_is_hero, ":stack_troop"),
-      (try_begin),
-        (call_script, "script_cf_prisoner_offered_parole", ":stack_troop"),
-        (party_add_members, "p_temp_party_2", ":stack_troop", 1),
-        (val_add, ":num_heroes_given_parole", 1),
-      (else_try),
-        (party_add_members, "p_temp_party", ":stack_troop", 1),
-        (val_add, ":num_heroes_in_dungeon", 1),
-      (try_end),
+      (party_add_members, "p_temp_party", ":stack_troop", 1),
+      (val_add, ":num_heroes_in_dungeon", 1),
     (try_end),
     (call_script, "script_print_party_members", "p_temp_party"),
     (str_store_string, s50, "str_s51"),
@@ -70162,18 +70221,18 @@ But the peope here are either drunk or busy with other things, you know. Tell me
         (assign, reg1, 0),
     (try_end),
 
-    (str_clear, s49),
-    (try_begin),
-      (ge, ":num_heroes_given_parole", 1),
-      (call_script, "script_print_party_members", "p_temp_party_2"),
-      (try_begin),
-        (ge, ":num_heroes_given_parole", 2),
-        (assign, reg2, 1),
-      (else_try),
-        (assign, reg2, 0),
-      (try_end),
-      (str_store_string, s49, "str__meanwhile_s51_reg2areis_being_held_in_the_castle_but_reg2havehas_made_pledges_not_to_escape_and_reg2areis_being_held_in_more_comfortable_quarters" ), #somewhat awkward wording prevents both gender and singular/plural pronoun issues
-    (try_end)
+    # (str_clear, s49),
+    # (try_begin),
+    #   (ge, ":num_heroes_given_parole", 1),
+    #   (call_script, "script_print_party_members", "p_temp_party_2"),
+    #   (try_begin),
+    #     (ge, ":num_heroes_given_parole", 2),
+    #     (assign, reg2, 1),
+    #   (else_try),
+    #     (assign, reg2, 0),
+    #   (try_end),
+    #   (str_store_string, s49, "str__meanwhile_s51_reg2areis_being_held_in_the_castle_but_reg2havehas_made_pledges_not_to_escape_and_reg2areis_being_held_in_more_comfortable_quarters" ), #somewhat awkward wording prevents both gender and singular/plural pronoun issues
+    # (try_end),
 ]],
 
 [anyone,"prison_guard_visit_prison",
@@ -70187,27 +70246,21 @@ But the peope here are either drunk or busy with other things, you know. Tell me
      (call_script, "script_enter_dungeon", "$current_town")
    ]],
 
-[anyone, "prison_guard_visit_prison",
-[
-    #below condition is added by ozan, please lets discuss if it is needed or not. But I think this condition is needed because if there is nobody in prison
-    #prison guard should not say you need to get permission, or take me money ext to let player go inside.
-    (assign, ":num_heroes_in_dungeon", 0),
-    (party_get_num_prisoner_stacks, ":num_stacks", "$g_encountered_party"),
-    (assign, ":end_condition", ":num_stacks"),
-    (try_for_range, ":i_stack", 0, ":end_condition"),
-      (party_prisoner_stack_get_troop_id, ":stack_troop","$g_encountered_party",":i_stack"),
-      (troop_is_hero, ":stack_troop"),
-      (try_begin),
-        (call_script, "script_cf_prisoner_offered_parole", ":stack_troop"),
-      (else_try),
-        (val_add, ":num_heroes_in_dungeon", 1),
-        (assign, ":end_condition", 0),
-      (try_end),
-    (try_end),
-
-    (ge, ":num_heroes_in_dungeon", 1),
-  ],
-   "You need to get permission from the lord to talk to prisoners.", "prison_guard_visit_prison_2",[]],
+[anyone, "prison_guard_visit_prison",[
+  #below condition is added by ozan, please lets discuss if it is needed or not. But I think this condition is needed because if there is nobody in prison
+  #prison guard should not say you need to get permission, or take me money ext to let player go inside.
+  (assign, ":num_heroes_in_dungeon", 0),
+  (party_get_num_prisoner_stacks, ":num_stacks", "$g_encountered_party"),
+  (assign, ":end_condition", ":num_stacks"),
+  (try_for_range, ":i_stack", 0, ":end_condition"),
+    (party_prisoner_stack_get_troop_id, ":stack_troop","$g_encountered_party",":i_stack"),
+    (troop_is_hero, ":stack_troop"),
+    (val_add, ":num_heroes_in_dungeon", 1),
+    (assign, ":end_condition", 0),
+  (try_end),
+  (ge, ":num_heroes_in_dungeon", 1),
+],"You need to get permission from the lord to talk to prisoners.",
+"prison_guard_visit_prison_2",[]],
 
 [anyone, "prison_guard_visit_prison",[], "There is nobody inside, therefore you can freely go inside and look around.", "prison_guard_visit_prison_nobody",[]],
 
@@ -79290,30 +79343,19 @@ I will need 500 denarii.", "bardo_sing2",[]],
 []],
 
   #(fire set up dialogs begin) Asking village elder to set up fire for making prison break easier.
-[anyone|plyr,"village_elder_talk",
-[
+[anyone|plyr,"village_elder_talk",[
     (party_get_slot, ":bound_center", "$current_town", slot_village_bound_center),
-
     (assign, ":num_heroes_in_dungeon", 0),
-    (assign, ":num_heroes_given_parole", 0),
-
     (party_get_num_prisoner_stacks, ":num_stacks", ":bound_center"),
     (try_for_range, ":i_stack", 0, ":num_stacks"),
       (party_prisoner_stack_get_troop_id, ":stack_troop",":bound_center",":i_stack"),
       (troop_is_hero, ":stack_troop"),
-      (try_begin),
-        (call_script, "script_cf_prisoner_offered_parole", ":stack_troop"),
-        (party_add_members, "p_temp_party_2", ":stack_troop", 1),
-        (val_add, ":num_heroes_given_parole", 1),
-      (else_try),
-        (party_add_members, "p_temp_party", ":stack_troop", 1),
-        (val_add, ":num_heroes_in_dungeon", 1),
-      (try_end),
+      (party_add_members, "p_temp_party", ":stack_troop", 1),
+      (val_add, ":num_heroes_in_dungeon", 1),
     (try_end),
-
     (ge, ":num_heroes_in_dungeon", 1),
- ],
-   "I need you to set a large fire on the outskirts of this village.", "village_elder_ask_set_fire",[]],
+],"I need you to set a large fire on the outskirts of this village.",
+"village_elder_ask_set_fire",[]],
 
 [anyone,"village_elder_ask_set_fire",
 [

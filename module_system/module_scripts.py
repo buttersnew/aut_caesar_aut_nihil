@@ -2517,13 +2517,12 @@ scripts = scripts_hardcoded + [
             (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_5_1_reinforcements_b"),
             (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_5_1_reinforcements_c"),
         (else_try),
-            (this_or_next|eq, ":faction_no", "fac_kingdom_20"),
-            (eq, ":faction_no", "fac_kingdom_21"),#not the albanians, they are more persian influenced
-            (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_caucasian_heavy_spearman"),
-            (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_caucasian_medium_horsearcher"),
+            (eq, ":faction_no", "fac_kingdom_5"),
+            (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_armenian_elite_infantry"),
+            (faction_set_slot, ":faction_no", slot_faction_messenger_troop, "trp_armenian_cataphract"),
             (faction_set_slot, ":faction_no", slot_faction_reinforcements_a, "pt_kingdom_5_reinforcements_a"),
-            (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_5_1_reinforcements_b"),
-            (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_5_1_reinforcements_c"),
+            (faction_set_slot, ":faction_no", slot_faction_reinforcements_b, "pt_kingdom_5_reinforcements_b"),
+            (faction_set_slot, ":faction_no", slot_faction_reinforcements_c, "pt_kingdom_5_reinforcements_c"),
         (else_try),
             (eq, ":faction_no", "fac_kingdom_22"),
             (faction_set_slot, ":faction_no", slot_faction_guard_troop, "trp_eastern_heavy_inf"),
@@ -9269,8 +9268,19 @@ scripts = scripts_hardcoded + [
                 (eq, ":quest_no", "qst_persuade_lords_to_make_peace"),
                 (is_between, ":giver_center_no", centers_begin, centers_end),
                 (store_faction_of_party, ":cur_object_faction", ":giver_center_no"),
+
                 (call_script, "script_cf_faction_get_random_enemy_faction", ":cur_object_faction"),
                 (assign, ":cur_target_faction", reg0),
+
+                (assign, ":block", 0),
+                (try_begin),
+                    (troop_slot_eq, "trp_global_variables", g_civil_war_timer, -1),
+                    (faction_slot_eq, ":cur_target_faction", slot_faction_culture, "fac_culture_roman"),
+                    (faction_slot_eq, ":cur_object_faction", slot_faction_culture, "fac_culture_roman"),
+                    (assign, ":block", 1),
+                (try_end),
+                (eq, ":block", 0),# block civil war
+
                 (call_script, "script_cf_get_random_lord_except_king_with_faction", ":cur_object_faction"),
                 (assign, ":cur_object_troop", reg0),
                 ##diplomacy start+
@@ -10544,13 +10554,6 @@ scripts = scripts_hardcoded + [
 			(try_end),
 			##diplomacy end+
 			(ge, reg0, 10),
-
-			(assign, ":offered_parole", 0),
-			(try_begin),
-				(call_script, "script_cf_prisoner_offered_parole", ":possible_prisoner"),
-				(assign, ":offered_parole", 1),
-			(try_end),
-			(eq, ":offered_parole", 0),
 
 			(neg|party_slot_eq, ":captor_location", slot_town_lord, "trp_player"),
 
@@ -20986,16 +20989,6 @@ scripts = scripts_hardcoded + [
         ##diplomacy end+
         (party_stack_get_troop_id, ":stack_troop","p_temp_party",":i_stack"),
 
-        (assign, ":prisoner_offered_parole", 0),
-        (try_begin),
-            (party_slot_eq, ":center_no", slot_town_lord, "trp_player"),
-        (else_try),
-            (call_script, "script_cf_prisoner_offered_parole", ":stack_troop"),
-            (assign, ":prisoner_offered_parole", 1),
-        (else_try),
-            (assign, ":prisoner_offered_parole", 0),
-        (try_end),
-        (eq, ":prisoner_offered_parole", 0),
         (lt, ":cur_pos", 32), # spawn up to entry point 32
         (set_visitor, ":cur_pos", ":stack_troop"),
         (val_add,":cur_pos", 1),
@@ -22186,6 +22179,19 @@ scripts = scripts_hardcoded + [
     (try_end),
     (assign, reg0, ":prisoner_of"),
 ]),
+
+("search_troop_prisoner_of_walled_center",[
+    (store_script_param_1, ":troop_no"),
+    (assign, ":prisoner_of", -1),
+    (try_for_range, ":party_no", centers_begin, centers_end),
+        (eq, ":prisoner_of", -1),
+        (party_count_prisoners_of_type, ":troop_found", ":party_no", ":troop_no"),
+        (gt, ":troop_found", 0),
+        (assign, ":prisoner_of", ":party_no"),
+    (try_end),
+    (assign, reg0, ":prisoner_of"),
+]),
+
 
   # script_change_debt_to_troop
 # Input: arg1 = troop_no, arg2 = new debt amount
@@ -46934,35 +46940,6 @@ scripts = scripts_hardcoded + [
 		(agent_clear_scripted_mode, ":cur_agent"),
 		#(agent_set_team, ":cur_agent", 2), #dckplmc don't want town guards to massacre townsfolk
 	(try_end),
-]),
-
-#this determines whether or not a lord is thrown into a dungeon by his captor, or is kept out on parole
-#Not currently used (ie, it always fails)
-("cf_prisoner_offered_parole",[
-    (store_script_param, ":prisoner", 1),
-
-    (eq, 1, 0), #disabled, this will always return false
-
-    (troop_get_slot, ":captor_party", ":prisoner", slot_troop_prisoner_of_party),
-    (party_is_active, ":captor_party"),
-    (is_between, ":captor_party", walled_centers_begin, walled_centers_end),
-    (party_get_slot, ":captor", ":captor_party", slot_town_lord),
-
-    (troop_get_slot, ":prisoner_rep", ":prisoner", slot_lord_reputation_type),
-    (troop_get_slot, ":captor_rep", ":captor", slot_lord_reputation_type),
-
-    (neq, ":prisoner_rep", lrep_debauched),
-    (neq, ":captor_rep", lrep_debauched),
-    (neq, ":captor_rep", lrep_quarrelsome),
-
-     #Prisoner is a noble, or lord is goodnatured
-    (this_or_next|eq, ":captor_rep", lrep_goodnatured),
-    (this_or_next|troop_slot_eq, ":prisoner", slot_troop_occupation, slto_kingdom_hero),
-    (troop_slot_eq, ":prisoner", slot_troop_occupation, slto_kingdom_lady),
-
-	(call_script, "script_troop_get_relation_with_troop", ":captor", ":prisoner"),
-    ##	(display_message, "str_relation_of_prisoner_with_captor_is_reg0"),
-	(ge, reg0, -10),
 ]),
 
 ("neutral_behavior_in_fight",[
@@ -75857,12 +75834,12 @@ scripts = scripts_hardcoded + [
         (val_mul, ":outcome", ":controversy"),
         (val_div, ":outcome", 100),
 
-        (val_clamp, ":outcome", 50, 3001),
+        (val_clamp, ":outcome", 250, 3001),
     (else_try),
         (eq, ":decision", decision_bribe),
         (store_div, ":outcome", ":object", 200),#base cost, object is money between 5000-50000 denarii
 
-        (val_clamp, ":outcome", 50, 3001),
+        (val_clamp, ":outcome", 250, 3001),
     (else_try),
         (eq, ":decision", decision_reward),
         (store_div, ":outcome", ":object", 50),#base cost, object is money between 5000-50000 denarii
@@ -75893,7 +75870,7 @@ scripts = scripts_hardcoded + [
         (val_mul, ":outcome", ":controversy"),
         (val_div, ":outcome", 100),
 
-        (val_clamp, ":outcome", 50, 3001),
+        (val_clamp, ":outcome", 250, 3001),
     (else_try),
         (eq, ":decision", decision_marshall),
         (assign, ":outcome", 600),#
@@ -75924,7 +75901,7 @@ scripts = scripts_hardcoded + [
         (val_mul, ":outcome", ":controversy"),
         (val_div, ":outcome", 10),
 
-        (val_clamp, ":outcome", 50, 4001),
+        (val_clamp, ":outcome", 250, 4001),
     (else_try),
         (eq, ":decision", decision_legate),
         (assign, ":outcome", 500),#lower than marshalship
@@ -75955,7 +75932,7 @@ scripts = scripts_hardcoded + [
         (val_mul, ":outcome", ":controversy"),
         (val_div, ":outcome", 100),
 
-        (val_clamp, ":outcome", 50, 3001),
+        (val_clamp, ":outcome", 250, 3001),
 
         (try_begin),
             (eq, ":character", "trp_player"),
@@ -80177,6 +80154,12 @@ scripts = scripts_hardcoded + [
     (else_try),
         (eq,":party_template", "pt_kingdom_5_reinforcements_b"),
         (assign, ":troop_no", "trp_armenian_heavy_maceman"),
+    (else_try),
+        (eq,":party_template", "pt_kingdom_5_1_reinforcements_b"),
+        (assign, ":troop_no", "trp_caucasian_heavy_spearman"),
+    (else_try),
+        (eq,":party_template", "pt_kingdom_5_1_reinforcements_c"),
+        (assign, ":troop_no", "trp_caucasian_cataphract"),
     (else_try),
         (eq,":party_template", "pt_kingdom_5_reinforcements_c"),
         (assign, ":troop_no", "trp_armenian_elite_infantry"),
@@ -84527,7 +84510,218 @@ scripts = scripts_hardcoded + [
         (try_end),
     (try_end),
 ]),
+# script_annex_faction
+# annexes an entire faction
+("cf_annex_faction",[
+    (store_script_param, ":winner_faction", 1),
+    (store_script_param, ":losing_faction", 2),
 
+    (neq, ":winner_faction", ":losing_faction"),
+
+    (faction_get_slot, ":winner_caesar", ":winner_faction", slot_faction_leader),
+    (str_store_troop_name, s22, ":winner_caesar"),
+    (str_store_faction_name, s23, ":winner_faction"),
+
+    (faction_get_slot, ":losing_caesar", ":losing_faction", slot_faction_leader),
+    (str_store_troop_name, s24, ":losing_caesar"),
+    (str_store_faction_name, s25, ":losing_faction"),
+
+    (display_log_message, "@{s22} of {s23} defated {s24} of {s25}."),
+
+    (try_for_range, ":npc", active_npcs_begin, active_npcs_end),
+        (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_dead),
+        (neg|troop_slot_eq, ":npc", slot_troop_occupation, dplmc_slto_exile),
+        (store_troop_faction, ":faction", ":npc"),
+        (eq, ":faction", ":losing_faction"),
+        (call_script,"script_change_troop_faction",":npc",":winner_faction"),
+        (troop_set_slot, ":npc", slot_troop_occupation, slto_kingdom_hero),
+        (store_random_in_range,":new_relation",5,10),
+        (call_script, "script_troop_change_relation_with_troop", ":winner_caesar", ":npc", ":new_relation"),
+    (try_end),
+    (try_for_range, ":walled_centers", walled_centers_begin, walled_centers_end),
+        (store_faction_of_party, ":faction", ":walled_centers"),
+        (eq, ":faction", ":losing_faction"),
+        (call_script, "script_give_center_to_faction_aux", ":walled_centers", ":winner_faction"),
+    (try_end),
+
+    (try_begin),
+        (eq, ":winner_caesar", "trp_player"),
+        (call_script, "script_change_player_right_to_rule", 2),
+    (try_end),
+
+    (faction_set_slot, ":losing_faction", slot_faction_state, sfs_defeated),
+    (try_begin),
+        (is_between, ":losing_caesar", active_npcs_begin, active_npcs_end),
+        (troop_slot_eq, ":losing_caesar", slot_troop_occupation, slto_kingdom_hero),
+        (call_script, "script_kill_lord_lady", ":losing_caesar", ":winner_caesar", 0),
+    (try_end),
+
+    (try_for_parties, ":party_no"),
+        (gt, ":party_no", last_static_party),
+        (party_is_active, ":party_no"),
+        (store_faction_of_party, ":faction", ":party_no"),
+        (eq, ":faction", ":losing_faction"),
+        (try_begin),
+            (party_get_template_id, ":template", ":party_no"),
+            (this_or_next|eq, ":template", "pt_sea_traders"),
+            (this_or_next|eq, ":template", "pt_kingdom_caravan_party"),
+            (this_or_next|eq, ":template", "pt_prisoner_train_party"),
+            (this_or_next|eq, ":template", "pt_patrol_party"),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_prisoner_train),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_kingdom_caravan),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_merchant_caravan),
+            (party_slot_eq, ":party_no", slot_party_type, spt_patrol),
+            (party_set_faction, ":party_no", ":faction"),
+        (else_try),##if a rebellion happens in roman land then winning faction probably not at war with the rebel faction
+            (party_slot_eq, ":party_no", slot_party_type, spt_rebellion),#if its a rebellion
+            (store_faction_of_party, ":rebel_faction", ":party_no"),
+            (store_relation, ":relation", ":rebel_faction", ":winner_faction"),
+            (ge, ":relation", 0),##with positive faction with player
+            (party_get_slot,":target_center", ":party_no", slot_rebellion_target),
+            (try_begin),
+                (is_between, ":target_center", walled_centers_begin, walled_centers_end),
+                (store_faction_of_party, ":target_center_faction", ":target_center"),
+                (eq, ":target_center_faction", ":winner_faction"),##and the target is from the player faction
+                (set_relation, ":rebel_faction", ":target_center_faction", -50),#then declare war between them!
+            (else_try),
+                (display_message, "@ERROR: A rebellion with invalid target!", color_bad_news),
+            (try_end),
+        (try_end),
+    (try_end),
+
+    # Rome goes to the victor
+    (try_begin),
+        #(neq, ":winner_caesar", "trp_player"), # also enable for player
+        (store_faction_of_party, ":fac", "p_town_6"),
+        (eq, ":fac", ":winner_faction"),
+
+        (try_begin),
+            (troop_get_slot, ":province", ":winner_caesar", slot_troop_govern),
+            (ge, ":province", 1),
+            (neq, ":province", p_ita_ital),
+            (assign, ":score", 0),
+            (assign, ":candiate", -1),
+            (try_for_range, ":active_npc", active_npcs_including_player_begin, heroes_end),
+                (neg|troop_slot_ge, ":active_npc", slot_troop_legion, 1),
+                (neg|troop_slot_ge, ":active_npc", slot_troop_aux, 1),
+                (neg|troop_slot_ge, ":active_npc", slot_troop_govern, 1),
+                (store_faction_of_troop, ":fac", ":active_npc"),
+                (eq, ":fac", ":winner_faction"),
+                (troop_get_slot, ":renown", ":active_npc", slot_troop_renown),
+                (assign, ":score_1", ":renown"),
+                (store_random_in_range, ":rand", 0, 200),
+                (val_add, ":renown", ":rand"),
+                (troop_get_slot, ":controversy", ":active_npc", slot_troop_controversy),
+                (val_clamp, ":controversy", 0, 101),
+
+                (store_sub, ":modifier", 101, ":controversy"),
+                (val_max, ":modifier", 1),
+                (val_mul, ":score_1", ":modifier"),
+                (val_div, ":score_1", 100),
+
+                (gt, ":score_1", ":score"),
+                (assign, ":score", ":score_1"),
+                (assign, ":candiate", ":active_npc"),
+            (try_end),
+            #governor found?
+            (gt, ":candiate", -1),
+
+            (try_begin), #if it is senatorial set slot
+                (store_add, ":slot", slot_province_senatorial_begin, ":province"),
+                (troop_slot_ge, "trp_province_array", ":slot", 1),
+                (store_current_day, ":day"),
+                (val_add, ":day", 84),
+                (troop_set_slot, "trp_province_array", ":slot", ":day"),
+            (try_end),
+
+            (troop_set_slot, "trp_province_array", ":province", ":candiate"),
+            (call_script, "script_troop_set_rank", ":candiate", slot_troop_govern, ":province"),
+
+            (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+                (store_faction_of_party, ":center_faction", ":center"),
+                (eq, ":center_faction", ":winner_faction"),
+                (party_get_slot, ":province_1", ":center", slot_center_province),
+                (eq, ":province_1", ":province"),
+                (call_script, "script_give_center_to_lord2", ":center", ":candiate", 0),
+            (try_end),
+        (try_end),
+
+        # rome goes to the winner
+        (try_begin),
+            (neg|troop_slot_eq, "trp_province_array", p_ita_ital, ":winner_caesar"),
+            (troop_set_slot, "trp_province_array", p_ita_ital, ":winner_caesar"),
+            (troop_set_slot, ":winner_caesar", slot_troop_govern, p_ita_ital),
+            (try_for_range, ":center", walled_centers_begin, walled_centers_end),
+                (store_faction_of_party, ":fac", ":center"),
+                (eq, ":fac", ":winner_faction"),
+                (party_slot_eq, ":center", slot_center_province, p_ita_ital),
+                (call_script, "script_give_center_to_lord2", ":center", ":winner_caesar", 0),
+            (try_end),
+        (try_end),
+
+        (try_begin),
+            (eq, ":winner_caesar", "trp_player"),
+            (assign, "$g_player_court", "p_town_6"),
+        (try_end),
+    (try_end),
+
+    (try_for_range, ":lady", kingdom_ladies_begin, kingdom_ladies_end),
+        (neg|troop_slot_eq, ":lady", slot_troop_occupation, dplmc_slto_dead),
+        (neg|troop_slot_eq, ":lady", slot_troop_occupation, dplmc_slto_exile),
+        (store_troop_faction, ":faction", ":lady"),
+        (eq, ":faction", ":losing_faction"),
+        (call_script, "script_get_kingdom_lady_social_determinants", ":lady"),
+        (assign, ":location", reg1),
+        (troop_set_slot, ":lady", slot_troop_cur_center, ":location"),
+        (store_faction_of_troop, ":fac", ":lady"),
+        (neq, ":fac", ":winner_faction"),
+        (troop_set_faction, ":lady", ":winner_faction"),
+        (call_script, "script_troop_set_title_according_to_faction", ":lady", ":winner_faction"),
+        (str_store_troop_name, s31, ":lady"),
+        (str_store_faction_name, s33, ":fac"),
+        (str_store_faction_name, s32, ":winner_faction"),
+        (display_message, "@{s31} switched from {s33} to {s32}"),
+    (try_end),
+
+    # declare war with rebel factions
+    # (try_for_range, ":faction", npc_kingdoms_begin, npc_kingdoms_end),
+    #     (store_relation, ":relation", ":faction", ":winner_faction"),
+    #     (ge, ":relation", 0),
+    #     (this_or_next|eq, ":faction", "fac_kingdom_19"),
+    #     (eq, ":faction", "fac_kingdom_17"),
+    #     (call_script, "script_diplomacy_start_war_between_kingdoms", ":faction", ":winner_faction", 0),
+    # (try_end),
+
+    # inheriate debts and taxes
+    # (try_begin),
+    #     (eq, ":winner_caesar", "trp_player"),
+    #     (eq, ":winner_faction", "$players_kingdom"),
+    #     (eq, "$g_campaign_type", g_campaign_story_rome),
+    #     (faction_get_slot, ":debts", "fac_kingdom_7", slot_faction_debts),
+    #     # (val_min, ":debts", 0),
+    #     # (val_max, ":debts", 5000000),
+    #     (call_script, "script_add_to_faction_bugdet", slot_faction_debts, ":winner_faction", ":debts"),
+    #     (faction_get_slot, ":treasury", "fac_kingdom_7", slot_faction_treasury),
+    #     # (val_min, ":treasury", 0),
+    #     # (val_max, ":treasury", 1000000),
+    #     (call_script, "script_add_to_faction_bugdet", slot_faction_treasury, ":winner_faction", ":treasury"),
+    #     (assign, reg1, ":debts"),
+    #     (assign, reg2, ":treasury"),
+    #     (display_message, "@You take on the debts ({reg1} denarii) and treasury ({reg2} denarii).", message_alert),
+    #     (try_for_range, ":slot", slot_faction_hire, slot_faction_emperors_bocket),
+    #         (faction_get_slot, ":value", "fac_kingdom_7", ":slot"),
+    #         (val_min, ":value", 0),
+    #         (call_script, "script_add_to_faction_bugdet", ":slot", ":winner_faction", ":value"),
+    #         (assign, reg1, ":value"),
+    #         (display_message, "@Slot value: {reg1}!", message_alert),
+    #     (try_end),
+    # (try_end),
+
+    (assign, "$g_recalculate_ais", 1),
+    (call_script, "script_troop_set_title_according_to_faction", ":winner_caesar", ":winner_faction"),
+
+    (call_script, "script_update_all_notes"),
+]),
 # script_end_civil_war
 ("end_civil_war",[
     (store_script_param, ":winner_faction", 1),
@@ -84599,31 +84793,21 @@ scripts = scripts_hardcoded + [
     (try_for_parties, ":party_no"),
         (gt, ":party_no", last_static_party),
         (party_is_active, ":party_no"),
+        (store_faction_of_party, ":faction", ":party_no"),
+        (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
+        (neq, ":faction", ":winner_faction"),
         (try_begin),
-            (party_slot_eq, ":party_no", slot_party_type, spt_prisoner_train),
-            (store_faction_of_party, ":faction", ":party_no"),
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
-            (neq, ":faction", ":winner_faction"),
-            (party_set_faction, ":party_no", ":faction"),
-        (else_try),
-            (party_slot_eq, ":party_no", slot_party_type, spt_kingdom_caravan),
-            (store_faction_of_party, ":faction", ":party_no"),
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
-            (neq, ":faction", ":winner_faction"),
-            (party_set_faction, ":party_no", ":faction"),
-        (else_try),
-            (party_slot_eq, ":party_no", slot_party_type, spt_merchant_caravan),
-            (store_faction_of_party, ":faction", ":party_no"),
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
-            (neq, ":faction", ":winner_faction"),
-            (party_set_faction, ":party_no", ":faction"),
-        (else_try),
+            (party_get_template_id, ":template", ":party_no"),
+            (this_or_next|eq, ":template", "pt_sea_traders"),
+            (this_or_next|eq, ":template", "pt_kingdom_caravan_party"),
+            (this_or_next|eq, ":template", "pt_prisoner_train_party"),
+            (this_or_next|eq, ":template", "pt_patrol_party"),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_prisoner_train),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_kingdom_caravan),
+            (this_or_next|party_slot_eq, ":party_no", slot_party_type, spt_merchant_caravan),
             (party_slot_eq, ":party_no", slot_party_type, spt_patrol),
-            (store_faction_of_party, ":faction", ":party_no"),
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
-            (neq, ":faction", ":winner_faction"),
             (party_set_faction, ":party_no", ":faction"),
-        (else_try),##if a rebellion happens in roman land and meanwhile the player wins the civil war, player faction is then probably not at war with the rebel faction
+        (else_try),##if a rebellion happens in roman land then winning faction probably not at war with the rebel faction
             (party_slot_eq, ":party_no", slot_party_type, spt_rebellion),#if its a rebellion
             (store_faction_of_party, ":rebel_faction", ":party_no"),
             (store_relation, ":relation", ":rebel_faction", ":winner_faction"),
@@ -84753,6 +84937,14 @@ scripts = scripts_hardcoded + [
         (call_script, "script_update_faction_notes","fac_kingdom_7"),
         (call_script, "script_update_all_notes"),
         (call_script, "script_exchange_prisoners_between_factions", "fac_kingdom_7", "fac_kingdom_7"), # release all prisoners
+
+        (call_script, "script_troop_set_title_according_to_faction", ":winner_caesar", "fac_kingdom_7"),
+        # reenable honorary titles for the winner faction
+        (faction_set_slot, "fac_kingdom_7", slot_faction_has_nor_titles, 1),
+    (else_try),
+        (call_script, "script_troop_set_title_according_to_faction", ":winner_caesar", ":winner_faction"),
+        # reenable honorary titles for the winner faction
+        (faction_set_slot, ":winner_faction", slot_faction_has_nor_titles, 1),
     (try_end),
 
     (try_for_range, ":lady", kingdom_ladies_begin, kingdom_ladies_end),
@@ -84783,20 +84975,6 @@ scripts = scripts_hardcoded + [
         (call_script, "script_diplomacy_start_war_between_kingdoms", ":faction", ":winner_faction", 0),
     (try_end),
 
-    #switch all patrols, traders, prisoner trains and caravans to player which havent been switched yet
-    (try_for_parties, ":party"),
-        (party_is_active, ":party"),
-        (store_faction_of_party, ":faction", ":party"),
-        (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
-        (party_get_template_id, ":template", ":party"),
-        (this_or_next|eq, ":template", "pt_sea_traders"),
-        (this_or_next|eq, ":template", "pt_kingdom_caravan_party"),
-        (this_or_next|eq, ":template", "pt_prisoner_train_party"),
-        (eq, ":template", "pt_patrol_party"),
-        (party_set_faction, ":party", ":winner_faction"),
-    (try_end),
-
-
     # inheriate debts and taxes
     # (try_begin),
     #     (eq, ":winner_caesar", "trp_player"),
@@ -84824,7 +85002,6 @@ scripts = scripts_hardcoded + [
 
     (assign, "$g_recalculate_ais", 1),
     (troop_set_slot, "trp_global_variables", g_civil_war_timer, 0),
-    (call_script, "script_troop_set_title_according_to_faction", ":winner_caesar", ":winner_faction"),
 ]),
 
 # script_get_character_name_for_troop

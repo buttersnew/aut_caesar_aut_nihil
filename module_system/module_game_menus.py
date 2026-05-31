@@ -18843,11 +18843,11 @@ game_menus = [
       (set_visitor,4,"trp_vigilia"),
       (set_visitor,14,"trp_argentarius"),
 
-          (try_begin),
-              (party_slot_eq, "$current_town", slot_party_type, spt_town),
-              (party_get_slot, ":guildmaster", "$current_town", slot_town_elder),
-              (set_visitor,13,":guildmaster"),
-          (try_end),
+      (try_begin),
+          (party_slot_eq, "$current_town", slot_party_type, spt_town),
+          (party_get_slot, ":guildmaster", "$current_town", slot_town_elder),
+          (set_visitor,13,":guildmaster"),
+      (try_end),
 
       (set_jump_mission,"mt_visit_scriptorium"),
       (jump_to_scene, "scn_scriptorium"),
@@ -20908,27 +20908,45 @@ game_menus = [
     ]),
 ]),
 
-  (
-    "notification_truce_expired",0,
-    "Truce Has Expired^^The truce between {s1} and {s2} has expired.",
-    "none",
-    [
-      (str_store_faction_name, s1, "$g_notification_menu_var1"),
-      (str_store_faction_name, s2, "$g_notification_menu_var2"),
+("notification_civil_war_faction_defeated",0,
+  "{s4} of the {s2} has been defeated in the civil war against {s3} of the {s1}.",
+  "none",[
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),#winner
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),#LOSER
 
-      (set_fixed_point_multiplier, 100),
-      (position_set_x, pos0, 65),
-      (position_set_y, pos0, 30),
-      (position_set_z, pos0, 170),
-      (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
-      ],
-    [
-      ("continue",[],"Continue.",
-       [
-	   (change_screen_return),
-        ]),
-     ]
-  ),
+    (faction_get_slot, ":winning_ceasar", "$g_notification_menu_var1", slot_faction_leader),
+    (faction_get_slot, ":losing_ceasar", "$g_notification_menu_var2", slot_faction_leader),
+    (str_store_troop_name, s3, ":winning_ceasar"),
+    (str_store_troop_name, s4, ":losing_ceasar"),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+  ],[
+    ("continue",[],"Continue.",[
+      (call_script, "script_cf_annex_faction", "$g_notification_menu_var1", "$g_notification_menu_var2"),
+      (jump_to_menu, "mnu_auto_return_map"),
+    ]),
+]),
+
+("notification_truce_expired",0,
+  "Truce Has Expired^^The truce between {s1} and {s2} has expired.",
+  "none",[
+    (str_store_faction_name, s1, "$g_notification_menu_var1"),
+    (str_store_faction_name, s2, "$g_notification_menu_var2"),
+
+    (set_fixed_point_multiplier, 100),
+    (position_set_x, pos0, 65),
+    (position_set_y, pos0, 30),
+    (position_set_z, pos0, 170),
+    (set_game_menu_tableau_mesh, "tableau_faction_note_mesh_banner", "$g_notification_menu_var1", pos0),
+  ],[
+    ("continue",[],"Continue.",[
+      (change_screen_return),
+    ]),
+]),
   (
     "notification_senate_meeting",0,
     "You are informed, that in three days a senate meeting will be hold in Rome.",
@@ -48882,6 +48900,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
       (ge, "$g_talk_troop", 0),
     ],"{!}CHEAT! - Access slots, modify inventory and rename all troops",[
 	   # (assign, "$g_talk_troop", "trp_player"),
+      (assign, "$g_talk_troop", "trp_global_variables"),
 	    (jump_to_menu, "mnu_display_troop_slots"),
     ]),
 

@@ -4208,6 +4208,12 @@ simple_triggers = [
         (troop_is_hero, ":stack_troop"),
         (troop_slot_eq, ":stack_troop", slot_troop_occupation, slto_kingdom_hero),
         (store_random_in_range, ":random_no", 0, 100),
+
+        # (str_store_troop_name_link, s1, ":stack_troop"),
+        # (str_store_faction_name_link, s2, ":faction_no"),
+        # (str_store_party_name_link, s3, ":center_no"),
+        # (display_message, "@DEBUG {s1} has been captured by {s2} in {s3}."),
+
         (try_begin),# main story, ensure legates are released from prison
             (check_quest_active, "qst_blank_quest_19"),
             (check_quest_active, "qst_four_emperors"),
@@ -4219,6 +4225,19 @@ simple_triggers = [
             (troop_slot_ge, ":stack_troop", slot_troop_aux, 1),
             (faction_slot_eq, ":troop_faction", slot_faction_culture, "fac_culture_roman"),
             (assign, ":random_no", -1),
+        (else_try),
+            (ge, "$g_civil_war", 1),# it is civil war
+            (store_faction_of_troop, ":troop_faction", ":stack_troop"),
+
+            # (str_store_troop_name_link, s1, ":stack_troop"),
+            # (str_store_faction_name_link, s2, ":faction_no"),
+            # (str_store_party_name_link, s3, ":center_no"),
+            # (display_message, "@DEBUG SPECIAL {s1} has been captured by {s2} in {s3}."),
+
+            (faction_slot_eq, ":troop_faction", slot_faction_culture, "fac_culture_roman"), # the captured lord is from roman faction
+            (faction_slot_eq, ":troop_faction", slot_faction_leader, ":stack_troop"), # the captured lord is a faction leader
+            (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_roman"), # the imprisoning faction is roman
+            (assign, ":random_no", 11),
         (try_end),
         (try_begin),
             (le, ":random_no", 10),
@@ -4823,6 +4842,30 @@ simple_triggers = [
         (try_end),
         (gt, ":last_roman_faction", -1),
         (call_script, "script_add_notification_menu", "mnu_end_civil_war", ":last_roman_faction", 0),
+    (try_end),
+    ## civil war: check if the an Emperor captured another Emperor and has him imprisoned
+    (try_begin),
+        (ge, "$g_civil_war", 1),
+        (try_for_range, ":civil_war_faction", kingdoms_begin, kingdoms_end),
+            (faction_slot_eq, ":civil_war_faction", slot_faction_culture, "fac_culture_roman"),
+            (faction_get_slot, ":faction_leader", ":civil_war_faction", slot_faction_leader),
+            (gt, ":faction_leader", 1),
+            (call_script, "script_search_troop_prisoner_of_walled_center", ":faction_leader"),
+            (assign, ":captured_center", reg0),
+            (gt, ":captured_center", -1),
+
+            (store_faction_of_party, ":captured_center_faction", ":captured_center"),
+
+            (neq, ":captured_center_faction", ":civil_war_faction"),
+            (faction_slot_eq, ":captured_center_faction", slot_faction_culture, "fac_culture_roman"),
+
+            (faction_get_slot, ":other_faction_leader", ":captured_center_faction", slot_faction_leader),
+            (troop_slot_eq, ":other_faction_leader", slot_troop_occupation, slto_kingdom_hero),
+            (call_script, "script_search_troop_prisoner_of_party", ":other_faction_leader"),
+            (eq, reg0, -1), #leader is not captured
+
+            (call_script, "script_add_notification_menu", "mnu_notification_civil_war_faction_defeated", ":captured_center_faction", ":civil_war_faction"),
+        (try_end),
     (try_end),
     (try_begin),
         (eq, ":num_active_factions", 1),
