@@ -49048,11 +49048,6 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "none",[
   ],[
     ("options",[
-    ],"Set rank 2.",[
-      (assign, "$g_rank", 2),
-    ]),
-
-    ("options",[
       (ge, "$cheat_mode", 1),
     ],"Add 50,000 denarii.",[
       (troop_add_gold, "trp_player", 50000),
