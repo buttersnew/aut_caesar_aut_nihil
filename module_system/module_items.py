@@ -2766,6 +2766,22 @@ tunic_light_armor_price, tunic_light_armor_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_roman_poor"),]),], [fac_culture_roman,fac_culture_greek]  ],
 
 #arabian
+["arab_simple_cloth_1", "Arabian Simple Cloth", [("arab_simple_cloth_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_pants_long"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_syrian,fac_culture_egyptian,fac_culture_parthian,fac_culture_judean] ],
+
+["arab_simple_cloth_2", "Arabian Simple Cloth", [("arab_simple_cloth_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_pants_long"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_syrian,fac_culture_egyptian,fac_culture_parthian,fac_culture_judean] ],
+
+["arab_simple_cloth_3", "Arabian Simple Cloth", [("arab_simple_cloth_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_pants_long"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_syrian,fac_culture_egyptian,fac_culture_parthian,fac_culture_judean] ],
+
+["arab_simple_cloth_4", "Arabian Simple Cloth", [("arab_simple_cloth_4",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
+tunic_armor_price, tunic_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_pants_long"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_syrian,fac_culture_egyptian,fac_culture_parthian,fac_culture_judean] ],
+
 ["arabian_tunic_1", "Arabian Tunic", [("arabian_cloth_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_roman,fac_culture_greek,fac_culture_syrian,fac_culture_egyptian,fac_culture_parthian,fac_culture_judean] ],
@@ -2782,6 +2798,16 @@ toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
 ["arab_noble_tunic_2", "Noble Robe", [("arabian_noble_cloth_2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
 toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_syrian,fac_culture_egyptian, fac_culture_parthian,fac_culture_judean]  ],
+
+["arabian_lamellar_armor_1", "Arabian Lamellar Armour", [("arabian_lamellar_armor_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_parthian, fac_culture_syrian,fac_culture_egyptian,fac_culture_roman,fac_culture_greek]  ],
+["arabian_lamellar_armor_2", "Arabian Lamellar Armour", [("arabian_lamellar_armor_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_parthian, fac_culture_syrian,fac_culture_egyptian,fac_culture_roman,fac_culture_greek]  ],
+["arabian_lamellar_armor_3", "Arabian Lamellar Armour", [("arabian_lamellar_armor_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
+pants_with_mail_price, pants_with_mail_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_parthian, fac_culture_syrian,fac_culture_egyptian,fac_culture_roman,fac_culture_greek]  ],
 
 ["arabian_armor_b", "Arabian Lamella Armour", [("arabian_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
@@ -3532,6 +3558,13 @@ signifer_head_price,signifer_head,imodbits_armor, [], [fac_culture_roman,fac_cul
 ["pilos_old", "Old Pilos", [("pilos_old",0)], itp_unique|itp_type_head_armor |itp_covers_beard ,0,
 medium_head_price,medium_head,imodbits_plate, [], [] ],
 
+["pilos_iron", "Iron Pilos with Cloth", [("pilos_iron",0)], itp_unique|itp_type_head_armor |itp_covers_beard ,0,
+medium_head_price,medium_head,imodbits_plate, [], [] ],
+
+["pilos_brass", "Brass Pilos with Cloth", [("pilos_brass",0)], itp_unique|itp_type_head_armor |itp_covers_beard ,0,
+medium_head_price,medium_head,imodbits_plate, [], [] ],
+
+
 ["a_lybian_feathers_1", "Lybian Feathers", [("a_lybian_feathers_1",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
 light_super_head_price,light_super_head,imodbits_cloth, [], [fac_culture_garamantian] ],
 ["a_lybian_feathers_2", "Lybian Feathers", [("a_lybian_feathers_2",0)], itp_merchandise|itp_type_head_armor|itp_doesnt_cover_hair ,0,
@@ -4085,40 +4118,68 @@ light_head_price,light_head,imodbits_plate ],
 
 #eastern/desert
 ["turban", "Desert Turban", [("tuareg_open",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["turban_2", "Desert Turban", [("tuareg_open_green",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["desert_turban", "Desert Turban", [("tuareg",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["desert_turban_2", "Desert Turban", [("tuareg_blue",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_1_green", "Desert Turban", [("tuareg_new_1_green",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_1_blue", "Desert Turban", [("tuareg_new_1_blue",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_1_red", "Desert Turban", [("tuareg_new_1_red",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_1_white", "Desert Turban", [("tuareg_new_1_white",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_2_green", "Desert Turban", [("tuareg_new_2_green",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_2_blue", "Desert Turban", [("tuareg_new_2_blue",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_2_red", "Desert Turban", [("tuareg_new_2_red",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["tuareg_new_2_white", "Desert Turban", [("tuareg_new_2_white",0)], itp_merchandise| itp_type_head_armor   ,0,
-phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+phrygian_head_price,phrygian_head,imodbits_cloth, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 
 ["desert_padded_hat_a", "Padded Cap", [("padded_hat_a",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["sarranid_warrior_cap", "Warrior Cap", [("tuareg_helmet",0)], itp_merchandise| itp_type_head_armor | itp_covers_beard  ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["garamantian_horseman_helmet", "Horseman Helmet", [("sar_helmet2",0)], itp_merchandise| itp_type_head_armor   ,0,
-medium_head_price,medium_head,imodbits_plate, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["sarranid_helmet1", "Keffiyeh Helmet", [("sar_helmet1",0)], itp_merchandise| itp_type_head_armor   ,0,
-light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+light_head_price,light_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 ["sarranid_mail_coif", "Mail Coif", [("tuareg_helmet2",0)], itp_merchandise| itp_type_head_armor ,0,
-medium_head_price,medium_head,imodbits_plate, [], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean] ],
+medium_head_price,medium_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+
+["pilos_with_turban_white", "Helm with Turban", [("pilos_with_turban_white",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_with_turban_yellow", "Helm with Yellow Turban", [("pilos_with_turban_yellow",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_with_turban_green", "Helm with Green Turban", [("pilos_with_turban_green",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_with_turban_red", "Helm with Red Turban", [("pilos_with_turban_red",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_with_turban_blue", "Helm with Blue Turban", [("pilos_with_turban_blue",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_brass_with_turban_yellow", "Brass Helm with Yellow Turban", [("pilos_brass_with_turban_yellow",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_brass_with_turban_green", "Brass Helm with Green Turban", [("pilos_brass_with_turban_green",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_brass_with_turban_red", "Brass Helm with Red Turban", [("pilos_brass_with_turban_red",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
+
+["pilos_brass_with_turban_blue", "Brass Helm with Blue Turban", [("pilos_brass_with_turban_blue",0)], itp_merchandise| itp_type_head_armor ,0,
+heavy_head_price,heavy_head,imodbits_plate, [], [fac_culture_roman,fac_culture_egyptian, fac_culture_arabian, fac_culture_parthian,fac_culture_judean] ],
 
 #female headclothing start
 ["flower_crown", "Flower crown", [("flower_crown",0)],  itp_merchandise|itp_type_head_armor | itp_doesnt_cover_hair |itp_civilian |itp_attach_armature|itp_fit_to_head,0,
