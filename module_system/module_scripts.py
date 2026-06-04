@@ -7509,7 +7509,7 @@ scripts = scripts_hardcoded + [
         (else_try),
         (try_begin),
             (eq, ":use_comma", 1),
-            (str_store_string, s0, "@None"),
+            (str_store_string, s0, "str_dplmc_none_upper"),
         (else_try),
             (str_store_string, s0, "@^None"),
         (try_end),
@@ -14381,7 +14381,7 @@ scripts = scripts_hardcoded + [
             # (try_begin),
                 # (eq, ":faction_no", "$players_kingdom"),
           # (eq, "$g_infinite_camping", 0),
-                # (tutorial_box, "@You hear people say that {s31} borrowed some gold from {s32}.", "@Rumors"),
+                # (tutorial_box, "@You hear people say that {s31} borrowed some gold from {s32}.", "str_rumors"),
             # (try_end),
         (try_end),
     (try_end),
@@ -17016,7 +17016,7 @@ scripts = scripts_hardcoded + [
             # (eq, "$cheat_mode", 1),
             # ##nested diplomacy end+
             # (assign, reg2, ":troop_amount"),
-            # # (str_store_string, s11, "@{reg2}"),
+            # # (str_store_string, s11, "str_reg2"),
             # (str_store_troop_name, s12, ":troop_type"),
             # (str_store_faction_name_link, s13, ":party_faction"),
             # (str_store_party_name_link, s14, ":center_no"),
@@ -17143,7 +17143,7 @@ scripts = scripts_hardcoded + [
                 (gt, ":troop_wealth", ":cost"),
                 (try_begin), #debug
                     (ge, "$cheat_mode", 1),
-                    #(str_store_string, s11, "@{reg2}"),
+                    #(str_store_string, s11, "str_reg2"),
 
                     # (str_store_party_name_link, s14, ":center_no"),
                     (str_store_item_name, s11, ":item_no"),
@@ -40025,7 +40025,7 @@ scripts = scripts_hardcoded + [
         (assign, ":result", -1),
         (troop_set_slot, "trp_province_array", ":legion", -1),#clear it else
     (try_end),
-    # (str_store_string, s10, "str_none"),
+    # (str_store_string, s10, "str_dplmc_none"),
     # (try_begin),
     #     (gt, ":result", -1),
     #     (str_store_party_name, s10, ":result"),
@@ -63652,7 +63652,7 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":enemies", 1),
     (troop_set_slot, "trp_player", slot_troop_culture, "fac_culture_roman"),
     (val_add, "$g_unrest", 15),##add unrest
-    (display_message, "@Stability of the Empire decreases", color_bad_news),
+    (display_message, "str_stability_message_negative", color_bad_news),
     ##add equipment
     ##edit: this can be found now in a chest in the palace
     # (troop_add_item, "trp_player", "itm_laurel_gold", 0),
@@ -66308,7 +66308,7 @@ scripts = scripts_hardcoded + [
         (str_store_string, s1, "str_noone"),
     (try_end),
 
-    (create_text_overlay, reg1, "@{s1}", tf_center_justify|tf_vertical_align_center),
+    (create_text_overlay, reg1, "str_s1", tf_center_justify|tf_vertical_align_center),
     (position_set_x, pos1, 500),
     (position_set_y, pos1, 692),
     (overlay_set_position, reg1, pos1),
@@ -66319,7 +66319,7 @@ scripts = scripts_hardcoded + [
     (store_script_param, ":pos_x", 3),
     (store_script_param, ":pos_y", 4),
     (str_store_troop_name, s1, ":troop_no"),
-    (create_text_overlay, reg1, "@{s1}", tf_center_justify|tf_vertical_align_center),
+    (create_text_overlay, reg1, "str_s1", tf_center_justify|tf_vertical_align_center),
     (position_set_x, pos1, 800),
     (position_set_y, pos1, 800),
     (overlay_set_size, reg1, pos1),
@@ -81581,7 +81581,7 @@ scripts = scripts_hardcoded + [
 
     (try_begin),
         (str_is_empty, s1),
-        (str_store_string, s1, "@None"),
+        (str_store_string, s1, "str_dplmc_none_upper"),
     (try_end),
 ]),
 
@@ -82077,7 +82077,7 @@ scripts = scripts_hardcoded + [
 
         (faction_get_slot, reg2, "$players_kingdom", ":slot"),
         (val_add, ":total_tax", reg2),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0x00AA00),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82102,7 +82102,7 @@ scripts = scripts_hardcoded + [
         (val_abs, ":emperors_boecket"),
         (val_add, ":total_income", ":emperors_boecket"),
         (assign, reg2, ":emperors_boecket"),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0x00AA00),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82151,7 +82151,7 @@ scripts = scripts_hardcoded + [
 
     (val_add, ":total_income", ":total_tax"),
     (assign, reg2, ":total_income"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (overlay_set_color, reg1, 0x00AA00),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
@@ -82233,7 +82233,7 @@ scripts = scripts_hardcoded + [
         (faction_get_slot, reg2, "$players_kingdom", ":slot"),
         (val_add, ":total_spending", reg2),
         (val_mul, reg2, -1),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0xFF0000),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82256,7 +82256,7 @@ scripts = scripts_hardcoded + [
         (overlay_set_position, reg1, pos1),
 
         (assign, reg2, ":emperors_boecket"),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0xFF0000),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82285,7 +82285,7 @@ scripts = scripts_hardcoded + [
         (val_div, ":interests", 100),
         (assign, reg2, ":interests"),
         (val_mul, reg2, -1),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0xFF0000),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82314,7 +82314,7 @@ scripts = scripts_hardcoded + [
         (val_div, ":corruption_loss", 100),
         (assign, reg2, ":corruption_loss"),
         (val_mul, reg2, -1),
-        (create_text_overlay, reg1, "@{reg2}", 0),
+        (create_text_overlay, reg1, "str_reg2", 0),
         (overlay_set_color, reg1, 0xFF0000),
         (position_set_x, pos1, 900),
         (position_set_y, pos1, 900),
@@ -82365,7 +82365,7 @@ scripts = scripts_hardcoded + [
 
     (val_add, ":total_loss", ":total_spending"),
     (assign, reg2, ":total_spending"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (overlay_set_color, reg1, 0xFF0000),
     (position_set_x, pos1, 900),
     (position_set_y, pos1, 900),
@@ -82387,7 +82387,7 @@ scripts = scripts_hardcoded + [
 
     (store_sub, ":total_netto_income", ":total_income", ":total_loss"),
     (assign, reg2, ":total_netto_income"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (try_begin),
         (gt, ":total_netto_income", 0),
         (overlay_set_color, reg1, 0x00AA00),
@@ -82411,7 +82411,7 @@ scripts = scripts_hardcoded + [
 
     (faction_get_slot, ":treasury", "$players_kingdom", slot_faction_treasury),
     (assign, reg2, ":treasury"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (try_begin),
         (gt, ":treasury", 0),
         (overlay_set_color, reg1, 0x00AA00),
@@ -82434,7 +82434,7 @@ scripts = scripts_hardcoded + [
     (overlay_set_position, reg1, pos1),
 
     (assign, reg2, ":debts"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (try_begin),
         (gt, ":debts", 0),
         (overlay_set_color, reg1, 0xFF0000),
@@ -82459,7 +82459,7 @@ scripts = scripts_hardcoded + [
 
     (store_add, reg2, ":treasury", ":total_netto_income"),
     (val_max, reg2, 0),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (try_begin),
         (gt, reg2, 0),
         (overlay_set_color, reg1, 0x00AA00),
@@ -82485,7 +82485,7 @@ scripts = scripts_hardcoded + [
     (val_mul, reg2, -1),
     (val_max, reg2, 0),
     (val_add, reg2, ":debts"),
-    (create_text_overlay, reg1, "@{reg2}", 0),
+    (create_text_overlay, reg1, "str_reg2", 0),
     (try_begin),
         (ge, reg2, 0),
         (overlay_set_color, reg1, 0xFF0000),
@@ -83502,40 +83502,40 @@ scripts = scripts_hardcoded + [
     (try_begin),
         # Update the player's strength
         (store_add, reg5, ":strength", 4),
-        (overlay_set_text, "$g_presentation_obj_strength", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_strength", "str_reg5"),
         # Update the player's agility
         (store_add, reg5, ":agility", 4),
-        (overlay_set_text, "$g_presentation_obj_agility", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_agility", "str_reg5"),
         # Update the player's intelligence
         (store_add, reg5, ":intelligence", 4),
-        (overlay_set_text, "$g_presentation_obj_intel", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_intel", "str_reg5"),
         # Update the player's charisma
         (store_add, reg5, ":charisma", 4),
-        (overlay_set_text, "$g_presentation_obj_charisma", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_charisma", "str_reg5"),
         # Update the player's gold
         (store_add, reg5, ":gold", 0),
-        (overlay_set_text, "$g_presentation_obj_gold", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_gold", "str_reg5"),
         # Update the player's renown
         (store_add, reg5, ":renown", 0),
-        (overlay_set_text, "$g_presentation_obj_renown", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_renown", "str_reg5"),
         # Update the player's one handed proficiency
         (store_add, reg5, ":prof_onehand", 15),
-        (overlay_set_text, "$g_presentation_obj_onehand", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_onehand", "str_reg5"),
         # Update the player's two handed proficiency
         (store_add, reg5, ":prof_twohand", 15),
-        (overlay_set_text, "$g_presentation_obj_twohand", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_twohand", "str_reg5"),
         # Update the player's polearm proficiency
         (store_add, reg5, ":prof_polearm", 15),
-        (overlay_set_text, "$g_presentation_obj_polearm", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_polearm", "str_reg5"),
         # Update the player's archery proficiency
         (store_add, reg5, ":prof_archery", 15),
-        (overlay_set_text, "$g_presentation_obj_bow", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_bow", "str_reg5"),
         # Update the player's crossbow proficiency
         (store_add, reg5, ":prof_crossbow", 15),
-        (overlay_set_text, "$g_presentation_obj_xbow", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_xbow", "str_reg5"),
         # Update the player's throwing proficiency
         (store_add, reg5, ":prof_throwing", 15),
-        (overlay_set_text, "$g_presentation_obj_throw", "@{reg5}"),
+        (overlay_set_text, "$g_presentation_obj_throw", "str_reg5"),
         ###### UPDATE SKILLS ######
         (assign, ":line_count", 0),
       # Ironflesh
@@ -85178,7 +85178,7 @@ scripts = scripts_hardcoded + [
 
     # add unrest
     (val_add, "$g_unrest", 15),##add unrest
-    (display_message, "@Stability of the Empire decreases", color_bad_news),
+    (display_message, "str_stability_message_negative", color_bad_news),
 
     # get variables
     (faction_get_slot, ":cur_leader", ":faction", slot_faction_leader),
@@ -86188,7 +86188,7 @@ scripts = scripts_hardcoded + [
             (store_add, ":string", ":legion", "str_legion_names_begin"),
             (str_store_string, s20, ":string"),
         (try_end),
-        (party_set_extra_text, ":troop_party", "@{s20}"),
+        (party_set_extra_text, ":troop_party", "str_s20"),
     (else_try),
         (troop_slot_ge, ":troop_no", slot_troop_aux, "pt_cohors_aux"),
         (troop_get_slot, ":aux", ":troop_no", slot_troop_aux),

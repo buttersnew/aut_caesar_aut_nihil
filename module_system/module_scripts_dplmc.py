@@ -8272,7 +8272,7 @@ scripts_dplmc = [
     #     (assign, ":setting", "str_off"),
     # (try_end),
     # (str_store_string, s1, ":setting"),
-    # (add_info_page_note_from_sreg, ip_dplmc_gold_changes, 1, "@{s1}", 0),
+    # (add_info_page_note_from_sreg, ip_dplmc_gold_changes, 1, "str_s1", 0),
 
     # (try_begin),
     #     (eq, "$g_dplmc_ai_changes", DPLMC_AI_CHANGES_LOW),
@@ -8287,7 +8287,7 @@ scripts_dplmc = [
     #     (assign, ":setting", "str_off"),
     # (try_end),
     # (str_store_string, s1, ":setting"),
-    # (add_info_page_note_from_sreg, ip_dplmc_ai_changes, 1, "@{s1}", 0),
+    # (add_info_page_note_from_sreg, ip_dplmc_ai_changes, 1, "str_s1", 0),
 
     (try_begin),
         (assign, "$g_autoloot_active", 1),
@@ -8295,7 +8295,7 @@ scripts_dplmc = [
     (else_try),
         (str_store_string, s1, "@Disabled"),
     (try_end),
-    (add_info_page_note_from_sreg, ip_dplmc_autoloot, 1, "@{s1}", 0),
+    (add_info_page_note_from_sreg, ip_dplmc_autoloot, 1, "str_s1", 0),
 ]),
 
 ("dplmc_remove_disguise",[

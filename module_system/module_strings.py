@@ -32,9 +32,7 @@ strings = [
 # Strings before this point are hardwired.
   ("blank_string", " "),
   ("error_string", "{!}ERROR!!!ERROR!!!!ERROR!!!ERROR!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!ERROR!!!ERROR!!!!!"),
-##  ("none", "none"),
   ("noone", "no one"),
-##  ("nothing", "nothing"),
   ("s0", "{!}{s0}"),
   ("blank_s1", "{!} {s1}"),
   ("reg1", "{!}{reg1}"),
@@ -43,6 +41,14 @@ strings = [
   ("s52_comma_s51", "{!}{s52}, {s51}"),
   ("s52_and_s51", "{s52} and {s51}"),
   ("s5_s_party", "{s5}'s Party"),
+
+  ("s1", "{!}{s1}"),
+  ("s20", "{!}{s20}"),
+  ("s29", "{!}{s29}"),
+  ("s33", "{!}{s33}"),
+
+  ("reg2", "{!}{reg2}"),
+  ("reg5", "{!}{reg5}"),
 
   ("given_by_s1_at_s2", "Given by {s1} at {s2}"),
   ("given_by_s1_in_wilderness", "Given by {s1} whilst in the field"),
@@ -6188,6 +6194,8 @@ strings = [
 ###################################################################################
 # Autoloot
 ###################################################################################
+  ("dplmc_none_upper", "None"),
+
 	("dplmc_none", "none"),
 
 	("dplmc_item_pool_no_items", "There are currently no items in the item pool."),
@@ -10677,6 +10685,11 @@ strings = [
   ("bandit_leader_greet_again_honor_low",    "You return. I had a feeling you would. What do you want?"),
   ("bandit_leader_greet_again_honor_vlow",   "You come back. Good. Speak."),
 
+  ("stability_message_negative", "Stability of the Empire decreases!"),
+  ("stability_message_positive", "Stability of the Empire increases!"),
+
+  ("rumors", "Rumors"),
+  ("personality_description", "Personality: {s13}"),
 ] + [
   ("skl_"+skills[x][0], skills[x][1]) for x in range(0, len(skills))
 ] + caucasian_names + nubian_names + roman_names + dacian_names + britannic_names + germanic_names + berber_names + garamantian_names + persian_names + sarmatian_names + arabian_names + hebrew_names + saka_names + female_white + female_brown + female_black + egyptian_names + greek_names
