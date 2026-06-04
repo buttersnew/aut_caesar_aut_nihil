@@ -131,6 +131,7 @@ The repository is organized into several key directories:
 -   `handbook/`: Source for the official handbook PDF.
 -   `data_sourcefiles/`: Definitions for flora and skyboxes.
 -   `website/`: Source code for the official mod website.
+-   `aux_functions`: python auxiliary functions, like generating companion visualizations for the website.
 
 ### Build Process
 

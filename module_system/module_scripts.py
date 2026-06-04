@@ -32582,6 +32582,24 @@ scripts = scripts_hardcoded + [
     (troop_set_slot, "trp_npc43", slot_troop_age, 32),
     (troop_set_slot, "trp_npc43", slot_troop_renown, 150),
 
+
+    (troop_set_slot, "trp_npc44", slot_troop_morality_type, tmt_humanitarian), #
+    (troop_set_slot, "trp_npc44", slot_troop_morality_value, 3),
+    (troop_set_slot, "trp_npc44", slot_troop_2ary_morality_type, -1),
+    (troop_set_slot, "trp_npc44", slot_troop_2ary_morality_value, 0),
+    (troop_set_slot, "trp_npc44", slot_troop_personalityclash_object, "trp_npc14"), # Titus
+    (troop_set_slot, "trp_npc44", slot_troop_personalityclash2_object, "trp_npc27"), # Lucullus Caepio
+    (troop_set_slot, "trp_npc44", slot_troop_personalitymatch_object, "trp_npc37"), # Yosef
+    (troop_set_slot, "trp_npc44", slot_troop_home, "p_castle_42"), # Samosata
+    (troop_set_slot, "trp_npc44", slot_troop_payment_request, 10000),
+    (troop_set_slot, "trp_npc44", slot_troop_kingsupport_argument, argument_victory),
+    (troop_set_slot, "trp_npc44", slot_troop_kingsupport_opponent, "trp_npc32"), #
+    (troop_set_slot, "trp_npc44", slot_troop_town_with_contacts, "p_town_22"), # Larbas
+    (troop_set_slot, "trp_npc44", slot_lord_reputation_type, lrep_goodnatured),
+    (troop_set_slot, "trp_npc44", slot_troop_culture, "fac_culture_syrian"),
+    (troop_set_slot, "trp_npc44", slot_troop_age, 55),
+    (troop_set_slot, "trp_npc44", slot_troop_renown, 200),
+
     (store_sub, "$number_of_npc_slots", slot_troop_strings_end, slot_troop_intro),
     (try_for_range, ":npc", companions_begin, companions_end),
         (try_for_range, ":slot_addition", 0, "$number_of_npc_slots"),
@@ -77919,6 +77937,10 @@ scripts = scripts_hardcoded + [
             (troop_set_slot, "trp_npc43", slot_troop_met, 1),
             (call_script, "script_recruit_troop_as_companion", "trp_npc43"),
         (else_try),
+            (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_syrian"),#syrian
+            (troop_set_slot, "trp_npc44", slot_troop_met, 1),
+            (call_script, "script_recruit_troop_as_companion", "trp_npc44"),
+        (else_try),
             (faction_slot_eq, ":faction_no", slot_faction_culture, "fac_culture_celtic"),#celtic
             (troop_set_slot, "trp_npc6", slot_troop_met, 1),
             (call_script, "script_recruit_troop_as_companion", "trp_npc6"),
@@ -81345,8 +81367,13 @@ scripts = scripts_hardcoded + [
         (assign, ":companion", "trp_npc5"),
     (else_try),
         (eq, ":town", "p_town_40"),#Dura Europos
-        (eq, ":location", location_center),
-        (assign, ":companion", "trp_npc20"),
+        (try_begin),
+            (eq, ":location", location_tavern),
+            (assign, ":companion", "trp_npc44"),
+        (else_try),
+            (eq, ":location", location_center),
+            (assign, ":companion", "trp_npc20"),
+        (try_end),
     (else_try),
         (eq, ":town", "p_town_41"),#Torik
     (else_try),

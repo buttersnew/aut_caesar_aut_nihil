@@ -4360,6 +4360,10 @@ str_16|agi_16|int_15|cha_15|level(25), wp(160),knows_archer_elit_eastern,  0x000
 [itm_numidian_armor_5,itm_berber_spear_1,itm_african_round_shield_1,itm_numidian_horse_2,itm_caligea,itm_javelin_berber,itm_lion_head],
 str_16|agi_14|int_11|cha_12|level(14), wp(140), knows_warrior_npc|knows_riding_4|knows_power_throw_3|knows_tracking_2, 0x00000000280501ca2e1a7db79caf169200000000001e2ccb0000000000000000],
 
+["npc44", "Mara bar Serapion", "Mara bar Serapion", tf_hero|tf_unmoveable_in_party_window, no_scene, reserved, fac_commoners,
+[itm_arab_noble_tunic_2, itm_caligea, itm_palmyran_gladius],
+str_9|agi_11|int_16|cha_15|level(14), wp(120), knows_merchant_npc|knows_riding_2|knows_trade_6|knows_persuasion_8|knows_engineer_5, 0x0000000ec00cb34935554c9edf99dad400000000001da89e0000000000000000],
+
 #NPC system changes end
 
 
