@@ -9725,11 +9725,11 @@ strings = [
 
 ## Cook Quality Descriptions (MUST BE IN THIS EXACT ORDER)
 # Level 10 (Legendary)
-("cook_quality_10_tooltip", "- A culinary god. Their feasts are the stuff of legend, fit for the Emperor himself."),
-("cook_quality_10_host",    "Your cooks are culinary gods; their feasts are the stuff of legend, fit for the Emperor himself."),
+("cook_quality_10_tooltip", "- A culinary god. Their feasts are the stuff of legend, fit for the Gods themselves."),
+("cook_quality_10_host",    "Your cooks are culinary gods; their feasts are the stuff of legend, fit for a Caesar."),
 ("cook_quality_10_guest_m", "By Jupiter! I have never tasted such ambrosia! Your chef must be Bacchus in disguise!"),
 ("cook_quality_10_guest_f", "This... this is transcendence on a plate. I am utterly speechless. You have the finest table in the Empire."),
-("cook_quality_10_spouse",  "My love, we are the envy of Rome! The Emperor himself would beg for an invitation to our table!"),
+("cook_quality_10_spouse",  "My love, we are the envy of Rome! The Gods themselves would beg for an invitation to our table!"),
 
 # Level 9 (Master)
 ("cook_quality_9_tooltip", "- A true master of the culinary arts. Every meal is a masterpiece."),
