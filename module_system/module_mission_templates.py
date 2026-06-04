@@ -21882,7 +21882,9 @@ mission_templates = [
 ##new horse races
 ("horse_racing", mtf_battle_mode, -1,
   "horse races yay",[
-    (0, mtef_team_0|mtef_scene_source, af_override_everything, 0, 1, [itm_parthian_horse_a,itm_caligea,itm_roman_poor1]),
+    # player
+    (0, mtef_team_1|mtef_scene_source, af_override_everything, 0, 1, [itm_parthian_horse_a,itm_caligea,itm_roman_poor1]),
+
     (1, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (2, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (3, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
@@ -21968,9 +21970,13 @@ mission_templates = [
     improved_lightning,
     wounds_vc,
     (ti_before_mission_start, 0, 0,[
-      (troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),
     ],[
-      (call_script, "script_remove_easter_eggs"),
+      (team_set_relation, 0, 1, 1),
+      (team_set_relation, 1, 0, 1),
+      (try_begin),
+        (troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),
+        (call_script, "script_remove_easter_eggs"),
+      (try_end),
     ]),
     (ti_before_mission_start, 0, 0,[],[
       (play_sound, "snd_arena_ambiance", sf_looping),
@@ -22541,7 +22547,9 @@ mission_templates = [
 
 ("spear_throwing", mtf_battle_mode, -1,
   "spear throwing yay",[
-    (0, mtef_team_0|mtef_scene_source, af_override_everything, 0, 1, []),
+    # player
+    (0, mtef_team_1|mtef_scene_source, af_override_everything, 0, 1, []),
+
     (1, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (2, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (3, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
@@ -22549,7 +22557,7 @@ mission_templates = [
     (5, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (6, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (7, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-    ##horse racers
+    ##throwers
     (8, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, []),
     (9, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, []),
     (10, mtef_team_0|mtef_visitor_source, af_override_everything, 0, 1, []),
@@ -22621,18 +22629,22 @@ mission_templates = [
     (75, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (76, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
     (77, mtef_team_0|mtef_visitor_source, 0, 0, 1, []),
-  ],
-   p_wetter +[
+  ],p_wetter +[
     cannot_spawn_commoners,
-   improved_lightning,
-  (ti_before_mission_start, 0, 0, [(troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),],
-   [(call_script, "script_remove_easter_eggs"),
-     ]),
+    improved_lightning,
+
+    (ti_before_mission_start, 0, 0,[
+    ],[
+      (team_set_relation, 0, 1, 1),
+      (team_set_relation, 1, 0, 1),
+      (try_begin),
+        (troop_slot_eq, "trp_organiser", olympia_easter_egg, 0),
+        (call_script, "script_remove_easter_eggs"),
+      (try_end),
+    ]),
 
 ##init list
-    (ti_before_mission_start, 0, 0,
-    [],
-    [
+    (ti_before_mission_start, 0, 0,[],[
       (play_sound, "snd_arena_ambiance", sf_looping),
       (call_script, "script_music_set_situation_with_culture", mtf_sit_thermae),
       (assign, "$temp", -1),
