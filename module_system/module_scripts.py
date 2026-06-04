@@ -51026,7 +51026,7 @@ scripts = scripts_hardcoded + [
             (str_store_troop_name, s29, "trp_bard_end"),
             (store_add, ":string", "str_month_begin", "$edict10"),
             (str_store_string, s28, ":string"),
-            (str_store_string, s0, "@* Edictum mensum:^  The {s28} is now known as {s29}."),
+            (str_store_string, s0, "@* Edictum mensum:^  The month {s28} is now known as {s29}."),
             (str_store_string, s20, "@{s20}{s0}{reg3?^: }"),
         (try_end),
         (try_begin),
