@@ -271,8 +271,9 @@ simple_triggers = [
     (call_script, "script_execude_debug_message", 10),
     #change location for all ladies
     (store_random_in_range, ":troop_id", kingdom_ladies_begin, kingdom_ladies_end),
-    ##diplomacy start+ do not set the troop's center when the troop is leading a party
+
     (troop_slot_eq, ":troop_id", slot_troop_occupation, slto_kingdom_lady),
+
     (troop_get_slot, ":leaded_party", ":troop_id", slot_troop_leaded_party),
     (try_begin),
         (gt, ":leaded_party", 0),
@@ -487,6 +488,9 @@ simple_triggers = [
     # Kingdom ladies
     (try_for_range,":troop",kingdom_ladies_begin, kingdom_ladies_end),
         (troop_slot_eq, ":troop", slot_troop_occupation, slto_kingdom_lady), # alive
+
+        (troop_set_slot, ":troop", slot_troop_refused, 0), # reset refused slot for ladies, so that they can comment on clothing and piety again
+
         ##flirt with ladies once a day
         (try_begin),
             (troop_slot_eq, ":troop", slot_troop_flirted_with, 1),
@@ -1878,7 +1882,6 @@ simple_triggers = [
         (try_end),
     (try_end),
 
-    (troop_set_slot, ":troop_no", slot_troop_refused, 0),
     (try_begin),
         (troop_slot_eq, ":troop_no", slot_troop_occupation, slto_kingdom_hero),
 
@@ -2936,6 +2939,9 @@ simple_triggers = [
         (ge, "$g_hire_troops_and_controversy", active_npcs_end),
         (assign, "$g_hire_troops_and_controversy", active_npcs_begin),
     (try_end),
+
+    (troop_set_slot, "$g_hire_troops_and_controversy", slot_troop_refused, 0), #pigback: reset refused flag so that the lord can comment again
+
     #are no promoted kingdom ladies!
     (try_begin),
         (try_begin),
