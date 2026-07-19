@@ -32351,7 +32351,7 @@ game_menus = [
     ("choice_10_1nor",[],"They are welcome.",[
       (display_message, "@A group of six women joins your army."),
 
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
+      (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_follower, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
@@ -32371,7 +32371,7 @@ game_menus = [
   ],[
     ("choice_11_1no",[],"They are welcome.",[
 
-      (call_script, "script_get_closest_center_and_minor", "$g_encountered_party", 0),
+      (call_script, "script_get_closest_center_and_minor", "p_main_party", 0),
       (assign, ":closest_center", reg0),
       (call_script, "script_get_unit_according_to_subculture", walker_follower, ":closest_center", tf_female),
       (assign, ":troop_no", reg0),
