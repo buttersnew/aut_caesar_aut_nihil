@@ -3644,7 +3644,8 @@ nero_persuade_1
 nero_persuade_2
 nero_persuade_3
 nero_convince_persuade
-nero_ask_promotion
+end_civil_war_captured_enemies
+emperor_ask_promotion
 nero_ask_title
 nero_ask_title2
 dplmc_lord_declare_war
@@ -5894,7 +5895,7 @@ minor_fac_king_hire_troops2
 minor_fac_king_hire_troops3
 minor_fac_king_hire_troops4
 minor_fac_king_accept_hire
-plyer_rsponse
+minor_fac_king_player_response
 minor_fac_king_elephant_hunt
 minor_fac_king_elephant_hunt_2
 minor_fac_king_elephant_hunt_ready
