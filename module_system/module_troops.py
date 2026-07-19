@@ -143,15 +143,25 @@ knows_level_20_warrior = knows_weapon_master_6|knows_ironflesh_6|knows_athletics
 #lvl23
 knows_level_23 = knows_weapon_master_7|knows_ironflesh_6|knows_athletics_3|knows_riding_3|knows_power_strike_4|knows_shield_7|knows_inventory_management_10|knows_power_throw_3|knows_power_draw_3|knows_horse_archery_3#40+24 / 2 +4
 knows_level_23_warrior = knows_weapon_master_7|knows_ironflesh_7|knows_athletics_3|knows_riding_3|knows_power_strike_7|knows_shield_7|knows_inventory_management_10|knows_power_throw_3|knows_power_draw_3|knows_horse_archery_3#40+24 / 2 +4
+#lvl23, extra power throw for pilum
+knows_level_23_roman = knows_weapon_master_7|knows_ironflesh_6|knows_athletics_3|knows_riding_3|knows_power_strike_4|knows_shield_7|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_3|knows_horse_archery_3#40+24 / 2 +4
 #lvl26
 knows_level_26 = knows_weapon_master_8|knows_ironflesh_7|knows_athletics_4|knows_riding_5|knows_power_strike_5|knows_shield_8|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_3 #40+26 / 2 +6
 knows_level_26_warrior = knows_weapon_master_8|knows_ironflesh_7|knows_athletics_4|knows_riding_5|knows_power_strike_7|knows_shield_8|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_3 #40+26 / 2 +6
 #lvl29
-knows_level_29 = knows_weapon_master_9|knows_ironflesh_8|knows_athletics_4|knows_riding_6|knows_power_strike_6|knows_shield_9|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_4 ##40+30 / 2 +8
-knows_level_29_warrior = knows_weapon_master_9|knows_ironflesh_8|knows_athletics_4|knows_riding_6|knows_power_strike_8|knows_shield_9|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_4 ##40+30 / 2 +8
+knows_level_29 = knows_weapon_master_9|knows_ironflesh_8|knows_athletics_4|knows_riding_6|knows_power_strike_6|knows_shield_9|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_4|knows_horse_archery_4 ##40+30 / 2 +8
+knows_level_29_warrior = knows_weapon_master_9|knows_ironflesh_8|knows_athletics_4|knows_riding_6|knows_power_strike_8|knows_shield_9|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_4|knows_horse_archery_4 ##40+30 / 2 +8
 #lvl31
-knows_level_31 = knows_weapon_master_10|knows_ironflesh_8|knows_athletics_5|knows_riding_7|knows_power_strike_7|knows_shield_10|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_4 ###40+32 / 2 +12
-knows_level_31_warrior = knows_weapon_master_10|knows_ironflesh_9|knows_athletics_5|knows_riding_7|knows_power_strike_9|knows_shield_10|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_4 ###40+32 / 2 +12
+knows_level_31 = knows_weapon_master_10|knows_ironflesh_8|knows_athletics_5|knows_riding_7|knows_power_strike_7|knows_shield_10|knows_inventory_management_10|knows_power_throw_6|knows_power_draw_4|knows_horse_archery_4 ###40+32 / 2 +12
+knows_level_31_warrior = knows_weapon_master_10|knows_ironflesh_9|knows_athletics_5|knows_riding_7|knows_power_strike_9|knows_shield_10|knows_inventory_management_10|knows_power_throw_6|knows_power_draw_4|knows_horse_archery_4 ###40+32 / 2 +12
+
+knows_horse_archer_basic = knows_weapon_master_3|knows_ironflesh_4|knows_athletics_3|knows_riding_5|knows_power_strike_2|knows_shield_2|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_3
+knows_horse_archer_exp = knows_weapon_master_4|knows_ironflesh_5|knows_athletics_4|knows_riding_6|knows_power_strike_3|knows_shield_3|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_5|knows_horse_archery_4
+knows_horse_archer_elit = knows_weapon_master_5|knows_ironflesh_6|knows_athletics_5|knows_riding_7|knows_power_strike_4|knows_shield_4|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_6|knows_horse_archery_5
+
+knows_horse_archer_basic_eastern = knows_weapon_master_5|knows_ironflesh_4|knows_athletics_3|knows_riding_6|knows_power_strike_2|knows_shield_3|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_5|knows_horse_archery_6
+knows_horse_archer_exp_eastern = knows_weapon_master_6|knows_ironflesh_5|knows_athletics_4|knows_riding_7|knows_power_strike_3|knows_shield_4|knows_inventory_management_10|knows_power_throw_6|knows_power_draw_6|knows_horse_archery_8
+knows_horse_archer_elit_eastern = knows_weapon_master_7|knows_ironflesh_6|knows_athletics_5|knows_riding_8|knows_power_strike_4|knows_shield_5|knows_inventory_management_10|knows_power_throw_6|knows_power_draw_7|knows_horse_archery_10
 
 knows_archer_basic = knows_weapon_master_3|knows_ironflesh_4|knows_athletics_5|knows_riding_3|knows_power_strike_2|knows_shield_2|knows_inventory_management_10|knows_power_throw_4|knows_power_draw_4|knows_horse_archery_3
 knows_archer_exp = knows_weapon_master_4|knows_ironflesh_5|knows_athletics_6|knows_riding_4|knows_power_strike_3|knows_shield_3|knows_inventory_management_10|knows_power_throw_5|knows_power_draw_5|knows_horse_archery_4
@@ -1144,7 +1154,7 @@ itm_sarmatian_bow,itm_khergit_arrows,
 itm_eastern_shoe,itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y,
 itm_cavalry_spear,itm_sarmatian_ringsword_4,itm_sarmatian_ringsword_2,
 ]+horse_steppe,
-attrib_level_29_warrior, wpe(125,160,160,160), knows_level_29_warrior, khergit_woman_face_1, khergit_woman_face_2 ],
+attrib_level_29_warrior, wpe(125,160,160,160), knows_horse_archer_exp_eastern, khergit_woman_face_1, khergit_woman_face_2 ],
 
 ["scythian_medium_cavalry", "Skythios Lonchophoros", "Skythioi Lonchophoroi", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_sarmatian,
 [itm_bosporan_spangenhelm_3,itm_scythisn_shield_inf5,itm_scythisn_shield_inf6,
@@ -1167,14 +1177,14 @@ itm_alan_medium_1,itm_alan_medium_2,itm_alan_medium_3,itm_alan_light_1,itm_alan_
 itm_sarmatian_shoes,
 itm_alan_helm_1,itm_alan_helm_2,itm_alan_helm_3,itm_alan_helm_4,itm_alan_light_helm,
 ]+horse_steppe,
-attrib_level_26_warrior, wp(165), knows_archer_exp_eastern, scythian_face_11, scythian_face_12 ],
+attrib_level_26_warrior, wp(165), knows_horse_archer_exp_eastern, scythian_face_11, scythian_face_12 ],
 
 ["alan_heavy_horse_archer", "Alanno Leazdaetta", "Alanna Leazdaettae", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_alan_long_sword_ring,itm_alan_long_sword,
 itm_alan_heavy_1,itm_alan_heavy_2,
 itm_sarmatian_shoes,
 itm_alan_helm_1,itm_alan_helm_2,itm_alan_helm_3,itm_alan_helm_4]+horse_steppe,
-attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, scythian_face_11, scythian_face_12 ],
+attrib_level_29_warrior, wp(180), knows_horse_archer_elit_eastern, scythian_face_11, scythian_face_12 ],
 
 ##new celtic mercenaries (britannia)
 ["celtic_freeman", "Ambaktos", "Ambaktoi", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_polearm|tf_guarantee_helmet, no_scene, reserved, fac_culture_celtic,
@@ -1283,14 +1293,14 @@ attrib_level_31, wpe(140,150,150,150), knows_horseman_eastern, persian_face_youn
 [itm_heavy_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,itm_sarmatian_shoes,
 itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3,itm_sarmatian_ringsword_1
 ]+horse_steppe,
-attrib_level_26_warrior, wp(165), knows_archer_exp_eastern, saka_face_1, saka_face_2 ],
+attrib_level_26_warrior, wp(165), knows_horse_archer_exp_eastern, saka_face_1, saka_face_2 ],
 ["saka_heavy_cavalry", "Sakayo Azaryanako", "Sakaya Azaryanaka", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse, no_scene, reserved, fac_culture_saka,
 [itm_lance,itm_alan_long_sword,itm_alan_long_sword_ring,
 itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y,
 itm_saka_helmet_1,itm_saka_helmet_2,itm_saka_helmet_3,
 itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4
 ]+horse_steppe_cataphract,
-attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_1, saka_face_2 ],
+attrib_level_29_warrior, wp(180), knows_horse_archer_elit_eastern, saka_face_1, saka_face_2 ],
 ["saka_amazon", "Razma-Jani", "Razma-Janya", tf_mounted|tf_female|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse, no_scene, reserved, fac_culture_saka,
 [itm_lance,itm_alan_long_sword,itm_alan_long_sword_ring,
 itm_eastern_shoe_b,itm_eastern_shoe_r,itm_eastern_shoe_y,
@@ -1299,7 +1309,7 @@ itm_saka_armour_1,itm_saka_armour_2,itm_saka_armour_3,itm_saka_armour_4,
 itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,itm_sarmatian_shoes,
 itm_saka_cap_1,itm_saka_hat_1,itm_saka_cap_2,itm_saka_hat_2,itm_saka_cap_3,itm_saka_hat_3,itm_sarmatian_ringsword_1
 ]+horse_steppe_cataphract + horse_steppe,
-attrib_level_29_warrior, wp(180), knows_archer_elit_eastern, saka_face_female_1, saka_face_female_2 ],
+attrib_level_29_warrior, wp(180), knows_horse_archer_elit_eastern, saka_face_female_1, saka_face_female_2 ],
 
 #indian
 ["indian_archer", "Dhanurdhara", "Dhanurdharah", tf_guarantee_boots|tf_male_eastern|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_helmet, no_scene, reserved, fac_commoners,
@@ -2311,14 +2321,14 @@ attrib_level_18_warrior, wp_melee(170), knows_level_18_warrior|knows_riding_7, s
 ["sarmatian_archers", "Sauromates Hippotoxotes", "Sauromatai Hippotoxotai", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged|tf_guarantee_horse, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_kopfband,
 ]+horse_steppe+sarmatian_ringswords_short+sarmatian_helm_cap_1+sarmatian_helm_cap_2+sarmatian_armor_tunic+sarmatian_armor_tunic_scyth_2+sarmatian_boots,
-attrib_level_12_warrior, wpe(110,150,150,150), knows_archer_basic_eastern|knows_riding_5, scythian_face_21, scythian_face_22 ],
+attrib_level_12_warrior, wpe(110,150,150,150), knows_horse_archer_basic_eastern|knows_riding_5, scythian_face_21, scythian_face_22 ],
 ["sarmatian_archers_exp", "Sauromates Hippotoxotes (exp)", "Sauromatai Hippotoxotai (exp)", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_kopfband,
 ]+horse_steppe+sarmatian_ringswords_short+sarmatian_helm_cap_1+sarmatian_helm_cap_2+sarmatian_armor_padded+sarmatian_armor_tunic_scyth_1+sarmatian_boots,
-attrib_level_16_warrior, wpe(120,170,170,170), knows_archer_exp_eastern|knows_riding_6, scythian_face_21, scythian_face_22 ],
+attrib_level_16_warrior, wpe(120,170,170,170), knows_horse_archer_exp_eastern|knows_riding_6, scythian_face_21, scythian_face_22 ],
 ["sarmatian_archers_vet", "Sauromates Hippotoxotes (vet)", "Sauromatai Hippotoxotai (vet)", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_sarmatian,
 [itm_kopfband,itm_sarmatian_bow,itm_sarmatian_arrows_2]+horse_steppe+sarmatian_ringswords_short+sarmatian_helm_cap_1+sarmatian_helm_cap_2+sarmatian_armor_padded+sarmatian_boots,
-attrib_level_18_warrior, wpe(130,195,195,195), knows_archer_elit_eastern|knows_riding_7, scythian_face_21, scythian_face_22 ],
+attrib_level_18_warrior, wpe(130,195,195,195), knows_horse_archer_elit_eastern|knows_riding_7, scythian_face_21, scythian_face_22 ],
 
 ["sarmatian_light_horsearcher", "Duno Asyo", "Duna Asya", tf_mounted|tf_guarantee_helmet|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_ranged|tf_guarantee_polearm, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
@@ -2334,15 +2344,15 @@ attrib_level_23_warrior, wpe(155,200,200,200), knows_archer_elit_eastern|knows_r
 ["sarmatian_heavy_horsearcher", "Sauromates Fat Aexsdzhyn", "Sauromatae Fat Aexsdzhytae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
 ]+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_2+sarmatian_armor_mail_and_scale_1+sarmatian_helm_noble_1,
-attrib_level_23_warrior, wpe(130,150,150,150), knows_archer_basic_eastern|knows_riding_7, scythian_face_11, scythian_face_12 ],
+attrib_level_23_warrior, wpe(130,150,150,150), knows_horse_archer_basic_eastern|knows_riding_7, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_exp", "Sauromates Fat Aexsdzhyn (exp)", "Sauromatae Fat Aexsdzhytae (exp)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
 ]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
-attrib_level_26_warrior, wpe(150,165,165,165), knows_archer_exp_eastern|knows_riding_8, scythian_face_11, scythian_face_12 ],
+attrib_level_26_warrior, wpe(150,165,165,165), knows_horse_archer_exp_eastern|knows_riding_8, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_vet", "Sauromates Fat Aexsdzhyn (vet)", "Sauromatae Fat Aexsdzhytae (vet)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
 ]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
-attrib_level_29_warrior, wpe(170,180,180,180), knows_archer_elit_eastern|knows_riding_9, scythian_face_11, scythian_face_12 ],
+attrib_level_29_warrior, wpe(170,180,180,180), knows_horse_archer_elit_eastern|knows_riding_9, scythian_face_11, scythian_face_12 ],
 
 ["sarmatian_light_horseman", "Aeldaro Aemhalto", "Aeldary Aemhaltae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_helmet, no_scene, reserved, fac_culture_sarmatian,
 []+horse_steppe+kontos+sarmatian_ringswords_long+sarmatian_helm_pointed+sarmatian_helm_cap_2+sarmatian_armor_tunic_scyth_1+sarmatian_armor_tunic_scyth_2+sarmatian_boots,
@@ -2529,13 +2539,13 @@ attrib_level_26, wp_melee(180), knows_level_26, armenian_face_young, armenian_fa
 
 ["syrian_horsearcher", "Rakkba Kassat", "Rakkba Kassata",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_syrian,
 []+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
-attrib_level_23, wpe(120,170,170,170), knows_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+attrib_level_23, wpe(120,170,170,170), knows_horse_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
 ["syrian_horsearcher_exp", "Rakkba Kassat (exp)", "Rakkba Kassata (exp)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_syrian,
 []+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
-attrib_level_26, wpe(130,180,180,180), knows_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+attrib_level_26, wpe(130,180,180,180), knows_horse_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 ["syrian_horsearcher_vet", "Rakkba Kassat (vet)", "Rakkba Kassata (vet)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_syrian,
 []+syrian_spears+syrian_bow+syrian_scale_armor+syrian_helm_heavy+syria_foot_cives+syrian_shield_round+horse_arab,
-attrib_level_29,wpe(140,190,190,190), knows_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+attrib_level_29,wpe(140,190,190,190), knows_horse_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["syrian_horseman", "Rakkaba D-Dayyaqa", "Rakkabe D-Dayyaqe",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_syrian,
 []+syrian_spears+syrian_scale_armor+syrian_tunic+syrian_helm+syria_foot_cives+syrian_shield_round+horse_arab,
@@ -2624,13 +2634,13 @@ attrib_level_26, wp_melee(180), knows_level_26, eastern_man_face_younger_1, east
 
 ["eastern_horsearcher", "Shivatir Pahlavanig", "Shivatiran Pahlavanig",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_parthian,
 [itm_persian_bow,itm_khergit_arrows,itm_khergit_arrows]+horse_parth+eastern_armor_tunics_parthian+parthian_helm_phyrgian+eastern_boots_light+eastern_swords_long,
-attrib_level_23, wpe(120,170,170,170), knows_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
+attrib_level_23, wpe(120,170,170,170), knows_horse_archer_basic_eastern, eastern_man_face_younger_1, eastern_man_face_middle_2 ],
 ["eastern_horsearcher_exp", "Shivatir Pahlavanig (exp)", "Shivatiran Pahlavanig (exp)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_parthian,
 [itm_persian_bow,itm_barbed_arrows,itm_barbed_arrows]+horse_parth+eastern_armor_tunics_parthian+parthian_helm_phyrgian+eastern_boots_light+eastern_swords_long+parthian_helm_cavalry,
-attrib_level_26, wpe(130,180,180,180), knows_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+attrib_level_26, wpe(130,180,180,180), knows_horse_archer_exp_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 ["eastern_horsearcher_vet", "Shivatir Pahlavanig (vet)", "Shivatiran Pahlavanig (vet)",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_ranged, no_scene, reserved, fac_culture_parthian,
 [itm_persian_bow,itm_barbed_arrows,itm_barbed_arrows]+horse_parth+eastern_armor_tunics_parthian+eastern_boots_light+eastern_swords_long+parthian_helm_cavalry,
-attrib_level_29,wpe(140,190,190,190), knows_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
+attrib_level_29,wpe(140,190,190,190), knows_horse_archer_elit_eastern, eastern_man_face_younger_1, eastern_man_face_old_2 ],
 
 ["eastern_medium_horseman", "Asavar Azat", "Asavaran Azadan",tf_male_eastern|tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_polearm, no_scene, reserved, fac_culture_parthian,
 [itm_javelin,itm_eastern_spear_168]+horse_parth+parthian_helm_cavalry+parthian_helm_phyrgian+eastern_armor_tunics_parthian+eastern_armor_mail_parthian+eastern_swords_long+scythian_shields_1+eastern_boots_light,
@@ -2668,62 +2678,62 @@ attrib_level_31, wp(185), knows_level_31|knows_power_draw_6, eastern_man_face_yo
 ["legio_xxii_primigenia", "Tiro Legionis (XXII Primigenia)", "Tirones Legionis (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_scutum_10,itm_scutum_2,itm_graves_simple,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_hamata_11,itm_legion_segmentata_3,itm_1_imp_gallic_c,itm_1_imp_gallic_f_b],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #2
 ["legio_iii_augusta", "Tiro Legionis (III Augusta)", "Tirones Legionis (III Augusta)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_graves_simple,itm_scutum_legio_iii,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_segmentata_1,itm_legion_hamata_10,itm_1_imp_gallic_f_b_feather,itm_1_imp_gallic_f_n],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #3
 ["legio_v_alaudae", "Tiro Legionis (V Alaudae)", "Tirones Legionis (V Alaudae)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_graves_simple,itm_scutum_legio_v,
 itm_legion_hamata_1,itm_legion_segmentata_2,itm_1_imp_gallic_f_s,itm_1_imp_gallic_g],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #4
 ["legio_xxi_rapax", "Tiro Legionis (XXI Rapax)", "Tirones Legionis (XXI Rapax)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_graves_simple,itm_scutum_legio_xxi,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,
-itm_legion_hamata_3,itm_legion_segmentata_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+ itm_legion_hamata_3,itm_legion_segmentata_5,itm_1_imp_gallic_h,itm_1_imp_gallic_i_ac],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #5
 ["legio_xx_valeria_victrix", "Tiro Legionis (XX Valeria Victrix)", "Tirones Legionis (XX Valeria Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_13,itm_scutum_6,
 itm_legion_segmentata_cape_1,itm_legion_squamata_14,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_i_ac_feather_plume],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #6
 ["legio_vi_victrix", "Tiro Legionis (VI Victrix)", "Tirones Legionis (VI Victrix)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_graves_simple,itm_scutum_legio_vi_vict,itm_scutum_9,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_squamata_11,itm_legion_hamata_14,itm_1_imp_gallic_i,itm_1_imp_gallic_i_feather],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #7
 ["legio_xi_claudia", "Tiro Legionis (XI Claudia)", "Tirones Legionis (XI Claudia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_scutum_legio_xi,itm_graves_simple,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_1_imp_gallic_i_ac_plume,itm_1_imp_gallic_i_feather,
 itm_legion_hamata_15,itm_legion_segmentata_cape_2],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #8
 ["legio_xiii_gemina", "Tiro Legionis (XIII Gemina)", "Tirones Legionis (XIII Gemina)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_graves_simple,itm_scutum_legio_xiii,itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,
 itm_legion_squamata_10,itm_legion_hamata_13,itm_1_imp_gallic_i_plume,itm_1_imp_itallic_c],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #9
 ["legio_v_macedonia", "Tiro Legionis (V Macedonia)", "Tirones Legionis (V Macedonia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,itm_graves_simple,itm_scutum_legio_v_mac,
 itm_legion_segmentata_cape_3,itm_legion_hamata_16,itm_1_imp_itallic_d,itm_1_imp_gallic_f_s],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #10
 ["legio_vi_ferrata", "Tiro Legionis (VI Ferrata)", "Tirones Legionis (VI Ferrata)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_scutum_legio_vi_ferr,itm_graves_simple,itm_pilum,itm_pilum_2,itm_pilum_3,itm_roman_gladius,
 itm_legion_hamata_cape_6,itm_legion_segmentata_4,itm_1_imp_itallic_g,itm_1_imp_gallic_f_n],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #11
 ["legio_x_fretensis", "Tiro Legionis (X Fretensis)", "Tirones Legionis (X Fretensis)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_roman_gladius,itm_pilum,itm_pilum_2,itm_pilum_3,itm_graves_simple,itm_scutum_legio_x,
 itm_legion_hamata_cape_7,itm_legion_hamata_2,itm_1_imp_gallic_i_ac_feather,itm_1_imp_gallic_c],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, roman_face1, roman_face2 ],
+attrib_level_23, wp(150), knows_level_23_roman, roman_face1, roman_face2 ],
 #12
 ["praetoriani_milites", "Tiro Praetoriani", "Tirones Praetoriani", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_scutum_praetorian,itm_scutum_praetorian_2,itm_graves_simple,itm_roman_gladius_3,itm_pilum,itm_pilum_2,itm_pilum_3,
 itm_praetorian_segmentata_1,itm_praetorian_segmentata_2,itm_praetorian_segmentata_3,itm_praetorian_helm_1,itm_praetorian_helm_2],
-attrib_level_26, wp(170), knows_level_26|knows_power_throw_5, roman_face1, roman_face2 ],
+attrib_level_26, wp(170), knows_level_26, roman_face1, roman_face2 ],
 
 ["aquilifer_xxii", "Aquilifer (XXII Primigenia)", "Aquilifer (XXII Primigenia)", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_graves_simple,itm_roman_gladius_2,itm_aquilifer_legion_squamata_2,itm_aquilifer_helmet,itm_aquilifer_helmet_mask,
@@ -2940,7 +2950,7 @@ attrib_level_20_warrior, wpe(105,150,150,150), knows_archer_exp, barbarian_man_f
 ["aux_inf_gallorum", "Miles Gallorum", "Milites Gallorum", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_hasta3,itm_pilum,itm_pilum_2,itm_pilum_3, itm_roman_aux_helm_4,itm_roman_aux_helm_5,itm_cetratus_aux_28, itm_graves_simple_2,itm_cetratus_aux_10, itm_cetratus_aux_16,itm_cetratus_aux_18,
 itm_legion_hamata_cape_pants_long_2,itm_legion_hamata_6,itm_legion_hamata_cape_2],
-attrib_level_23, wp(150), knows_level_23|knows_power_throw_4, celtic_face_21, celtic_face_22 ],
+attrib_level_23, wp(150), knows_level_23_roman, celtic_face_21, celtic_face_22 ],
 ["aux_archer_gallorum", "Sagittarius Gallorum", "Sagittarii Gallorum", tf_guarantee_boots|tf_guarantee_ranged|tf_guarantee_armor|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
 [itm_roman_aux_helm_4,itm_roman_aux_helm_5, itm_graves_simple_2,itm_arrows,itm_short_bow,itm_roman_gladius,
 itm_legion_hamata_cape_pants_long_2,itm_legion_hamata_6,itm_legion_hamata_cape_2],
@@ -2996,7 +3006,7 @@ attrib_level_23, wp_melee(140), knows_level_23, barbarian_man_face_younger_1, ba
 [itm_roman_spatha_2,itm_hasta1,itm_nomad_bow,itm_bodkin_arrows,itm_graves_simple_2,
 itm_legion_squamata_12,itm_legion_squamata_13,itm_legion_squamata_cape_4,itm_legion_squamata_cape_5,
 ]+horse_parth+armenian_helm_heavy,
-attrib_level_23, wp(145), knows_level_23, eastern_man_face_young_1, eastern_man_face_middle_2 ],
+attrib_level_23, wp(145), knows_horse_archer_exp, eastern_man_face_young_1, eastern_man_face_middle_2 ],
 
 #gaul
 ["aux_cav_gallorum", "Eques Gallorum", "Equites Gallorum", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_helmet, no_scene, reserved, fac_culture_roman,
@@ -3038,13 +3048,13 @@ attrib_level_16, wpe(100,170,170,170), knows_archer_basic, roman_face1, roman_fa
 
 #roman auxilia
 ["aux_inf", "Miles Auxiliarum", "Milites Auxiliarum", tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_roman,
-[itm_hasta2,itm_roman_spatha_3, itm_pilum,itm_pilum_2,itm_pilum_3,
+[itm_hasta2,itm_roman_spatha_3, itm_pilum,
 itm_roman_aux_helm_1,itm_roman_aux_helm_2,itm_roman_aux_helm_3,itm_roman_aux_helm_4,
 itm_roman_aux_helm_5,itm_roman_aux_helm_6,itm_roman_aux_helm_7,
 itm_roman_aux_helm_8,itm_roman_aux_helm_9,itm_roman_aux_helm_10,itm_roman_aux_helm_11,
 itm_legion_hamata_4,itm_legion_hamata_5,itm_legion_hamata_cape_1,
 itm_graves_simple_2,itm_cetratus_aux_1,itm_cetratus_aux_2,itm_cetratus_aux_3],
-attrib_level_23, wp(160), knows_level_23|knows_power_throw_4, white_face_21, white_face_22 ],
+attrib_level_23, wp(160), knows_level_23, white_face_21, white_face_22 ],
 
 ["vigilia", "Vigilia", "Vigiliae", tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_shield, no_scene, reserved, fac_culture_roman,
 [itm_hasta2,itm_roman_gladius,itm_roman_townguard_helm,
@@ -3440,13 +3450,14 @@ attrib_level_12, wp(150), knows_level_12, saka_face_1, saka_face_2 ],
 ]+eastern_roman_tunic+eastern_foot_peasant+generic_bandit_armour+generic_clubs+generic_poor_head_cloths,
 attrib_level_12, wp(60), knows_level_12, north_african_man_face_younger_1, north_african_man_face_older_2 ],
 
-["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,[itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling,
-itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2
+["judean_sicarius", "Iudaicus Sicarius", "Iudaici Sicarii", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,[
+  itm_caligea, itm_eastern_sica, itm_eastern_sica_rusty,itm_sling_lead,itm_sling,itm_javelin,
+  itm_roman_aux_helm_old_1,itm_roman_aux_helm_old_2
 ]+jew_tunics_1+jew_tunics_2 + eastern_shields_wicker_smallround + desert_turbans_open + talits + eastern_shields_wicker,
 attrib_level_18_warrior, wp(160), knows_level_18_warrior, arab_face_young, arab_face_old ],
 
 ["judean_rebel", "Iudaicus Rebellis", "Iudaici Rebellis", tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_ranged, no_scene, reserved, fac_culture_judean,
-[itm_spiked_club,itm_sling_rock1,itm_sling_lead,itm_sling,itm_caligea,itm_javelin,itm_club,itm_club_2,itm_club_3,itm_ad_mixed_round_shields_07,
+[itm_spiked_club,itm_sling_rock1,itm_sling_lead,itm_sling,itm_caligea,itm_club,itm_club_2,itm_club_3,itm_ad_mixed_round_shields_07,
 itm_ad_mixed_round_shields_08,itm_old_gladius_1,itm_old_gladius_2,itm_eastern_helm1,itm_sarranid_felt_hat]+jew_tunics_1+jew_tunics_2 + talits,
 attrib_level_16_warrior, wp(135), knows_level_16_warrior, arab_face_young, arab_face_old ],
 
@@ -3479,7 +3490,7 @@ attrib_level_26_warrior, wp(160), knows_level_26_warrior, scythian_face_11, scyt
 [itm_light_lance,itm_khergit_bow_2,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,itm_alan_light_1,itm_alan_light_2,itm_kaftan_1,itm_kaftan_2,itm_kaftan_3,
 itm_sarmatian_shoes,itm_alan_long_sword,itm_alan_long_sword_ring,itm_sarmatian_cap_1,itm_sarmatian_cap_2,itm_sarmatian_cap_3,itm_sarmatian_cap_4,itm_alan_light_helm,itm_alan_light_helm,
 ]+horse_steppe,
-attrib_level_23_warrior, wp(150), knows_archer_basic_eastern, scythian_face_21, scythian_face_22 ],
+attrib_level_23_warrior, wp(150), knows_horse_archer_basic_eastern, scythian_face_21, scythian_face_22 ],
 
 ["illyrian_rebell", "Illyricus Sicarius", "Illyrici Sicarii", tf_male_barbarian|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_shield, no_scene, reserved, fac_outlaws,
 [itm_spear,itm_javelin,itm_illyrian_medium3,itm_illyrian_light1,itm_illyrian_light2,
@@ -7125,13 +7136,13 @@ hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_skirmisher_cav","Skirmisher Cavalry (custom)", "Skirmisher Cavalry (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
- attrib_level_26,wpe(100,150,150,150),knows_archer_exp_eastern,roman_face1,roman_face2],
+ attrib_level_26,wpe(100,150,150,150),knows_horse_archer_exp,roman_face1,roman_face2],
 ["custom_skirmisher_cav_equip","Skirmisher Cavalry (custom)","Skirmisher Cavalry (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
 hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_skirmisher_cav_vet","Skirmisher Cavalry (vet) (custom)", "Skirmisher Cavalry (vet) (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
- attrib_level_29,wpe(140,170,170,170),knows_archer_elit,roman_face1,roman_face2],
+ attrib_level_29,wpe(140,170,170,170),knows_horse_archer_elit,roman_face1,roman_face2],
 ["custom_skirmisher_cav_vet_equip","Skirmisher Cavalry (vet) (custom)","Skirmisher Cavalry (vet) (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [],
 hero_attrib|int_29|level(30),wp(60),knows_hero,0],
@@ -7272,7 +7283,7 @@ attrib_level_26, wp_melee(135),knows_level_26,roman_face1,roman_face2],
 hero_attrib|int_29|level(30),wp(60),knows_hero,0],
 
 ["custom_cav","Auxilia Equites Sagittarius (custom)", "Auxilia Equites Sagittarii (custom)", tf_guarantee_soldier|tf_guarantee_ranged|tf_mounted,0,0,fac_neutral,[],
- attrib_level_26,wpe(100,160,160,160),knows_archer_exp_eastern,roman_face1,roman_face2],
+ attrib_level_26,wpe(100,160,160,160),knows_horse_archer_exp_eastern,roman_face1,roman_face2],
 ["custom_cav_equip","Auxilia Equites Sagittarius (custom)","Auxilia Equites Sagittarii (custom)",tf_hero|tf_inactive,0,0,fac_neutral,
 [itm_horse_3,itm_roman_aux_helm_2,itm_roman_spatha,itm_graves_simple_2,itm_legion_hamata_5,itm_arrows,itm_persian_bow],
 hero_attrib|int_29|level(30),wp(60),knows_hero,0],

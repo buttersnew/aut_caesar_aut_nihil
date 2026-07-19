@@ -66217,7 +66217,7 @@ scripts = scripts_hardcoded + [
 ("prsnt_upgrade_tree_ready",[
     (store_script_param, ":faction_no", 1),
 
-    (try_for_range, ":slot", 0, 80),#set slots properly
+    (try_for_range, ":slot", 0, 101),#set slots properly
         (troop_set_slot, "trp_temp_array_a", ":slot", 0),
         (troop_set_slot, "trp_temp_array_b", ":slot", 0),
     (try_end),

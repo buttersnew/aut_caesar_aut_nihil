@@ -14317,7 +14317,7 @@ game_menus = [
       (try_end),
     ]),
     ("defend", [], "Forget it.", [
-      (jump_to_menu, "mnu_paganholysites_visit"),
+      (jump_to_menu, "mnu_delphi"),
     ]),
 ]),
 
@@ -17541,7 +17541,9 @@ game_menus = [
         (call_script, "script_enter_secret_christian_church", 1),
       (try_end),
     ], "Door."),
-    ("town_action",[],"Take an action.",[
+    ("town_action",[
+      (eq, "$enlisted_party", -1),#not freelancing
+    ],"Take an action.",[
       (jump_to_menu, "mnu_town_action"),
     ]),
     ("town_leave",[],"Leave...",[
@@ -39908,7 +39910,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
     ("choice_28_1nor",[
       (store_troop_gold,":money","trp_player"),
       (ge,":money",50000),
-    ],"Give them 50,00 denarii.",[
+    ],"Give them 50,000 denarii.",[
       (troop_remove_gold, "trp_player", 50000),
       (try_for_range, ":center_no", centers_begin, centers_end),
         (store_distance_to_party_from_party, ":dist", "p_main_party", ":center_no"),
@@ -40532,7 +40534,7 @@ After some time, Lykos comes and informs you that the Pythia can now be consulte
   "You are caught in a storm at sea.^^Your casualties: {s8}",
   "none", [
 	  (set_background_mesh, "mesh_pic_seabattle"),
-    (assign, s8, "str_dplmc_none"),
+    (str_store_string, s8, "str_dplmc_none"),
     (call_script, "script_inflict_casualties_to_party", "p_main_party", 2),
   ],[
     ("back_to_sea",[],"Continue...",[
