@@ -8351,7 +8351,7 @@ strings = [
 	+"Pressing the ENTER key often initiates an overhead Strategy Camera.^^"
 	+"Pressing the BACKSPACE key often initiates a Battle Command Display with 'radar.'"),
 
-("tutorial_assign_fiefs", "Hover mouse over settlement to view basic info. Click to toggle view of all fiefs assigned to settlement owner.^^To change colors, click+shift on a colorized settlement.^^To assign fief, click+control on settlement.^If you have a quaestor appointed you will gain additional information about the selected settlements.^If you have a censor appointed you gain additional information about lords of own realm and other realms."),
+("tutorial_assign_fiefs", "Hover mouse over settlement to view basic info. Click to toggle view of all fiefs assigned to settlement owner.^^To change colors, click+shift on a colorized settlement.^^To assign fief, click+control on settlement. WSE2 is required for a scrollable dropdown.^If you have a quaestor appointed you will gain additional information about the selected settlements.^If you have a censor appointed you gain additional information about lords of own realm and other realms."),
 ("not_enough_influence", "You don't have enough influence!"),
 
 
