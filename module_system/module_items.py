@@ -200,11 +200,11 @@ pants_medium_armor_2_armor = weight(get_armor_weight(44))|abundance(100)|head_ar
 
 #pants with linothorax
 pants_linothorax_price = get_barmour_price(44,10)
-pants_linothorax_armor = weight(get_armor_weight(54))|abundance(100)|head_armor(0)|body_armor(44)|leg_armor(10)|difficulty(6)
+pants_linothorax_armor = weight(get_armor_weight(54))|abundance(100)|head_armor(0)|body_armor(44)|leg_armor(10)|difficulty(8)
 
 #armored pants with linothorax
 pants_armored_linothorax_price = get_barmour_price(48,18)
-pants_armored_linothorax_armor = weight(get_armor_weight(67))|abundance(100)|head_armor(0)|body_armor(48)|leg_armor(18)|difficulty(8)
+pants_armored_linothorax_armor = weight(get_armor_weight(67))|abundance(100)|head_armor(0)|body_armor(48)|leg_armor(18)|difficulty(9)
 
 #tunic with light armor
 tunic_light_armor_price = get_barmour_price(20,3)
@@ -214,7 +214,7 @@ tunic_light_armor_armor = weight(get_armor_weight(23))|abundance(110)|head_armor
 
 #cataphract
 cataphract_price = get_barmour_price(56,15)
-cataphract_armor = weight(get_armor_weight(75))|abundance(70)|head_armor(0)|body_armor(56)|leg_armor(15)|difficulty(18)
+cataphract_armor = weight(get_armor_weight(75))|abundance(70)|head_armor(0)|body_armor(56)|leg_armor(15)|difficulty(15)
 
 #pants with mail/scale
 pants_with_mail_price = get_barmour_price(46,10)
@@ -2659,11 +2659,11 @@ toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
 toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_syrian,fac_culture_egyptian, fac_culture_parthian,fac_culture_judean]  ],
 
-["arabian_armor_b", "Arabian Lamella Armour", [("arabian_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
+["arabian_armor_b", "Arabian Lamellar Armour", [("arabian_armor_b",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_syrian,fac_culture_egyptian, fac_culture_parthian,fac_culture_judean]],
 
-["sarranid_mail_shirt", "Arabian Lamella Armour", [("sarranian_mail_shirt",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
+["sarranid_mail_shirt", "Arabian Lamellar Armour", [("sarranian_mail_shirt",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
 pants_linothorax_price,pants_linothorax_armor,imodbits_armor,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop_2"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_syrian,fac_culture_egyptian, fac_culture_parthian,fac_culture_judean] ],
 
@@ -4222,7 +4222,7 @@ weight( get_mace_weight(70))|difficulty(9)|spd_rtng(get_1hmace_speed(70))|weapon
 #maces
 ["spiked_mace","Mace", [("spiked_mace_new",0)], itp_type_one_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_mace_left_hip,
 get_w_price(70, get_mace_weight(70), get_1hmace_speed(70), 28, 10),
-weight(get_mace_weight(70))|difficulty(10)|spd_rtng(get_1hmace_speed(70)) | weapon_length(70)|swing_damage(28 , blunt) | thrust_damage(0 ,  pierce),imodbits_pick ],
+weight(get_mace_weight(70))|difficulty(10)|spd_rtng(get_1hmace_speed(70)) | weapon_length(70)|swing_damage(28 , blunt) | thrust_damage(0 ,  pierce),imodbits_mace ],
 ["mace_2","Mace", [("mace_a",0)], itp_type_one_handed_wpn|itp_can_knock_down|itp_merchandise| itp_primary|itp_wooden_parry, itc_scimitar|itcf_carry_mace_left_hip,
 get_w_price(70, get_mace_weight(70), get_1hmace_speed(70), 29, 10),
 weight(get_mace_weight(70))|difficulty(10)|spd_rtng(get_1hmace_speed(70)) | weapon_length(70)|swing_damage(28 , blunt) | thrust_damage(0 ,  pierce),imodbits_mace ],
@@ -5612,21 +5612,21 @@ get_shield_price(shield_armor_t3,55,108),
 weight(get_shield_weight(shield_armor_t3,55,108))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(85)|shield_width(55)|shield_height(108)|abundance(20),imodbits_shield, [],[fac_culture_roman,fac_culture_greek]],
 
 # OLD ROMAN ROUND SHIELDS
-["old_round_shield_5", "Old Roman Round Shield", [("old_round_shield_5",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
-get_shield_price(shield_armor_t3,30,0),
-weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
-["old_round_shield_4", "Old Roman Round Shield", [("old_round_shield_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
-get_shield_price(shield_armor_t3,30,0),
-weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
-["old_round_shield_3", "Old Roman Round Shield", [("old_round_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
-get_shield_price(shield_armor_t3,30,0),
-weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
-["old_round_shield_2", "Old Roman Round Shield", [("old_round_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
-get_shield_price(shield_armor_t3,30,0),
-weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
-["old_round_shield_1", "Old Roman Round Shield", [("old_round_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
-get_shield_price(shield_armor_t3,30,0),
-weight(get_shield_weight(shield_armor_t3,30,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(30),imodbits_shield ],
+["old_round_shield_5", "Small Old Roman Round Shield", [("old_round_shield_5",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t3,24,0),
+weight(get_shield_weight(shield_armor_t3,24,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(24),imodbits_shield ],
+["old_round_shield_4", "Small Old Roman Round Shield", [("old_round_shield_4",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t3,24,0),
+weight(get_shield_weight(shield_armor_t3,24,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(24),imodbits_shield ],
+["old_round_shield_3", "Small Old Roman Round Shield", [("old_round_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t3,24,0),
+weight(get_shield_weight(shield_armor_t3,24,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(24),imodbits_shield ],
+["old_round_shield_2", "Small Old Roman Round Shield", [("old_round_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t3,24,0),
+weight(get_shield_weight(shield_armor_t3,24,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(24),imodbits_shield ],
+["old_round_shield_1", "Small Old Roman Round Shield", [("old_round_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+get_shield_price(shield_armor_t3,24,0),
+weight(get_shield_weight(shield_armor_t3,24,0))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(97)|shield_width(24),imodbits_shield ],
 
 # ROMAN round shields
 ["roman_shield_1",         "Round Shield", [("roman_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,

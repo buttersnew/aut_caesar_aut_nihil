@@ -9607,7 +9607,7 @@ strings = [
 ("description_legio_6", "Location: Stationed in Hispania Tarraconensis until 70 AD, then Germania.^Notable commander: Servius Sulpicius Galba (Governor/Emperor, 68 AD).^Emblem: Bull."),
 ("description_legio_7", "Location: Burnum, Dalmatia (until 69 AD), then Vindonissa, Germania Superior.^Notable commander: Lucius Annius Bassus (Secured legion for Vespasian, 69 AD).^Emblem: Neptune."),
 ("description_legio_8", "Location: Pannonia (Poetovio) until 89 AD.^Notable commander: Marcus Antonius Primus (Led Flavian invasion of Italy, 69 AD).^Emblem: Lion."),
-("description_legio_9", "Location: Moesia at Oescus; fought in Judea (67 - 70 AD).^Notable commander: T. Flavius Vespasianus (The future Emperor, 67 AD).^Emblem: Bull."),
+("description_legio_9", "Location: Moesia at Oescus; fought in Judea (67 - 70 AD).^Notable commander: T. Flavius Vespasianus (The future Emperor, 67 AD).^Emblem: Eagle."),
 ("description_legio_10", "Location: Syria; the core of Corbulo's force and Mucianus' march on Rome.^Notable commander: Gnaeus Domitius Corbulo (58 - 63 AD).^Emblem: She-wolf with Romulus and Remus."),
 ("description_legio_11", "Location: Judea; the core force at the Siege of Jerusalem (70 AD).^Notable commanders: Marcus Ulpius Traianus (Father of Emperor Trajan, 67 AD) and Titus.^Emblem: Galley (Ship) and Boar."),
 ("description_legio_12", "Location: Rome (Castra Praetoria).^Notable commander: Ofonius Tigellinus (Nero's Prefect, 62 - 68 AD).^Emblem: Scorpion and Moon/Stars."),
