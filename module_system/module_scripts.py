@@ -78539,7 +78539,7 @@ scripts = scripts_hardcoded + [
         (assign, ":limit", slot_cohort_1),#just zero cohorts if not part of a faction
     (else_try),
         (eq, ":party_no", "p_main_party"),
-        (faction_slot_eq, "$players_kingdom", slot_faction_culture, "fac_culture_roman"),
+        (faction_slot_eq, "$players_kingdom", slot_faction_government_type, gov_imperial),
         (try_begin),
             (eq, "$g_rank", 1),
             (assign, ":limit", slot_cohort_2+1),#just the one he commands
@@ -78601,7 +78601,8 @@ scripts = scripts_hardcoded + [
             (troop_slot_ge, ":party_leader", slot_troop_govern, 1),
             (assign, ":limit", slot_cohort_1+1),
         (else_try), # being Roman lord without office
-            (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
+            # (faction_slot_eq, ":faction", slot_faction_culture, "fac_culture_roman"),
+            (faction_slot_eq, ":faction", slot_faction_government_type, gov_imperial),
             (assign, ":limit", slot_cohort_1+1),
         (else_try),
             (val_add, ":limit", 4),
@@ -85351,7 +85352,8 @@ scripts = scripts_hardcoded + [
         (troop_slot_ge, ":troop_no", slot_troop_govern, 1),
         (party_set_slot, ":party_no", slot_cohort_1, "pt_kingdom_7_reinforcements_b"),
     (else_try),
-        (faction_slot_eq, ":troop_faction_no", slot_faction_culture, "fac_culture_roman"),
+        # (faction_slot_eq, ":troop_faction_no", slot_faction_culture, "fac_culture_roman"),
+        (faction_slot_eq, ":troop_faction_no", slot_faction_government_type, gov_imperial),
         (party_set_slot, ":party_no", slot_cohort_1, "pt_kingdom_7_reinforcements_a"),
     (else_try),
         (faction_get_slot, ":template_a", ":troop_faction_no", slot_faction_reinforcements_a),
