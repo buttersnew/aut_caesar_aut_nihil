@@ -2112,15 +2112,15 @@ attrib_level_23_warrior, wpe(155,200,200,200), knows_archer_elit_eastern|knows_r
 
 ["sarmatian_heavy_horsearcher", "Sauromates Fat Aexsdzhyn", "Sauromatae Fat Aexsdzhytae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_2+sarmatian_armor_mail_and_scale_1+sarmatian_helm_noble_1,
+]+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_2+sarmatian_armor_mail_and_scale_1+sarmatian_helm_nobel_1,
 attrib_level_23_warrior, wpe(130,150,150,150), knows_horse_archer_basic_eastern|knows_riding_7, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_exp", "Sauromates Fat Aexsdzhyn (exp)", "Sauromatae Fat Aexsdzhytae (exp)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
+]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_2,
 attrib_level_26_warrior, wpe(150,165,165,165), knows_horse_archer_exp_eastern|knows_riding_8, scythian_face_11, scythian_face_12 ],
 ["sarmatian_heavy_horsearcher_vet", "Sauromates Fat Aexsdzhyn (vet)", "Sauromatae Fat Aexsdzhytae (vet)", tf_mounted|tf_guarantee_boots|tf_guarantee_polearm|tf_guarantee_armor|tf_guarantee_helmet|tf_guarantee_horse|tf_guarantee_shield|tf_guarantee_ranged, no_scene, reserved, fac_culture_sarmatian,
 [itm_sarmatian_bow,itm_sarmatian_arrows_1,itm_sarmatian_arrows_2,
-]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_noble_2,
+]+horse_parth_half_cataphract+horse_steppe+kontos_long+sarmatian_ringswords_long+sarmatian_boots+sarmatian_armor_mail_1+sarmatian_armor_mail_and_scale_2+sarmatian_helm_nobel_2,
 attrib_level_29_warrior, wpe(170,180,180,180), knows_horse_archer_elit_eastern|knows_riding_9, scythian_face_11, scythian_face_12 ],
 
 ["sarmatian_light_horseman", "Aeldaro Aemhalto", "Aeldary Aemhaltae", tf_mounted|tf_guarantee_boots|tf_guarantee_armor|tf_guarantee_polearm|tf_guarantee_horse|tf_guarantee_helmet, no_scene, reserved, fac_culture_sarmatian,
