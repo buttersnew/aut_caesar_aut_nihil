@@ -120,8 +120,7 @@ slot_agent_is_alive_before_retreat  = 26
 slot_agent_is_not_reinforcement     = 27
 slot_agent_map_overlay_id           = 28
 
-
-slot_agent_has_commented            = 29# used for lords commenting on player
+#29 is free
 
 slot_agent_is_poisoned              = 30
 
@@ -1417,7 +1416,7 @@ slot_lady_courtship_allegoric_recited   = 75
 slot_lady_courtship_comic_recited       = 76
 slot_lady_courtship_mystic_recited      = 77
 slot_lady_courtship_tragic_recited      = 78
-slot_troop_refused  					= 79
+slot_troop_refused  					= 79 # this is used in prisoner dialogue and lord/lady comment on clothing and piety and reset to 0 on daily average
 
 #NPC history slots
 slot_troop_met_previously        = 80

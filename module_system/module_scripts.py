@@ -73843,7 +73843,7 @@ scripts = scripts_hardcoded + [
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_mother, "trp_player"),
 
-    (agent_slot_eq, "$g_talk_agent", slot_agent_has_commented, 0),
+    (troop_slot_eq, "$g_talk_troop", slot_troop_refused, 0),
     (str_clear, s68),
     (str_clear, s69),
     (get_player_agent_no, ":player"),
@@ -73975,7 +73975,7 @@ scripts = scripts_hardcoded + [
         (assign, ":c", 0),
     (try_end),
     (eq, ":c", 0),
-    (agent_set_slot, "$g_talk_agent", slot_agent_has_commented, 1),
+    (troop_set_slot, "$g_talk_troop", slot_troop_refused, 1),
     (call_script, "script_dplmc_store_troop_is_female", "$g_talk_troop"),
 ]),
 # script_cf_comment_on_clothing_lord
@@ -73998,7 +73998,12 @@ scripts = scripts_hardcoded + [
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_mother, "trp_player"),
 
-    (agent_slot_eq, "$g_talk_agent", slot_agent_has_commented, 0),
+    (troop_get_slot, reg10, "$g_talk_troop", slot_troop_refused),
+    (str_store_troop_name, s10, "$g_talk_troop"),
+    (display_message, "@{s10} refused: {reg10}"),
+
+    (troop_slot_eq, "$g_talk_troop", slot_troop_refused, 0),
+
     (str_clear, s68),
     (str_clear, s69),
     (get_player_agent_no, ":player"),
@@ -74117,7 +74122,7 @@ scripts = scripts_hardcoded + [
         (assign, ":c", 0),
     (try_end),
     (eq, ":c", 0),
-    (agent_set_slot, "$g_talk_agent", slot_agent_has_commented, 1),
+    (troop_set_slot, "$g_talk_troop", slot_troop_refused, 1),
     (call_script, "script_dplmc_store_troop_is_female", "$g_talk_troop"),
 ]),
 #script_cf_comment_on_piety
@@ -74144,7 +74149,7 @@ scripts = scripts_hardcoded + [
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_father, "trp_player"),
     (neg|troop_slot_eq, "$g_talk_troop", slot_troop_mother, "trp_player"),
 
-    (agent_slot_eq, "$g_talk_agent", slot_agent_has_commented, 0),
+    (troop_slot_eq, "$g_talk_troop", slot_troop_refused, 0),
     (str_clear, s69),
     (get_player_agent_no, ":player"),
     (agent_is_active, ":player"),
@@ -74215,9 +74220,9 @@ scripts = scripts_hardcoded + [
             (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", 1),
             (try_begin),
                 (call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
-                (str_store_string, s69, "@{playername}, I must admit, your devotion is impressive. To be so deeply loved by the gods is no small feat. I'm curious—does such favor come naturally, or is it something you work tirelessly to maintain?"),
+                (str_store_string, s69, "@{playername}, I must admit, your devotion is impressive. To be so deeply loved by the gods is no small feat. I'm curious, does such favor come naturally, or is it something you work tirelessly to maintain?"),
             (else_try),
-                (str_store_string, s69, "@Impressive, {playername}. Your devotion has clearly earned you the gods' highest favor. A wise choice, I must admit—having the heavens on your side is always a strong advantage in both peace and war."),
+                (str_store_string, s69, "@Impressive, {playername}. Your devotion has clearly earned you the gods' highest favor. A wise choice, I must admit, having the heavens on your side is always a strong advantage in both peace and war."),
             (try_end),
         (try_end),
     (else_try),
@@ -74239,12 +74244,12 @@ scripts = scripts_hardcoded + [
                 (call_script, "script_cf_dplmc_troop_is_female", "$g_talk_troop"),
                 (str_store_string, s69, "@{playername}, your pietas is commendable. The gods clearly look favorably upon you, though I wonder if you find their favor as rewarding as it seems."),
             (else_try),
-                (str_store_string, s69, "@{playername}, I see the gods favor you—perhaps more than most. Such favor is no small thing, though I hope you'll use it wisely to strengthen your position."),
+                (str_store_string, s69, "@{playername}, I see the gods favor you, perhaps more than most. Such favor is no small thing, though I hope you'll use it wisely to strengthen your position."),
             (try_end),
         (try_end),
     (try_end),
     (neg|str_is_empty, s69),
-    (agent_set_slot, "$g_talk_agent", slot_agent_has_commented, 1),
+    (troop_set_slot, "$g_talk_troop", slot_troop_refused, 1),
 ]),
 
 ##USED FOR STRATEGIC CAMERA IN BATTLES

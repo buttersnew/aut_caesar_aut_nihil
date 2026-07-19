@@ -12324,11 +12324,11 @@ dialogs =[
 "underworld_lupa_talk_help_men_2",[]],
 
 [anyone|plyr,"underworld_lupa_talk_help_men_2",[
-  (agent_slot_eq, "$g_talk_agent", slot_agent_has_commented, 0),
+  (agent_slot_eq, "$g_talk_agent", slot_agent_is_blocked, 0),
 ],
 "How did you passed Charon?",
 "underworld_lupa_talk_help_ask",[
-  (agent_set_slot, "$g_talk_agent", slot_agent_has_commented, 1),
+  (agent_set_slot, "$g_talk_agent", slot_agent_is_blocked, 1),
 ]],
 
 [anyone,"underworld_lupa_talk_help_ask",[
