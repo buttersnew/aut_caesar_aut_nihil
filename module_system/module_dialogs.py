@@ -92830,49 +92830,62 @@ I will need 500 denarii.", "bardo_sing2",[]],
 ],"Do you have any tasks for me?",
 "minor_fac_king_ask_for_quest",[]],
 
-[anyone|plyr, "minor_fac_king",[
-],"I have heard your people are strong warriors.",
-"minor_fac_king_hire_troops",[]],
+[anyone|plyr, "minor_fac_king", [
+], "I have heard that your people are formidable warriors.",
+"minor_fac_king_hire_troops", []],
 
-[anyone, "minor_fac_king_hire_troops",[
-],"You have heard right. We are feared for our braveness in battle.",
-"minor_fac_king_hire_troops2",[]],
+[anyone, "minor_fac_king_hire_troops", [
+], "You have heard correctly. Our bravery in battle is feared across the lands.",
+"minor_fac_king_hire_troops2", []],
 
-[anyone|plyr, "minor_fac_king_hire_troops2",[
-],"I want to hire a warband.",
-"minor_fac_king_hire_troops3",[]],
+[anyone|plyr, "minor_fac_king_hire_troops2", [
+], "I wish to recruit a warband of your finest warriors.",
+"minor_fac_king_hire_troops3", []],
 
-[anyone, "minor_fac_king_hire_troops3",[
+[anyone|plyr, "minor_fac_king_hire_troops2", [
+], "Nevermind.",
+"minor_fac_king_pretalk", [
+]],
+
+[anyone, "minor_fac_king_hire_troops3", [
   (store_item_kind_count, ":gold", "itm_temple_gold", "trp_player"),
   (try_begin),
     (lt, ":gold", 1),
     (assign, "$temp", 0),
-    (str_store_string, s33, "@I don't think you are wealthy and mighty enough to lead our warriors in battle. ^^(Hint: You need one gold item in your inventory)"),
+    (str_store_string, s33, "@I doubt you possess the wealth or influence required to command our warriors. Come back when you have something of true value. ^^(Hint: You need at least one gold bar in your inventory)"),
   (else_try),
     (assign, "$temp", 1),
-    (str_store_string, s33, "@I listen what you have to offer."),
+    (str_store_string, s33, "@I am listening. What do you have to offer?"),
   (try_end),
- ],"{s33}",
- "minor_fac_king_hire_troops4",[]],
+], "{s33}",
+"minor_fac_king_hire_troops4", []],
 
-[anyone|plyr, "minor_fac_king_hire_troops4",[
-],"Nevermind.",
-"minor_fac_king_pretalk",[]],
+[anyone|plyr, "minor_fac_king_hire_troops4", [
+  (eq, "$temp", 1),
+  (faction_slot_ge, "$g_talk_troop_faction", slot_faction_tier_2_troop, 1),
+  (faction_slot_ge, "$g_talk_troop_faction", slot_faction_tier_3_troop, 1),
+  (troops_can_join, 300),
+], "I offer you this gold bar as a gift.",
+"minor_fac_king_accept_hire", []],
 
-[anyone|plyr, "minor_fac_king_hire_troops4",[
-	(eq, "$temp", 1),
-],"I will give you this treasure [one gold bar].",
-"minor_fac_king_accept_hire",[]],
-
-[anyone, "minor_fac_king_accept_hire",[
-],"Very good. I have a very warlike tribe under my rule. I am sure their fighters will enjoy to serve you. They consists of something like 300 warriors. I'll tell them to join your party.",
-"plyer_rsponse",[
+[anyone|plyr, "minor_fac_king_hire_troops4", [
+  (eq, "$temp", 1),
+  (neg|troops_can_join, 300),
+], "I do not have enough space in my party at the moment.",
+"minor_fac_king_pretalk", [
 ]],
 
-[anyone|plyr, "plyer_rsponse",[
-  (troops_can_join, 300),
-],"Very good.",
-"close_window",[
+[anyone|plyr, "minor_fac_king_hire_troops4", [
+], "Nevermind.",
+"minor_fac_king_pretalk", []],
+
+[anyone, "minor_fac_king_accept_hire", [
+], "An acceptable tribute. Three hundred of our battle-tested warriors are ready to march under your banner. Shall I send for them?",
+"minor_fac_king_player_response", []],
+
+[anyone|plyr, "minor_fac_king_player_response", [
+], "Yes, let's seal our agreement.",
+"close_window", [
   (troop_remove_item, "trp_player", "itm_temple_gold"),
   (faction_get_slot, ":troop", "$g_talk_troop_faction", slot_faction_tier_2_troop),
   (faction_get_slot, ":troop2", "$g_talk_troop_faction", slot_faction_tier_3_troop),
@@ -92880,20 +92893,9 @@ I will need 500 denarii.", "bardo_sing2",[]],
   (party_force_add_members, "p_main_party", ":troop2", 50),
 ]],
 
-[anyone|plyr, "plyer_rsponse",[
-  (neg|troops_can_join, 300),
-],"I have not enough space in my party.",
-"minor_fac_king_pretalk",[
-]],
-
-[anyone|plyr, "plyer_rsponse",[
-],"I must think about it.",
-"minor_fac_king_pretalk",[
-]],
-
-[anyone|plyr, "minor_fac_king_hire_troops2",[
-],"Nevermind.",
-"minor_fac_king_pretalk",[
+[anyone|plyr, "minor_fac_king_player_response", [
+], "No, I must think about this first.",
+"minor_fac_king_pretalk", [
 ]],
 
 [anyone, "minor_fac_king_ask_for_quest",[
