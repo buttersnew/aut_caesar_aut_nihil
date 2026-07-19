@@ -32778,11 +32778,16 @@ presentations = presentations_wse2 + [
 
       # owner name label
       (party_get_slot, ":lord", ":center_no", slot_town_lord),
+      (str_clear, s1),
       (try_begin),
-        (gt, ":lord", -1),
-        (str_store_troop_name, s1, ":lord"),
-      (else_try),
-        (str_store_string, s1, "@Unassigned"),
+        (this_or_next|eq, ":lord", "trp_player"),
+        (ge, "$g_player_chancellor", 1),
+        (try_begin),
+          (gt, ":lord", -1),
+          (str_store_troop_name, s1, ":lord"),
+        (else_try),
+          (str_store_string, s1, "@Unassigned"),
+        (try_end),
       (try_end),
       (create_text_overlay, reg1, s1, tf_center_justify|tf_with_outline),
       (store_add, ":text_x", ":center_x", 0),
@@ -32871,7 +32876,6 @@ presentations = presentations_wse2 + [
 
     (try_begin),
         (ge, "$g_player_chancellor", 1),
-
         #lords
         (try_for_range, ":id_npc", active_npcs_begin, active_npcs_end),
             (this_or_next|troop_slot_eq, ":id_npc", slot_troop_occupation, slto_kingdom_hero),
@@ -32895,11 +32899,15 @@ presentations = presentations_wse2 + [
     (set_container_overlay, -1),
 
     #Show all toggle
-    (create_game_button_overlay, "$g_btn_show_toggle", "@Show All/None"),
-    (position_set_x, pos1, 915),
-    (position_set_y, pos1, 705),
-    (overlay_set_position, "$g_btn_show_toggle", pos1),
-    (assign, "$show_toggle", 1),
+    (assign, "$g_btn_show_toggle", -1),
+    (try_begin),
+        (ge, "$g_player_chancellor", 1),
+        (create_game_button_overlay, "$g_btn_show_toggle", "@Show All/None"),
+        (position_set_x, pos1, 915),
+        (position_set_y, pos1, 705),
+        (overlay_set_position, "$g_btn_show_toggle", pos1),
+        (assign, "$show_toggle", 1),
+    (try_end),
 
     #Checkbox show all unassigned
     (create_check_box_overlay, "$chk_unassigned", "mesh_checkbox_off", "mesh_checkbox_on"),
@@ -33093,14 +33101,18 @@ presentations = presentations_wse2 + [
     (str_store_party_name, s1, ":center"),
     (str_store_string,s2,"str_s1"),
 
-    (party_get_slot, ":lord", ":center", slot_town_lord),
     (try_begin),
-        (gt, ":lord", -1),
-        (str_store_troop_name_plural, s4, ":lord"),
-    (else_try),
-        (str_store_string, s4, "@Unassigned"),
+      (party_get_slot, ":lord", ":center", slot_town_lord),
+      (this_or_next|eq, ":lord", 0),
+      (ge, "$g_player_chancellor", 1),
+      (try_begin),
+          (gt, ":lord", -1),
+          (str_store_troop_name_plural, s4, ":lord"),
+      (else_try),
+          (str_store_string, s4, "@Unassigned"),
+      (try_end),
+      (str_store_string,s3,"@{s4}"),
     (try_end),
-    (str_store_string,s3,"@{s4}"),
 
     (try_begin),
         (gt, "$g_player_chamberlain", 1),
