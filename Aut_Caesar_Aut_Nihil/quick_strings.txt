@@ -1,4 +1,4 @@
-6055
+6060
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6054,3 +6054,8 @@ qstr_DBUEG_{s1} DBUEG_{s1}
 qstr_{s1}_has_been_captur {s1}_has_been_captured_by_{s2}_in_{s3}.
 qstr_DEBUG_{s1}_has_been_ DEBUG_{s1}_has_been_captured_by_{s2}_in_{s3}.
 qstr_DEBUG_SPECIAL_{s1}_h DEBUG_SPECIAL_{s1}_has_been_captured_by_{s2}_in_{s3}.
+qstr_*_Edictum_mensum:^__T *_Edictum_mensum:^__The_month_{s28}_is_now_known_as_{s29}.
+qstr_{s10}_refused:_{reg1 {s10}_refused:_{reg10}
+qstr_{playername}_I_must_a {playername},_I_must_admit,_your_devotion_is_impressive._To_be_so_deeply_loved_by_the_gods_is_no_small_feat._I'm_curious,_does_such_favor_come_naturally,_or_is_it_something_you_work_tirelessly_to_maintain?
+qstr_Impressive_{playernam Impressive,_{playername}._Your_devotion_has_clearly_earned_you_the_gods'_highest_favor._A_wise_choice,_I_must_admit,_having_the_heavens_on_your_side_is_always_a_strong_advantage_in_both_peace_and_war.
+qstr_{playername}_I_see_th {playername},_I_see_the_gods_favor_you,_perhaps_more_than_most._Such_favor_is_no_small_thing,_though_I_hope_you'll_use_it_wisely_to_strengthen_your_position.
