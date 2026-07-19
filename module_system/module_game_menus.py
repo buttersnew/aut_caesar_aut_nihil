@@ -61594,31 +61594,31 @@ It is said, that she lives now together with the goat.",
 ]),
 
 ("year_of_four_ceasars",0,
-  "The four Ceasars!^^Nero's popularity among the Roman nobility and senators has been on the decline for some time, emboldening his opposition. Latest reports from Gallia Lugdunensis suggest that local elites may now be disobeying Nero and refusing to pay him taxes. ^^Furthermore, they are calling on the governor of Hispania Tarraconensis to join Gaul in rebellion and declare himself Imperator in opposition to Nero.^^There have also been rumblings in the Senate, where Nero's opponents are mustering support against him. Rumors are circulating about an important vote coming up.^^Finally, Nero's enemies in Rome moved against him politically. With enough votes in the Senate, they officially declared him a public enemy and instructed the Praetorian Guard to place Nero under arrest.^^Though Nero, fearing to be murdered, escaped from Rome together with most loyal servants and committed suicide.^^Yet Galba, Otho, Vitellius and Vespasian are rising to the leaders of their respective parties and proclaim themselves Caesar.",
+  "The four Ceasars!^^Nero's popularity among the Roman nobility and senators has been on the decline for some time, emboldening his opposition. Latest reports from Gallia Lugdunensis suggest that local elites may now be disobeying Nero and refusing to pay him taxes. ^^Furthermore, they are calling on the governor of Hispania Tarraconensis to join Gaul in rebellion and declare himself Imperator in opposition to Nero.^^There have also been rumblings in the Senate, where Nero's opponents are mustering support against him. Rumors are circulating about an important vote coming up.^^Finally, Nero's enemies in Rome moved against him politically. With enough votes in the Senate, they officially declared him a public enemy and instructed the Praetorian Guard to place Nero under arrest.^^Though Nero, fearing to be murdered, escaped from Rome together with most loyal servants and committed suicide.^^Yet Galba, Otho, Vitellius and Vespasian are rising to the leaders of their respective parties and proclaim themselves Caesar.^^You can now either join a side or remain neutral. You will however always lose your offices. But if you switch to a side from the beginning you may ask your new leader for a position.",
   "none", [
     (set_background_mesh, "mesh_pic_palast"),
   ],[
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Vitellius.",[
+    ],"Join Vitellius (will lose all offices).",[
       (call_script, "script_start_year_of_four", "fac_kingdom_26"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Galba.",[
+    ],"Join Galba (will lose all offices).",[
       (call_script, "script_start_year_of_four", "fac_kingdom_27"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Otho.",[
+    ],"Join Otho (will lose all offices).",[
       (call_script, "script_start_year_of_four", "fac_kingdom_24"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),
     ("option_2", [
       (eq, "$players_kingdom", "fac_kingdom_7"),
-    ],"Join Vespasian.",[
+    ],"Join Vespasian (will lose all offices).",[
       (call_script, "script_start_year_of_four", "fac_kingdom_25"),
       (jump_to_menu, "mnu_auto_return_map"),
     ]),

@@ -83208,7 +83208,7 @@ scripts = scripts_hardcoded + [
 
     (try_begin), # remove any office
         (eq, "$players_kingdom", "fac_kingdom_7"),
-        (display_message, "@Due to the chaos of civil war you lost your offices!!", message_negative),
+        (display_message, "@Due to the chaos of civil war you lost your offices!!", color_bad_news),
         (call_script, "script_remove_office_from_troop", "trp_player", remove_all),
     (try_end),
 
@@ -83602,6 +83602,8 @@ scripts = scripts_hardcoded + [
     (try_begin),
         (is_between, ":player_side", kingdoms_begin, kingdoms_end),
         (call_script, "script_player_join_faction", ":player_side"),
+        (faction_get_slot, ":leader", ":player_side", slot_faction_leader),
+        (call_script, "script_change_player_relation_with_troop", ":leader", 50),
     (try_end),
     (assign, "$g_civil_war", 2),
 

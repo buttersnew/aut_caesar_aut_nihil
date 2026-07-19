@@ -56267,20 +56267,19 @@ What you ask for makes even less sense now than it did before. Don't waste my ti
 
 #unwilling bride -- failed due to lord personality
 [anyone,"lord_marriage_permission",[
-(troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
-(quest_get_slot, ":bride", "qst_formal_marriage_proposal", slot_quest_giver_troop),
-(call_script, "script_troop_get_relation_with_troop", "trp_player", ":bride"),
-(lt, reg0, 50),
-(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
-(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
-(neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
-
-(call_script, "script_troop_get_family_relation_to_troop", ":bride", "$g_talk_troop"),
+  (troop_slot_eq, "$g_talk_troop", slot_lord_granted_courtship_permission, 1),
+  (quest_get_slot, ":bride", "qst_formal_marriage_proposal", slot_quest_giver_troop),
+  (call_script, "script_troop_get_relation_with_troop", "trp_player", ":bride"),
+  (lt, reg0, 50),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_debauched),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_selfrighteous),
+  (neg|troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_quarrelsome),
+  (call_script, "script_troop_get_family_relation_to_troop", ":bride", "$g_talk_troop"),
 ],
-"It is not my way to push my {s11} to marry against her will or her better judgment", "lord_pretalk",[
-(call_script, "script_fail_quest", "qst_formal_marriage_proposal"),
-(call_script, "script_end_quest", "qst_formal_marriage_proposal"),
-
+"It is not my way to push my {s11} to marry against her will or her better judgment",
+"lord_pretalk",[
+  (call_script, "script_fail_quest", "qst_formal_marriage_proposal"),
+  (call_script, "script_end_quest", "qst_formal_marriage_proposal"),
 ]],
 
 #unwilling bride -- failed due to competitor
@@ -67669,90 +67668,83 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 		(assign, "$romantic_rival", ":possible_rival"),
 	(try_end),
 	(gt, "$romantic_rival", -1),
-	##diplomacy start+ Give gender equivalents
-],#"Sir" to "{Dominus/Dominae}", and "gentlemen" to "{gentlemen/suitors}"
-  "{Dominus/Dominae} -- as you may know, I have been entertaining offers from a number of {gentlemen/suitors} such as yourself. I am not yet at a stage where I can commit to any of them.",
-  "lady_other_suitor",[]],
-	##diplomacy end+
+],"{Dominus/Dominae} -- as you may know, I have been entertaining offers from a number of {gentlemen/suitors} such as yourself. I am not yet at a stage where I can commit to any of them.",
+"lady_other_suitor",[]],
 
-[anyone,"lady_marriage_discussion",
-[
-    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
+[anyone,"lady_marriage_discussion",[
+  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_ambitious),
 	(neg|troop_slot_ge, "trp_player", slot_troop_renown, 450),
-	],
-    "It is good to hear that you are thinking seriously about the future. However, I would like to see you rise a little further in the world before I am ready to commit to marry you.", "lady_proposal_refused",[
+],"It is good to hear that you are thinking seriously about the future. However, I would like to see you rise a little further in the world before I am ready to commit to marry you.",
+"lady_proposal_refused",[
 ]],
 
-[anyone,"lady_marriage_discussion",
-[
-    (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
+[anyone,"lady_marriage_discussion",[
+  (troop_slot_eq, "$g_talk_troop", slot_lord_reputation_type, lrep_moralist),
 	(lt, "$player_honor", 10)
-	],
-    "It is good to hear that your intentions are hounorable. However, I have resolved only to marry a man of the strongest moral fiber. I would like you to prove yourself more in that regard.", "lady_proposal_refused",[
+],"It is good to hear that your intentions are hounorable. However, I have resolved only to marry a man of the strongest moral fiber. I would like you to prove yourself more in that regard.",
+"lady_proposal_refused",[
 ]],
 
-[anyone,"lady_marriage_discussion",
-[
+[anyone,"lady_marriage_discussion",[
 	(lt, "$g_talk_troop_relation", 20),
-],
-    "Sir -- it is comforting to hear that your intentions towards me are hounorable. But perhaps we should take the time to get to allow our affections for each other to grow a little stronger, before making any such decision.", "lady_proposal_refused",[
+],"Sir -- it is comforting to hear that your intentions towards me are hounorable. But perhaps we should take the time to get to allow our affections for each other to grow a little stronger, before making any such decision.",
+"lady_proposal_refused",[
 ]],
 
-[anyone,"lady_marriage_discussion",
-[
+[anyone,"lady_marriage_discussion",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
-    (neq, ":guardian", "$g_talk_troop"),
+  (neq, ":guardian", "$g_talk_troop"),
 	(troop_slot_eq, ":guardian", slot_lord_granted_courtship_permission, -1),
 	(str_store_troop_name, s4, reg0),
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
-	],
-    "Oh {playername}, how happy that would make me! But my {s11} {s4} would never allow it... Perhaps it is best that we part...", "lady_betrothed",[]],
+],"Oh {playername}, how happy that would make me! But my {s11} {s4} would never allow it... Perhaps it is best that we part...",
+"lady_betrothed",[]],
 
-[anyone,"lady_marriage_discussion",
-[
+[anyone,"lady_marriage_discussion",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(eq, reg0, "$g_talk_troop"),
-	],
-    "Oh {playername}, how happy that would make me! As I have no male family members and thus as being able to do my own decisions I see no problem for our marriage. However, we wont be able to host a large ceremony. "+
-    "Its probably the best to set everything up here and now. What do you say?", "lady_ask_free",[
+],"Oh {playername}, how happy that would make me! As I have no male family members and thus as being able to do my own decisions I see no problem for our marriage. However, we wont be able to host a large ceremony. "+
+"Its probably the best to set everything up here and now. What do you say?",
+"lady_ask_free",[
 ]],
+
 [anyone|plyr,"lady_ask_free",
-[],
-    "I agree my love. Let us take the vows!", "lady_elope_agree_nurse",[
+[],"I agree my love. Let us take the vows!",
+"lady_elope_agree_nurse",[
 ]],
+
 [anyone|plyr,"lady_ask_free",
-[],
-    "Wait a second. I have to think about it.", "lady_refuse",[
+[],"Wait a second. I have to think about it.",
+"lady_refuse",[
 ]],
+
 [anyone,"lady_refuse",
 [],
     "You don't want me? You disappoint me, {playername}.", "close_window",[
     (call_script, "script_change_player_relation_with_troop", "$g_talk_troop", -25),
 ]],
 
-[anyone,"lady_marriage_discussion",
-[
+[anyone,"lady_marriage_discussion",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
 	(str_store_troop_name, s4, ":guardian"),
-
-	],
-    "Oh {playername}, how happy that would make me! Go ask my {s11} {s4} for permission!", "close_window",[
+],"Oh {playername}, how happy that would make me! Go ask my {s11} {s4} for permission!", "close_window",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
 	(str_store_troop_name, s12, ":guardian"),
 	(str_store_troop_name, s15, "$g_talk_troop"),
-    (setup_quest_text, "qst_formal_marriage_proposal"),
-    (str_store_string, s2, "str_you_intend_to_ask_s12_for_permission_to_marry_s15"),
 
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+  (setup_quest_text, "qst_formal_marriage_proposal"),
+  (str_store_string, s2, "str_you_intend_to_ask_s12_for_permission_to_marry_s15"),
+
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+
 	(call_script, "script_start_quest", "qst_formal_marriage_proposal", "$g_talk_troop"),
 	(quest_set_slot, "qst_formal_marriage_proposal", slot_quest_giver_troop, "$g_talk_troop"),
-
 	#Repeated to ensure strings work correctly
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
 	(str_store_troop_name, s4, ":guardian"),
@@ -67839,67 +67831,62 @@ But the peope here are either drunk or busy with other things, you know. Tell me
 	(assign, ":guardian", reg0),
 	(call_script, "script_troop_get_family_relation_to_troop", ":guardian", "$g_talk_troop"),
 	(str_store_troop_name, s4, ":guardian"),
-	##diplomacy start+ Use correct pronouns for female guardians
-	],#Change "his" to "{reg4?her:his}"
-    "Oh {playername}, I could never allow that to happen! Go ask my {s11} {s4} {reg4?her:his} permission for us to be wed!", "close_window",[
-	##diplomacy end+
-
+],"Oh {playername}, I could never allow that to happen! Go ask my {s11} {s4} {reg4?her:his} permission for us to be wed!",
+"close_window",[
 	(call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", 5),
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
 	(str_store_troop_name, s12, ":guardian"),
 	(str_store_troop_name, s15, "$g_talk_troop"),
-    (setup_quest_text, "qst_formal_marriage_proposal"),
-    (str_store_string, s2, "str_you_intend_to_ask_s12_for_permission_to_marry_s15"),
 
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+  (setup_quest_text, "qst_formal_marriage_proposal"),
+  (str_store_string, s2, "str_you_intend_to_ask_s12_for_permission_to_marry_s15"),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+
 	(call_script, "script_start_quest", "qst_formal_marriage_proposal", "$g_talk_troop"),
 	(quest_set_slot, "qst_formal_marriage_proposal", slot_quest_giver_troop, "$g_talk_troop"),
 ]],
 
-[anyone|plyr,"lady_proposal_refused",
-[],
-    "Very well -- I shall continue to strive to be worthy of your esteem!", "close_window",[
+[anyone|plyr,"lady_proposal_refused",[
+],"Very well -- I shall continue to strive to be worthy of your esteem!",
+"close_window",[
 ]],
 
-[anyone|plyr,"lady_proposal_refused",
-[
-	##diplomacy start+
-	#Enable this if "enhanced prejudice" mode is active.
-    (this_or_next|ge, "$cheat_mode", 1),
+[anyone|plyr,"lady_proposal_refused",[
+  (this_or_next|ge, "$cheat_mode", 1),
 	(lt, "$g_disable_condescending_comments", 0),
-	##(eq, 1, 0),
-	##diplomacy end+
 	(neg|check_quest_active, "qst_formal_marriage_proposal"),
-	],
-    "I am tired of these games! I will speak to your family about arranging a wedding immediately..", "lady_player_threatens_compel",[
+],"I am tired of these games! I will speak to your family about arranging a wedding immediately...",
+"lady_player_threatens_compel",[
 ]],
 
-[anyone,"lady_player_threatens_compel",
-[],
-    "What? Do you mean that?", "lady_player_threatens_compel_2",[
+[anyone,"lady_player_threatens_compel",[
+],"What? Do you mean that?",
+"lady_player_threatens_compel_2",[
 ]],
 
-[anyone|plyr,"lady_player_threatens_compel_2",
-[],
-    "No, of couse not. Please forgive my burst of temper", "lady_private_conversation_end",[
+[anyone|plyr,"lady_player_threatens_compel_2",[
+],"No, of couse not. Please forgive my burst of temper",
+"lady_private_conversation_end",[
 ]],
 
-[anyone|plyr,"lady_player_threatens_compel_2",
-[],
-    "Yes -- you clearly do not know what is in your best interests.", "close_window",[
+[anyone|plyr,"lady_player_threatens_compel_2",[
+],"Yes -- you clearly do not know what is in your best interests.",
+"close_window",[
 	(call_script, "script_get_kingdom_lady_social_determinants", "$g_talk_troop"),
 	(assign, ":guardian", reg0),
 	(str_store_troop_name, s10, "$g_talk_troop"),
 	(str_store_troop_name, s12, ":guardian"),
-    (setup_quest_text, "qst_formal_marriage_proposal"),
-    (str_store_string, s2, "str_you_intend_to_ask_s12_to_pressure_s10_to_marry_you"),
 
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
-    (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+  (setup_quest_text, "qst_formal_marriage_proposal"),
+  (str_store_string, s2, "str_you_intend_to_ask_s12_to_pressure_s10_to_marry_you"),
+
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_target_troop, ":guardian"),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_expiration_days, 30),
+  (quest_set_slot, "qst_formal_marriage_proposal", slot_quest_current_state, 0),
+
 	(call_script, "script_start_quest", "qst_formal_marriage_proposal", "$g_talk_troop"),
 	(quest_set_slot, "qst_formal_marriage_proposal", slot_quest_giver_troop, "$g_talk_troop"),
 ]],
