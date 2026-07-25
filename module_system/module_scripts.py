@@ -46576,7 +46576,7 @@ scripts = scripts_hardcoded + [
         (this_or_next|eq, ":cur_agent_troop", "trp_belligerent_drunk"),
         (eq, ":cur_agent_troop", "trp_hired_assassin"),
         (agent_set_team, ":cur_agent", 1),
-        (agent_ai_set_aggressiveness, ":cur_agent", 1000),
+        (agent_ai_set_aggressiveness, ":cur_agent", 5000),
     (try_end),
 ]),
 

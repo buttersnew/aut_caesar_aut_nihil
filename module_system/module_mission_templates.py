@@ -7083,7 +7083,7 @@ mission_templates = [
     ],[]),
 
 	  #tavern brawl triggers - drunk
-    (2, 0, 0,[
+    (0.5, 0, 0,[
 	    (neg|conversation_screen_is_active),
       (eq, "$talk_context", tc_tavern_talk),
       (neg|troop_slot_eq, "trp_hired_assassin", slot_troop_cur_center, "$g_encountered_party"),
@@ -7091,6 +7091,13 @@ mission_templates = [
       (eq, "$drunks_dont_pick_fights", 0),
 	  ],[
 	    (try_begin),
+        # (assign, ":block", 0),
+        # (try_begin),
+        #   (neg|troop_slot_eq, "trp_global_variables", g_flavor_event_4, 3),
+        #   (party_slot_eq, "$g_encountered_party", slot_center_culture, "fac_culture_roman"),
+        #   (assign, ":block", 1),
+        # (try_end),
+        # (eq, ":block", 0),
 	      (eq, "$g_start_belligerent_drunk_fight", 0),
 	      (assign, "$g_start_belligerent_drunk_fight", 1),
 
@@ -7104,6 +7111,8 @@ mission_templates = [
 
 	      (agent_is_active, "$g_belligerent_drunk"),
 	      (agent_is_alive, "$g_belligerent_drunk"),
+        # (agent_slot_eq, "$g_belligerent_drunk", slot_agent_already_begg, 0),
+
 	      (get_player_agent_no, ":player_agent"),
 	      (agent_get_position, pos0, ":player_agent"),
 	      (agent_get_position, pos1, "$g_belligerent_drunk"),
@@ -7127,7 +7136,7 @@ mission_templates = [
 	  ]),
 
 	  #tavern brawl triggers - assassin
-    (2, 0, 0, [
+    (1, 0, 0, [
 	    (neg|conversation_screen_is_active),
       (eq, "$talk_context", tc_tavern_talk),
       (troop_slot_eq, "trp_hired_assassin", slot_troop_cur_center, "$g_encountered_party"),
@@ -7143,33 +7152,38 @@ mission_templates = [
 	      (try_end),
 	    (else_try),
 	      (eq, "$g_start_hired_assassin_fight", 1),
-
-	      (agent_is_active, "$g_hired_assassin"),
-	      (agent_is_alive, "$g_hired_assassin"),
-	      (get_player_agent_no, ":player_agent"),
-	      (agent_get_position, pos0, ":player_agent"),
-	      (agent_get_position, pos1, "$g_hired_assassin"),
-	      (get_distance_between_positions, ":dist", pos0, pos1),
-	      (position_get_z, ":pos0_z", pos0),
-	      (position_get_z, ":pos1_z", pos1),
-	      (store_sub, ":z_difference", ":pos1_z", ":pos0_z"),
-	      (try_begin),
-	        (le, ":z_difference", 0),
-	        (val_mul, ":z_difference", -1),
-	      (try_end),
-	      (store_mul, ":z_difference_mul_3", ":z_difference", 3),
-	      (val_add, ":dist", ":z_difference_mul_3"),
-	      (store_random_in_range, ":random_value", 0, 200),
-	      (store_add, ":400_plus_random_200", 400, ":random_value"),
-	      (le, ":dist", ":400_plus_random_200"),
-        (call_script, "script_activate_tavern_attackers"),
-        (assign, "$g_start_hired_assassin_fight", 2),
-        (assign, "$g_main_attacker_agent", "$g_hired_assassin"),
+        # (assign, ":save_fixed_point", 1),
+        # (convert_to_fixed_point, ":save_fixed_point"),
+        # (set_fixed_point_multiplier, 1),
+        # (try_begin),
+          (agent_is_active, "$g_hired_assassin"),
+          (agent_is_alive, "$g_hired_assassin"),
+          (get_player_agent_no, ":player_agent"),
+          (agent_get_position, pos0, ":player_agent"),
+          (agent_get_position, pos1, "$g_hired_assassin"),
+          (get_distance_between_positions, ":dist", pos0, pos1),
+          (position_get_z, ":pos0_z", pos0),
+          (position_get_z, ":pos1_z", pos1),
+          (store_sub, ":z_difference", ":pos1_z", ":pos0_z"),
+          (try_begin),
+            (le, ":z_difference", 0),
+            (val_mul, ":z_difference", -1),
+          (try_end),
+          (store_mul, ":z_difference_mul_3", ":z_difference", 3),
+          (val_add, ":dist", ":z_difference_mul_3"),
+          (store_random_in_range, ":random_value", 0, 200),
+          (store_add, ":400_plus_random_200", 400, ":random_value"),
+          (le, ":dist", ":400_plus_random_200"),
+          (call_script, "script_activate_tavern_attackers"),
+          (assign, "$g_start_hired_assassin_fight", 2),
+          (assign, "$g_main_attacker_agent", "$g_hired_assassin"),
+        # (try_end),
+        # (set_fixed_point_multiplier, ":save_fixed_point"),
       (try_end),
 	  ]),
 
 	  #Aftermath talks
-    (3, 0, ti_once,[
+    (2, 0, ti_once,[
 	    (neg|conversation_screen_is_active),
       (eq, "$talk_context", tc_tavern_talk),
       (gt, "$g_main_attacker_agent", 0),
