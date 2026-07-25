@@ -363,6 +363,9 @@ fur_head = weight(get_head_weight(15))|abundance(50)|head_armor(10)|body_armor(5
 legate_head_price = get_headgear_price(48)
 legate_head = weight(get_head_weight(48))|abundance(50)|head_armor(48)|difficulty(8)
 
+# for noble equipment add 500 denars to base price
+noble_price_addition = 500
+
 #foot armor types:
 #light/civilian
 #medium (fur)
@@ -1405,16 +1408,16 @@ pants_light_armor_price, pants_light_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
 
 ["garamantian_noble_cloak_1", "Noble Garamantian Loincloth with Coat", [("lybian_coat_1",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_price+noble_price_addition, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
 ["garamantian_noble_cloak_2", "Noble Garamantian Loincloth with Coat", [("lybian_coat_2",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_price+noble_price_addition, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
 ["garamantian_noble_cloak_3", "Noble Garamantian Loincloth with Coat", [("lybian_coat_3",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_price+noble_price_addition, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
 ["garamantian_noble_cloak_4", "Noble Garamantian Loincloth with Coat", [("lybian_coat_4",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_price, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_price+noble_price_addition, pants_shirt_armor, imodbits_cloth, [(ti_on_init_item,[
 (call_script, "script_init_pants_long"),],),], [fac_culture_garamantian] ],
 ["garamantian_cloak_5", "Garamantian Loincloth with Coat", [("lybian_coat_5",0)], itp_type_body_armor|itp_covers_legs|itp_civilian,0,
 tunic_armor_price, tunic_armor_armor, imodbits_cloth, [(ti_on_init_item,[
@@ -1751,7 +1754,7 @@ pants_shirt_price, pants_shirt_armor,imodbits_cloth, [(ti_on_init_item,[(call_sc
 pants_shirt_price, pants_shirt_armor,imodbits_cloth, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 
 ["celtic_light_noble_1", "Celtic Noble Shirt with Cape", [("ad_longsleeveshirt_celtic_11",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
         (this_or_next|eq, ":troop", "trp_player"),
@@ -1764,7 +1767,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item
     (try_end),
 (call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_light_noble_2", "Celtic Noble Shirt with Cape", [("ad_longsleeveshirt_celtic_09",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
         (this_or_next|eq, ":troop", "trp_player"),
@@ -1777,7 +1780,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item
     (try_end),
 (call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_light_noble_3", "Celtic Noble Shirt with Cape", [("ad_longsleeveshirt_celtic_08",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
         (this_or_next|eq, ":troop", "trp_player"),
@@ -1790,7 +1793,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item
     (try_end),
 (call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_light_noble_4", "Celtic Noble Shirt with Cape", [("ad_longsleeveshirt_celtic_12",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [(ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
         (this_or_next|eq, ":troop", "trp_player"),
@@ -1813,13 +1816,13 @@ roman_mail_heavy_armor_price, roman_mail_heavy_armor,imodbits_armor, [(ti_on_ini
 ["celtic_heavy4", "Celtic Hamata", [("celtic_mail_ws_04",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
 roman_mail_heavy_armor_price, roman_mail_heavy_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_noble_1", "Celtic Noble Hamata", [("celtic_noble_mail_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_noble_2", "Celtic Noble Hamata", [("celtic_noble_mail_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_noble_3", "Celtic Noble Hamata", [("celtic_noble_mail_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 ["celtic_noble_4", "Celtic Noble Hamata", [("celtic_noble_mail_4",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_celtic,fac_culture_caledonian] ],
 
 #celts painted
 ["celts_painted1", "Painted Body", [("war_paint_two",0)],itp_unique|itp_type_body_armor  |itp_covers_legs ,0,
@@ -2078,17 +2081,17 @@ pants_with_mail_price,pants_with_mail_armor,imodbits_armor, [(ti_on_init_item,[(
 
 #dacian heavy
 ["dacian_heavy1", "Dacian Noble Squamata", [("dcchain1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 ["dacian_heavy2", "Dacian Noble Squamata", [("dcchain2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 ["dacian_heavy3", "Dacian Noble Hamata", [("dcchain3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 ["dacian_heavy4", "Dacian Noble Hamata", [("dcchain4",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 ["dacian_heavy5", "Dacian Noble Squamata", [("dcchain5",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 ["dacian_heavy6", "Dacian Noble Squamata", [("dcchain6",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs,0,
-noble_mail_price, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
+noble_mail_price+noble_price_addition, noble_mail_armor,imodbits_armor, [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_dacian] ],
 
 
 ["germanic_completenaked1", "Germanic Pants with Bearskin", [("germloincloth1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
@@ -2137,7 +2140,7 @@ pants_price, pants_armor,imodbits_cloth,
 
 #germanic light
 ["germanic_noble_tunic_1", "Germanic Noble Tunic with Cape", [("germanic_noble_tunic_1",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [
     (ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
@@ -2152,7 +2155,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
     (call_script, "script_init_eastern_troop"),]),
 ], [fac_culture_germanic] ],
 ["germanic_noble_tunic_2", "Germanic Noble Tunic with Cape", [("germanic_noble_tunic_2",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [
     (ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
@@ -2167,7 +2170,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
     (call_script, "script_init_eastern_troop"),]),
 ], [fac_culture_germanic] ],
 ["germanic_noble_tunic_3", "Germanic Noble Tunic with Cape", [("germanic_noble_tunic_3",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [
     (ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
@@ -2182,7 +2185,7 @@ pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
     (call_script, "script_init_eastern_troop"),]),
 ], [fac_culture_germanic] ],
 ["germanic_noble_tunic_4", "Germanic Noble Tunic with Cape", [("germanic_noble_tunic_4",0)], itp_merchandise|itp_type_body_armor|itp_covers_legs|itp_civilian,0,
-pants_shirt_cape_price, pants_shirt_cape_armor,imodbits_cloth, [
+pants_shirt_cape_price+noble_price_addition, pants_shirt_cape_armor,imodbits_cloth, [
     (ti_on_init_item,[
     (store_trigger_param_2, ":troop"),
     (try_begin),
@@ -3361,9 +3364,42 @@ dress_armor_price,dress_armor,imodbits_none,
 [(ti_on_init_item,[  (call_script, "script_init_dress_no_arms"),]), ], [fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]],
 
 #more generic eastern armoury
-["desert_tunic_1", "Long Tunic", [("desert_tunic_robe_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+["desert_tunic_1", "White Long Tunic", [("desert_tunic_robe_1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
 robe_armor_price,robe_armor_armor,imodbits_cloth,
-[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),] ],
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_roman,fac_culture_greek] ],
+["desert_tunic_2", "Yellow Long Tunic", [("desert_tunic_robe_10",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_roman,fac_culture_greek]  ],
+["desert_tunic_3", "Green Long Tunic", [("desert_tunic_robe_11",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_roman,fac_culture_greek]  ],
+["desert_tunic_4", "Blue Long Tunic", [("desert_tunic_robe_12",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean,fac_culture_roman,fac_culture_greek]  ],
+["desert_tunic_5", "White Long Tunic", [("desert_tunic_robe_13",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_6", "Noble Long Tunic", [("desert_tunic_robe_14",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_7", "Noble Long Tunic", [("desert_tunic_robe_15",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_8", "Noble Long Tunic", [("desert_tunic_robe_16",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_9", "Noble Long Tunic", [("desert_tunic_robe_17",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_10", "Noble Long Tunic", [("desert_tunic_robe_18",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_11", "Noble Long Tunic", [("desert_tunic_robe_19",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
+["desert_tunic_12", "Noble Long Tunic", [("desert_tunic_robe_20",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
+robe_armor_price+noble_price_addition,robe_armor_armor,imodbits_cloth,
+[(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_syrian, fac_culture_egyptian,fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
 
 ["sarranid_cloth_robe", "Worn Robe", [("sar_robe",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
 robe_armor_price,robe_armor_armor,imodbits_cloth,
@@ -3378,15 +3414,15 @@ robe_armor_price,robe_armor_armor,imodbits_cloth,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),] ],
 
 ["sarranid_cloth_robe_fancy_1", "Noble Robe", [("easterncoat4",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
-toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
+toga_a_noble_armor_price+noble_price_addition, toga_a_noble_armor,imodbits_none,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
 
 ["sarranid_cloth_robe_fancy_2", "Noble Robe", [("easterncoat1",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
-toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
+toga_a_noble_armor_price+noble_price_addition, toga_a_noble_armor,imodbits_none,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
 
 ["sarranid_cloth_robe_fancy_3", "Noble Robe", [("easterncoat2",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs|itp_civilian ,0,
-toga_a_noble_armor_price, toga_a_noble_armor,imodbits_none,
+toga_a_noble_armor_price+noble_price_addition, toga_a_noble_armor,imodbits_none,
 [(ti_on_init_item,[(call_script, "script_init_eastern_troop"),]),], [fac_culture_roman,fac_culture_greek, fac_culture_caucasian, fac_culture_parthian,fac_culture_judean]  ],
 
 ["skirmisher_armor", "Eastern Leather Armour", [("skirmisher_armor",0)], itp_merchandise| itp_type_body_armor  |itp_covers_legs ,0,
