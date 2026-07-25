@@ -56,6 +56,40 @@ For a complete and detailed guide to every feature in the mod, please refer to t
 
 The official website of [Aut Caesar Aut Nihil](https://buttersnew.github.io/aut_caesar_aut_nihil/) contains the download links of the latest stable release and the latest development release. it is hosted with github-pages.
 
+This issue occurs because the Mac and Linux versions of the *Mount & Blade: Warband* engine fail to read custom skeleton hitbox data from a mod’s local folder. Instead, the engine defaults to the native game's hitboxes. Because the female characters in this mod use a custom skeleton, they end up with no registered hitboxes and become completely invincible.
+
+To resolve this, the custom `skeleton_bodies.xml` file from the mod must be manually copied into the main game's root data folder.
+
+---
+
+## Troubleshooting
+
+### Fix of females not taking damage in battles for Mac and Linux users
+
+**Step 1: Locate your Warband Installation Directory**
+Open your file manager or terminal to find the main *Mount & Blade: Warband* game folder:
+
+*   **macOS (Steam Default Path):**
+    `~/Library/Application Support/Steam/steamapps/common/MountBlade Warband/`
+    *(Note: The `Library` folder is hidden by default. In Finder, click **Go** in the top menu bar, hold the **Option (⌥)** key, and click **Library** when it appears).*
+*   **Linux (Steam Default Path):**
+    `~/.local/share/Steam/steamapps/common/MountBlade Warband/`
+
+**Step 2: Back up the Original Game File**
+1. Inside the main `MountBlade Warband/` folder, open the **`Data`** folder (this is the base game’s data folder, not the mod's).
+2. Locate the file named **`skeleton_bodies.xml`**.
+3. Rename it to `skeleton_bodies_backup.xml` so you have a backup of the vanilla file.
+
+**Step 3: Copy the Mod's Custom File**
+1. Navigate back to your main game folder, and go to **`Modules/Aut_Caesar_Aut_Nihil/Data/`**.
+2. Locate and **copy** the **`skeleton_bodies.xml`** file inside this folder.
+
+**Step 4: Overwrite the Main Game File**
+1. Go back to the base game's **`Data`** folder (`MountBlade Warband/Data/`).
+2. **Paste** the copied `skeleton_bodies.xml` into this folder.
+
+Once this file is in place in the main game's `Data` folder, the engine will correctly load the custom skeleton hitboxes, and female characters will take damage normally in battles.
+
 ---
 
 ## Credits
