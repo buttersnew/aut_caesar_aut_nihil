@@ -781,8 +781,48 @@ garamantian_javelins = [
   itm_javelin_berber
 ]
 
-desert_tunic = [itm_sarranid_cloth_robe,itm_sarranid_cloth_robe_b,itm_sarranid_cloth_robe_c,itm_desert_tunic_1,
-itm_arabian_tunic_1,itm_arabian_tunic_2,itm_arabian_tunic_3]
+desert_tunic = [
+  itm_sarranid_cloth_robe,itm_sarranid_cloth_robe_b,itm_sarranid_cloth_robe_c,itm_desert_tunic_1,itm_desert_tunic_5,
+  itm_arabian_tunic_1,itm_arabian_tunic_2,itm_arabian_tunic_3
+]
+arab_simple_tunic = [
+  itm_desert_tunic_1,itm_desert_tunic_2,itm_desert_tunic_3,itm_desert_tunic_4,itm_desert_tunic_5,itm_arab_simple_cloth_1,itm_arab_simple_cloth_2,itm_arab_simple_cloth_3,itm_arab_simple_cloth_4
+]
+arab_noble_tunic = [
+  itm_desert_tunic_6,itm_desert_tunic_7,itm_desert_tunic_8,itm_desert_tunic_9,itm_desert_tunic_10,itm_desert_tunic_11,itm_desert_tunic_12
+]
+arab_armour = [
+  itm_arabian_lamellar_armor_1,itm_arabian_lamellar_armor_2,
+  itm_arabian_lamellar_armor_3,itm_arabian_armor_b,itm_sarranid_mail_shirt
+]
+
+# southern semitic:
+# south_semitic_skirmisher,Saydan,Sayd,Ancient South Arabian,Hunter / Skirmisher
+# south_semitic_slinger,Ragal Maqtatel,Ragalim Maqtatelin,South Semitic (Ge'ez/ASA),Foot Fighter / Slinger
+# south_semitic_medium_bowman,Haziy,Hazyan,Ancient South Arabian,Bowman / Archer
+# south_semitic_levy_axeman,Aggaar,Aggaaraan,South Semitic (Ge'ez),Levy Foot Soldier
+# south_semitic_heavy_spearman,Ahmas Haff,Ahmasim Haffin,Ancient South Arabian,Brave Guard / Heavy Spearman
+# south_semitic_camel_archer,Rakib Bakrt Haziy,Rakabat Bakrt Hazyan,Ancient South Arabian,Camel Bow Rider
+# south_semitic_skirmisher_cavalry,Mastasan Dallal,Masa'an Dallalin,South Semitic (Ge'ez/ASA),Scout Rider / Skirmisher Cavalry
+# south_semitic_noble_cavalry,Rakib Qayl,Rakabat Qaylam,Ancient South Arabian,Noble Cavalry / Prince's Rider
+
+# # arabs:
+# arab_archer,Qannot,Qannotan,South Semitic (Ge'ez),Archer
+# arab_slinger,Saydan,Saydanin,Ancient South Arabian,Slinger / Hunter
+# arab_bedouin_spearman,Ragal Bakri,Ragalim Bakrin,Ancient South Arabian,Nomad Foot Soldier
+# arab_levy_spearman,Ragal,Ragalim,Ancient South Arabian,Commoner Infantry
+# arab_peltast,Mastaqatel,Mastaqatelan,South Semitic (Ge'ez),Light Fighter / Skirmisher
+# arab_heavy_infantry,Ahmas Sharah,Ahmasim Sharahin,Ancient South Arabian,Armored Warrior / Heavy Infantry
+# arab_camel_rider,Rakib Bakr,Rakabat Bakr,Ancient South Arabian,Camel Rider
+# arab_skirmisher_cavalry,Rakib Dallal,Rakabat Dallalin,Ancient South Arabian,Scout Horseman / Skirmisher Cavalry
+
+# southern semitic:
+# south_semitic_standard_bearer,Hamil Alam,Hamalat Alam,Ancient South Arabian,Standard-bearer
+# south_semitic_hornman,Nafikh Qarn,Nafikhin Qarn,Ancient South Arabian,Horn-blower / Musician
+
+# # arabs:
+# arab_standard_bearer,Hamil Liwa,Hamalat Liwa,Old North Arabian / Arabic,Standard-bearer
+# arab_hornman,Nafikh Qarn,Nufakh Qarn,Old North Arabian / Arabic,Horn-blower / Musician
 
 iberian_tunic = [itm_iberian_light6,itm_iberian_light5,itm_iberian_light3,itm_iberian_light4]
 
