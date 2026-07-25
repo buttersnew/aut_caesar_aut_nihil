@@ -66,6 +66,8 @@ To resolve this, the custom `skeleton_bodies.xml` file from the mod must be manu
 
 ### Fix of females not taking damage in battles for Mac and Linux users
 
+Reason: Warband engine on Mac and Linux does not read custom skeleton hitbox data from a mod's local folder. Instead, it defaults to the native game's hitboxes. Because the female characters in this mod use a custom skeleton, they end up with no registered hitboxes and become completely invincible.
+
 **Step 1: Locate your Warband Installation Directory**
 Open your file manager or terminal to find the main *Mount & Blade: Warband* game folder:
 
