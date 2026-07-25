@@ -3521,9 +3521,9 @@ dlga_player_duel_response:close_window 69631 2313  0 Such_a_waste...  6  0 NO_VO
 dlga_player_duel_response:close_window.1 69631 2313  0 Better_him_than_me  6  0 NO_VOICEOVER 
 dlga_drunk_response:drunk_fight_start 69631 2312  0 I'm_not_sure..._Some_sort_of_animal,_clearly  2314  0 NO_VOICEOVER 
 dlga_drunk_response:dplmc_drunk_attempt_placate 69631 2312  0 Excuse_me_--_please_accept_my_apologies  2315  0 NO_VOICEOVER 
-dlga_dplmc_drunk_attempt_placate:close_window 4095 2315  9 2147483679 2 144115188075855893 360287970189641853 2170 3 72057594037927937 1369094286720630791 360287970189639680 2136 3 72057594037927936 -2 13 4 0 30 2 144115188075856193 1 1106 1 1585267068834418452 3 0 2147483680 2 72057594037927936 72057594037927937 1 1 936748722493063630 I'll_let_it_slide..._this_time.__Now_buzz_off.  6  1 1907 0 NO_VOICEOVER 
+dlga_dplmc_drunk_attempt_placate:close_window 4095 2315  9 2147483679 2 144115188075855893 360287970189641853 2170 3 72057594037927937 1369094286720630791 360287970189639680 2136 3 72057594037927936 -2 13 4 0 30 2 144115188075856193 1 1106 1 1585267068834418452 3 0 2147483680 2 72057594037927936 72057594037927937 1 1 936748722493063630 I'll_let_it_slide..._this_time.__Now_buzz_off.  6  0 NO_VOICEOVER 
 dlga_dplmc_drunk_attempt_placate:drunk_fight_start 266239 2315  0 I'll_wipe_that_smirk_right_off_your_face!  2314  0 NO_VOICEOVER 
-dlga_drunk_fight_start:close_window 4095 2314  0 I'll_wipe_that_smirk_right_off_your_face!  6  1 500 3 360287970189641852 12 0 NO_VOICEOVER 
+dlga_drunk_fight_start:close_window 4095 2314  0 I'll_wipe_that_smirk_right_off_your_face!  6  2 500 3 360287970189641852 12 0 2133 2 144115188075855939 144115188075855894 NO_VOICEOVER 
 dlga_drunk_response:drunk_player_high_renown 69631 2312  1 560 3 360287970189639680 7 200 Do_you_have_any_idea_who_I_am?  2316  0 NO_VOICEOVER 
 dlga_drunk_player_high_renown:drunk_fight_start 4095 2316  1 31 2 144115188075856231 1 You're_a_funny-smelling_wretch,_that's_what_you_are!  2314  1 600 1 1152921504606847118 NO_VOICEOVER 
 dlga_drunk_player_high_renown:drunk_fight_start.1 4095 2316  2 3221226032 3 360287970189639680 7 150 31 2 144115188075855893 360287970189641853 Do_I_care?  2314  0 NO_VOICEOVER 

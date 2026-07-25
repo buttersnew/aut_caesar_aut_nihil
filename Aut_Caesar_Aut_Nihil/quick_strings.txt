@@ -1,4 +1,4 @@
-6151
+6152
 qstr_Recieved_damage_from Recieved_damage_from_fire!
 qstr_{s1}_has_thrown_his_ {s1}_has_thrown_his_spear_{reg19}_units_far.
 qstr_You_rescued_Mathildi You_rescued_Mathildiz!
@@ -6150,3 +6150,4 @@ qstr_{playername}_I_must_ad {playername},_I_must_admit,_your_devotion_is_impress
 qstr_Impressive_{playername Impressive,_{playername}._Your_devotion_has_clearly_earned_you_the_gods'_highest_favor._A_wise_choice,_I_must_admit,_having_the_heavens_on_your_side_is_always_a_strong_advantage_in_both_peace_and_war.
 qstr_{playername}_I_see_the {playername},_I_see_the_gods_favor_you,_perhaps_more_than_most._Such_favor_is_no_small_thing,_though_I_hope_you'll_use_it_wisely_to_strengthen_your_position.
 qstr_{s10}_refused:_{reg1 {s10}_refused:_{reg10}
+qstr_You_unequip_your_shi You_unequip_your_shield_as_too_large_to_use_with_a_bow
