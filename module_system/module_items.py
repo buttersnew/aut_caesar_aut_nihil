@@ -5293,10 +5293,10 @@ weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)
 get_shield_price(shield_armor_t2, 40, 83),
 weight(get_shield_weight(shield_armor_t2,40,83))|hit_points(shield_hitpoints_t2)|body_armor(shield_armor_t2)|spd_rtng(95)|shield_width(40)|shield_height(83)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian,fac_culture_berber,fac_culture_garamantian,fac_culture_nubian]  ],
 
-["heavy_wicker_1",         "Eastern Shield", [("heavy_wicker_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_board_shield,
+["heavy_wicker_1",         "Large Eastern Shield", [("heavy_wicker_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3, 55, 130),
 weight(get_shield_weight(shield_armor_t3,55,130))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(55)|shield_height(130)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
-["heavy_wicker_2",         "Eastern Shield", [("heavy_wicker_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_board_shield,
+["heavy_wicker_2",         "Large Eastern Shield", [("heavy_wicker_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_board_shield,
 get_shield_price(shield_armor_t3, 55, 130),
 weight(get_shield_weight(shield_armor_t3,55,130))|hit_points(shield_hitpoints_t3)|body_armor(shield_armor_t3)|spd_rtng(90)|shield_width(55)|shield_height(130)|abundance(70),imodbits_shield, [], [fac_culture_parthian,fac_culture_judean, fac_culture_caucasian]  ],
 
@@ -5923,7 +5923,7 @@ weight(get_shield_weight(shield_armor_t3,32,0))|hit_points(shield_hitpoints_t3)|
 ["roman_shield_1",         "Roman Round Shield", [("roman_shield_1",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
-["roman_shield_2",         "Round Shield", [("roman_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
+["roman_shield_2",         "Roman Round Shield", [("roman_shield_2",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
 get_shield_price(shield_armor_t1, 46, 0),
 weight(get_shield_weight(shield_armor_t1,46,0))|hit_points(shield_hitpoints_t1)|body_armor(shield_armor_t1)|spd_rtng(95)|shield_width(46),imodbits_shield, [], [fac_culture_roman,fac_culture_greek] ],
 ["roman_shield_3",         "Roman Round Shield", [("roman_shield_3",0)], itp_merchandise|itp_type_shield|itp_wooden_parry, itcf_carry_round_shield,
