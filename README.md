@@ -14,6 +14,8 @@ Empires, like humans, are born, grow, and eventually die. But their ideas can su
 - [Installation](#installation)
 - [Official Handbook](#official-handbook)
 - [Official Website](#official-website)
+- [Troubleshooting](#troubleshooting)
+  - [Fix of females not taking damage in battles for Mac and Linux users](#fix-of-females-not-taking-damage-in-battles-for-mac-and-linux-users)
 - [Credits](#credits)
 - [For Developers](#for-developers)
   - [Repository Structure](#repository-structure)
