@@ -23076,69 +23076,67 @@ dialogs =[
 
 [trp_belligerent_drunk, "start",
 [],
-"What are you looking at?", "drunk_response",
-[
-(try_begin),
- (eq, "$g_main_attacker_agent", 0),
- (call_script, "script_activate_tavern_attackers"),
-(try_end),
-(mission_disable_talk),
+"What are you looking at?",
+"drunk_response",[
+  (try_begin),
+    (eq, "$g_main_attacker_agent", 0),
+    (call_script, "script_activate_tavern_attackers"),
+  (try_end),
+  (mission_disable_talk),
 ]],
 
-[trp_hired_assassin, "start",
-[],
-"Are you looking at me?", "drunk_response",
-[
-(try_begin),
- (eq, "$g_main_attacker_agent", 0),
- (call_script, "script_activate_tavern_attackers"),
-(try_end),
-(mission_disable_talk),
+[trp_hired_assassin, "start",[
+],"Are you looking at me?", "drunk_response",[
+  (try_begin),
+    (eq, "$g_main_attacker_agent", 0),
+    (call_script, "script_activate_tavern_attackers"),
+  (try_end),
+  (mission_disable_talk),
 ]],
 
 [anyone, "start",[
-(is_between, "$g_talk_troop", tavernkeepers_begin, tavernkeepers_end),
-(gt, "$g_main_attacker_agent", 0),
-(neg|agent_is_alive, "$g_main_attacker_agent"),
-
-(try_begin),
+  (is_between, "$g_talk_troop", tavernkeepers_begin, tavernkeepers_end),
+  (gt, "$g_main_attacker_agent", 0),
   (neg|agent_is_alive, "$g_main_attacker_agent"),
-  (agent_get_troop_id, ":type", "$g_main_attacker_agent"),
-  (eq, ":type", "trp_hired_assassin"),
-  (str_store_string, s9, "str_strange_that_one_didnt_seem_like_your_ordenary_troublemaker_he_didnt_drink_all_that_much__he_just_stood_there_quietly_and_watched_the_door_you_may_wish_to_consider_whether_you_have_any_enemies_who_know_you_are_in_town_a_pity_that_blood_had_to_be_spilled_in_my_establishment"),
-
-  (try_begin), #random "good" imod
-    (store_random_in_range, ":imod", imod_old, imod_exquisite),
-    (gt, "$g_attacker_drawn_weapon", 0),
-    (troop_add_item, "trp_player", "$g_attacker_drawn_weapon", ":imod"), # SB: add attacker sword
-  (try_end),
-(else_try),
-#(display_message, "str_wielded_item_reg3"),
-
-  (lt, "$g_attacker_drawn_weapon", "itm_tutorial_spear"),
-  (str_store_string, s9, "str_you_never_let_him_draw_his_weapon_still_it_looked_like_he_was_going_to_kill_you_take_his_sword_and_purse_i_suppose_he_was_trouble_but_its_not_good_for_an_establishment_to_get_a_name_as_a_place_where_men_are_killed"),
 
   (try_begin),
-    (try_for_range, ":item_slot", ek_item_0, ek_head),
-      (agent_get_item_slot, ":item_no", "$g_main_attacker_agent", ":item_slot"),
-      (troop_add_item, "trp_player", ":item_no", 0), # SB: add attacker sword
+    (neg|agent_is_alive, "$g_main_attacker_agent"),
+    (agent_get_troop_id, ":type", "$g_main_attacker_agent"),
+    (eq, ":type", "trp_hired_assassin"),
+    (str_store_string, s9, "str_strange_that_one_didnt_seem_like_your_ordenary_troublemaker_he_didnt_drink_all_that_much__he_just_stood_there_quietly_and_watched_the_door_you_may_wish_to_consider_whether_you_have_any_enemies_who_know_you_are_in_town_a_pity_that_blood_had_to_be_spilled_in_my_establishment"),
+
+    (try_begin), #random "good" imod
+      (store_random_in_range, ":imod", imod_old, imod_exquisite),
+      (gt, "$g_attacker_drawn_weapon", 0),
+      (troop_add_item, "trp_player", "$g_attacker_drawn_weapon", ":imod"), # SB: add attacker sword
+    (try_end),
+  (else_try),
+  #(display_message, "str_wielded_item_reg3"),
+
+    (lt, "$g_attacker_drawn_weapon", "itm_tutorial_spear"),
+    (str_store_string, s9, "str_you_never_let_him_draw_his_weapon_still_it_looked_like_he_was_going_to_kill_you_take_his_sword_and_purse_i_suppose_he_was_trouble_but_its_not_good_for_an_establishment_to_get_a_name_as_a_place_where_men_are_killed"),
+
+    (try_begin),
+      (try_for_range, ":item_slot", ek_item_0, ek_head),
+        (agent_get_item_slot, ":item_no", "$g_main_attacker_agent", ":item_slot"),
+        (troop_add_item, "trp_player", ":item_no", 0), # SB: add attacker sword
+      (try_end),
+    (try_end),
+    #SB : this is useless, change with town instead
+    (call_script, "script_change_player_relation_with_center", "$current_town", -1),
+  (else_try),
+    (neg|agent_is_alive, "$g_main_attacker_agent"),
+    (str_store_string, s9, "str_well_id_say_that_he_started_it_that_entitles_you_to_his_sword_and_purse_i_suppose_have_a_drink_on_the_house_as_i_daresay_youve_saved_a_patron_or_two_a_broken_skull_still_i_hope_he_still_has_a_pulse_its_not_good_for_an_establishment_to_get_a_name_as_a_place_where_men_are_killed"),
+    (troop_add_item, "trp_player", "$g_attacker_drawn_weapon", 0), # SB: add attacker sword
+    (try_begin),
+      (agent_is_wounded, "$g_main_attacker_agent"),
+      (call_script, "script_change_player_relation_with_center", "$current_town", 1), #useless, increase with town instead
     (try_end),
   (try_end),
-  #SB : this is useless, change with town instead
-  (call_script, "script_change_player_relation_with_center", "$current_town", -1),
-(else_try),
-  (neg|agent_is_alive, "$g_main_attacker_agent"),
-  (str_store_string, s9, "str_well_id_say_that_he_started_it_that_entitles_you_to_his_sword_and_purse_i_suppose_have_a_drink_on_the_house_as_i_daresay_youve_saved_a_patron_or_two_a_broken_skull_still_i_hope_he_still_has_a_pulse_its_not_good_for_an_establishment_to_get_a_name_as_a_place_where_men_are_killed"),
-  (troop_add_item, "trp_player", "$g_attacker_drawn_weapon", 0), # SB: add attacker sword
-  (try_begin),
-    (agent_is_wounded, "$g_main_attacker_agent"),
-    (call_script, "script_change_player_relation_with_center", "$current_town", 1), #useless, increase with town instead
-  (try_end),
-(try_end),
 
-(troop_add_gold, "trp_player", 50),
-(assign, "$g_main_attacker_agent", 0),
-(troop_set_slot, "trp_hired_assassin", slot_troop_cur_center, -1),
+  (troop_add_gold, "trp_player", 50),
+  (assign, "$g_main_attacker_agent", 0),
+  (troop_set_slot, "trp_hired_assassin", slot_troop_cur_center, -1),
 ],
 "{!}{s9}", "player_duel_response",[]],
 
@@ -23200,36 +23198,40 @@ dialogs =[
 #"Excuse me -- please accept my apologies", "drunk_fight_start",[
 #]],
 ##NEW:
-"Excuse me -- please accept my apologies", "dplmc_drunk_attempt_placate",[]],
+"Excuse me -- please accept my apologies",
+"dplmc_drunk_attempt_placate",[
+]],
 
 [anyone, "dplmc_drunk_attempt_placate",[
-(neq, "$g_talk_troop", "trp_hired_assassin"),
-#Right now this is the same as the check in Native to persuade a companion to stay in your party
-(store_skill_level, reg1, "skl_persuasion", "trp_player"),
-(store_random_in_range, reg0, -2, 13),
-(try_begin),
-   (ge, "$cheat_mode", 1),
-	(display_message, "@{!}Persuasion attempt: skill {reg1} versus random roll {reg0} (-2 through 12)"),
-(try_end),
-(le, reg0, reg1),
-#The persuasion attempt succeeded.
-(call_script, "script_deactivate_tavern_attackers"),
+  (neq, "$g_talk_troop", "trp_hired_assassin"),
+  #Right now this is the same as the check in Native to persuade a companion to stay in your party
+  (store_skill_level, reg1, "skl_persuasion", "trp_player"),
+  (store_random_in_range, reg0, -2, 13),
+  (try_begin),
+    (ge, "$cheat_mode", 1),
+    (display_message, "@{!}Persuasion attempt: skill {reg1} versus random roll {reg0} (-2 through 12)"),
+  (try_end),
+  (le, reg0, reg1),
+  #The persuasion attempt succeeded.
+  (call_script, "script_deactivate_tavern_attackers"),
 ],
-"I'll let it slide... this time.  Now buzz off.", "close_window",[
-#SB : close the tavern mission template
-(finish_mission),
+"I'll let it slide... this time.  Now buzz off.",
+"close_window",[
+  # (agent_set_slot, "$g_talk_agent", slot_agent_already_begg, 1),
+  #SB : close the tavern mission template
+  # (finish_mission),
 ]],
 
-[anyone|auto_proceed, "dplmc_drunk_attempt_placate",[],
-#The persuasion attempt failed.  Fall back to the standard behavior.
-"I'll wipe that smirk right off your face!", "drunk_fight_start",[
-# (troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
+[anyone|auto_proceed, "dplmc_drunk_attempt_placate",[
+],"I'll wipe that smirk right off your face!",
+"drunk_fight_start",[
 ]],
-##diplomacy end+
 
 [anyone, "drunk_fight_start",[],
-"I'll wipe that smirk right off your face!", "close_window",[
-(troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
+"I'll wipe that smirk right off your face!",
+"close_window",[
+  (troop_set_slot, "trp_belligerent_drunk", slot_troop_cur_center, 0),
+  (assign, "$g_main_attacker_agent", "$g_talk_agent"),
 ]],
 
 [anyone|plyr, "drunk_response",
